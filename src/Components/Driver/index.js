@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import Cars from '../../Containers/Cars';
+import Locations from '../../Containers/LocationsContainer';
+
 
 export default class Driver extends Component {
 
 	constructor(props){
 		super(props);
 		this.state = {
-		car_id: null,
-		driver_id: null,
-		day: null,
-		all_seats: null,
-		stop_points_attributes: [{
-			location_id: null,
-			trip_id: null,
-			start_time: '',
-			end_time: ''
-		},
-		{
-			location_id: null,
-			trip_id: null,
-			start_time: '',
-			end_time: ''
-		}]
+			car_id: null,
+			driver_id: null,
+			day: null,
+			all_seats: null,
+			stop_points_attributes: [{
+				location_id: null,
+				trip_id: null,
+				start_time: '',
+				end_time: ''
+			}
+			]
 		}
 	}
 
+	handleStopPointChange = (event) => {
+		const {stop_points_attributes} = this.state;
+		stop_points_attributes[0][event.target.name] = event.target.value;
+		this.setState({
+			stop_points_attributes
+		})
+	}
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
-
-	componentWillMount(){
-		this.props.getLocations();
-	}
-
 
 	render() {
 		const {locations, addTrip} = this.props;
@@ -60,12 +59,7 @@ export default class Driver extends Component {
 
 						 <label>
 	          				Heading to
-	          				<select>
-	           					<option value="stopPoint1">Stop Point 1</option>
-	           					<option value="stopPoint2">Stop Point 2</option>
-	           					<option value="stopPoint3">Stop Point 3</option>
-	           					<option value="stopPoint4">Stop Point 4</option>
-	          				</select>
+	          				<Locations location_id={stop_points_attributes[0].location_id} onChange={this.handleStopPointChange.bind(this)} />
 	        			</label>
 
 	        			<label for="heading-timeframe">

@@ -9,5 +9,6 @@ import {Provider} from 'react-redux';
 
 const store = createStore();
 
-ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
+
