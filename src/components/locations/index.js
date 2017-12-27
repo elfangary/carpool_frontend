@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 export default class Locations extends Component {
-    selectLocation() {
-        console.log(this.refs.locationSelected.value);
-    }
 
     componentWillMount(){
         this.props.getLocations();
