@@ -20,7 +20,7 @@ export default class HHForm extends Component {
 
     handleChange = (event) => {
 		this.setState({
-            day: this.name.day.value,
+            day: this.day.value,
             location_id: this.name.location_id.value,
             start_time: this.name.start_time.value,
             end_time: this.name.end_time.value
