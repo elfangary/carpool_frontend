@@ -1,9 +1,11 @@
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './reducers';
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from './Reducers';
 import promise from 'redux-promise';
+import logger from 'redux-logger';
 
-const middlewares = applyMiddleware(promise);
+const middlewares = applyMiddleware(promise, logger);
+const composer = compose(middlewares);
 
 export default function(){
-    return createStore(rootReducer, middlewares);
+    return createStore(rootReducer, composer);
 }
