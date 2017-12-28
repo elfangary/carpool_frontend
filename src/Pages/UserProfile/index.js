@@ -5,7 +5,7 @@ import CarsContainer from '../../Containers/CarsContainer';
 import CarDetails from '../../Components/CarDetails';
 
 import { Route, Switch } from 'react-router-dom';
-// import './index.css';
+import './index.css';
 
 export default class UserProfile extends Component {
 	render() {
