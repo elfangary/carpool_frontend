@@ -27,7 +27,7 @@ export default class HHForm extends Component {
         const { day, location_id, start_time, end_time } = this.state;
         return(
             <div>
-                <div>
+                <form>
                     <Locations onChange={this.handleChange.bind(this)}/>
                     <label>
                         Time Frame
@@ -37,7 +37,7 @@ export default class HHForm extends Component {
                     </label>
                     <Days onClick={this.handleChange.bind(this)}/>
                     <input type="submit" onClick={() => this.props.getFilteredTrips(day, location_id, start_time, end_time)} />
-                </div>
+                </form>
                 <div>
                     {trips.map((trip) => {
                         return (
@@ -48,7 +48,6 @@ export default class HHForm extends Component {
                         )
                     })}
                 </div>
-        
             </div>
         )
     }

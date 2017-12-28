@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 export default class Days extends Component {
 
 	render() {
+
 		const {onClick} = this.props;
+
 		return (
 	        <fieldset className="schedule">
 				<legend>Trip Schedule</legend>
