@@ -1,6 +1,9 @@
-import { getLocationsLoading, getLocations, getLocationsSuccess, getLocationsFailure } from '../Actions/locations';
 import { connect } from 'react-redux';
 import Locations from '../Components/locations';
+import {
+    getLocationsLoading, getLocations, getLocationsSuccess, getLocationsFailure
+} from '../Actions/locations';
+
 
 const mapStateToProps = function(state){
     return {

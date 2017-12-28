@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cars from '../../Containers/Cars';
+import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';

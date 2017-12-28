@@ -13,16 +13,11 @@ export default function(currentState = INITIAL_STATE, action){
 
 		case GET_CARS_LOADING:
 			return {...currentState, loading: true};
-			break;
 		case GET_CARS_SUCCESS:
 			return {...currentState, cars: action.cars, loading: false};
-			break;
 		case GET_CARS_FAILURE:
 			return {...currentState, error: action.error, loading: false};
-			break;
-
 		default:
 			return currentState;
-			break;
-	}
+	};
 };

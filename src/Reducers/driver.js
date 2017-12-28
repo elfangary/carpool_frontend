@@ -13,18 +13,11 @@ export default function(currentState = INITIAL_STATE, action){
 
 		case ADD_TRIP_LOADING:
 			return {...currentState, loading: true};
-			break;
-
 		case ADD_TRIP_SUCCESS:
 			return {...currentState, trip: action.trip, loading: false};
-			break;
-
 		case ADD_TRIP_FAILURE:
 			return {...currentState, error: action.error, loading: false};
-			break;
-
 		default:
 			return currentState;
-			break;
-	}
+	};
 };
