@@ -17,6 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         signUp: (user) => {
             dispatch(signUpLoading());
             dispatch(signUp(user)).then(response => {
+                localStorage.setItem('user_id', response.payload.data.user.id);
                 if(response.payload.status < 400){
                     dispatch(signUpSuccess(response.payload.data));
                 }else{

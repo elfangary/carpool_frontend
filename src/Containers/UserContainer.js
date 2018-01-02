@@ -6,13 +6,11 @@ import {
 import { logout } from '../Actions/loginForm';
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         user: state.user.user,
         loading: state.user.loading,
         error: state.user.error,
         user_id: state.login.user.id
-
     };
 };
 
@@ -30,6 +28,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         logout: function(){
             localStorage.removeItem('jwtToken');
+            localStorage.removeItem('user_id');
             dispatch(logout());
         }
             
