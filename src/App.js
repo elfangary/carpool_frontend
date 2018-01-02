@@ -2,13 +2,19 @@ import React, { Component } from 'react';
 //import './App.css';
 import HhForm from './Containers/HhFormContainer';
 import UserProfile from './Pages/UserProfile';
-import {Link} from 'react-router-dom';
+import {Link, Route, Redirect, Switch} from 'react-router-dom';
+import SignUpForm from './Containers/SignUpFormContainer';
+import Login from './Containers/loginFormContainer';
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-          <UserProfile />
+          <Switch>
+            <Route path='/signup' component={SignUpForm}/>
+            <Route path="/login" component={Login} />
+          </Switch>
+          
           <div className="footer clearfix">
             <div className="footer-links">
               <Link to={'/contact'} className="footer-link">Contact Us</Link>

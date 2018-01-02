@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export default class Days extends Component {
 
 	render() {

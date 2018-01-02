@@ -3,7 +3,7 @@ import {
 } from '../Actions/user';
 
 const INITIAL_STATE = {
-    items: [],
+    user: {},
     loading: false,
     error: null
 }
@@ -13,8 +13,7 @@ export default function(currentState = INITIAL_STATE, action){
 		case GET_USER_LOADING:
             return {...currentState, loading: true};
         case GET_USER_SUCCESS:
-            // console.log(action.user);
-            return {...currentState, items: [action.user], loading: false};
+            return {...currentState, user: action.user, loading: false};
         case GET_USER_FAILURE:
             return {...currentState, error: action.error, loading: false};
         default:

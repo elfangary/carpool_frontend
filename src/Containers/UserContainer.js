@@ -3,12 +3,16 @@ import User from '../Components/User';
 import {
     getUserLoading, getUser, getUserSuccess, getUserFailure
 } from '../Actions/user';
+import { logout } from '../Actions/loginForm';
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
-        user: state.user.items,
+        user: state.user.user,
         loading: state.user.loading,
-        error: state.user.error
+        error: state.user.error,
+        user_id: state.login.user.id
+
     };
 };
 
@@ -23,7 +27,12 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(getUserFailure(response.payload.message));
                 }
             })
+        },
+        logout: function(){
+            localStorage.removeItem('jwtToken');
+            dispatch(logout());
         }
+            
     };
 };
 

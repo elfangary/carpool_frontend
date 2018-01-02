@@ -7,10 +7,10 @@ import Driver from '../../Containers/DriverContainer';
 
 export default class User extends Component{
 	componentWillMount(){
-        this.props.getUser(2);
+        this.props.getUser(this.props.user_id);
     }
 	render(){
-		const { user, loading, error } = this.props;
+		const { user, loading, error, logout } = this.props;
 		if(loading){
             return (
                 <p>Loading user profile..</p>
@@ -25,30 +25,26 @@ export default class User extends Component{
 		}else{
 		    return (
 		    	<div>
-		    	{user.map(u => {
-		    		return (
-		    			<div className="profile-container">
-							<header className="header">
-							 	<img src={u.profile_pic} className="profile-picture"/>
-							 	<h1 className="user-name">{u.first_name} {u.last_name}</h1>
-							</header>
-							<section>
-								<Link to={'/edit'}>Edit my profile</Link>
-								<Link to={'/driving/cars'}>My Cars</Link>
-								<Link to={'/:type/trips'}>My Trips</Link>
-								<p>{u.points}points</p>
-								<p>{u.email}</p>
-								<p>{u.phone}</p>
-								<p><a href="#">Recharge</a></p>
-							</section>
-							<footer>
-								<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>
-								<Link to={'/driving'}>Driving</Link>
-							</footer>
-					    </div>
-		    		)
-		    	    })
-		        }
+	    			<div className="profile-container">
+						<header className="header">
+						 	<img src={user.profile_pic} className="profile-picture"/>
+						 	<h1 className="user-name">{user.first_name} {user.last_name}</h1>
+						</header>
+						<section>
+							<Link to={'/edit'}>Edit my profile</Link>
+							<Link to={'/driving/cars'}>My Cars</Link>
+							<Link to={'/:type/trips'}>My Trips</Link>
+							<p>{user.points}points</p>
+							<p>{user.email}</p>
+							<p>{user.phone}</p>
+							<p><a href="#">Recharge</a></p>
+							<Link to="/login" onClick={() => {logout()} }>logout</Link>
+						</section>
+						<footer>
+							<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>
+							<Link to={'/driving'}>Driving</Link>
+						</footer>
+				    </div>
 		        </div>
 			)
 		}

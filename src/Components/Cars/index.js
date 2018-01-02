@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-
 export default class Cars extends Component {
 	componentWillMount(){
-		this.props.getCars(2);
+		this.props.getCars(localStorage.user_id);
 	}
-
-
 	render() {
 		const {cars, car_id, onChange} = this.props
 		return (

@@ -13,8 +13,6 @@ export default class HHForm extends Component {
         };
     };
 
-
-
     handleChange = (event) => {
         console.log(event.target.value);
         const newState = {...this.state};

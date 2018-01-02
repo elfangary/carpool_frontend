@@ -8,6 +8,8 @@ export const SearchApi = (day, location_id, start_time, end_time) =>
 
 // User
 export const userApi = (id) => `${rootApi}/users/${id}.json`;
+export const signUpApi = `${rootApi}/signup`;
+export const loginApi = `${rootApi}/login`;
 
 //driver's newTrip
 export const newTripApi = `${rootApi}/trips.json`;
