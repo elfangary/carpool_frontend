@@ -17,14 +17,14 @@ const mapDispatchToProps = (dispatch) => {
         login: (user) => {
             dispatch(loginLoading());
             dispatch(login(user)).then(response => {
-                const token = response.payload.data.auth_token;
-                localStorage.setItem('jwtToken', token);
-                localStorage.setItem('user_id', response.payload.data.user.id);
-                set_authentication_token(token)
+                
                 if(response.payload.status < 400){
+                    
+                    const token = response.payload.data.auth_token;
+                    localStorage.setItem('jwtToken', token);
+                    set_authentication_token(token)
                     dispatch(loginSuccess(response.payload.data.user));
                 }else{
-
                     dispatch(loginFailure(response.payload.response.data.message));
                 }
             })

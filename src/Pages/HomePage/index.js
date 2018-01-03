@@ -11,11 +11,10 @@ export default class HomePage extends Component {
               		<Route path="/" exact component={Login} />
               		{
 	              		(localStorage.user_id)?
-	              		// <Route path="/login" exact component={Login} />
-	              		<Login />
+	              		 <Route path="/" exact component={Login} />
 	              		:
-	              		// <Route path="/signup" component={SignUpForm} />
-	              		<SignUpForm />
+	              		 <Route path="/signup" component={SignUpForm} />
+	              		
               		}
               	</Switch>
 			</div>

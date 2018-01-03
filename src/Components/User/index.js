@@ -7,7 +7,7 @@ import Driver from '../../Containers/DriverContainer';
 
 export default class User extends Component{
 	componentWillMount(){
-        this.props.getUser(this.props.user_id);
+        this.props.getUser();
     }
 	render(){
 		const { user, loading, error, logout } = this.props;
@@ -38,7 +38,7 @@ export default class User extends Component{
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
 							<p><a href="#">Recharge</a></p>
-							<Link to="/login" onClick={() => {logout()} }>logout</Link>
+							<Link to="/" onClick={() => {logout()} }>logout</Link>
 						</section>
 						<footer>
 							<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>

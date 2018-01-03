@@ -28,7 +28,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         logout: function(){
             localStorage.removeItem('jwtToken');
-            localStorage.removeItem('user_id');
             dispatch(logout());
         }
             
