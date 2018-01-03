@@ -1,4 +1,4 @@
-export const rootApi = 'http://localhost:3002';
+export const rootApi = 'http://localhost:3001';
 
 // User
 export const userApi = `${rootApi}/user.json`;
