@@ -3,7 +3,8 @@ import Toggle from 'react-toggle'
 import "react-toggle/style.css";
 // import "./index.css";
 import {Link} from 'react-router-dom';
-import Driver from '../../Containers/DriverContainer';
+// import Driver from '../../Containers/DriverContainer';
+import Checkout from '../Checkout';
 
 export default class User extends Component{
 	componentWillMount(){
@@ -39,7 +40,7 @@ export default class User extends Component{
 								<p>{u.points}points</p>
 								<p>{u.email}</p>
 								<p>{u.phone}</p>
-								<p><a href="#">Recharge</a></p>
+								<Link to={'/checkout'}>Recharge your balance?</Link>
 							</section>
 							<footer>
 								<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>

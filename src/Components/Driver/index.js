@@ -3,6 +3,8 @@ import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';
+import FlipMove from 'react-flip-move';
+import './index.css';
 
 
 export default class Driver extends Component {
@@ -52,6 +54,18 @@ export default class Driver extends Component {
 		});
 	};
 
+	handleSwap = (event) => {
+		const {stop_points_attributes} = this.state;
+		if (stop_points_attributes[0].location_id === 1) {
+			stop_points_attributes[0].location_id = stop_points_attributes[1].location_id;
+			stop_points_attributes[1].location_id = 1;
+		} else {
+			stop_points_attributes[1].location_id = stop_points_attributes[0].location_id;
+			stop_points_attributes[0].location_id =1;
+		};
+		this.setState({stop_points_attributes})
+	};
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: parseInt(event.target.value)
@@ -66,18 +80,19 @@ export default class Driver extends Component {
 			<div className="driver-container">
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
-					<fieldset className="Location">
+					<fieldset className="location clearfix">
 						<legend>Location Details</legend>
 						<label>Moving from</label>
-						<p>Almakinah</p>
+						<p id="from">Almakinah</p>
 
 						<Time stop_point={stop_points_attributes[0]} onChange={this.handleAlmakinahChange.bind(this)}/>
 
-						<button type="button">Swap</button>
+						<button type="button" onClick={this.handleSwap.bind(this)}>Swap</button>
+
 
 						 <label>
 	          				Heading to
-	          				<Locations location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} />
+	          				<Locations location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
 	        			</label>
 
 	        			<Time stop_point={stop_points_attributes[1]} onChange={this.handleStopPointChange.bind(this)}/>
