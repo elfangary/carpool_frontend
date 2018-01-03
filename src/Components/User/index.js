@@ -6,11 +6,28 @@ import {Link} from 'react-router-dom';
 import Driver from '../../Containers/DriverContainer';
 
 export default class User extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+			link : '/driving/trips'
+		};
+	};
+
+	handleChangeLink(){
+		this.setState({
+			link: '/hitch-hiking/trips'
+		});
+		console.log(this.state);
+	}
+
 	componentWillMount(){
         this.props.getUser(2);
-    }
+	}
+
+
 	render(){
-		const { user, loading, error } = this.props;
+		const { user, loading, error, handleChangeLink } = this.props;
+		const { link } = this.state;
 		if(loading){
             return (
                 <p>Loading user profile..</p>
@@ -35,14 +52,14 @@ export default class User extends Component{
 							<section>
 								<Link to={'/edit'}>Edit my profile</Link>
 								<Link to={'/driving/cars'}>My Cars</Link>
-								<Link to={'/:type/trips'}>My Trips</Link>
+								<Link to={link}>My Trips</Link>
 								<p>{u.points}points</p>
 								<p>{u.email}</p>
 								<p>{u.phone}</p>
 								<p><a href="#">Recharge</a></p>
 							</section>
 							<footer>
-								<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>
+								<Link to={'/hitch-hiking'} onClick={() => {this.handleChangeLink}}>Hitch-Hiking</Link>
 								<Link to={'/driving'}>Driving</Link>
 							</footer>
 					    </div>
