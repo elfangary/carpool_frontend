@@ -20,12 +20,17 @@ export default class Login extends Component{
 			(localStorage.getItem('jwtToken'))?
 				<UserProfile />
 			:
-			<form>
+			<div>
 				<Link to="/signup">SiginUp</Link>
-				<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
-				<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
-				<button type="button" onClick={ () =>{this.props.login(this.state)} }>Next </button>
-			</form>
+				<form>
+					<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
+					<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
+					<button type="button" onClick={ () =>{this.props.login(this.state)} }>Next </button>
+					{
+						(this.props.error)? <p>you can not login </p> : null
+					}
+				</form>
+			</div>
 			)
 	}
 }

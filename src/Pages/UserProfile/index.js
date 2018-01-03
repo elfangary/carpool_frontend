@@ -5,6 +5,8 @@ import CarsContainer from '../../Containers/CarsContainer';
 import CarDetails from '../../Components/CarDetails';
 import HhForm from '../../Containers/HhFormContainer';
 import Checkout from '../../Components/Checkout';
+import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
+import HhTrips from '../../Containers/HhTripsTrackingContainer';
 import { Route, Switch } from 'react-router-dom';
 // import './index.css';
 
@@ -18,6 +20,8 @@ export default class UserProfile extends Component {
               		<Route path="/driving/cars" component={CarDetails} />
               		<Route path="/hitch-hiking" component={HhForm} />
               		<Route path="/checkout" component={Checkout} />
+					<Route path="/driving/trips" component={DriverTrips} />
+					<Route path="/hitch-hiking/trips" component={HhTrips} />
               	</Switch>
 
 			</div>

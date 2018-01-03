@@ -18,3 +18,12 @@ export const locationsApi = `${rootApi}/locations`;
 //user's cars
 export const carsApi = (user_id) => `${rootApi}/users/${user_id}/cars`;
 // export const carApi = (user_id, car_id) => `${rootApi}/users/${user_id}/cars/${car_id}.json`;
+
+//hitchHiker new stop point
+export const hhStopPointApi = `${rootApi}/hitch-hiking`;
+
+//driver trips
+export const driverTripsApi = (id, time) => `${rootApi}/users/${id}/driver/trips?time=${time}`;
+
+//hitch-hiker trips
+export const hitchHikerTripsApi = (id, time) => `${rootApi}users/${id}/hitch-hiker/trips?time=${time}`;

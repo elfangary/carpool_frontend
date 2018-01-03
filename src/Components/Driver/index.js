@@ -68,7 +68,7 @@ export default class Driver extends Component {
 
 	handleChange = (event) => {
 		this.setState({
-			[event.target.name]: parseInt(event.target.value)
+			[event.target.name]: (event.target.value)
 		});
 	};
 
@@ -99,7 +99,12 @@ export default class Driver extends Component {
 
 					</fieldset>
 
-					<Days onClick={this.handleChange.bind(this)}/>
+					<fieldset>
+                        <legend>Schedule</legend>
+                        <label htmlFor="day">
+                            <input type="date" id="day" name="day" onChange={this.handleChange}/>
+                        </label>
+                    </fieldset>
 
 					<fieldset className="car-details">
 						<legend>Car Details</legend>

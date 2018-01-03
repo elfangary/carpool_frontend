@@ -9,16 +9,15 @@ const mapStateToProps = (state) => {
     return {
         user: state.user.user,
         loading: state.user.loading,
-        error: state.user.error,
-        user_id: state.login.user.id
+        error: state.user.error
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getUser: (id) => {
+        getUser: () => {
             dispatch(getUserLoading());
-            dispatch(getUser(id)).then(response => {
+            dispatch(getUser()).then(response => {
                 if(response.payload.status < 400){
                     dispatch(getUserSuccess(response.payload.data));
                 }else{

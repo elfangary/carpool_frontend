@@ -24,7 +24,6 @@ export const addTrip = (car_id, driver_id, day, all_seats, stop_points_attribute
         all_seats,
         stop_points_attributes
     })
-    debugger;
     return {
         type: ADD_TRIP,
         payload

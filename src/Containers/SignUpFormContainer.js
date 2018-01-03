@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch) => {
         signUp: (user) => {
             dispatch(signUpLoading());
             dispatch(signUp(user)).then(response => {
-                console.log( response.payload.data.user.id);
                 if(response.payload.status < 400){
                     dispatch(signUpSuccess(response.payload.data));
                 }else{

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Cars extends Component {
 	componentWillMount(){
-		this.props.getCars(localStorage.user_id);
+		this.props.getCars();
 	}
 	render() {
 		const {cars, car_id, onChange} = this.props

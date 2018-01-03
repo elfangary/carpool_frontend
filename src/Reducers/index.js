@@ -6,6 +6,9 @@ import carsReducer from './cars';
 import userReducer from './user';
 import signUpReducer from './signUpForm';
 import loginReducer from './loginForm';
+import driverTrackedTripsReducer from './driverTripsTracking';
+import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
+
 
 const rootReducer = combineReducers({
     locations: locationsReducer,
@@ -14,7 +17,9 @@ const rootReducer = combineReducers({
 	userCars: carsReducer,
 	user: userReducer,
 	signUp: signUpReducer,
-	login: loginReducer
+	login: loginReducer,
+	driverTrackedTrips: driverTrackedTripsReducer,
+	hhTrackedTrips: hitchHikerTrackedTripsReducer
 });
 
 export default rootReducer;
