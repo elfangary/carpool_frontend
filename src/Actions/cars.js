@@ -15,8 +15,8 @@ export const getCarsLoading = () => {
         type: GET_CARS_LOADING
     };
 };
-export const getCars = (id) => {
-    const payload = Axios.get(carsApi(id));
+export const getCars = () => {
+    const payload = Axios.get(carsApi);
     return {
         type: GET_CARS,
         payload

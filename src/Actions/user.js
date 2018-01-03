@@ -15,8 +15,8 @@ export const getUserLoading = () => {
         type: GET_USER_LOADING
     };
 };
-export const getUser = (id) => {
-    const payload = Axios.get(userApi(id));
+export const getUser = () => {
+    const payload = Axios.get(userApi);
     return {
         type: GET_USER,
         payload
