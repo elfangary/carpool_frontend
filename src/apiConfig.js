@@ -27,3 +27,6 @@ export const driverTripsApi = (id, time) => `${rootApi}/users/${id}/driver/trips
 
 //hitch-hiker trips
 export const hitchHikerTripsApi = (id, time) => `${rootApi}users/${id}/hitch-hiker/trips?time=${time}`;
+
+//Notification 
+export const notificationsApi = `${rootApi}/notifications.json`;

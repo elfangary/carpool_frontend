@@ -44,11 +44,10 @@ export const addHhStopPointLoading = () => {
         type: ADD_HH_STOP_POINT_LOADING
     };
 };
-export const addHhStopPoint = (hh_id, booked_seats, stop_point_id) => {
+export const addHhStopPoint = (booked_seats, stop_point_id) => {
     return {
         type: ADD_HH_STOP_POINT,
         payload: Axios.post(hhStopPointApi, {
-            hh_id,
             booked_seats,
             stop_point_id
         })
