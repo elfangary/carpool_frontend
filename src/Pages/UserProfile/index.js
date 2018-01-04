@@ -19,7 +19,6 @@ export default class UserProfile extends Component {
               		<Route path="/driving" exact component={DriverContainer} />
               		<Route path="/driving/cars" component={CarDetails} />
               		<Route path="/hitch-hiking" component={HhForm} />
-              		<Route path="/checkout" component={Checkout} />
 					<Route path="/driving/trips" component={DriverTrips} />
 					<Route path="/hitch-hiking/trips" component={HhTrips} />
               	</Switch>

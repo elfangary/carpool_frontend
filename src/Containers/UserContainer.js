@@ -8,6 +8,7 @@ import { logout } from '../Actions/loginForm';
 const mapStateToProps = (state) => {
     return {
         user: state.user.user,
+        points: state.user.points,
         loading: state.user.loading,
         error: state.user.error
     };
@@ -29,7 +30,6 @@ const mapDispatchToProps = (dispatch) => {
             localStorage.removeItem('jwtToken');
             dispatch(logout());
         }
-            
     };
 };
 

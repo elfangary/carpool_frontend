@@ -4,13 +4,13 @@ import "react-toggle/style.css";
 // import "./index.css";
 import {Link} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
-import Checkout from '../Checkout';
+import Checkout from '../../Containers/Checkout';
 
 export default class User extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			link : '/driving/trips'
+			amount: null
 		};
 	};
 
@@ -18,16 +18,15 @@ export default class User extends Component{
         this.props.getUser();
     }
 
-	handleChangeLink(){
+	handleChange = (event) => {
 		this.setState({
-			link: '/hitch-hiking/trips'
+			[event.target.name]: (event.target.value)
 		});
-		console.log(this.state);
-	}
+	};
 
 	render(){
-		const { user, loading, error, handleChangeLink, logout } = this.props;
-		const { link } = this.state;
+		const { user, loading, error, handleChangeLink, logout, points } = this.props;
+		const { amount } = this.state;
 		if(loading){
             return (
                 <p>Loading user profile..</p>
@@ -50,11 +49,20 @@ export default class User extends Component{
 						<section>
 							<Link to={'/edit'}>Edit my profile</Link>
 							<Link to={'/driving/cars'}>My Cars</Link>
-							<Link to={link}>My Trips</Link>
-							<p>{user.points}points</p>
+							<p>{points} points</p>
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
-							<Link to={'/checkout'}>Recharge your balance?</Link>
+							<form>
+								<legend>Recharge your balance?</legend>
+								<label forHtml="amount-input">Please enter amount</label>
+								<input type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
+							</form>
+							<Checkout
+            					name={'Recharge your balance?'}
+            					description={'Enter your details below..'}
+           						email={user.email}
+           						amount={amount}
+          					/>
 							<p><Link to="/" onClick={() => {logout()} }>logout</Link></p>
 						</section>
 						<footer>

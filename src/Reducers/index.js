@@ -10,6 +10,7 @@ import driverTrackedTripsReducer from './driverTripsTracking';
 import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 
 
+
 const rootReducer = combineReducers({
     locations: locationsReducer,
     filteredTrips: HhFormReducer,

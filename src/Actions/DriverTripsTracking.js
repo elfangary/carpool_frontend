@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import {driverTripsApi} from '../apiConfig'; 
+import {driverTripsApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';

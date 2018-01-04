@@ -1,53 +1,48 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import axios from 'axios';
+import StripeCheckout from 'react-stripe-checkout';
+import {chargeApi} from '../../apiConfig';
 
 
 export default class Checkout extends Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			amount: null,
-			card_number: null,
-			exp_date: null,
-			cvc: null
-		};
-		this.onSubmit = this.onSubmit.bind(this);
+	fromCentsToPound = (amount)  => amount * 100;
+
+	successPayment = (data) => {
+  		alert('Payment Successful');
+  		this.props.addCharge(data.data);
+  		console.log('hello')
+  		console.log(data.data)
 	};
 
-	handleChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		});
+	errorPayment = (data) => {
+  		alert('Payment Error');
 	};
 
-	onSubmit = (event) => {
-		event.preventDefault();
-		console.log(this.state);
+	onToken = (amount, description) => token =>
+	  axios.post(chargeApi,
+	    {
+	      description,
+	      stripeToken: token.id,
+	      currency: 'EGP',
+	      amount: this.fromCentsToPound(amount)
+	    })
+	    .then(this.successPayment)
+	    .catch(this.errorPayment);
 
-	}
-
-	render(){
-		const {amount, card_number, exp_date, cvc} = this.state;
-		return (
-			<div>
-			<form onSubmit={this.onSubmit}>
-                <legend>Payment</legend>
-                    <label htmlFor="paymentAmountInput">Amount in EGP</label>
-                    <input type="number" id="paymentAmountInput" name="amount" value={amount} onChange={this.handleChange}/>
-
-                    <label htmlFor="cardNumberInput">Card Number</label>
-                    <input type="text" id="cardNumberInput" placeholder="4242 4242 4242 4242" name="card_number" value={card_number} onChange={this.handleChange}/>
-
-                    <label htmlFor="expInput">Expiration Date</label>
-                    <input type="date" id="expInput" placeholder="12/2017" name="exp_date" value={exp_date} onChange={this.handleChange}/>
-
-                    <label htmlFor="cvcInput">CVC</label>
-                    <input type="number" id="cvcInput" placeholder="123" name="cvc" value={cvc} onChange={this.handleChange}/>
-
-                <button type="submit">Recharge</button>
-            </form>
-        </div>
-
-		)
-	}
-}
+	 render() {
+	 	const {name, description, amount, email} = this.props;
+	 	return (
+	 		<StripeCheckout
+    			name={name}
+    			email={email}
+    			description={description}
+    			amount={this.fromCentsToPound(amount)}
+    			token={this.onToken(amount, description)}
+    			currency={'EGP'}
+    			stripeKey={'pk_test_Gb9ajdE1zHAzQBLlK4w0tjJU'}
+    			allowRememberMe={false}
+  			/>
+	 	)
+	 }
+};
