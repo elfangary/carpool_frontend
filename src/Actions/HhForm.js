@@ -19,12 +19,7 @@ export const getFilteredTripsLoading = () => {
 export const getFilteredTrips = (day, location_id, start_time, end_time) => {
     return {
         type: GET_FILTERED_TRIPS,
-        payload: Axios.get(SearchApi(
-            day,
-            location_id,
-            start_time,
-            end_time
-        ))
+        payload: Axios.get(SearchApi(day, location_id, start_time, end_time))
     };
 };
 export const getFilteredTripsSuccess = (trips) => {
@@ -44,11 +39,10 @@ export const addHhStopPointLoading = () => {
         type: ADD_HH_STOP_POINT_LOADING
     };
 };
-export const addHhStopPoint = (hh_id, booked_seats, stop_point_id) => {
+export const addHhStopPoint = (booked_seats, stop_point_id) => {
     return {
         type: ADD_HH_STOP_POINT,
         payload: Axios.post(hhStopPointApi, {
-            hh_id,
             booked_seats,
             stop_point_id
         })
@@ -64,5 +58,5 @@ export const addHhStopPointFailure = (error) => {
     return {
         type: ADD_HH_STOP_POINT_FAILURE,
         error
-    }
-}
+    };
+};

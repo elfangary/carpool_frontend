@@ -7,27 +7,13 @@ import {Link} from 'react-router-dom';
 import Checkout from '../Checkout';
 
 export default class User extends Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			link : '/driving/trips'
-		};
-	};
 
 	componentWillMount(){
         this.props.getUser();
     }
 
-	handleChangeLink(){
-		this.setState({
-			link: '/hitch-hiking/trips'
-		});
-		console.log(this.state);
-	}
-
 	render(){
 		const { user, loading, error, handleChangeLink, logout } = this.props;
-		const { link } = this.state;
 		if(loading){
             return (
                 <p>Loading user profile..</p>
@@ -50,7 +36,8 @@ export default class User extends Component{
 						<section>
 							<Link to={'/edit'}>Edit my profile</Link>
 							<Link to={'/driving/cars'}>My Cars</Link>
-							<Link to={link}>My Trips</Link>
+							<Link to={'/driving/trips'}>My Trips</Link>
+							<Link to={'/hitch-hiking/trips'}>HH-trips</Link>
 							<p>{user.points}points</p>
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
@@ -58,7 +45,7 @@ export default class User extends Component{
 							<p><Link to="/" onClick={() => {logout()} }>logout</Link></p>
 						</section>
 						<footer>
-							<Link to={'/hitch-hiking'} onClick={() => {this.handleChangeLink}}>Hitch-Hiking</Link>
+							<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>
 							<Link to={'/driving'}>Driving</Link>
 						</footer>
 				    </div>

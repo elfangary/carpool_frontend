@@ -26,9 +26,9 @@ const mapDispatchToProps = function(dispatch){
                 }
             })
         },
-        addHhStopPoint: (hh_id, stop_point_id, booked_seats) => {
+        addHhStopPoint: (stop_point_id, booked_seats) => {
             dispatch(addHhStopPointLoading());
-            dispatch(addHhStopPoint(hh_id, stop_point_id, booked_seats))
+            dispatch(addHhStopPoint(stop_point_id, booked_seats))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));

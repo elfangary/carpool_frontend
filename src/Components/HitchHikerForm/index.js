@@ -6,13 +6,13 @@ import dateFormat from 'dateformat';
 export default class HHForm extends Component {
     constructor(props){
         super(props);
+        console.log(this.props);
         this.state = {
             day: null,
             location_id: null,
             start_time: '',
             end_time: '',
             new_hh_stop: {
-                hh_id: 2,
                 stop_point_id: null,
                 booked_seats: 0
             }
@@ -91,8 +91,6 @@ export default class HHForm extends Component {
                                         <label htmlFor="stop_point-id">{stop_point.location.name}</label>
                                         <input type="radio" name="stop_point_id" id="stop_point_id" 
                                             value= {stop_point.id} onChange={this.handleNewHhStopPoint} />
-                                            {console.log(stop_point.location.id)}
-                                            {console.log(location_id)}
                                         <p>{dateFormat(stop_point.start_time, "HH:MM")}</p>
                                         <p>{dateFormat(stop_point.end_time, "HH:MM")}</p>
                                     </div>
@@ -101,8 +99,7 @@ export default class HHForm extends Component {
                         </div>
                     )
                 })}
-                <button type="submit" onClick={() => addHhStopPoint(new_hh_stop.hh_id,
-                     new_hh_stop.booked_seats, new_hh_stop.stop_point_id)}>Submit</button>
+                <button type="submit" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id)}>Submit</button>
             </div>
         )
     }

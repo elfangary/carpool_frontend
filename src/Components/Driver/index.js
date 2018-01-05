@@ -13,7 +13,6 @@ export default class Driver extends Component {
 		super(props);
 		this.state = {
 			car_id: null,
-			driver_id: 2,
 			day: null,
 			all_seats: 0,
 			stop_points_attributes: [{
@@ -75,7 +74,7 @@ export default class Driver extends Component {
 
 	render() {
 		const {locations, addTrip} = this.props;
-		const {car_id, driver_id, day, all_seats, stop_points_attributes} = this.state;
+		const {car_id, day, all_seats, stop_points_attributes} = this.state;
 		return (
 			<div className="driver-container">
 				<h1 className="driver-title">Book Your Trip</h1>
@@ -113,7 +112,7 @@ export default class Driver extends Component {
 					</fieldset>
 				</form>
 
-				<button type="button" onClick={() => {addTrip(car_id, driver_id, day, all_seats, stop_points_attributes)}}>Submit</button>
+				<button type="button" onClick={() => {addTrip(car_id, day, all_seats, stop_points_attributes)}}>Submit</button>
 			</div>
 		)
 	};

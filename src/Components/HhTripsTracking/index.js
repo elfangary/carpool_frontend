@@ -2,26 +2,18 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 
 export default class HhTripsTracking extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            user_id: 1
-        };
-    };
-
     render () {
         const {trackedTrips, getTripsTracking} = this.props;
-        const {user_id} = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>
                 <form>
                     <label htmlFor="upcoming">Upcoming</label>
-                    <input type="radio" id="upcoming" name="trips" value="upcoming" onClick={() => getTripsTracking(user_id, "upcoming")} />
+                    <input type="radio" id="upcoming" name="trips" value="upcoming" onClick={() => getTripsTracking("upcoming")} />
                     <label htmlFor="ongoing">Ongoing</label>
-                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getTripsTracking(user_id, "ongoing")} />
+                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getTripsTracking("ongoing")} />
                     <label htmlFor="history">History</label>
-                    <input type="radio" id="history" name="trips" value="history" onClick={() => getTripsTracking(user_id, "history")} />
+                    <input type="radio" id="history" name="trips" value="history" onClick={() => getTripsTracking("history")} />
                 </form>
             {
                 trackedTrips.map((trip) => {

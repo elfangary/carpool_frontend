@@ -11,10 +11,10 @@ export const getTripsTrackingLoading = () => {
         type: GET_TRIPS_TRACKING_LOADING
     };
 };
-export const getTripsTracking = (id, time) => {
+export const getTripsTracking = (time) => {
     return {
         type: GET_TRIPS_TRACKING,
-        payload: Axios.get(hitchHikerTripsApi(id, time))
+        payload: Axios.get(hitchHikerTripsApi(time))
     };
 };
 export const getTripsTrackingSuccess = (trackedTrips) => {
