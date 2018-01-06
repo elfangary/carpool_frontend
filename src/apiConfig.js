@@ -31,3 +31,7 @@ export const hitchHikerTripsApi = (id, time) => `${rootApi}users/${id}/hitch-hik
 //payment-charge
 export const chargeApi = `${rootApi}/charges`;
 export const addChargedPointsApi = `${rootApi}/add_charged_points`;
+
+//Notification
+export const notificationsApi = `${rootApi}/notifications.json`;
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
 // import "./index.css";
-import {Link} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
 
@@ -43,6 +43,9 @@ export default class User extends Component{
 		    	<div>
 	    			<div className="profile-container">
 						<header className="header">
+
+							<Link to={"/notifications"}> <i class="fa fa-bell" aria-hidden="true"></i> </Link>
+
 						 	<img src={user.profile_pic} className="profile-pictuser.e"/>
 						 	<h1 className="user-name">{user.first_name} {user.last_name}</h1>
 						</header>

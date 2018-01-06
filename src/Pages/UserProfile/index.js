@@ -8,12 +8,14 @@ import Checkout from '../../Components/Checkout';
 import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
 import HhTrips from '../../Containers/HhTripsTrackingContainer';
 import { Route, Switch } from 'react-router-dom';
+import Notifications from '../../Containers/NotificationsContainer';
 // import './index.css';
 
 export default class UserProfile extends Component {
 	render() {
 		return (
 			<div className="profile">
+				<Route path={"/notifications"} component={Notifications} />
 				<UserContainer />
 				<Switch>
               		<Route path="/driving" exact component={DriverContainer} />

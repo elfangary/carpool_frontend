@@ -7,9 +7,11 @@ import SignUpForm from './Containers/SignUpFormContainer';
 import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
 
+
 class App extends Component {
   render() {
     return (
+      
         <div className="App">
        { 
         (localStorage.jwtToken)?
