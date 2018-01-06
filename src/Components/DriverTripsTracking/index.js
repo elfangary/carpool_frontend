@@ -2,26 +2,19 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 
 export default class DriverTripsTracking extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            user_id: 2
-        };
-    };
 
     render () {
-        const {trackedTrips, getTripsTracking} = this.props;
-        const {user_id} = this.state;
+        const {trackedTrips, getTripsTracking, changeHhStopStatus} = this.props;
         return (
             <div>
                 <h2>Your Trips</h2>
                 <form>
                     <label htmlFor="upcoming">Upcoming</label>
-                    <input type="radio" id="upcoming" name="trips"  value="upcoming" onClick={() => getTripsTracking(user_id, "upcoming")} />
+                    <input type="radio" id="upcoming" name="trips"  value="upcoming" onClick={() => getTripsTracking ("upcoming")} />
                     <label htmlFor="ongoing">Ongoing</label>
-                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getTripsTracking(user_id, "ongoing")} />
+                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getTripsTracking("ongoing")} />
                     <label htmlFor="history">History</label>
-                    <input type="radio" id="history" name="trips" value="history" onClick={() => getTripsTracking(user_id, "history")} />
+                    <input type="radio" id="history" name="trips" value="history" onClick={() => getTripsTracking("history")} />
                 </form>
             {
                 trackedTrips.map((trip) => {
@@ -37,6 +30,20 @@ export default class DriverTripsTracking extends Component {
                                             value= {stop_point.id} />
                                         <p>{dateFormat(stop_point.start_time, "HH:MM")}</p>
                                         <p>{dateFormat(stop_point.end_time, "HH:MM")}</p>
+                                        {
+                                            stop_point.hh_stop_points.map((hh_stop) => {
+                                                return (
+                                                    <div>
+                                                        <p>{hh_stop.hh.first_name} {hh_stop.hh.last_name}</p>
+                                                        <p>Booked Seats: {hh_stop.booked_seats}</p>
+                                                        <label htmlFor="accept">Accept</label>
+                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus("accepted")}/>
+                                                        <label htmlFor="reject">Reject</label>
+                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus("rejected")}/>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 )
                             })}
