@@ -27,9 +27,7 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
-		const { amount } = this.state;
-		const { user, loading, error, handleChangeLink, logout } = this.props;
-		const { link } = this.state;
+		const { amount, link } = this.state;
 		var hi = "hi";
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
@@ -55,7 +53,7 @@ export default class User extends Component{
 							<header className="header">
 								<Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i> </Link>
 								<div className="profile-pic-edit-link">
-								 	<img src="https://scontent.fcai2-2.fna.fbcdn.net/v/t1.0-9/26167089_1518615938188041_6113836469478145196_n.jpg?oh=c76a0197e8bd1983f07680faca01e8b5&oe=5ABA0587" className="profile-picture"/>
+								 	<img src={user.profile_pic} className="profile-picture"/>
 								 	<p><Link to={'/edit'} className="edit-link">Edit my profile</Link></p>
 							 	</div>
 							 	<div className="user-name-rate">
