@@ -37,3 +37,5 @@ export const addChargedPointsApi = `${rootApi}/add_charged_points`;
 
 //Notification
 export const notificationsApi = `${rootApi}/notifications.json`;
+export const getNotificationApi = (id) => `${rootApi}//notifications/${id}.json`;
+export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.json`;

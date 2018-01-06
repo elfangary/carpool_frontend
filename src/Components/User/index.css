@@ -1,12 +1,26 @@
+
 .profile-container{
   background-color: #303030;
   padding: 30px;
-  width: 25%;
+  width: 32%;
   position: absolute;
   top: 0;
   bottom: 30px;
+  color: #4182A7;
 }
-
+.profile-container a{
+	color: #4182A7;
+	text-decoration: none;
+	border: 1px solid #4182A7;
+	border-radius: 15px;
+	padding: 3px 20px;
+	font-size: 15px;
+}
+.profile-container .edit-link{
+	color: white;
+	border: 0;
+	font-size: 10px;
+}
 .profile-picture {
 	border-radius: 50%;
 	border: 1px solid #fff;
@@ -14,10 +28,28 @@
 	height: 80px;
 	display: inline-block;
 }
-
 .user-name {
 	color: #fff;
 	font-size: 20px;
 	display: inline-block;
-	margin-left: 30px;
 }
+.clearfix::before,
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.profile-container .header div{
+	float: left;
+}
+.profile-pic-edit-link{
+	width: 30%;
+}
+.profile-container .notification-link{
+	position: fixed;
+	right: 20px;
+	background-color: #4182A7;
+	color: white;
+	padding: 5px;
+}
+

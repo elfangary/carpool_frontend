@@ -4,7 +4,7 @@ import dateformat from 'dateformat';
 export default class Notifications extends Component {
 
     componentWillMount(){
-        this.props.getNotifications();
+        this.props.getAllNotifications();
     }
 
     render(){
