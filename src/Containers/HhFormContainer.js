@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import HhForm from '../Components/HitchHikerForm';
 import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, getFilteredTripsFailure,
     addHhStopPointLoading, addHhStopPoint, addHhStopPointSuccess, addHhStopPointFailure } from '../Actions/HhForm';
+import { createNotificationLoading, createNotification, createNotificationSuccess, createNotificationFailure }
+    from '../Actions/notifications';
 
 const mapStateToProps = function(state){
     return {
@@ -36,7 +38,17 @@ const mapDispatchToProps = function(dispatch){
                     dispatch(addHhStopPointFailure(response.payload.message));
                 }
             })
-        }
+        },
+        createNotification: (notification) => {
+            dispatch(createNotificationLoading());
+            dispatch(createNotification(notification)).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(createNotificationSuccess(response.payload.data));
+                }else{
+                    dispatch(createNotificationFailure(response.payload.response.data.message));
+                }
+            })
+        },
     };
 };
 

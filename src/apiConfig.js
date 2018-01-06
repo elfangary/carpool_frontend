@@ -1,4 +1,4 @@
-export const rootApi = 'http://localhost:3002';
+export const rootApi = 'http://localhost:3001';
 
 // User
 export const userApi = `${rootApi}/user.json`;
@@ -30,3 +30,5 @@ export const hitchHikerTripsApi = (id, time) => `${rootApi}users/${id}/hitch-hik
 
 //Notification 
 export const notificationsApi = `${rootApi}/notifications.json`;
+export const getNotificationApi = (id) => `${rootApi}//notifications/${id}.json`;
+export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.json`;

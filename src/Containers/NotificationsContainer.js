@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Notifications from '../Components/Notifications';
 import {
-    getNotificationsLoading, getNotifications, getNotificationsSuccess, getNotificationsFailure
+    getAllNotificationsLoading, getAllNotifications, getAllNotificationsSuccess, getAllNotificationsFailure
 } from '../Actions/notifications';
 
 const mapStateToProps = (state) => {
@@ -14,16 +14,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getNotifications: () => {
-            dispatch(getNotificationsLoading());
-            dispatch(getNotifications()).then(response => {
+        getAllNotifications: () => {
+            dispatch(getAllNotificationsLoading());
+            dispatch(getAllNotifications()).then(response => {
                 if(response.payload.status < 400){
-                    dispatch(getNotificationsSuccess(response.payload.data));
+                    dispatch(getAllNotificationsSuccess(response.payload.data));
                 }else{
-                    dispatch(getNotificationsFailure(response.payload.message));
+                    dispatch(getAllNotificationsFailure(response.payload.message));
                 }
             })
-        }   
+        }
     };
 };
 
