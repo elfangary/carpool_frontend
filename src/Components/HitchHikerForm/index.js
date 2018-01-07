@@ -32,7 +32,7 @@ export default class HHForm extends Component {
         new_hh_stop[e.target.name] = e.target.value;
         console.log(new_hh_stop);
         this.setState({
-            ...this.state, 
+            ...this.state,
             new_hh_stop
         });
     };
