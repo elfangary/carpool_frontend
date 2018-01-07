@@ -27,7 +27,7 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
-		const { amount, link } = this.state;
+		const { amount, link } = this.state;cd
 		var hi = "hi";
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
@@ -58,6 +58,7 @@ export default class User extends Component{
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
+									
 									<p> {star} {star} {star} {empty_star} {empty_star}</p>
 								</div>
 							</header>
