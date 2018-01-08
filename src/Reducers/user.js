@@ -1,5 +1,6 @@
 import {
-    GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE
+    GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
+    DECREMENT_USER_POINTS
 } from '../Actions/user';
 
 import {
@@ -28,6 +29,9 @@ export default function(currentState = INITIAL_STATE, action){
             return {...currentState, points: action.points, loading: false};
         case ADD_CHARGE_FAILURE:
             return {...currentState, error: action.error, loading: false};
+
+        case DECREMENT_USER_POINTS:
+            return {...currentState, points: currentState.points-action.amount}
 
         default:
             return currentState;

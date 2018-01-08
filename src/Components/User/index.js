@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-import "./index.css";
+// import "./index.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
@@ -69,12 +69,11 @@ export default class User extends Component{
 								<Link to={'/hitch-hiking/trips'}>HH-trips</Link>
 							</div>
 							<p>{points} points</p>
-							<p>{user.points}points</p>
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
 							<form>
 								<legend>Recharge your balance?</legend>
-								<label forHtml="amount-input">Please enter amount</label>
+								<label forHtml="amount-input">Please enter amount </label>
 								<input type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
 							</form>
 							<Checkout

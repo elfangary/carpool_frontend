@@ -4,6 +4,8 @@ import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, get
     addHhStopPointLoading, addHhStopPoint, addHhStopPointSuccess, addHhStopPointFailure } from '../Actions/HhForm';
 import { createNotificationLoading, createNotification, createNotificationSuccess, createNotificationFailure }
     from '../Actions/notifications';
+import { decrementUserPoints } from '../Actions/user';
+
 
 const mapStateToProps = function(state){
     return {
@@ -34,6 +36,7 @@ const mapDispatchToProps = function(dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
+                    dispatch(decrementUserPoints(response.payload.data.points_on_hold))
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
                 }
