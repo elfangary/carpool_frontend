@@ -91,8 +91,8 @@ export default class HHForm extends Component {
                                         <label htmlFor="stop_point-id">{stop_point.location.name}</label>
                                         <input type="radio" name="stop_point_id" id="stop_point_id" 
                                             value= {stop_point.id} onChange={this.handleNewHhStopPoint} />
-                                        <p>{dateFormat(stop_point.start_time, "HH:MM")}</p>
-                                        <p>{dateFormat(stop_point.end_time, "HH:MM")}</p>
+                                        <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                        <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                     </div>
                                 )
                             })}

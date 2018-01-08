@@ -11,8 +11,8 @@ const mapStateToProps = function(state){
         updated_hh_stop: state.driverTrackedTrips.updated_hh_stop,
         loading: state.driverTrackedTrips.loading,
         error: state.driverTrackedTrips.error
-    }
-}
+    };
+};
 
 const mapDispatchToProps = function(dispatch){
     return {
@@ -27,9 +27,9 @@ const mapDispatchToProps = function(dispatch){
                 }
             })
         },
-        changeHhStopStatus: (confirm) => {
+        changeHhStopStatus: (id, confirm) => {
             dispatch(changeHhStopStatusLoading());
-            dispatch(changeHhStopStatus(confirm))
+            dispatch(changeHhStopStatus(id, confirm))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(changeHhStopStatusSuccess(response.payload.data));

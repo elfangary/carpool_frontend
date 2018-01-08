@@ -58,7 +58,7 @@ export default class User extends Component{
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-									<p> {star} {star} {star} {empty_star} {empty_star}</p>
+									<p>{user.rate / user.raters_no}</p>
 								</div>
 							</header>
 						</div>

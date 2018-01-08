@@ -9,7 +9,7 @@ import loginReducer from './loginForm';
 import driverTrackedTripsReducer from './driverTripsTracking';
 import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
-
+import ratingReducer from './rating';
 
 
 const rootReducer = combineReducers({
@@ -22,7 +22,8 @@ const rootReducer = combineReducers({
 	login: loginReducer,
 	driverTrackedTrips: driverTrackedTripsReducer,
 	hhTrackedTrips: hitchHikerTrackedTripsReducer,
-	notifications: notificationsReducer
+	notifications: notificationsReducer,
+	rating: ratingReducer
 });
 
 export default rootReducer;

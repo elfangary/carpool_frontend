@@ -41,10 +41,10 @@ export const changeHhStopStatusLoading = () => {
         type: CHANGE_HH_STOP_STATUS_LOADING
     };
 };
-export const changeHhStopStatus = (confirm) => {
+export const changeHhStopStatus = (id, confirm) => {
     return {
         type: CHANGE_HH_STOP_STATUS,
-        payload: Axios.patch(updateHhStopApi(confirm))
+        payload: Axios.patch(updateHhStopApi(id, confirm))
     };
 };
 export const changeHhStopStatusSuccess = (updated_hh_stop) => {
