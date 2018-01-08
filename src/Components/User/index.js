@@ -32,6 +32,7 @@ export default class User extends Component{
 						<header className="header">
 						 	<img src={user.profile_pic} className="profile-pictuser.e"/>
 						 	<h1 className="user-name">{user.first_name} {user.last_name}</h1>
+							 <p>{user.rate / user.raters_no}</p>
 						</header>
 						<section>
 							<Link to={'/edit'}>Edit my profile</Link>

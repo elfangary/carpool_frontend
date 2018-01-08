@@ -9,8 +9,8 @@ const mapStateToProps = function(state){
         trackedTrips: state.hhTrackedTrips.trackedTrips,
         loading: state.hhTrackedTrips.loading,
         error: state.hhTrackedTrips.error
-    }
-}
+    };
+};
 
 const mapDispatchToProps = function(dispatch){
     return {

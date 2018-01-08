@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
+import Rating from '../../Containers/RatingContainer';
 
 export default class DriverTripsTracking extends Component {
 
@@ -28,8 +29,8 @@ export default class DriverTripsTracking extends Component {
                                         <label htmlFor="stop_point-id">{stop_point.location.name}</label>
                                         <input type="radio" name="stop_point_id" id="stop_point_id" 
                                             value= {stop_point.id} />
-                                        <p>{dateFormat(stop_point.start_time, "HH:MM")}</p>
-                                        <p>{dateFormat(stop_point.end_time, "HH:MM")}</p>
+                                        <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                        <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                         {
                                             stop_point.hh_stop_points.map((hh_stop) => {
                                                 return (
@@ -37,9 +38,10 @@ export default class DriverTripsTracking extends Component {
                                                         <p>{hh_stop.hh.first_name} {hh_stop.hh.last_name}</p>
                                                         <p>Booked Seats: {hh_stop.booked_seats}</p>
                                                         <label htmlFor="accept">Accept</label>
-                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus("accepted")}/>
+                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus(hh_stop.id, "accepted")}/>
                                                         <label htmlFor="reject">Reject</label>
-                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus("rejected")}/>
+                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus(hh_stop.id, "rejected")}/>
+                                                        
                                                     </div>
                                                 )
                                             })
@@ -47,6 +49,10 @@ export default class DriverTripsTracking extends Component {
                                     </div>
                                 )
                             })}
+                            <p>
+                                {(trip.status = "pending")?  (<button type="button">Start</button>) : null}
+                                {(trip.status = "start")?  (<button type="button">End</button>) : null}
+                            </p>
                         </div> 
                     )
                 })

@@ -6,6 +6,7 @@ import {Link, Route, Redirect, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
 import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
+import Rating from './Containers/RatingContainer';
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
               <Link to={'/contact'} className="footer-link">Contact Us</Link>
               <Link to={'/termsofuse'} className="footer-link">Terms Of Use</Link>
               <Link to={'/privacpolicy'} className="footer-link">Privacy Policy</Link>
+              <Rating />
             </div>
             <div className="copyrights">
               <small>&copy; 2017 Brandname, Inc. All Rights Reserved</small>

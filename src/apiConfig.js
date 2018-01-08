@@ -29,4 +29,7 @@ export const driverTripsApi = (time) => `${rootApi}/driver/trips?time=${time}`;
 export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips?time=${time}`;
 
 //update hh stop point
-export const updateHhStopApi = (confirm) => `${rootApi}/hitch-hicker-point-update?confirm=${confirm}`;
+export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-update?id=${id}&confirm=${confirm}`;
+
+//rating user
+export const userRatingApi = (user_id, rate) => `${rootApi}/add_rate?user_id=${user_id}&rate=${rate}`;
