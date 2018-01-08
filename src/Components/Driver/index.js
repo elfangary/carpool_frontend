@@ -16,7 +16,7 @@ export default class Driver extends Component {
 			day: null,
 			all_seats: 0,
 			stop_points_attributes: [{
-				location_id: 1,
+				location_id: null,
 				trip_id: null,
 				start_time: '',
 				end_time: ''

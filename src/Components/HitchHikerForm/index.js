@@ -9,9 +9,10 @@ export default class HHForm extends Component {
         console.log(this.props);
         this.state = {
             day: null,
-            location_id: null,
+            location_id_start: null,
             start_time: '',
             end_time: '',
+            location_id_end: null,
             new_hh_stop: {
                 stop_point_id: null,
                 booked_seats: 0
@@ -46,9 +47,9 @@ export default class HHForm extends Component {
                     <fieldset className="Location">
                         <legend>Location Details</legend>
                         <label>Moving from</label>
-                            <p>Almakinah</p>
+                            <Locations name="location_id_start" onChange={this.handleChange.bind(this)}/>
                         <label>Moving To
-                            <Locations onChange={this.handleChange.bind(this)}/>
+                            <Locations name="location_id_end" onChange={this.handleChange.bind(this)}/>
                         </label>
                     </fieldset>
                     <fieldset>
