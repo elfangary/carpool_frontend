@@ -65,6 +65,13 @@ export default class Driver extends Component {
 		this.setState({stop_points_attributes})
 	};
 
+	handleChangeToI = (event) => {
+		console.log(event.target.value);
+		this.setState({
+			[event.target.name]: parseInt(event.target.value)
+		});
+	};
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: (event.target.value)
@@ -83,7 +90,7 @@ export default class Driver extends Component {
 						<legend>Location Details</legend>
 						<label>
 							Moving from
-							<Locations location_id={stop_points_attributes[0].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="from" />
+							<Locations location_id={stop_points_attributes[0].location_id} name="location_id" onChange={this.handleAlmakinahChange.bind(this)} id="from" />
 						</label>
 						<Time stop_point={stop_points_attributes[0]} onChange={this.handleAlmakinahChange.bind(this)}/>
 
@@ -92,7 +99,7 @@ export default class Driver extends Component {
 
 						 <label>
 	          				Heading to
-	          				<Locations name="location_id" location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
+	          				<Locations name="location_id" name="location_id" location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
 	        			</label>
 
 	        			<Time stop_point={stop_points_attributes[1]} onChange={this.handleStopPointChange.bind(this)}/>
@@ -108,8 +115,8 @@ export default class Driver extends Component {
 
 					<fieldset className="car-details">
 						<legend>Car Details</legend>
-						<Cars car_id={car_id} onChange={this.handleChange.bind(this)}/>
-						<input type="number" name="all_seats" value={all_seats} onChange={this.handleChange} placeholder="Available Seats" />
+						<Cars car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
+						<input type="number" name="all_seats" value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 					</fieldset>
 				</form>
 
