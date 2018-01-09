@@ -4,19 +4,21 @@ export const rootApi = 'http://localhost:3001';
 export const userApi = `${rootApi}/user.json`;
 export const signUpApi = `${rootApi}/signup`;
 export const loginApi = `${rootApi}/login`;
+export const updateUserApi = `${rootApi}/user/update`;
 
-//get filtered trips
+//get Filtered Trips
 export const SearchApi = (day, location_id, start_time, end_time) =>{
 	return `${rootApi}/trips/filtered_trips?day=${day}&location_id=${location_id}
     &start_time=${start_time}&end_time=${end_time}`;
 }
 
-//driver's newTrip
+//Driver's newTrip
 export const newTripApi = `${rootApi}/trips.json`;
 export const locationsApi = `${rootApi}/locations`;
 
-//user's cars
+//Cars
 export const carsApi =`${rootApi}/cars`;
+export const oneCarApi = (id) => `${rootApi}/cars/${id}`;
 // export const carApi = (user_id, car_id) => `${rootApi}/users/${user_id}/cars/${car_id}.json`;
 
 //hitchHiker new stop point

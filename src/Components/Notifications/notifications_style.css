@@ -1,0 +1,39 @@
+.notifications{
+	background-color: #FFCCFF;
+	width: 40%;
+}
+.notifications > a:visited { 
+    background-color: white;
+}
+
+.notifications > a{
+	color: black;
+	text-decoration: none;
+}
+
+
+/*$notifications
+
+@mixin read-notification {
+	@each $notification in $notifications
+	background-color: #FFCCFF;
+}
+
+.notifications{
+	@include read-notification();
+}
+*/
+/*
+
+$list: arnold sylvester dolf jean chuck
+
+@mixin author-imgs {
+  @each $manly-man in $list
+    .photo-#{$manly-man} {
+        background: image-url("avatars/#{$manly-man}.png") no-repeat;
+    }
+}
+
+.author-bio {
+    @include author-imgs();
+}*/

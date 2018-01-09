@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { userApi } from '../apiConfig';
+import { userApi, updateUserApi } from '../apiConfig';
 
 // Action Types
 // Get user details
@@ -7,6 +7,12 @@ export const GET_USER_LOADING = 'GET_USER_LOADING';
 export const GET_USER = 'GET_USER';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
+
+// Update user details
+export const UPDATE_USER_LOADING = 'UPDATE_USER_LOADING';
+export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
+export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 
 // Action Creators
 // Get user details
@@ -31,6 +37,32 @@ export const getUserSuccess = (user) => {
 export const getUserFailure = (error) => {
     return {
         type: GET_USER_FAILURE,
+        error
+    };
+};
+
+// Update user details
+export const updateUserLoading = () => {
+    return {
+        type: UPDATE_USER_LOADING
+    };
+};
+export const updateUser = (user) => {
+    const payload = Axios.put(updateUserApi, user);
+    return {
+        type: UPDATE_USER,
+        payload
+    };
+};
+export const updateUserSuccess = (user) => {
+    return {
+        type: UPDATE_USER_SUCCESS,
+        user
+    };
+};
+export const updateUserFailure = (error) => {
+    return {
+        type: UPDATE_USER_FAILURE,
         error
     };
 };

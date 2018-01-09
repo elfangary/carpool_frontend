@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-import "./index.css";
+// import "./index.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
+
 
 export default class User extends Component{
 
@@ -27,27 +28,29 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
-		const { amount, link } = this.state;cd
-		var hi = "hi";
+		console.log("hayyyyyy");
+		
+		console.log(user.profile_pic);
+		const { amount, link } = this.state;
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){
             return (
-            	<div>
+            	<div className="clearfix">
 	                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 					<span class="sr-only">Loading...</span>
 				</div>
             )
         }else if(error){
             return (
-                <div>
+                <div className="clearfix">
 					<p>Sorry, something went Wrong</p>
 					<p>{error}</p>
 				</div>
             )
 		}else{
 		    return (
-		    	<div>
+		    	<div className="clearfix">
 	    			<div className="profile-container">
 						<div className="clearfix">
 							<header className="header">
@@ -70,7 +73,6 @@ export default class User extends Component{
 								<Link to={'/hitch-hiking/trips'}>HH-trips</Link>
 							</div>
 							<p>{points} points</p>
-							<p>{user.points}points</p>
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
 							<form>

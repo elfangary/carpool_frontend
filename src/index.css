@@ -6,4 +6,7 @@ body {
 *{
 	box-sizing: border-box;
 }
+body, html, #root, .App{
+	height: 100%;
+}
 

@@ -1,5 +1,6 @@
 import {
-    GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE
+    GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
+    UPDATE_USER_LOADING, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE
 } from '../Actions/user';
 
 import {
@@ -20,6 +21,13 @@ export default function(currentState = INITIAL_STATE, action){
         case GET_USER_SUCCESS:
             return {...currentState, user: action.user, points: action.user.points, loading: false};
         case GET_USER_FAILURE:
+            return {...currentState, error: action.error, loading: false};
+
+        case UPDATE_USER_LOADING:
+            return {...currentState, loading: true};
+        case UPDATE_USER_SUCCESS:
+            return {...currentState, user: action.user, loading: false};
+        case UPDATE_USER_FAILURE:
             return {...currentState, error: action.error, loading: false};
 
         case ADD_CHARGE_LOADING:
