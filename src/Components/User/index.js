@@ -6,6 +6,7 @@ import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
 
+
 export default class User extends Component{
 
 	constructor(props){
@@ -27,27 +28,29 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
+		console.log("hayyyyyy");
+		
+		console.log(user.profile_pic);
 		const { amount, link } = this.state;
-		var hi = "hi";
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){
             return (
-            	<div>
+            	<div className="clearfix">
 	                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 					<span class="sr-only">Loading...</span>
 				</div>
             )
         }else if(error){
             return (
-                <div>
+                <div className="clearfix">
 					<p>Sorry, something went Wrong</p>
 					<p>{error}</p>
 				</div>
             )
 		}else{
 		    return (
-		    	<div>
+		    	<div className="clearfix">
 	    			<div className="profile-container">
 						<div className="clearfix">
 							<header className="header">
@@ -58,6 +61,7 @@ export default class User extends Component{
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
+									
 									<p> {star} {star} {star} {empty_star} {empty_star}</p>
 								</div>
 							</header>
@@ -69,7 +73,6 @@ export default class User extends Component{
 								<Link to={'/hitch-hiking/trips'}>HH-trips</Link>
 							</div>
 							<p>{points} points</p>
-							<p>{user.points}points</p>
 							<p>{user.email}</p>
 							<p>{user.phone}</p>
 							<form>

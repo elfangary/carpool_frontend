@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import User from '../Components/User';
 import { getUserLoading, getUser, getUserSuccess, getUserFailure } from '../Actions/user';
+
 import { updateNotificationLoading, updateNotification, updateNotificationSuccess, updateNotificationFailure }
  from '../Actions/notifications';
+ 
 import { logout } from '../Actions/loginForm';
 
 const mapStateToProps = (state) => {
@@ -16,6 +18,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        logout: function(){
+            localStorage.removeItem('jwtToken');
+            dispatch(logout());
+        },
         getUser: () => {
             dispatch(getUserLoading());
             setTimeout(() => {
@@ -26,11 +32,7 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch(getUserFailure(response.payload.response.data.message));
                     }
                 })
-            }, 2000)
-        },
-        logout: function(){
-            localStorage.removeItem('jwtToken');
-            dispatch(logout());
+            }, 2000);
         },
         updateNotification: (notification) => {
             dispatch(updateNotificationLoading());
@@ -40,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
                 }else{
                     dispatch(updateNotificationFailure(response.payload.response.data.message));
                 }
-            })
+            });
         }
     };
 };

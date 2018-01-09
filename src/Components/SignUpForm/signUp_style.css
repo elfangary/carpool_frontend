@@ -1,4 +1,3 @@
-.signUpForm input{
+.signUpForm input, .editUserForm input{
 	display: block;
-
 }
