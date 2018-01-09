@@ -48,3 +48,6 @@ export const userRatingApi = (user_id, rate) => `${rootApi}/add_rate?user_id=${u
 //change trip status
 export const tripStatusApi = (trip_id, status) => `${rootApi}/trip_status?trip_id=${trip_id}&status=${status}`;
 
+//add balance to driver
+export const addBalanceToDriverApi = (trip_id) => `{rootApi}/add_to_driver?trip_id=${trip_id}`
+

@@ -2,6 +2,7 @@ import Axios from 'axios';
 import {driverTripsApi} from '../apiConfig';
 import {updateHhStopApi} from '../apiConfig';
 import {tripStatusApi} from '../apiConfig';
+import {addBalanceToDriverApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
@@ -12,10 +13,16 @@ export const CHANGE_HH_STOP_STATUS_LOADING = 'CHANGE_HH_STOP_LOADING';
 export const CHANGE_HH_STOP_STATUS = 'CHANGE_HH_STOP_STATUS';
 export const CHANGE_HH_STOP_STATUS_SUCCESS = 'CHANGE_HH_STOP_STATUS_SUCCESS';
 export const CHANGE_HH_STOP_STATUS_FAILURE = 'CHANGE_HH_STOP_STATUS_FAILURE';
+
 export const CHANGE_TRIP_STATUS_LOADING = 'CHANGE_TRIP_STATUS_LOADING';
 export const CHANGE_TRIP_STATUS = 'CHANGE_TRIP_STATUS';
 export const CHANGE_TRIP_STATUS_SUCCESS = 'CHANGE_TRIP_STATUS_SUCCESS';
 export const CHANGE_TRIP_STATUS_FAILURE = 'CHANGE_TRIP_STATUS_FAILURE';
+
+export const ADD_BALANCE_TO_DRIVER_LOADING = 'ADD_BALANCE_TO_DRIVER_LOADING';
+export const ADD_BALANCE_TO_DRIVER = 'ADD_BALANCE_TO_DRIVER';
+export const ADD_BALANCE_TO_DRIVER_SUCCESS = 'ADD_BALANCE_TO_DRIVER_SUCCESS';
+export const ADD_BALANCE_TO_DRIVER_FAILURE = 'ADD_BALANCE_TO_DRIVER_FAILURE';
 
 export const getTripsTrackingLoading = () => {
     return {
@@ -64,6 +71,7 @@ export const changeHhStopStatusFailure = (error) => {
         error
     };
 };
+
 export const changeTripStatusLoading = () => {
     return {
         type: CHANGE_TRIP_STATUS_LOADING
@@ -84,6 +92,30 @@ export const changeTripStatusSuccess = (updated_trip) => {
 export const changeTripStatusFailure = (error) => {
     return {
         type: CHANGE_TRIP_STATUS_FAILURE,
+        error
+    };
+};
+
+export const addBalanceToDriverLoading = () => {
+    return {
+        type: ADD_BALANCE_TO_DRIVER_LOADING
+    };
+};
+export const addBalanceToDriver = (trip_id) => {
+    return {
+        type: ADD_BALANCE_TO_DRIVER,
+        payload: Axios.post(addBalanceToDriverApi(trip_id))
+    };
+};
+export const addBalanceToDriverSuccess = (added_balance) => {
+    return {
+        type: ADD_BALANCE_TO_DRIVER_SUCCESS,
+        added_balance
+    };
+};
+export const addBalanceToDriverFailure = (error) => {
+    return {
+        type: ADD_BALANCE_TO_DRIVER_FAILURE,
         error
     };
 };
