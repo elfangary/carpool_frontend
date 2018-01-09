@@ -27,9 +27,9 @@ const mapDispatchToProps = function(dispatch){
                 }
             })
         },
-        changeHhStopStatus: (confirm) => {
+        changeHhStopStatus: (id, confirm) => {
             dispatch(changeHhStopStatusLoading());
-            dispatch(changeHhStopStatus(confirm))
+            dispatch(changeHhStopStatus(id, confirm))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(changeHhStopStatusSuccess(response.payload.data));

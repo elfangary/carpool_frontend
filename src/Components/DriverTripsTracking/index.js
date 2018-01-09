@@ -37,9 +37,9 @@ export default class DriverTripsTracking extends Component {
                                                         <p>{hh_stop.hh.first_name} {hh_stop.hh.last_name}</p>
                                                         <p>Booked Seats: {hh_stop.booked_seats}</p>
                                                         <label htmlFor="accept">Accept</label>
-                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus("accepted")}/>
+                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus(hh_stop.id, "accepted")}/>
                                                         <label htmlFor="reject">Reject</label>
-                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus("rejected")}/>
+                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus(hh_stop.id, "rejected")}/>
                                                     </div>
                                                 )
                                             })

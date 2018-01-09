@@ -1,5 +1,9 @@
 export const rootApi = 'http://localhost:3001';
 
+//Admin
+export const adminSignupApi = `${rootApi}/admin/signup`;
+export const adminLoginApi = `${rootApi}/admin/login`;
+
 // User
 export const userApi = `${rootApi}/user.json`;
 export const signUpApi = `${rootApi}/signup`;
@@ -31,7 +35,7 @@ export const driverTripsApi = (time) => `${rootApi}/driver/trips?time=${time}`;
 export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips?time=${time}`;
 
 //update hh stop point
-export const updateHhStopApi = (confirm) => `${rootApi}/hitch-hicker-point-update?confirm=${confirm}`;
+export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-update?id=${id}&confirm=${confirm}`;
 
 //payment-charge
 export const chargeApi = `${rootApi}/charges`;
