@@ -11,9 +11,9 @@ import HomePage from './Pages/HomePage';
 class App extends Component {
   render() {
     return (
-      
+
         <div className="App">
-       { 
+       {
         (localStorage.jwtToken)?
          <UserProfile />
          :

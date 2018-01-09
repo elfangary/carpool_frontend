@@ -19,12 +19,7 @@ export const getFilteredTripsLoading = () => {
 export const getFilteredTrips = (day, location_id, start_time, end_time) => {
     return {
         type: GET_FILTERED_TRIPS,
-        payload: Axios.get(SearchApi(
-            day,
-            location_id,
-            start_time,
-            end_time
-        ))
+        payload: Axios.get(SearchApi(day, location_id, start_time, end_time))
     };
 };
 export const getFilteredTripsSuccess = (trips) => {
@@ -63,5 +58,5 @@ export const addHhStopPointFailure = (error) => {
     return {
         type: ADD_HH_STOP_POINT_FAILURE,
         error
-    }
-}
+    };
+};

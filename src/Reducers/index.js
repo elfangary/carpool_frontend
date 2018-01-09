@@ -11,6 +11,7 @@ import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
 
 
+
 const rootReducer = combineReducers({
     locations: locationsReducer,
     filteredTrips: HhFormReducer,

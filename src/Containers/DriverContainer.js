@@ -15,9 +15,9 @@ const mapStateToProps = function (store){
 const mapDispatchToProps = function (dispatch){
 	return {
 
-		addTrip: (car_id, driver_id, day, all_seats, stop_points_attributes) => {
+		addTrip: (car_id, day, all_seats, stop_points_attributes) => {
             dispatch(addTripLoading());
-            dispatch(addTrip(car_id, driver_id, day, all_seats, stop_points_attributes)).then(response => {
+            dispatch(addTrip(car_id, day, all_seats, stop_points_attributes)).then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));
                 }else{

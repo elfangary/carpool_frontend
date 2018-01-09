@@ -21,7 +21,7 @@ export default class Login extends Component{
 				<UserProfile />
 			:
 			<div>
-				<Link to="/signup">SiginUp</Link>
+				<Link to="/signup">SignUp</Link>
 				<form>
 					<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
 					<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />

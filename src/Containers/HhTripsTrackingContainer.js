@@ -14,9 +14,9 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getTripsTracking: (id, time) => {
+        getTripsTracking: (time) => {
             dispatch(getTripsTrackingLoading());
-            dispatch(getTripsTracking(id, time))
+            dispatch(getTripsTracking(time))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(getTripsTrackingSuccess(response.payload.data));

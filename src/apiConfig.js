@@ -7,10 +7,10 @@ export const loginApi = `${rootApi}/login`;
 
 //get filtered trips
 export const SearchApi = (day, location_id, start_time, end_time) =>{
-	`${rootApi}/trips/filtered_trips?day=${day}&location_id=${location_id}
+	return `${rootApi}/trips/filtered_trips?day=${day}&location_id=${location_id}
     &start_time=${start_time}&end_time=${end_time}`;
 }
-    
+
 //driver's newTrip
 export const newTripApi = `${rootApi}/trips.json`;
 export const locationsApi = `${rootApi}/locations`;
@@ -23,12 +23,19 @@ export const carsApi =`${rootApi}/cars`;
 export const hhStopPointApi = `${rootApi}/hitch-hiking`;
 
 //driver trips
-export const driverTripsApi = (id, time) => `${rootApi}/users/${id}/driver/trips?time=${time}`;
+export const driverTripsApi = (time) => `${rootApi}/driver/trips?time=${time}`;
 
 //hitch-hiker trips
-export const hitchHikerTripsApi = (id, time) => `${rootApi}users/${id}/hitch-hiker/trips?time=${time}`;
+export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips?time=${time}`;
 
-//Notification 
+//update hh stop point
+export const updateHhStopApi = (confirm) => `${rootApi}/hitch-hicker-point-update?confirm=${confirm}`;
+
+//payment-charge
+export const chargeApi = `${rootApi}/charges`;
+export const addChargedPointsApi = `${rootApi}/add_charged_points`;
+
+//Notification
 export const notificationsApi = `${rootApi}/notifications.json`;
 export const getNotificationApi = (id) => `${rootApi}//notifications/${id}.json`;
 export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.json`;

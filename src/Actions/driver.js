@@ -16,10 +16,9 @@ export const addTripLoading = () => {
         type: ADD_TRIP_LOADING
     };
 };
-export const addTrip = (car_id, driver_id, day, all_seats, stop_points_attributes) => {
+export const addTrip = (car_id, day, all_seats, stop_points_attributes) => {
     const payload = Axios.post(newTripApi, {
         car_id,
-        driver_id,
         day,
         all_seats,
         stop_points_attributes

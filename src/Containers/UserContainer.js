@@ -8,6 +8,7 @@ import { logout } from '../Actions/loginForm';
 const mapStateToProps = (state) => {
     return {
         user: state.user.user,
+        points: state.user.points,
         loading: state.user.loading,
         error: state.user.error
     };
@@ -31,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
             localStorage.removeItem('jwtToken');
             dispatch(logout());
         },
-        
         updateNotification: (notification) => {
             dispatch(updateNotificationLoading());
             dispatch(updateNotification(notification)).then(response => {
@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(updateNotificationFailure(response.payload.response.data.message));
                 }
             })
-        }  
+        }
     };
 };
 
