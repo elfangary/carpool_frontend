@@ -11,7 +11,7 @@ import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
 import adminSignUpFormReducer from './admins/signUpForm';
 import adminLoginReducer from './admins/loginForm';
-
+import ratingReducer from './rating';
 
 const rootReducer = combineReducers({
     locations: locationsReducer,
@@ -25,7 +25,8 @@ const rootReducer = combineReducers({
 	hhTrackedTrips: hitchHikerTrackedTripsReducer,
 	notifications: notificationsReducer,
 	admin_signUp: adminSignUpFormReducer,
-	admin_login: adminLoginReducer
+	admin_login: adminLoginReducer,
+	rating: ratingReducer
 });
 
 export default rootReducer;

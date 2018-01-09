@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import HhForm from '../Components/HitchHikerForm';
 import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, getFilteredTripsFailure,
     addHhStopPointLoading, addHhStopPoint, addHhStopPointSuccess, addHhStopPointFailure } from '../Actions/HhForm';
+import { createNotificationLoading, createNotification, createNotificationSuccess, createNotificationFailure }
+    from '../Actions/notifications';
+import { decrementUserPoints } from '../Actions/user';
 
 const mapStateToProps = function(state){
     return {
@@ -15,9 +18,9 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getFilteredTrips: (day, location_id, start_time, end_time) => {
+        getFilteredTrips: (day, location_id_start, location_id_end, start_time, end_time) => {
             dispatch(getFilteredTripsLoading());
-            dispatch(getFilteredTrips(day, location_id, start_time, end_time))
+            dispatch(getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(getFilteredTripsSuccess(response.payload.data));
@@ -32,6 +35,7 @@ const mapDispatchToProps = function(dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
+                    dispatch(decrementUserPoints(response.payload.data.points_on_hold))
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
                 }

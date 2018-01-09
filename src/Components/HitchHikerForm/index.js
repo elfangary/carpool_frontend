@@ -9,7 +9,8 @@ export default class HHForm extends Component {
         console.log(this.props);
         this.state = {
             day: null,
-            location_id: null,
+            location_id_start: null,
+            location_id_end: null,
             start_time: '',
             end_time: '',
             new_hh_stop: {
@@ -32,23 +33,23 @@ export default class HHForm extends Component {
         new_hh_stop[e.target.name] = e.target.value;
         console.log(new_hh_stop);
         this.setState({
-            ...this.state, 
+            ...this.state,
             new_hh_stop
         });
     };
 
     render(){
         const { locations, trips, onChange , getFilteredTrips, addHhStopPoint} = this.props;
-        const { day, location_id, start_time, end_time, new_hh_stop } = this.state;
+        const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div>
                 <form>
                     <fieldset className="Location">
                         <legend>Location Details</legend>
                         <label>Moving from</label>
-                            <p>Almakinah</p>
+                            <Locations name="location_id_start" onChange={this.handleChange.bind(this)}/>
                         <label>Moving To
-                            <Locations onChange={this.handleChange.bind(this)}/>
+                            <Locations name="location_id_end" onChange={this.handleChange.bind(this)}/>
                         </label>
                     </fieldset>
                     <fieldset>
@@ -67,14 +68,12 @@ export default class HHForm extends Component {
                         </label>
                     </fieldset>
                 </form>
-
-                <button type="submit"  onClick={() => getFilteredTrips(day, location_id, start_time, end_time)}>Search</button>
-
+                <button type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
                 <p>Availble Trips</p>
                 {trips.map((trip) => {
                     var seats = [];
                     for (var i = 0; i < trip.all_seats; i ++) {
-                        seats.push(<input id="seats" type="checkbox" name="booked_seats" 
+                        seats.push(<input id="seats" type="checkbox" name="booked_seats"
                             value={i + 1} onClick={this.handleNewHhStopPoint} />);
                     }
                     return (
@@ -89,11 +88,10 @@ export default class HHForm extends Component {
                                 return (
                                     <div>
                                         <label htmlFor="stop_point-id">{stop_point.location.name}</label>
-                                        <input type="radio" name="stop_point_id" id="stop_point_id" 
+                                        <input type="radio" name="stop_point_id" id="stop_point_id"
                                             value= {stop_point.id} onChange={this.handleNewHhStopPoint} />
-                                           
-                                        <p>{dateFormat(stop_point.start_time, "HH:MM")}</p>
-                                        <p>{dateFormat(stop_point.end_time, "HH:MM")}</p>
+                                        <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                        <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                     </div>
                                 )
                             })}

@@ -16,7 +16,7 @@ export default class Driver extends Component {
 			day: null,
 			all_seats: 0,
 			stop_points_attributes: [{
-				location_id: 1,
+				location_id: null,
 				trip_id: null,
 				start_time: '',
 				end_time: ''
@@ -81,9 +81,10 @@ export default class Driver extends Component {
 				<form>
 					<fieldset className="location clearfix">
 						<legend>Location Details</legend>
-						<label>Moving from</label>
-						<p id="from">Almakinah</p>
-
+						<label>
+							Moving from
+							<Locations location_id={stop_points_attributes[0].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="from" />
+						</label>
 						<Time stop_point={stop_points_attributes[0]} onChange={this.handleAlmakinahChange.bind(this)}/>
 
 						<button type="button" onClick={this.handleSwap.bind(this)}>Swap</button>
@@ -91,7 +92,7 @@ export default class Driver extends Component {
 
 						 <label>
 	          				Heading to
-	          				<Locations location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
+	          				<Locations name="location_id" location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
 	        			</label>
 
 	        			<Time stop_point={stop_points_attributes[1]} onChange={this.handleStopPointChange.bind(this)}/>

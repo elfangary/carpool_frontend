@@ -5,10 +5,10 @@ import "react-toggle/style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 export default class User extends Component{
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -61,11 +61,11 @@ export default class User extends Component{
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-									
-									<p> {star} {star} {star} {empty_star} {empty_star}</p>
+									<StarRatingComponent  name="rate1" starCount={5} value={user.rate / user.raters_no} editing={false}/>
 								</div>
 							</header>
 						</div>
+
 						<section>
 							<div className="clearfix">
 								<Link to={'/driving/cars'}>My Cars</Link>
@@ -77,7 +77,7 @@ export default class User extends Component{
 							<p>{user.phone}</p>
 							<form>
 								<legend>Recharge your balance?</legend>
-								<label forHtml="amount-input">Please enter amount</label>
+								<label forHtml="amount-input">Please enter amount </label>
 								<input type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
 							</form>
 							<Checkout

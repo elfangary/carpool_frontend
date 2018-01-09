@@ -7,14 +7,14 @@ export default class Locations extends Component {
     }
 
     render(){
-        const { locations, location_id, onChange } = this.props;
+        const { locations, location_id, onChange, name} = this.props;
         var options = locations.map((location) => {
             return <option key={location.id} value={location.id}>{location.name}</option>;
         })
         return (
             <form>
                 <label htmlFor="location">To</label>
-                <select id="location" name="location_id" onChange={onChange}>
+                <select id="location" name={name} onChange={onChange}>
                     <option value="" disabled selected>Select Point</option>
                     {options}
                 </select>
