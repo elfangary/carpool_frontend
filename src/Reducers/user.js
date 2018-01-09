@@ -40,7 +40,7 @@ export default function(currentState = INITIAL_STATE, action){
         case ADD_BALANCE_TO_DRIVER_LOADING:
             return {...currentState, loading: true};
         case ADD_BALANCE_TO_DRIVER_SUCCESS:
-            return {...currentState, points: currentState.points+action.added_balance, loading: false};
+            return {...currentState, points: action.added_balance, loading: false};
         case ADD_BALANCE_TO_DRIVER_FAILURE:
             return {...currentState, error: action.error, loading: false};
 

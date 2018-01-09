@@ -10,9 +10,10 @@ import driverTrackedTripsReducer from './driverTripsTracking';
 import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
 import ratingReducer from './rating';
+import { LOG_OUT } from '../Actions/loginForm';
 
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     locations: locationsReducer,
     filteredTrips: HhFormReducer,
 	newTrip: tripsReducer,
@@ -25,5 +26,12 @@ const rootReducer = combineReducers({
 	notifications: notificationsReducer,
 	rating: ratingReducer
 });
+
+const rootReducer = (state, action) => {
+	if (action.type === LOG_OUT) {
+		state = undefined;
+	}
+	return appReducer(state, action);
+}
 
 export default rootReducer;
