@@ -51,9 +51,9 @@ export default class DriverTripsTracking extends Component {
                                                         (hh.confirm == "pending")?
                                                             <div>
                                                                 <label htmlFor="accept">Accept</label>
-                                                                <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.stop_point_id, "accepted")}/>
+                                                                <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
                                                                 <label htmlFor="reject">Reject</label>
-                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.stop_point_id, "rejected")}/>
+                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
                                                             </div>
                                                         : <p>{hh.confirm}</p>
                                                         }
