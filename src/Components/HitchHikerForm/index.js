@@ -10,9 +10,9 @@ export default class HHForm extends Component {
         this.state = {
             day: null,
             location_id_start: null,
+            location_id_end: null,
             start_time: '',
             end_time: '',
-            location_id_end: null,
             new_hh_stop: {
                 stop_point_id: null,
                 booked_seats: 0
@@ -47,7 +47,7 @@ export default class HHForm extends Component {
                     <fieldset className="Location">
                         <legend>Location Details</legend>
                         <label>Moving from</label>
-                            <Locations name="location_id_start" value={location_id_start} onChange={this.handleChange.bind(this)}/>
+                            <Locations name="location_id_start" onChange={this.handleChange.bind(this)}/>
                         <label>Moving To
                             <Locations name="location_id_end" onChange={this.handleChange.bind(this)}/>
                         </label>
@@ -68,9 +68,7 @@ export default class HHForm extends Component {
                         </label>
                     </fieldset>
                 </form>
-
                 <button type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
-
                 <p>Availble Trips</p>
                 {trips.map((trip) => {
                     var seats = [];
