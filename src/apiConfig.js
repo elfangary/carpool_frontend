@@ -29,7 +29,7 @@ export const oneCarApi = (id) => `${rootApi}/cars/${id}`;
 export const hhStopPointApi = `${rootApi}/hitch-hiking`;
 
 //driver trips
-export const driverTripsApi = (time) => `${rootApi}/driver/trips?time=${time}`;
+export const driverTripsApi = (time) => `${rootApi}/driver/trips.json?time=${time}`;
 
 //hitch-hiker trips
 export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips?time=${time}`;

@@ -31,34 +31,32 @@ export default class DriverTripsTracking extends Component {
                 </form>
             {
                 trackedTrips.map((trip) => {
-                    var accepted = false
                     return (
                         <div>
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
                             <p>{trip.day}</p>
                             {trip.stop_points.map((stop_point) => {
-                                accepted = accepted || stop_point.hh_stop_points.filter((element) => element.confirm == 'accepted').length != 0
-                                console.log('accepted', accepted)
                                 return (
                                     <div>
-                                        <p>{stop_point.location.name}</p>
+                                        <p>{stop_point.location}</p>
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                         {
-                                            stop_point.hh_stop_points.map((hh_stop) => {
+                                            stop_point.hh.map((hh) => {
                                                 return (
                                                     <div>
-                                                        <p>{hh_stop.hh.first_name} {hh_stop.hh.last_name}</p>
-                                                        <p>Booked Seats: {hh_stop.booked_seats}</p>
+                                                        <p>{hh.name}</p>
+                                                        <p>Booked Seats: {hh.booked_seats}</p>
+
                                                         {
-                                                        (hh_stop.confirm == "pending")?
+                                                        (hh.confirm == "pending")?
                                                             <div>
                                                                 <label htmlFor="accept">Accept</label>
-                                                                <input type="radio" id= "accept-reject" name="accept-reject" value="accepted" onChange={() => changeHhStopStatus(hh_stop.id, "accepted")}/>
+                                                                <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
                                                                 <label htmlFor="reject">Reject</label>
-                                                                <input type="radio" id="accept-reject" name="accept-reject"value="rejected" onChange={() => changeHhStopStatus(hh_stop.id, "rejected")}/>
+                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
                                                             </div>
-                                                        : <p>{hh_stop.confirm}</p>
+                                                        : <p>{hh.confirm}</p>
                                                         }
                                                     </div>
                                                 )
@@ -68,8 +66,8 @@ export default class DriverTripsTracking extends Component {
                                 )
                             })}
                             <p>
-                                {accepted && (trip.status === "pending")?  (<button type="button">Start</button>) : null}
-                                {(trip.status === "started")?  (<button type="button" name="status" value="ended" onChange={handleChange} onClick={() => this.handleClick(trip.id, "ended")}>End</button>) : null}
+                                {trip.start && (trip.status === "pending") ?  (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start</button>) : null}
+                                {(trip.status === "started")?  (<button type="button" name="status" value="ended" onClick={() => this.handleClick(trip.id, "ended")}>End</button>) : null}
                             </p>
                         </div>
                     )
