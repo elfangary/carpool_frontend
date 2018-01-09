@@ -6,8 +6,8 @@ export const signUpApi = `${rootApi}/signup`;
 export const loginApi = `${rootApi}/login`;
 
 //get filtered trips
-export const SearchApi = (day, location_id, start_time, end_time) =>{
-	return `${rootApi}/trips/filtered_trips?day=${day}&location_id=${location_id}
+export const SearchApi = (day, location_id_start, location_id_end, start_time, end_time) =>{
+	return `${rootApi}/trips/filtered_trips?day=${day}&location_id_start=${location_id_start}&location_id_end=${location_id_end}
     &start_time=${start_time}&end_time=${end_time}`;
 }
     
@@ -33,3 +33,6 @@ export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-u
 
 //rating user
 export const userRatingApi = (user_id, rate) => `${rootApi}/add_rate?user_id=${user_id}&rate=${rate}`;
+
+//change trip status
+export const tripStatusApi = (trip_id, status) => `${rootApi}/trip_status?trip_id=${trip_id}&status=${status}`;

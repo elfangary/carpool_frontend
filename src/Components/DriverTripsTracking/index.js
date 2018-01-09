@@ -3,9 +3,20 @@ import dateFormat from 'dateformat';
 import Rating from '../../Containers/RatingContainer';
 
 export default class DriverTripsTracking extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            status: ''
+        };
+    };
+
+    handleClick = (trip_id, value) => {
+        this.props.changeTripStatus(trip_id, value);
+    }
 
     render () {
-        const {trackedTrips, getTripsTracking, changeHhStopStatus} = this.props;
+        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange} = this.props;
+        const { status } = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -26,9 +37,7 @@ export default class DriverTripsTracking extends Component {
                             {trip.stop_points.map((stop_point) => {
                                 return (
                                     <div>
-                                        <label htmlFor="stop_point-id">{stop_point.location.name}</label>
-                                        <input type="radio" name="stop_point_id" id="stop_point_id" 
-                                            value= {stop_point.id} />
+                                        <p>{stop_point.location.name}</p>
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                         {
@@ -37,11 +46,16 @@ export default class DriverTripsTracking extends Component {
                                                     <div>
                                                         <p>{hh_stop.hh.first_name} {hh_stop.hh.last_name}</p>
                                                         <p>Booked Seats: {hh_stop.booked_seats}</p>
-                                                        <label htmlFor="accept">Accept</label>
-                                                        <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus(hh_stop.id, "accepted")}/>
-                                                        <label htmlFor="reject">Reject</label>
-                                                        <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus(hh_stop.id, "rejected")}/>
-                                                        
+                                                        {
+                                                        (hh_stop.confirm == "pending")? 
+                                                            <div>
+                                                                <label htmlFor="accept">Accept</label>
+                                                                <input type="checkbox" id= "accept" value="accepted" onChange={() => changeHhStopStatus(hh_stop.id, "accepted")}/>
+                                                                <label htmlFor="reject">Reject</label>
+                                                                <input type="checkbox" id="reject" value="rejected" onChange={() => changeHhStopStatus(hh_stop.id, "rejected")}/>
+                                                            </div> 
+                                                        : <p>{hh_stop.confirm}</p>
+                                                        }
                                                     </div>
                                                 )
                                             })
@@ -50,8 +64,18 @@ export default class DriverTripsTracking extends Component {
                                 )
                             })}
                             <p>
-                                {(trip.status = "pending")?  (<button type="button">Start</button>) : null}
-                                {(trip.status = "start")?  (<button type="button">End</button>) : null}
+                                {
+                                    (trip.status == "pending")?  
+                                    (<button type="button" name="status" value="started" onChange={handleChange} onClick={() => this.handleClick(trip.id, "started")}>Start</button>) 
+                                    : null
+                                }
+                            </p>
+                            <p>
+                                {
+                                    (trip.status == "started")?
+                                    (<button type="button" name="status" value="ended" onChange={handleChange} onClick={() => this.handleClick(trip.id, "ended")}>End</button>)
+                                    : null
+                                }
                             </p>
                         </div> 
                     )

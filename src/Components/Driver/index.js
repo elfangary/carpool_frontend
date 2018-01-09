@@ -91,7 +91,7 @@ export default class Driver extends Component {
 
 						 <label>
 	          				Heading to
-	          				<Locations location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
+	          				<Locations name="location_id" location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
 	        			</label>
 
 	        			<Time stop_point={stop_points_attributes[1]} onChange={this.handleStopPointChange.bind(this)}/>

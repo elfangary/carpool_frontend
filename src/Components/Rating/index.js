@@ -1,22 +1,31 @@
 import React, { Component } from 'react';
-
+import StarRatingComponent from 'react-star-rating-component';
+ 
 export default class Rating extends Component {
-    constructor(props){
-        super(props);
+    constructor() {
+        super();
+ 
         this.state = {
-            user_id: null,
-            rate: 0
+            rating: 1
         };
-    };
-
+    }
+ 
+    onStarClick(nextValue, prevValue, name) {
+        this.setState({rating: nextValue});
+    }
+ 
     render() {
-        const { addRate } = this.props;
-        var stars = [];
-        for (var i = 0; i < 5; i++) {
-            stars.push(<input id="stars" type="checkbox" name="stars" value={i + 1} />)
-        }
-        return (
-            <div>{stars}</div>
-        )
+        const { rating } = this.state;
+        return (                
+            <div>
+                <h2>Rating from state: {rating}</h2>
+                <StarRatingComponent 
+                    name="rate1" 
+                    starCount={5}
+                    value={rating}
+                    onStarClick={this.onStarClick.bind(this)}
+                />
+            </div>
+        );
     }
 }

@@ -5,6 +5,7 @@ import "react-toggle/style.css";
 import {Link} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../Checkout';
+import StarRatingComponent from 'react-star-rating-component';
 
 export default class User extends Component{
 
@@ -32,7 +33,7 @@ export default class User extends Component{
 						<header className="header">
 						 	<img src={user.profile_pic} className="profile-pictuser.e"/>
 						 	<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-							 <p>{user.rate / user.raters_no}</p>
+							 <StarRatingComponent  name="rate1" starCount={5} value={user.rate / user.raters_no} editing={false}/>
 						</header>
 						<section>
 							<Link to={'/edit'}>Edit my profile</Link>
