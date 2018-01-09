@@ -6,8 +6,8 @@ export const signUpApi = `${rootApi}/signup`;
 export const loginApi = `${rootApi}/login`;
 
 //get filtered trips
-export const SearchApi = (day, location_id, start_time, end_time) =>{
-	return `${rootApi}/trips/filtered_trips?day=${day}&location_id=${location_id}
+export const SearchApi = (day, location_id_start, location_id_end, start_time, end_time) =>{
+	return `${rootApi}/trips/filtered_trips?day=${day}&location_id_start=${location_id_start}&location_id_end=${location_id_end}
     &start_time=${start_time}&end_time=${end_time}`;
 }
 

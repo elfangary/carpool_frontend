@@ -19,9 +19,9 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getFilteredTrips: (day, location_id, start_time, end_time) => {
+        getFilteredTrips: (day, location_id_start, location_id_end, start_time, end_time) => {
             dispatch(getFilteredTripsLoading());
-            dispatch(getFilteredTrips(day, location_id, start_time, end_time))
+            dispatch(getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(getFilteredTripsSuccess(response.payload.data));
