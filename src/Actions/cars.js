@@ -8,6 +8,12 @@ export const GET_ALL_CARS = 'GET_ALL_CARS';
 export const GET_ALL_CARS_SUCCESS = 'GET_ALL_CARS_SUCCESS';
 export const GET_ALL_CARS_FAILURE = 'GET_ALL_CARS_FAILURE';
 
+//Get Car
+export const GET_CAR_LOADING = 'GET_CAR_LOADING';
+export const GET_CAR = 'GET_CAR';
+export const GET_CAR_SUCCESS = 'GET_CAR_SUCCESS';
+export const GET_CAR_FAILURE = 'GET_CAR_FAILURE';
+
 //Create Car
 export const CREATE_CAR_LOADING = 'CREATE_CAR_LOADING';
 export const CREATE_CAR = 'CREATE_CAR';
@@ -46,6 +52,33 @@ export const getCarsFailure = (error) => {
         error
     };
 };
+
+//Get car
+export const getCarLoading = () => {
+    return {
+        type: GET_CAR_LOADING
+    };
+};
+export const getCar = (id) => {
+    const payload = Axios.get(oneCarApi(id));
+    return {
+        type: GET_CAR,
+        payload
+    };
+};
+export const getCarSuccess = (car) => {
+    return {
+        type: GET_CAR_SUCCESS,
+        car
+    };
+};
+export const getCarFailure = (error) => {
+    return {
+        type: GET_CAR_FAILURE,
+        error
+    };
+};
+
 
 //Create car
 export const createCarLoading = () => {

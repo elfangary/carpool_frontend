@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import '../SignUpForm/signUp_style.css';
 
 export default class EditUserForm extends Component{
@@ -12,8 +13,8 @@ export default class EditUserForm extends Component{
 				last_name: user.last_name,
 				email: user.email,
 				phone: user.phone,
-				password: '',
-				password_confirmation: '',
+				password: user.password,
+				password_confirmation: user.password_confirmation,
 				profile_pic: ''
 			}
 		};
@@ -30,6 +31,19 @@ export default class EditUserForm extends Component{
 		this.setState({ user });
 	}
 
+	
+	componentWillMount(){
+		if(!this.props.user.first_name){
+			Axios.get("http://localhost:3001/user.json").then((response)=>{
+				this.setState({...this.state, user: response.data})
+				console.log("hani test");
+				console.log(this.state);
+			})
+		}
+	}
+	
+
+
 	render(){
 
 		let user = new FormData();
@@ -38,10 +52,8 @@ export default class EditUserForm extends Component{
 		user.append('email', this.state.user.email);
 		user.append('phone', this.state.user.phone);
 		user.append('password', this.state.user.password);
-		user.append('password_confirmation', this.state.user.password_confirmation);
+		// user.append('password_confirmation', this.state.user.password_confirmation);
 		user.append('profile_pic', this.state.user.profile_pic);
-		console.log("formdata image uploader");
-		console.log(user.profile_pic);
 
 		const {first_name, last_name, email, phone, password, password_confirmation, profile_pic} = this.state.user;
 		return(

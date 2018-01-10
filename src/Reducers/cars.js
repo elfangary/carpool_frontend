@@ -1,5 +1,6 @@
 import {
 	GET_ALL_CARS_LOADING, GET_ALL_CARS_SUCCESS, GET_ALL_CARS_FAILURE,
+	GET_CAR_LOADING, GET_CAR_SUCCESS, GET_CAR_FAILURE,
 	CREATE_CAR_LOADING, CREATE_CAR_SUCCESS, CREATE_CAR_FAILURE,
 	DELETE_CAR_LOADING, DELETE_CAR_SUCCESS, DELETE_CAR_FAILURE
 } from '../Actions/cars';
@@ -20,6 +21,28 @@ export default function(currentState = INITIAL_STATE, action){
 		case GET_ALL_CARS_FAILURE:
 			return {...currentState, error: action.error, loading: false};
 
+		//Get car
+		case GET_CAR_LOADING:
+			var newCars = currentState.cars.map((car) =>{
+				if(car.id == action.id){
+					car.loading = true;
+					return car;
+				}
+			})
+			return {...currentState, cars: newCars};
+		case GET_CAR_SUCCESS:
+			return {...currentState, cars: [...currentState.cars, action.car], loading: false};
+		case GET_CAR_FAILURE:
+			var newCars = currentState.cars.map((car) =>{
+				if(car.id == action.id){
+					car.loading = false;
+					car.errors = action.errors;
+					return car;
+				}
+			})
+			return {...currentState, cars: newCars };
+
+		//Craete car
 		case CREATE_CAR_LOADING:
 			return {...currentState, loading: true};
 		case CREATE_CAR_SUCCESS:
@@ -27,12 +50,13 @@ export default function(currentState = INITIAL_STATE, action){
 		case CREATE_CAR_FAILURE:
 			return {...currentState, error: action.error, loading: false};
 
+		//Delete car
 		case DELETE_CAR_LOADING:
 			var newCars = currentState.cars.map((car) =>{
 				if(car.id == action.id){
 					car.loading = true;
-					return car;
 				}
+				return car;
 			})
 			return {...currentState, cars: newCars};
 		case DELETE_CAR_SUCCESS:

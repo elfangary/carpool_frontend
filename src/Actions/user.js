@@ -54,7 +54,7 @@ export const updateUserLoading = () => {
     };
 };
 export const updateUser = (user) => {
-    const payload = Axios.put(updateUserApi, user);
+    const payload = Axios.patch(updateUserApi, user);
     return {
         type: UPDATE_USER,
         payload

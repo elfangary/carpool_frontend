@@ -9,7 +9,7 @@ import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
 import HhTrips from '../../Containers/HhTripsTrackingContainer';
 import Notifications from '../../Containers/NotificationsContainer';
 
-import CarDetails from '../../Components/CarDetails';
+import CarDetails from '../../Containers/CarsDetailsContainer';
 import Checkout from '../../Components/Checkout';
 import EditUserForm from '../../Containers/editUserFormContainer';
 import HomePage from '../HomePage';

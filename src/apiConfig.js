@@ -23,7 +23,6 @@ export const locationsApi = `${rootApi}/locations`;
 //Cars
 export const carsApi =`${rootApi}/cars`;
 export const oneCarApi = (id) => `${rootApi}/cars/${id}`;
-// export const carApi = (user_id, car_id) => `${rootApi}/users/${user_id}/cars/${car_id}.json`;
 
 //hitchHiker new stop point
 export const hhStopPointApi = `${rootApi}/hitch-hiking`;

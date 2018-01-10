@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import UserProfile from '../../Pages/UserProfile';
 import { Link } from 'react-router-dom';
+import './login_style.css';
+import { Row, Col } from 'antd';
+
 export default class Login extends Component{
 	constructor(props){
 		super(props);
@@ -17,20 +20,25 @@ export default class Login extends Component{
 		const {email, password} = this.state;
 		const {loggedIn} = this.props;
 		return(
-			(localStorage.getItem('jwtToken'))?
-				<UserProfile />
-			:
-			<div>
-				<Link to="/signup">SignUp</Link>
-				<form>
-					<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
-					<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
-					<button type="button" onClick={ () =>{this.props.login(this.state)} }>Next </button>
-					{
-						(this.props.error)? <p>you can not login </p> : null
-					}
-				</form>
+			<div className="userLogin clearfix">		
+				<div className="intro">
+					<section>
+						<h1>Welcome to <span>AlaaElDine Carpool</span></h1>
+						<p>Affordable car-sharing service to ease <span> your way around the city,</span>availble for riders and drivers.</p>
+						<p>Want to start collaborating?<Link to="/signup">SignUp, It's Free</Link></p>
+					</section>
+				</div>
+				<div className="userLoginForm">
+					<form>
+						<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
+						<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
+						<button type="button" onClick={ () =>{this.props.login(this.state)} }>Next </button>
+						{
+							(this.props.error)? <p>you can not login </p> : null
+						}
+					</form>
+				</div>
 			</div>
-			)
+		)
 	}
 }

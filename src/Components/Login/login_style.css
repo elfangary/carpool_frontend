@@ -1,0 +1,24 @@
+.clearfix::before,
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.userLogin > div{
+	background-color: rgba(0,0,0, 0.6);
+	text-align: center;
+	border: 1px solid black;
+	display: inline-block;
+	width: 40%;
+	height: 300px;
+	margin-top: 150px;
+	margin-left: 50px;
+	float: left;
+}
+.userLogin div + div{
+	margin-left: 20px;
+}
+.userLogin span:after{
+	content: "\A";
+
+}

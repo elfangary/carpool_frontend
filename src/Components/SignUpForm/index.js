@@ -49,7 +49,7 @@ export default class SignUpForm extends Component{
 		return(
 			<form className="signUpForm">
 				<input type="text" name="first_name" placeholder="firstName" onChange={this.handelChange.bind(this)} />
-				<input type="text" name="last_name" placeholder="lastName" onChange={this.handelChange.bind(this)} />
+ 				<input type="text" name="last_name" placeholder="lastName" onChange={this.handelChange.bind(this)} />
 				<input type="text" name="email" placeholder="email" onChange={this.handelChange.bind(this)} />
 				<input type="text" name="phone" placeholder="phone number" onChange={this.handelChange.bind(this)} />
 				<input type="radio" name="gender" value="male" onChange={this.handelChange.bind(this)} />Male

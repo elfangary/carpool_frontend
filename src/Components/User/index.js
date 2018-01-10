@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-// import "./index.css";
+// import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
 import StarRatingComponent from 'react-star-rating-component';
-
 
 export default class User extends Component{
 	constructor(props){
