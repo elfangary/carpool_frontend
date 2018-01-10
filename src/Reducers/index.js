@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
 	driverTrackedTrips: driverTrackedTripsReducer,
 	hhTrackedTrips: hitchHikerTrackedTripsReducer,
 	notifications: notificationsReducer,
-	rating: ratingReducer
+	//rating: ratingReducer
 });
 
 export default rootReducer;

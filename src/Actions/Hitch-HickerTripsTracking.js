@@ -1,31 +1,31 @@
 import Axios from 'axios';
 import {hitchHikerTripsApi} from '../apiConfig';
 
-export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
-export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
-export const GET_TRIPS_TRACKING_SUCCESS = 'GET_TRIPS_TRACKING_SUCCESS';
-export const GET_TRIPS_TRACKING_FAILURE = 'GET_TRIPS_TRACKING_FAILURE';
+export const GET_HH_TRIPS_TRACKING_LOADING = 'GET_HH_TRIPS_TRACKING_LOADING';
+export const GET_HH_TRIPS_TRACKING = 'GET_HH_TRIPS_TRACKING';
+export const GET_HH_TRIPS_TRACKING_SUCCESS = 'GET_HH_TRIPS_TRACKING_SUCCESS';
+export const GET_HH_TRIPS_TRACKING_FAILURE = 'GET_HH_TRIPS_TRACKING_FAILURE';
 
-export const getTripsTrackingLoading = () => {
+export const getHhTripsTrackingLoading = () => {
     return {
-        type: GET_TRIPS_TRACKING_LOADING
+        type: GET_HH_TRIPS_TRACKING_LOADING
     };
 };
-export const getTripsTracking = (time) => {
+export const getHhTripsTracking = (time) => {
     return {
-        type: GET_TRIPS_TRACKING,
+        type: GET_HH_TRIPS_TRACKING,
         payload: Axios.get(hitchHikerTripsApi(time))
     };
 };
-export const getTripsTrackingSuccess = (trackedTrips) => {
+export const getHhTripsTrackingSuccess = (hhTrackedTrips) => {
     return {
-        type: GET_TRIPS_TRACKING_SUCCESS,
-        trackedTrips
+        type: GET_HH_TRIPS_TRACKING_SUCCESS,
+        hhTrackedTrips
     };
 };
-export const getTripsTrackingFailure = (error) => {
+export const getHhTripsTrackingFailure = (error) => {
     return {
-        type: GET_TRIPS_TRACKING_FAILURE,
+        type: GET_HH_TRIPS_TRACKING_FAILURE,
         error
     };
 };

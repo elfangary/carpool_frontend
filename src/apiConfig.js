@@ -43,7 +43,7 @@ export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.js
 export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-update?id=${id}&confirm=${confirm}`;
 
 //rating user
-export const userRatingApi = (user_id, rate) => `${rootApi}/add_rate?user_id=${user_id}&rate=${rate}`;
+export const userRatingApi = `${rootApi}/rate_user`;
 
 //change trip status
 export const tripStatusApi = (trip_id, status) => `${rootApi}/trip_status?trip_id=${trip_id}&status=${status}`;

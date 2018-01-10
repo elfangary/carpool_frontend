@@ -3,20 +3,20 @@ import dateFormat from 'dateformat';
 
 export default class HhTripsTracking extends Component {
     render () {
-        const {trackedTrips, getTripsTracking} = this.props;
+        const {hhTrackedTrips, getHhTripsTracking} = this.props;
         return (
             <div>
                 <h2>Your Trips</h2>
                 <form>
                     <label htmlFor="upcoming">Upcoming</label>
-                    <input type="radio" id="upcoming" name="trips" value="upcoming" onClick={() => getTripsTracking("upcoming")} />
+                    <input type="radio" id="upcoming" name="trips" value="upcoming" onClick={() => getHhTripsTracking("upcoming")} />
                     <label htmlFor="ongoing">Ongoing</label>
-                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getTripsTracking("ongoing")} />
+                    <input type="radio" id="ongoing" name="trips" value="ongoing" onClick={() => getHhTripsTracking("ongoing")} />
                     <label htmlFor="history">History</label>
-                    <input type="radio" id="history" name="trips" value="history" onClick={() => getTripsTracking("history")} />
+                    <input type="radio" id="history" name="trips" value="history" onClick={() => getHhTripsTracking("history")} />
                 </form>
             {
-                trackedTrips.map((trip) => {
+                hhTrackedTrips.map((trip) => {
                     return (
                         <div>
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
