@@ -3,11 +3,40 @@ import dateformat from 'dateformat';
 import { Link } from 'react-router-dom';
 import { Badge } from 'antd';
 import './notifications_style.css';
+import Cable from 'actioncable';
 
 export default class Notifications extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        currentNotification: '',
+      };
+    }
+
+    // updateCurrentNotification(event) {
+    //   this.setState({
+    //     currentNotification: event.target.value
+    //   });
+    // }
+
+
+
+    createSocket() {
+      let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
+      this.Notifications = cable.subscriptions.create({
+        channel: 'NotificationChannel'
+      }, {
+        connected: () => {},
+        received: (data) => {
+          alert(data.body);
+            }
+      });
+    }
+
 
     componentWillMount(){
         this.props.getAllNotifications();
+        this.createSocket();
     }
 
     render(){
