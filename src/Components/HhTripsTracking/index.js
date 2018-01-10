@@ -15,7 +15,8 @@ export default class HhTripsTracking extends Component {
                     <label htmlFor="history">History</label>
                     <input type="radio" id="history" name="trips" value="history" onClick={() => getHhTripsTracking("history")} />
                 </form>
-                {hhTrackedTrips.map((trip) => {
+            {
+                hhTrackedTrips.map((trip) => {
                     return (
                         <div>
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
@@ -23,15 +24,20 @@ export default class HhTripsTracking extends Component {
                             {trip.stop_points.map((stop_point) => {
                                 return (
                                     <div>
-                                        <p>{stop_point.location}</p>
+                                        <label htmlFor="stop_point-id">{stop_point.location.name}</label>
+                                        <input type="radio" name="stop_point_id" id="stop_point_id"
+                                            value= {stop_point.id} />
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                     </div>
-                            )})}
+                                )
+                            })}
                         </div>
                     )
-                })}
+                })
+            }
             </div>
         )
     }
+
 }
