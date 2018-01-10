@@ -14,7 +14,6 @@ export default class HomePage extends Component {
 	              		 <Route path="/" exact component={Login} />
 	              		:
 	              		 <Route path="/signup" component={SignUpForm} />
-	              		
               		}
               	</Switch>
 			</div>

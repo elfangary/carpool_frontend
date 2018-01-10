@@ -1,6 +1,6 @@
 import {
     GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
-    DECREMENT_USER_POINTS
+    DECREMENT_USER_POINTS, INCREMENT_USER_POINTS
 } from '../Actions/user';
 
 import {
@@ -8,7 +8,8 @@ import {
 } from '../Actions/checkout';
 
 import {
-    ADD_BALANCE_TO_DRIVER_LOADING, ADD_BALANCE_TO_DRIVER_SUCCESS, ADD_BALANCE_TO_DRIVER_FAILURE
+    ADD_BALANCE_TO_DRIVER_LOADING, ADD_BALANCE_TO_DRIVER_SUCCESS, ADD_BALANCE_TO_DRIVER_FAILURE,
+    ADD_BALANCE_TO_HH_LOADING, ADD_BALANCE_TO_HH_SUCCESS, ADD_BALANCE_TO_HH_FAILURE
 } from '../Actions/DriverTripsTracking';
 
 const INITIAL_STATE = {
@@ -37,11 +38,22 @@ export default function(currentState = INITIAL_STATE, action){
         case DECREMENT_USER_POINTS:
             return {...currentState, points: currentState.points-action.amount};
 
-        case ADD_BALANCE_TO_DRIVER_LOADING:
+        case INCREMENT_USER_POINTS:
+            console.log(action)
+            return {...currentState, points: action.amount.points}
+
+        // case ADD_BALANCE_TO_DRIVER_LOADING:
+        //     return {...currentState, loading: true};
+        // case ADD_BALANCE_TO_DRIVER_SUCCESS:
+        //     return {...currentState, points: action.updated_balance, loading: false};
+        // case ADD_BALANCE_TO_DRIVER_FAILURE:
+        //     return {...currentState, error: action.error, loading: false};
+
+        case ADD_BALANCE_TO_HH_LOADING:
             return {...currentState, loading: true};
-        case ADD_BALANCE_TO_DRIVER_SUCCESS:
-            return {...currentState, points: action.added_balance, loading: false};
-        case ADD_BALANCE_TO_DRIVER_FAILURE:
+        case ADD_BALANCE_TO_HH_SUCCESS:
+            return {...currentState, points: action.updated_balance, loading: false};
+        case ADD_BALANCE_TO_HH_FAILURE:
             return {...currentState, error: action.error, loading: false};
 
         default:

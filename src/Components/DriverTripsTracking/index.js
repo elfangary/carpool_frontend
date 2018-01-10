@@ -53,7 +53,7 @@ export default class DriverTripsTracking extends Component {
                                                                 <label htmlFor="accept">Accept</label>
                                                                 <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
                                                                 <label htmlFor="reject">Reject</label>
-                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
+                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => {changeHhStopStatus(hh.id, "rejected"); this.props.addBalanceToHh(hh.id)}}/>
                                                             </div>
                                                         : <p>{hh.confirm}</p>
                                                         }
@@ -64,10 +64,9 @@ export default class DriverTripsTracking extends Component {
                                     </div>
                                 )
                             })}
-                            <p>
-                                {trip.start && (trip.status === "pending") ?  (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start</button>) : null}
-                                {(trip.status === "started")?  (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended"); this.props.addBalanceToDriver(trip.id)}}>End</button>) : null}
-                            </p>
+                                {trip.start && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
+                                {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
+                                {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
                         </div>
                     )
                 })

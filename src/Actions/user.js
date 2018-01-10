@@ -8,10 +8,9 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_FAILURE = 'GET_USER_FAILURE';
 
-// export const DECREMENT_USER_POINTS_LOADING = 'DECREMENT_USER_POINTS_LOADING';
+//Update User points
 export const DECREMENT_USER_POINTS = 'DECREMENT_USER_POINTS';
-// export const DECREMENT_USER_POINTS_SUCCESS = 'DECREMENT_USER_POINTS_SUCCESS';
-// export const DECREMENT_USER_POINTS_FAILURE = 'DECREMENT_USER_POINTS_FAILURE';
+export const INCREMENT_USER_POINTS = 'INCREMENT_USER_POINTS';
 
 
 // Action Creators
@@ -41,16 +40,15 @@ export const getUserFailure = (error) => {
     };
 };
 
-//Update user points
-// export const decrementUserPointsLoading = () => {
-//     return {
-//         type: DECREMENT_USER_POINTS_LOADING
-//     };
-// };
 export const decrementUserPoints = (amount) => {
     return {
         type: DECREMENT_USER_POINTS,
         amount
     };
 };
-// export const decrementUserPointsSuccess =
+export const incrementUserPoints = (amount) => {
+    return {
+        type: INCREMENT_USER_POINTS,
+        amount
+    }
+}

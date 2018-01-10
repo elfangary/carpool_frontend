@@ -3,8 +3,10 @@ import {
     getTripsTrackingLoading, getTripsTracking, getTripsTrackingSuccess, getTripsTrackingFailure,
     changeHhStopStatusLoading, changeHhStopStatus, changeHhStopStatusSuccess, changeHhStopStatusFailure,
     changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess, changeTripStatusFailure,
-    addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure
+    addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure,
+    addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure
 } from '../Actions/DriverTripsTracking';
+import {incrementUserPoints} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
 
 
@@ -47,21 +49,35 @@ const mapDispatchToProps = function(dispatch){
             dispatch(changeTripStatusLoading());
             dispatch(changeTripStatus(trip_id, status))
             .then(response => {
-                if(response.payload.status < 400){
+                if(response.payload.status < 400 && status === "ended"){
+                    dispatch(changeTripStatusSuccess(response.payload.data));
+                    dispatch(incrementUserPoints(response.payload.data));
+                }else if (response.payload.status < 400) {
                     dispatch(changeTripStatusSuccess(response.payload.data));
                 }else{
                     dispatch(changeTripStatusFailure(response.payload.message));
                 }
             })
         },
-        addBalanceToDriver: (trip_id) => {
-            dispatch(addBalanceToDriverLoading());
-            dispatch(addBalanceToDriver(trip_id))
+        // addBalanceToDriver: (trip_id) => {
+        //     dispatch(addBalanceToDriverLoading());
+        //     dispatch(addBalanceToDriver(trip_id))
+        //     .then(response => {
+        //         if(response.payload.status < 400){
+        //             dispatch(addBalanceToDriverSuccess(response.payload.data));
+        //         }else{
+        //             dispatch(addBalanceToDriverFailure(response.payload.message));
+        //         }
+        //     })
+        // },
+        addBalanceToHh: (hh_stop_point_id) => {
+            dispatch(addBalanceToHhLoading());
+            dispatch(addBalanceToHh(hh_stop_point_id))
             .then(response => {
                 if(response.payload.status < 400){
-                    dispatch(addBalanceToDriverSuccess(response.payload.data));
+                    dispatch(addBalanceToHhSuccess(response.payload.data));
                 }else{
-                    dispatch(addBalanceToDriverFailure(response.payload.message));
+                    dispatch(addBalanceToHhFailure(response.payload.message));
                 }
             })
         }
