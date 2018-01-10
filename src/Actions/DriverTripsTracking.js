@@ -21,16 +21,6 @@ export const CHANGE_TRIP_STATUS = 'CHANGE_TRIP_STATUS';
 export const CHANGE_TRIP_STATUS_SUCCESS = 'CHANGE_TRIP_STATUS_SUCCESS';
 export const CHANGE_TRIP_STATUS_FAILURE = 'CHANGE_TRIP_STATUS_FAILURE';
 
-// export const ADD_BALANCE_TO_DRIVER_LOADING = 'ADD_BALANCE_TO_DRIVER_LOADING';
-// export const ADD_BALANCE_TO_DRIVER = 'ADD_BALANCE_TO_DRIVER';
-// export const ADD_BALANCE_TO_DRIVER_SUCCESS = 'ADD_BALANCE_TO_DRIVER_SUCCESS';
-// export const ADD_BALANCE_TO_DRIVER_FAILURE = 'ADD_BALANCE_TO_DRIVER_FAILURE';
-
-export const ADD_BALANCE_TO_HH_LOADING = 'ADD_BALANCE_TO_HH_LOADING';
-export const ADD_BALANCE_TO_HH = 'ADD_BALANCE_TO_HH';
-export const ADD_BALANCE_TO_HH_SUCCESS = 'ADD_BALANCE_TO_HH_SUCCESS';
-export const ADD_BALANCE_TO_HH_FAILURE = 'ADD_BALANCE_TO_HH_FAILURE';
-
 export const getTripsTrackingLoading = () => {
     return {
         type: GET_TRIPS_TRACKING_LOADING
@@ -99,54 +89,6 @@ export const changeTripStatusSuccess = (updated_trip) => {
 export const changeTripStatusFailure = (error) => {
     return {
         type: CHANGE_TRIP_STATUS_FAILURE,
-        error
-    };
-};
-
-// export const addBalanceToDriverLoading = () => {
-//     return {
-//         type: ADD_BALANCE_TO_DRIVER_LOADING
-//     };
-// };
-// export const addBalanceToDriver = (trip_id) => {
-//     return {
-//         type: ADD_BALANCE_TO_DRIVER,
-//         payload: Axios.patch(addBalanceToDriverApi(trip_id))
-//     };
-// };
-// export const addBalanceToDriverSuccess = (updated_balance) => {
-//     return {
-//         type: ADD_BALANCE_TO_DRIVER_SUCCESS,
-//         updated_balance
-//     };
-// };
-// export const addBalanceToDriverFailure = (error) => {
-//     return {
-//         type: ADD_BALANCE_TO_DRIVER_FAILURE,
-//         error
-//     };
-// };
-
-export const addBalanceToHhLoading = () => {
-    return {
-        type: ADD_BALANCE_TO_HH
-    };
-};
-export const addBalanceToHh = (hh_stop_point_id) => {
-    return {
-        type: ADD_BALANCE_TO_HH,
-        payload: Axios.post(addBalanceToHhApi(hh_stop_point_id))
-    };
-};
-export const addBalanceToHhSuccess = (updated_balance) => {
-    return {
-        type: ADD_BALANCE_TO_HH_SUCCESS,
-        updated_balance
-    };
-};
-export const addBalanceToHhFailure = (error) => {
-    return {
-        type: ADD_BALANCE_TO_HH_FAILURE,
         error
     };
 };

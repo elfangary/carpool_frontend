@@ -58,28 +58,6 @@ const mapDispatchToProps = function(dispatch){
                     dispatch(changeTripStatusFailure(response.payload.message));
                 }
             })
-        },
-        // addBalanceToDriver: (trip_id) => {
-        //     dispatch(addBalanceToDriverLoading());
-        //     dispatch(addBalanceToDriver(trip_id))
-        //     .then(response => {
-        //         if(response.payload.status < 400){
-        //             dispatch(addBalanceToDriverSuccess(response.payload.data));
-        //         }else{
-        //             dispatch(addBalanceToDriverFailure(response.payload.message));
-        //         }
-        //     })
-        // },
-        addBalanceToHh: (hh_stop_point_id) => {
-            dispatch(addBalanceToHhLoading());
-            dispatch(addBalanceToHh(hh_stop_point_id))
-            .then(response => {
-                if(response.payload.status < 400){
-                    dispatch(addBalanceToHhSuccess(response.payload.data));
-                }else{
-                    dispatch(addBalanceToHhFailure(response.payload.message));
-                }
-            })
         }
     };
 };

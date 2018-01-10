@@ -78,7 +78,6 @@ export default class Driver extends Component {
 		});
 	};
 
-
 	render() {
 		const {locations, addTrip} = this.props;
 		const {car_id, day, all_seats, stop_points_attributes} = this.state;

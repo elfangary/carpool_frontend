@@ -53,7 +53,7 @@ export default class DriverTripsTracking extends Component {
                                                                 <label htmlFor="accept">Accept</label>
                                                                 <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
                                                                 <label htmlFor="reject">Reject</label>
-                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => {changeHhStopStatus(hh.id, "rejected"); this.props.addBalanceToHh(hh.id)}}/>
+                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
                                                             </div>
                                                         : <p>{hh.confirm}</p>
                                                         }
