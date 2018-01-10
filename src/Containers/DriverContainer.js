@@ -14,16 +14,20 @@ const mapStateToProps = function (store){
 
 const mapDispatchToProps = function (dispatch){
 	return {
-
 		addTrip: (car_id, day, all_seats, stop_points_attributes) => {
-            stop_points_attributes[0].start_time = day + ' ' + stop_points_attributes[0].start_time
-            stop_points_attributes[0].end_time = day + ' ' + stop_points_attributes[0].end_time
-            stop_points_attributes[1].start_time = day + ' ' + stop_points_attributes[1].start_time
-            stop_points_attributes[1].end_time = day + ' ' + stop_points_attributes[1].end_time
-            const timeInSeconds = new Date(stop_points_attributes[1].end_time).getTime();
+            let end_time = stop_points_attributes[0].end_time;
+            const stopPoints = stop_points_attributes.map(stopPoint => {
+                if (stopPoint.end_time > end_time) end_time = (day + ' ' + stopPoint.end_time);
+                return {
+                    ...stopPoint,
+                    start_time: day + ' ' + stopPoint.start_time,
+                    end_time: day + ' ' + stopPoint.end_time
+                }
+            })
+            const timeInSeconds = new Date(end_time).getTime();
 
             dispatch(addTripLoading());
-            dispatch(addTrip(car_id, day, all_seats, stop_points_attributes, timeInSeconds))
+            dispatch(addTrip(car_id, day, all_seats, stopPoints, timeInSeconds))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));

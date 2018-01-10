@@ -29,41 +29,27 @@ export default class Driver extends Component {
 		};
 	};
 
-	handleStopPointChange = (event) => {
+	handleStopPointChange = (event, index) => {
 		const {stop_points_attributes} = this.state;
-		stop_points_attributes[1][event.target.name] = event.target.value;
+		const name = event.target.name;
+		const value = name === 'location_id' ? parseInt(event.target.value) : event.target.value;
+		stop_points_attributes[index][name] = value;
 		this.setState({
 			stop_points_attributes
 		});
 	};
 
-	handleAlmakinahChange = (event) => {
+	addStopPoint = () => {
 		const {stop_points_attributes} = this.state;
-		stop_points_attributes[0][event.target.name] = event.target.value;
-		this.setState({
-			stop_points_attributes
-		});
-	};
-
-	handleStopPointChangeToI = (event) => {
-		const {stop_points_attributes} = this.state;
-		stop_points_attributes[1][event.target.name] = parseInt(event.target.value);
-		this.setState({
-			stop_points_attributes
-		});
-	};
-
-	handleSwap = (event) => {
-		const {stop_points_attributes} = this.state;
-		if (stop_points_attributes[0].location_id === 1) {
-			stop_points_attributes[0].location_id = stop_points_attributes[1].location_id;
-			stop_points_attributes[1].location_id = 1;
-		} else {
-			stop_points_attributes[1].location_id = stop_points_attributes[0].location_id;
-			stop_points_attributes[0].location_id =1;
+		const stopPoint = {
+			location_id: null,
+			trip_id: null,
+			start_time: '',
+			end_time: ''
 		};
-		this.setState({stop_points_attributes})
-	};
+		stop_points_attributes.push(stopPoint);
+		this.setState({stop_points_attributes});
+	}
 
 	handleChangeToI = (event) => {
 		console.log(event.target.value);
@@ -87,22 +73,18 @@ export default class Driver extends Component {
 				<form>
 					<fieldset className="location clearfix">
 						<legend>Location Details</legend>
-						<label>
-							Moving from
-							<Locations location_id={stop_points_attributes[0].location_id} name="location_id" onChange={this.handleAlmakinahChange.bind(this)} id="from" />
-						</label>
-						<Time stop_point={stop_points_attributes[0]} onChange={this.handleAlmakinahChange.bind(this)}/>
-
-						<button type="button" onClick={this.handleSwap.bind(this)}>Swap</button>
-
-
-						 <label>
-	          				Heading to
-	          				<Locations name="location_id" name="location_id" location_id={stop_points_attributes[1].location_id} onChange={this.handleStopPointChangeToI.bind(this)} id="to" />
-	        			</label>
-
-	        			<Time stop_point={stop_points_attributes[1]} onChange={this.handleStopPointChange.bind(this)}/>
-
+						{
+							stop_points_attributes.map((stopPoint, index) => {
+								return (
+									<label>
+										stop point {index + 1}
+										<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+										<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+									</label>
+								)
+							})
+						}
+						<button type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
 					</fieldset>
 
 					<fieldset>
