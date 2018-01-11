@@ -1,12 +1,16 @@
-.notifications{
+/*.notifications-component{
+	display: none;
+}*/
+.each-notification{
 	background-color: #FFCCFF;
 	width: 40%;
+	
 }
-.notifications > a:visited { 
+.each-notification > a:visited { 
     background-color: white;
 }
 
-.notifications > a{
+.each-notification > a{
 	color: black;
 	text-decoration: none;
 }

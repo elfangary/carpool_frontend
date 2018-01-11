@@ -20,7 +20,7 @@ export default class SignUpForm extends Component{
 			}
 		};		
 	};
-
+	
 	handelChange(event){
 		const {user} = this.state;
 		([event.target.name] == "profile_pic")?

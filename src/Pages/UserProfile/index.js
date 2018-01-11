@@ -7,7 +7,7 @@ import CarsContainer from '../../Containers/CarsContainer';
 import HhForm from '../../Containers/HhFormContainer';
 import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
 import HhTrips from '../../Containers/HhTripsTrackingContainer';
-// import Notifications from '../../Containers/NotificationsContainer';
+import Notifications from '../../Containers/NotificationsContainer';
 
 import CarDetails from '../../Containers/CarsDetailsContainer';
 import Checkout from '../../Components/Checkout';
@@ -20,8 +20,7 @@ export default class UserProfile extends Component {
 		if(localStorage.jwtToken){
 			return (
 				<div className="profile">
-
-					
+					<Notifications />
 					<UserContainer />
 					<Switch>
 						<Route path="/edit" component={EditUserForm} />

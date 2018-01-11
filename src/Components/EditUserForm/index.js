@@ -30,7 +30,6 @@ export default class EditUserForm extends Component{
 		;
 		this.setState({ user });
 	}
-
 	
 	componentWillMount(){
 		if(!this.props.user.first_name){
@@ -41,8 +40,6 @@ export default class EditUserForm extends Component{
 			})
 		}
 	}
-	
-
 
 	render(){
 

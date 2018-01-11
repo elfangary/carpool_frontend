@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
 import HhForm from './Containers/HhFormContainer';
 import UserProfile from './Pages/UserProfile';
 import {Link, Route, Redirect, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
 import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
-import Notifications from './Containers/NotificationsContainer';
+// import Notifications from './Containers/NotificationsContainer';
 
 
 class App extends Component {
   render() {
     return (
         <div className="App">
-        <Notifications />
        {
         (localStorage.jwtToken)?
          <UserProfile />

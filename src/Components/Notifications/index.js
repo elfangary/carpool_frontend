@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import Cable from 'actioncable';
 import dateformat from 'dateformat';
 import { Link } from 'react-router-dom';
 import { Badge } from 'antd';
 import './notifications_style.css';
-import Cable from 'actioncable';
+import 'antd/lib/style/index.css';
+
 
 export default class Notifications extends Component {
     constructor(props) {
@@ -12,14 +14,6 @@ export default class Notifications extends Component {
         currentNotification: '',
       };
     }
-
-    // updateCurrentNotification(event) {
-    //   this.setState({
-    //     currentNotification: event.target.value
-    //   });
-    // }
-
-
 
     createSocket() {
       let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
@@ -32,7 +26,6 @@ export default class Notifications extends Component {
             }
       });
     }
-
 
     componentWillMount(){
         this.props.getAllNotifications();
@@ -54,12 +47,12 @@ export default class Notifications extends Component {
             )
         }else{
             return (
-                <div>
+                <div className="notifications-component">
                     <h2>Notifications</h2> 
                     {   
                         notifications.map((notification) =>{
                             return(
-                                <div className="notifications" >
+                                <div className="each-notification" >
                                     <Link to="#">
                                         <p>{dateformat(notification.created_at, "d.mmm.yyyy,HH:MM")}</p>
                                         <p>{notification.body}<Link to="#"> See Details</Link></p>

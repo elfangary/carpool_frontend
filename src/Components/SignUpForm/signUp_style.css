@@ -1,3 +1,20 @@
 .signUpForm input, .editUserForm input{
 	display: block;
 }
+/*.signUpForm{
+	background-color: rgba(255,255,255,0.9);
+}*/
+.signUpForm {
+	background-color: rgba(68,65,60,0.9);
+
+
+
+	color: white;
+}
+.signUpForm input:-webkit-autofill {
+	border: $border-style !important;
+	-webkit-text-fill-color: white !important;
+	background-color: blue !important;
+	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+	transition: background-color 5000s ease-in-out 0s;
+}

@@ -4,21 +4,81 @@
 	display: table;
 	clear: both;
 }
+.userLogin{
+	display: table;
+	width: 100%;
+	padding-top: 130px;
+	vertical-align: middle;
+}
 .userLogin > div{
-	background-color: rgba(0,0,0, 0.6);
-	text-align: center;
-	border: 1px solid black;
+	background-color: rgba(68,65,60,0.9);
 	display: inline-block;
 	width: 40%;
-	height: 300px;
-	margin-top: 150px;
-	margin-left: 50px;
+	height: 450px;
 	float: left;
+	color: white;
+	margin-left: 80px;
 }
-.userLogin div + div{
-	margin-left: 20px;
+.userLogin section{
+	font-size: 20px;
+	color: white;
+	padding: 40px;
 }
-.userLogin span:after{
-	content: "\A";
+.userLogin h1 span{
+	color: #4188B0;
+}
+.userLogin span{
+	display: block;
+	margin-top: -8px;
+}
+.userLogin section h1{
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+}
+.userLogin section header p{
+	margin-top: -9px;
+	color: #4188B0;
+}
+.userLogin section p:nth-child(3){
+	color: #4188B0;
+	font-size: 15px;
+}
+.userLoginForm form{
+	margin: 100px 100px;
+}
+.userLoginForm form input{
+	display: inline-block;
+	width: 90%;
+	border: none;
+    border-bottom: 2px solid rgba(255,255,255,.3);
+	background-color:  rgba(68,65,60,0);
+	line-height: 70px;
+}
+.userLoginForm form input:focus{
+    outline: 0;
+}
+.userLoginForm form input:-webkit-autofill {
+	border: $border-style !important;
+	-webkit-text-fill-color: white !important;
+	background-color: blue !important;
+	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+	transition: background-color 5000s ease-in-out 0s;
+}
+.userLoginForm form button{
+	display: inline-block;
+	width: 90%;
+	border: 0;
+	border-radius: 30px;
+	padding: 25px 40px;
+	background-color: #4188B0;
+	margin-top: 20px; 
+}
 
-}
+/*icone in the inpute form
+*//*  background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left: 40px;*/
+
