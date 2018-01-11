@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 
 export default class HhTripsTracking extends Component {
+
+    handleClick = (trip_id, value) => {
+        this.props.changeHhStopPointStatus(trip_id, value);
+    }
+
     render () {
         const {hhTrackedTrips, getHhTripsTracking} = this.props;
         return (
@@ -24,12 +29,19 @@ export default class HhTripsTracking extends Component {
                             {trip.stop_points.map((stop_point) => {
                                 return (
                                     <div>
-                                        <label htmlFor="stop_point-id">{stop_point.location.name}</label>
-                                        <input type="radio" name="stop_point_id" id="stop_point_id"
-                                            value= {stop_point.id} />
+                                        <p>{stop_point.location}</p>
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
+                                        {stop_point.hh.map((hh) => {
+                                            return (
+                                                <div>
+                                                    <p>Booked Seats: {hh.booked_seats}</p>
+                                                    <p>Confirmation Status: {hh.confirm}</p>
+                                                </div>
+                                            )
+                                        })}
                                     </div>
+
                                 )
                             })}
                         </div>

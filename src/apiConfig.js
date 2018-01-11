@@ -32,7 +32,7 @@ export const driverTripsApi = (time) => `${rootApi}/driver/trips.json?time=${tim
 export const tripStatusApi = (trip_id, status) => `${rootApi}/trips/${trip_id}?status=${status}`;
 
 //hitch-hiker trips
-export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips?time=${time}`;
+export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips.json?time=${time}`;
 
 
 
