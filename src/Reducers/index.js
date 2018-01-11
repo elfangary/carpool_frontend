@@ -9,9 +9,10 @@ import loginReducer from './loginForm';
 import driverTrackedTripsReducer from './driverTripsTracking';
 import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
+import adminSignUpFormReducer from './admins/signUpForm';
+import adminLoginReducer from './admins/loginForm';
 import ratingReducer from './rating';
 import { LOG_OUT } from '../Actions/loginForm';
-
 
 const appReducer = combineReducers({
     locations: locationsReducer,
@@ -24,6 +25,8 @@ const appReducer = combineReducers({
 	driverTrackedTrips: driverTrackedTripsReducer,
 	hhTrackedTrips: hitchHikerTrackedTripsReducer,
 	notifications: notificationsReducer,
+	admin_signUp: adminSignUpFormReducer,
+	admin_login: adminLoginReducer,
 	rating: ratingReducer
 });
 

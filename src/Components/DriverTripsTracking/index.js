@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rating from '../../Containers/RatingContainer';

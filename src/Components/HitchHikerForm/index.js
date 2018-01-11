@@ -98,7 +98,7 @@ export default class HHForm extends Component {
                         </div>
                     )
                 })}
-                <button type="submit" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id)}>Submit</button>
+                <button type="submit" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Submit</button>
             </div>
         )
     }
