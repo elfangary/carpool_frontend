@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
-import { getTripsTrackingLoading, getTripsTracking,
-     getTripsTrackingSuccess, getTripsTrackingFailure } from '../Actions/Hitch-HickerTripsTracking';
+import {
+    getHhTripsTrackingLoading, getHhTripsTracking, getHhTripsTrackingSuccess, getHhTripsTrackingFailure
+} from '../Actions/Hitch-HickerTripsTracking';
 import HhTripsTracking from '../Components/HhTripsTracking';
 
 
 const mapStateToProps = function(state){
     return {
-        trackedTrips: state.hhTrackedTrips.trackedTrips,
+        hhTrackedTrips: state.hhTrackedTrips.hhTrackedTrips,
         loading: state.hhTrackedTrips.loading,
         error: state.hhTrackedTrips.error
     };
@@ -14,14 +15,14 @@ const mapStateToProps = function(state){
 
 const mapDispatchToProps = function(dispatch){
     return {
-        getTripsTracking: (time) => {
-            dispatch(getTripsTrackingLoading());
-            dispatch(getTripsTracking(time))
+        getHhTripsTracking: (time) => {
+            dispatch(getHhTripsTrackingLoading());
+            dispatch(getHhTripsTracking(time))
             .then(response => {
                 if(response.payload.status < 400){
-                    dispatch(getTripsTrackingSuccess(response.payload.data));
+                    dispatch(getHhTripsTrackingSuccess(response.payload.data));
                 }else{
-                    dispatch(getTripsTrackingFailure(response.payload.message));
+                    dispatch(getHhTripsTrackingFailure(response.payload.message));
                 }
             })
         }

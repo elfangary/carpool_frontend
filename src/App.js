@@ -7,7 +7,7 @@ import SignUpForm from './Containers/SignUpFormContainer';
 import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
 // import Notifications from './Containers/NotificationsContainer';
-
+import WelcomePage from './Pages/WelcomePage';
 
 class App extends Component {
   render() {

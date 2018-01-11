@@ -24,15 +24,13 @@ const mapDispatchToProps = (dispatch) => {
         },
         getUser: () => {
             dispatch(getUserLoading());
-            setTimeout(() => {
-                dispatch(getUser()).then(response => {
-                    if(response.payload.status < 400){
-                        dispatch(getUserSuccess(response.payload.data));
-                    }else{
-                        dispatch(getUserFailure(response.payload.response.data.message));
-                    }
-                })
-            }, 2000);
+            dispatch(getUser()).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(getUserSuccess(response.payload.data));
+                }else{
+                    dispatch(getUserFailure(response.payload.response.data.message));
+                }
+            })
         },
         updateNotification: (notification) => {
             dispatch(updateNotificationLoading());

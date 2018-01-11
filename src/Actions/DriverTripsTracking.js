@@ -2,6 +2,9 @@ import Axios from 'axios';
 import {driverTripsApi} from '../apiConfig';
 import {updateHhStopApi} from '../apiConfig';
 import {tripStatusApi} from '../apiConfig';
+import {addBalanceToDriverApi} from '../apiConfig';
+import {addBalanceToHhApi} from '../apiConfig';
+
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
@@ -12,6 +15,7 @@ export const CHANGE_HH_STOP_STATUS_LOADING = 'CHANGE_HH_STOP_LOADING';
 export const CHANGE_HH_STOP_STATUS = 'CHANGE_HH_STOP_STATUS';
 export const CHANGE_HH_STOP_STATUS_SUCCESS = 'CHANGE_HH_STOP_STATUS_SUCCESS';
 export const CHANGE_HH_STOP_STATUS_FAILURE = 'CHANGE_HH_STOP_STATUS_FAILURE';
+
 export const CHANGE_TRIP_STATUS_LOADING = 'CHANGE_TRIP_STATUS_LOADING';
 export const CHANGE_TRIP_STATUS = 'CHANGE_TRIP_STATUS';
 export const CHANGE_TRIP_STATUS_SUCCESS = 'CHANGE_TRIP_STATUS_SUCCESS';
@@ -64,6 +68,7 @@ export const changeHhStopStatusFailure = (error) => {
         error
     };
 };
+
 export const changeTripStatusLoading = () => {
     return {
         type: CHANGE_TRIP_STATUS_LOADING

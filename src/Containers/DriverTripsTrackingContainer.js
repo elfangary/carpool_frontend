@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
-import { getTripsTrackingLoading, getTripsTracking,
-     getTripsTrackingSuccess, getTripsTrackingFailure, changeHhStopStatusLoading, changeHhStopStatus,
-      changeHhStopStatusSuccess, changeHhStopStatusFailure,
-    changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess,
-     changeTripStatusFailure } from '../Actions/DriverTripsTracking';
+import {
+    getTripsTrackingLoading, getTripsTracking, getTripsTrackingSuccess, getTripsTrackingFailure,
+    changeHhStopStatusLoading, changeHhStopStatus, changeHhStopStatusSuccess, changeHhStopStatusFailure,
+    changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess, changeTripStatusFailure,
+    addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure,
+    addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure
+} from '../Actions/DriverTripsTracking';
+import {incrementUserPoints} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
 
 
@@ -12,6 +15,7 @@ const mapStateToProps = function(state){
         trackedTrips: state.driverTrackedTrips.trackedTrips,
         updated_hh_stop: state.driverTrackedTrips.updated_hh_stop,
         updated_trip: state.driverTrackedTrips.updated_trip,
+        points: state.user.points,
         loading: state.driverTrackedTrips.loading,
         error: state.driverTrackedTrips.error
     };
@@ -45,7 +49,10 @@ const mapDispatchToProps = function(dispatch){
             dispatch(changeTripStatusLoading());
             dispatch(changeTripStatus(trip_id, status))
             .then(response => {
-                if(response.payload.status < 400){
+                if(response.payload.status < 400 && status === "ended"){
+                    dispatch(changeTripStatusSuccess(response.payload.data));
+                    dispatch(incrementUserPoints(response.payload.data));
+                }else if (response.payload.status < 400) {
                     dispatch(changeTripStatusSuccess(response.payload.data));
                 }else{
                     dispatch(changeTripStatusFailure(response.payload.message));

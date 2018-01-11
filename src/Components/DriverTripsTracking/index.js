@@ -65,10 +65,9 @@ export default class DriverTripsTracking extends Component {
                                     </div>
                                 )
                             })}
-                            <p>
-                                {trip.start && (trip.status === "pending") ?  (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start</button>) : null}
-                                {(trip.status === "started")?  (<button type="button" name="status" value="ended" onClick={() => this.handleClick(trip.id, "ended")}>End</button>) : null}
-                            </p>
+                                {trip.start && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
+                                {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
+                                {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
                         </div>
                     )
                 })

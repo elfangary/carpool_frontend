@@ -12,8 +12,9 @@ import notificationsReducer from './notifications';
 import adminSignUpFormReducer from './admins/signUpForm';
 import adminLoginReducer from './admins/loginForm';
 import ratingReducer from './rating';
+import { LOG_OUT } from '../Actions/loginForm';
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     locations: locationsReducer,
     filteredTrips: HhFormReducer,
 	newTrip: tripsReducer,
@@ -28,5 +29,12 @@ const rootReducer = combineReducers({
 	admin_login: adminLoginReducer,
 	rating: ratingReducer
 });
+
+const rootReducer = (state, action) => {
+	if (action.type === LOG_OUT) {
+		state = undefined;
+	}
+	return appReducer(state, action);
+}
 
 export default rootReducer;
