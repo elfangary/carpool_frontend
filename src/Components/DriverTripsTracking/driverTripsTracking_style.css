@@ -1,0 +1,17 @@
+.eachTrip{
+	border: 1px solid red;
+	margin-top: 10px;
+}
+.eachTrip .hh_stop_point{
+	border: 1px solid black;
+	border-radius: 25px;
+	text-align: center;
+	width: 20%;
+	margin: auto;
+	margin-top: 25px;
+	display: inline-block;
+}
+.eachTrip .hh_stop_point p{
+	margin: 0;
+}
+

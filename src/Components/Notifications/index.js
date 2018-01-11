@@ -22,7 +22,7 @@ export default class Notifications extends Component {
       }, {
         connected: () => {},
         received: (data) => {
-          alert(data.body);
+          alert(`${data.body}`);
             }
       });
     }

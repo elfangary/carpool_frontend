@@ -1,7 +1,7 @@
-
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rating from '../../Containers/RatingContainer';
+import './driverTripsTracking_style.css';
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
@@ -32,36 +32,44 @@ export default class DriverTripsTracking extends Component {
             {
                 trackedTrips.map((trip) => {
                     return (
-                        <div>
+                        <div className="eachTrip">
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
                             <p>{trip.day}</p>
                             {trip.stop_points.map((stop_point) => {
                                 return (
                                     <div>
-                                        <p>{stop_point.location}</p>
-                                        <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
-                                        <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
-                                        {
-                                            stop_point.hh.map((hh) => {
-                                                return (
-                                                    <div>
-                                                        <p>{hh.name}</p>
-                                                        <p>Booked Seats: {hh.booked_seats}</p>
+                                        <ul>
+                                            <li>
+                                                <p>{stop_point.location}</p>
+                                                <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                                <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
+                                                <ul>
+                                                {
+                                                    stop_point.hh.map((hh) => {
+                                                        return (
+                                                            <div className="hh_stop_point">
+                                                                <li>
+                                                                    <p>{hh.name}</p>
+                                                                    <p>Booked Seats: {hh.booked_seats}</p>
 
-                                                        {
-                                                        (hh.confirm == "pending")?
-                                                            <div>
-                                                                <label htmlFor="accept">Accept</label>
-                                                                <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
-                                                                <label htmlFor="reject">Reject</label>
-                                                                <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
+                                                                    {
+                                                                    (hh.confirm == "pending")?
+                                                                        <div>
+                                                                            <label htmlFor="accept">Accept</label>
+                                                                            <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
+                                                                            <label htmlFor="reject">Reject</label>
+                                                                            <input type="radio" id="reject" name={hh.hh_id} value="rejected" onChange={() => changeHhStopStatus(hh.id, "rejected")}/>
+                                                                        </div>
+                                                                    : <p>{hh.confirm}</p>
+                                                                    }
+                                                                </li>
                                                             </div>
-                                                        : <p>{hh.confirm}</p>
-                                                        }
-                                                    </div>
-                                                )
-                                            })
-                                        }
+                                                        )
+                                                    })
+                                                }
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </div>
                                 )
                             })}

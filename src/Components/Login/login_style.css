@@ -74,6 +74,9 @@
 	background-color: #4188B0;
 	margin-top: 20px; 
 }
+.userLoginForm form button:focus{
+	outline: 0;
+}
 
 /*icone in the inpute form
 *//*  background-color: white;
