@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
-import Rating from '../../Containers/RatingContainer';
 
 export default class HhTripsTracking extends Component {
     constructor(props){
@@ -27,8 +26,13 @@ export default class HhTripsTracking extends Component {
 
     handleRate = (trip_id, driver_id, event) => {
         if (event.type === 'click') {
+            console.log(driver_id)
             this.props.rateDriver(trip_id, driver_id, event.rating)
         }
+    }
+
+    handleClick = (trip_id, value) => {
+        this.props.changeHhStopPointStatus(trip_id, value);
     }
 
     render () {
@@ -54,12 +58,19 @@ export default class HhTripsTracking extends Component {
                             {trip.stop_points.map((stop_point) => {
                                 return (
                                     <div>
-                                        <label htmlFor="stop_point-id">{stop_point.location.name}</label>
-                                        <input type="radio" name="stop_point_id" id="stop_point_id" 
-                                            value= {stop_point.id} />
+                                        <p>{stop_point.location}</p>
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
+                                        {stop_point.hh.map((hh) => {
+                                            return (
+                                                <div>
+                                                    <p>Booked Seats: {hh.booked_seats}</p>
+                                                    <p>Confirmation Status: {hh.confirm}</p>
+                                                </div>
+                                            )
+                                        })}
                                     </div>
+
                                 )
                             })}
                     {(trip.status === "ended")? (<Rater total={5} rating={this.state.rate} onRate={(event) => this.handleRate(trip.id, trip.driver.id, event)} />): null

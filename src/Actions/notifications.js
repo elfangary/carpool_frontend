@@ -14,12 +14,6 @@ export const GET_NOTIFICATION = 'GET_NOTIFICATION';
 export const GET_NOTIFICATION_SUCCESS = 'GET_NOTIFICATION_SUCCESS';
 export const GET_NOTIFICATION_FAILURE = 'GET_NOTIFICATION_FAILURE';
 
-//create notification
-export const CREATE_NOTIFICATION_LOADING = 'CREATE_NOTIFICATION_LOADING';
-export const CREATE_NOTIFICATION = 'CREATE_NOTIFICATION';
-export const CREATE_NOTIFICATION_SUCCESS = 'CREATE_NOTIFICATION_SUCCESS';
-export const CREATE_NOTIFICATION_FAILURE = 'CREATE_NOTIFICATION_FAILURE';
-
 //update notification
 export const UPDATE_NOTIFICATION_LOADING = 'UPDATE_NOTIFICATION_LOADING';
 export const UPDATE_NOTIFICATION = 'UPDATE_NOTIFICATION';
@@ -75,32 +69,6 @@ export const getNotificationSuccess = (notification) => {
 export const getNotificationFailure = (error) => {
     return {
         type: GET_NOTIFICATION_FAILURE,
-        error
-    };
-};
-
-//create notification
-export const createNotificationLoading = () => {
-    return {
-        type: CREATE_NOTIFICATION_LOADING
-    };
-};
-export const createNotification = (notification) => {
-    const payload = Axios.post(notificationsApi, notification);
-    return {
-        type: CREATE_NOTIFICATION,
-        payload
-    };
-};
-export const createNotificationSuccess = (notification) => {
-    return {
-        type: CREATE_NOTIFICATION_SUCCESS,
-        notification
-    };
-};
-export const createNotificationFailure = (error) => {
-    return {
-        type: CREATE_NOTIFICATION_FAILURE,
         error
     };
 };

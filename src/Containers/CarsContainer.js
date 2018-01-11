@@ -13,17 +13,16 @@ const mapStateToProps = function (store){
 	};
 };
 
-
 const mapDispatchToProps = function (dispatch){
 	return {
-
         getCars: () => {
             dispatch(getCarsLoading());
             dispatch(getCars()).then(response => {
                 if(response.payload.status < 400){
                     dispatch(getCarsSuccess(response.payload.data));
+                    console.log(response.payload.data)
                 }else{
-                    dispatch(getCarsFailure(response.payload.message));
+                    dispatch(getCarsFailure(response.payload.response.data.message));
                 }
             })
         }

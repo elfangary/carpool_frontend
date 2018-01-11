@@ -1,8 +1,8 @@
+
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
-import Rating from '../../Containers/RatingContainer'
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
@@ -91,9 +91,9 @@ export default class DriverTripsTracking extends Component {
                                 )
                             })}
                             <p>
-                              
-                                {trip.start && (trip.status === "pending") ?  (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start</button>) : null}
-                                {(trip.status === "started")?  (<button type="button" name="status" value="ended" onClick={() => this.handleClick(trip.id, "ended")}>End</button>) : null}
+                                {trip.start && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
+                                {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
+                                {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
                             </p>
                             {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
                                 stop_point.hh.map((hh) => {

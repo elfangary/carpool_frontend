@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-// import "./index.css";
+// import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
@@ -9,7 +9,6 @@ import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
 
 export default class User extends Component{
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -29,27 +28,29 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
+		console.log("hayyyyyy");
+		
+		console.log(user.profile_pic);
 		const { amount, link } = this.state;
-		var hi = "hi";
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){
             return (
-            	<div>
+            	<div className="clearfix">
 	                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 					<span class="sr-only">Loading...</span>
 				</div>
             )
         }else if(error){
             return (
-                <div>
+                <div className="clearfix">
 					<p>Sorry, something went Wrong</p>
 					<p>{error}</p>
 				</div>
             )
 		}else{
 		    return (
-		    	<div>
+		    	<div className="clearfix">
 	    			<div className="profile-container">
 						<div className="clearfix">
 							<header className="header">

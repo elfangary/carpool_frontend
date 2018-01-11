@@ -3,6 +3,8 @@ import {driverTripsApi} from '../apiConfig';
 import {updateHhStopApi} from '../apiConfig';
 import {tripStatusApi} from '../apiConfig';
 import {userRatingApi} from '../apiConfig';
+import {addBalanceToDriverApi} from '../apiConfig';
+import {addBalanceToHhApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
@@ -70,6 +72,7 @@ export const changeHhStopStatusFailure = (error) => {
         error
     };
 };
+
 export const changeTripStatusLoading = () => {
     return {
         type: CHANGE_TRIP_STATUS_LOADING

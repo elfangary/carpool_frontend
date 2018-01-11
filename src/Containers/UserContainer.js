@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import User from '../Components/User';
 import { getUserLoading, getUser, getUserSuccess, getUserFailure } from '../Actions/user';
+
 import { updateNotificationLoading, updateNotification, updateNotificationSuccess, updateNotificationFailure }
  from '../Actions/notifications';
+ 
 import { logout } from '../Actions/loginForm';
 
 const mapStateToProps = (state) => {
@@ -16,21 +18,19 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getUser: () => {
-            dispatch(getUserLoading());
-            setTimeout(() => {
-                dispatch(getUser()).then(response => {
-                    if(response.payload.status < 400){
-                        dispatch(getUserSuccess(response.payload.data));
-                    }else{
-                        dispatch(getUserFailure(response.payload.response.data.message));
-                    }
-                })
-            }, 2000)
-        },
         logout: function(){
             localStorage.removeItem('jwtToken');
             dispatch(logout());
+        },
+        getUser: () => {
+            dispatch(getUserLoading());
+            dispatch(getUser()).then(response => {
+                if(response.payload.status < 400){
+                    dispatch(getUserSuccess(response.payload.data));
+                }else{
+                    dispatch(getUserFailure(response.payload.response.data.message));
+                }
+            })
         },
         updateNotification: (notification) => {
             dispatch(updateNotificationLoading());
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
                 }else{
                     dispatch(updateNotificationFailure(response.payload.response.data.message));
                 }
-            })
+            });
         }
     };
 };

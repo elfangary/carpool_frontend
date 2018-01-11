@@ -1,6 +1,7 @@
 import {
     GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
-    DECREMENT_USER_POINTS
+    UPDATE_USER_LOADING, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE,
+    DECREMENT_USER_POINTS, INCREMENT_USER_POINTS
 } from '../Actions/user';
 
 import {
@@ -23,6 +24,13 @@ export default function(currentState = INITIAL_STATE, action){
         case GET_USER_FAILURE:
             return {...currentState, error: action.error, loading: false};
 
+        case UPDATE_USER_LOADING:
+            return {...currentState, loading: true};
+        case UPDATE_USER_SUCCESS:
+            return {...currentState, user: action.user, loading: false};
+        case UPDATE_USER_FAILURE:
+            return {...currentState, error: action.error, loading: false};
+
         case ADD_CHARGE_LOADING:
             return {...currentState, loading: true};
         case ADD_CHARGE_SUCCESS:
@@ -31,7 +39,10 @@ export default function(currentState = INITIAL_STATE, action){
             return {...currentState, error: action.error, loading: false};
 
         case DECREMENT_USER_POINTS:
-            return {...currentState, points: currentState.points-action.amount}
+            return {...currentState, points: currentState.points-action.amount};
+
+        case INCREMENT_USER_POINTS:
+            return {...currentState, points: action.amount.points};
 
         default:
             return currentState;

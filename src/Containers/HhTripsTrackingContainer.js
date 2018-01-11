@@ -35,6 +35,7 @@ const mapDispatchToProps = function(dispatch){
                     dispatch(rateDriverSuccess(response.payload.data));
                 }else{
                     dispatch(rateDriverFailure(response.payload.message));
+
                 }
             })
         }

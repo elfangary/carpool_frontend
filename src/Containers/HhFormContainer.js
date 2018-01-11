@@ -6,7 +6,6 @@ import { createNotificationLoading, createNotification, createNotificationSucces
     from '../Actions/notifications';
 import { decrementUserPoints } from '../Actions/user';
 
-
 const mapStateToProps = function(state){
     return {
         trips: state.filteredTrips.trips,
@@ -30,9 +29,9 @@ const mapDispatchToProps = function(dispatch){
                 }
             })
         },
-        addHhStopPoint: (stop_point_id, booked_seats) => {
+        addHhStopPoint: (stop_point_id, booked_seats, notifications_attributes) => {
             dispatch(addHhStopPointLoading());
-            dispatch(addHhStopPoint(stop_point_id, booked_seats))
+            dispatch(addHhStopPoint(stop_point_id, booked_seats, notifications_attributes))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
@@ -41,17 +40,7 @@ const mapDispatchToProps = function(dispatch){
                     dispatch(addHhStopPointFailure(response.payload.message));
                 }
             })
-        },
-        createNotification: (notification) => {
-            dispatch(createNotificationLoading());
-            dispatch(createNotification(notification)).then(response => {
-                if(response.payload.status < 400){
-                    dispatch(createNotificationSuccess(response.payload.data));
-                }else{
-                    dispatch(createNotificationFailure(response.payload.response.data.message));
-                }
-            })
-        },
+        }
     };
 };
 
