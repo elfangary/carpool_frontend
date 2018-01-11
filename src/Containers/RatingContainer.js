@@ -4,17 +4,17 @@ import Rating from '../Components/Rating';
 
 const mapStateToProps = function(state){
     return {
-        rate: state.rating.rate,
-        loading: state.rating.loading,
-        error: state.rating.error
+        Ratings: state.Ratings.Ratings,
+        loading: state.Ratings.loading,
+        error: state.Ratings.error
     };
 };
 
 const mapDispatchToProps = function(dispatch){
     return {
-        add_rate: (user_id, rate) => {
+        addRate: (Ratings) => {
             dispatch(addRateLoading());
-            dispatch(addRate(user_id, rate))
+            dispatch(addRate(Ratings))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addRateSuccess(response.payload.data));

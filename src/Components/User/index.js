@@ -5,7 +5,8 @@ import "react-toggle/style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
-import StarRatingComponent from 'react-star-rating-component';
+import Rater from 'react-rater';
+import 'react-rater/lib/react-rater.css';
 
 export default class User extends Component{
 
@@ -59,7 +60,7 @@ export default class User extends Component{
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-									<StarRatingComponent  name="rate1" starCount={5} value={user.rate / user.raters_no} editing={false}/>
+									<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
 								</div>
 							</header>
 						</div>

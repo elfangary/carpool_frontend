@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { userRatingApi } from '../apiConfig';
+import {userRatingApi} from '../apiConfig';
 
 export const ADD_RATE_LOADING = 'ADD_RATE_LOADING';
 export const ADD_RATE = 'ADD_RATE';
@@ -11,10 +11,10 @@ export const addRateLoading = () => {
         type: ADD_RATE_LOADING
     };
 };
-export const addRate = (user_id, rate) => {
+export const addRate = (ratings) => {
     return {
         type: ADD_RATE,
-        payload: Axios.patch(userRatingApi(user_id, rate))
+        payload: Axios.post()
     };
 };
 export const addRateSuccess = (rate) => {

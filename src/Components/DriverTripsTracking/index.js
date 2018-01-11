@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
+import Rating from '../../Containers/RatingContainer'
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
@@ -12,14 +13,13 @@ export default class DriverTripsTracking extends Component {
         };
     };
 
-    handleChange = (hh_id, rating) => {
-        //this.onStarClick.bind(this);
-        this.props.rateUser(hh_id, rating);
+    handleClick = (trip_id, value) => { 
+        this.props.changeTripStatus(trip_id, value);
     }
 
-    handleClick = (trip_id, value) => { 
-        debugger;
-        this.props.changeTripStatus(trip_id, value);
+    handleSubmit = () => {
+        this.props.rateUser(this.state.ratings);
+        this.state.ratings = [];
     }
 
     handleDriverRating = (trip_id, hh_id, event) => {
@@ -34,7 +34,7 @@ export default class DriverTripsTracking extends Component {
     }
 
     render () {
-        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser, handleChange} = this.props;
+        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser, handleChange, onRate, Rating, addRate, Ratings } = this.props;
         const { status, ratings } = this.state;
         return (
             <div>
@@ -95,7 +95,12 @@ export default class DriverTripsTracking extends Component {
                                 {trip.start && (trip.status === "pending") ?  (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start</button>) : null}
                                 {(trip.status === "started")?  (<button type="button" name="status" value="ended" onClick={() => this.handleClick(trip.id, "ended")}>End</button>) : null}
                             </p>
-                            <button type="button" onClick={() => rateUser(ratings)}>Rate</button>
+                            {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
+                                stop_point.hh.map((hh) => {
+                                    hh.confirm != "accepted"
+                                })
+                            }))? (
+                            <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>) : null}
                         </div>
                     )
                 })

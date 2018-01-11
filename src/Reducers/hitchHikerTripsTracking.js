@@ -1,8 +1,10 @@
 import { GET_HH_TRIPS_TRACKING_LOADING, 
-    GET_HH_TRIPS_TRACKING_SUCCESS, GET_HH_TRIPS_TRACKING_FAILURE } from '../Actions/Hitch-HickerTripsTracking';
+    GET_HH_TRIPS_TRACKING_SUCCESS, GET_HH_TRIPS_TRACKING_FAILURE, RATE_DRIVER_LODAING,
+     RATE_DRIVER_SUCCESS, RATE_DRIVER_FAILURE } from '../Actions/Hitch-HickerTripsTracking';
 
 const INITIAL_STATE = {
     hhTrackedTrips: [],
+    driverRate: {},
     loading: false,
     error: null
 };
@@ -27,6 +29,26 @@ export default function(current_state = INITIAL_STATE, action){
                 ...current_state,
                 error: action.error,
                 loading: false
+            };
+            break;
+        case RATE_DRIVER_LODAING: 
+            return {
+                ...current_state,
+                loading: true
+            };
+            break;
+        case RATE_DRIVER_SUCCESS:
+            return {
+                ...current_state,
+                driverRate: action.rate,
+                loading: false
+            };
+            break;
+        case RATE_DRIVER_FAILURE:
+            return {
+                ...current_state,
+                loading: false,
+                error: action.error
             };
             break;
         default:

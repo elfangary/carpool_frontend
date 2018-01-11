@@ -1,7 +1,7 @@
 import { ADD_RATE_LOADING, ADD_RATE_SUCCESS, ADD_RATE_FAILURE } from '../Actions/rating';
 
 const INITIAL_STATE = {
-    rate: {},
+    Ratings: [],
     loading: false,
     error: null
 };
@@ -17,7 +17,7 @@ export default function(current_state = INITIAL_STATE, action){
         case ADD_RATE_SUCCESS:
             return {
                 ...current_state,
-                rate: action.rate,
+                Ratings: action.Ratings,
                 loading: false
             };
             break;
