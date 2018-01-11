@@ -1,20 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import HhForm from './Containers/HhFormContainer';
+import UserProfile from './Pages/UserProfile';
+import {Link, Route, Redirect, Switch} from 'react-router-dom';
+import SignUpForm from './Containers/SignUpFormContainer';
+import Login from './Containers/loginFormContainer';
+import HomePage from './Pages/HomePage';
+import WelcomePage from './Pages/WelcomePage';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+
+        <div className="App">
+       {
+        (localStorage.jwtToken)?
+         <UserProfile />
+         :
+         <HomePage/>
+        }
+          <div className="footer clearfix">
+            <div className="footer-links">
+              <Link to={'/contact'} className="footer-link">Contact Us</Link>
+              <Link to={'/termsofuse'} className="footer-link">Terms Of Use</Link>
+              <Link to={'/privacpolicy'} className="footer-link">Privacy Policy</Link>
+            </div>
+            <div className="copyrights">
+              <small>&copy; 2017 Brandname, Inc. All Rights Reserved</small>
+            </div>
+            <div className="social-media-links">
+              <Link to={'/facebook'} className="social-media">Facebook</Link>
+              <Link to={'/instagram'} className="social-media">Instagram</Link>
+              <Link to={'/twitter'} className="social-media">Twitter</Link>
+            </div>
+          </div>
+        </div>
+    )
   }
 }
 
