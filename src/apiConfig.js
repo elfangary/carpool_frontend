@@ -48,12 +48,8 @@ export const notificationsApi = `${rootApi}/notifications.json`;
 export const getNotificationApi = (id) => `${rootApi}//notifications/${id}.json`;
 export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.json`;
 
-//rating hitch-hiker
+//rating user
 export const userRatingApi = `${rootApi}/rate_user`;
-//rating driver
-export const driverRatingApi = `${rootApi}/driver_rate`;
-
-
 
 //add balance to driver
 // export const addBalanceToDriverApi = (trip_id) => `${rootApi}/add_to_driver?trip_id=${trip_id}`

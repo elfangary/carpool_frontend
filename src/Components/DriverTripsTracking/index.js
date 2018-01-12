@@ -8,7 +8,6 @@ export default class DriverTripsTracking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            status: '',
             ratings: []
         };
     };
@@ -22,20 +21,20 @@ export default class DriverTripsTracking extends Component {
         this.state.ratings = [];
     }
 
-    handleDriverRating = (trip_id, hh_id, event) => {
+    handleUserRating = (trip_id, user_id, event) => {
         if (event.type === 'click') {
-            const element = this.state.ratings.find(rating => rating.trip_id === trip_id && rating.hh_id === hh_id);
+            const element = this.state.ratings.find(rating => rating.trip_id === trip_id && rating.user === user_id);
             if (element) {
                 element.rating = event.rating;
             } else {
-                this.state.ratings.push({trip_id, hh_id, rating: event.rating});
+                this.state.ratings.push({trip_id, user_id, rating: event.rating});
             }
         }
     }
 
     render () {
-        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser, handleChange, onRate, Rating, addRate, Ratings } = this.props;
-        const { status, ratings } = this.state;
+        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser } = this.props;
+        const { ratings } = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -79,7 +78,7 @@ export default class DriverTripsTracking extends Component {
                                                         }
                                                         {
                                                             (trip.status === "ended" && hh.confirm === "accepted")?  (<div>
-                                                                <Rater total={5} rating={0} onRate={(event) => this.handleDriverRating(trip.id, hh.hh_id, event)} />
+                                                                <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
                                                                 </div>) : null
                                                         }
                                                     </div>

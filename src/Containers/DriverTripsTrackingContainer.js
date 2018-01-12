@@ -4,9 +4,8 @@ import { getTripsTrackingLoading, getTripsTracking,
       changeHhStopStatusSuccess, changeHhStopStatusFailure,
     changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess,
      changeTripStatusFailure, addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure,
-     addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure, rateUserLoading, rateUser, rateUserSuccess,
-      rateUserFailure } from '../Actions/DriverTripsTracking';
-import {incrementUserPoints} from '../Actions/user';
+     addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure} from '../Actions/DriverTripsTracking';
+import {incrementUserPoints, rateUserLoading, rateUser, rateUserSuccess, rateUserFailure} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
 
 
@@ -15,7 +14,7 @@ const mapStateToProps = function(state){
         trackedTrips: state.driverTrackedTrips.trackedTrips,
         updated_hh_stop: state.driverTrackedTrips.updated_hh_stop,
         updated_trip: state.driverTrackedTrips.updated_trip,
-        ratings: state.driverTrackedTrips.ratings,
+        ratings: state.user.ratings,
         points: state.user.points,
         loading: state.driverTrackedTrips.loading,
         error: state.driverTrackedTrips.error

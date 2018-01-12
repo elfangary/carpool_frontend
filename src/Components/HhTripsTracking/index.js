@@ -7,27 +7,14 @@ export default class HhTripsTracking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            driver_id: null,
-            rate: 0
+            ratings: []
         };
     };
 
-    handleDriverRating = (driver_id, event) => {
-        // debugger;
-        console.log(event)
+    handleRate = (trip_id, user_id, event) => {
         if (event.type === 'click') {
-            this.setState({
-                driver_id,
-                rate: event.rating 
-            }) 
-            // rate = event.rating  
-        }
-    };
-
-    handleRate = (trip_id, driver_id, event) => {
-        if (event.type === 'click') {
-            console.log(driver_id)
-            this.props.rateDriver(trip_id, driver_id, event.rating)
+            console.log(user_id)
+            this.props.rateUser([{trip_id, user_id, rate: event.rating}])
         }
     }
 
@@ -36,8 +23,8 @@ export default class HhTripsTracking extends Component {
     }
 
     render () {
-        const {hhTrackedTrips, getHhTripsTracking, rateDriver} = this.props;
-        const { driver_id, rate } = this.state;
+        const {hhTrackedTrips, getHhTripsTracking } = this.props;
+        const { ratings } = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>

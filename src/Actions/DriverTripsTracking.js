@@ -1,10 +1,6 @@
 import Axios from 'axios';
-import {driverTripsApi} from '../apiConfig';
-import {updateHhStopApi} from '../apiConfig';
-import {tripStatusApi} from '../apiConfig';
-import {userRatingApi} from '../apiConfig';
-import {addBalanceToDriverApi} from '../apiConfig';
-import {addBalanceToHhApi} from '../apiConfig';
+import {driverTripsApi,updateHhStopApi, tripStatusApi,
+     addBalanceToDriverApi, addBalanceToHhApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
@@ -20,11 +16,6 @@ export const CHANGE_TRIP_STATUS_LOADING = 'CHANGE_TRIP_STATUS_LOADING';
 export const CHANGE_TRIP_STATUS = 'CHANGE_TRIP_STATUS';
 export const CHANGE_TRIP_STATUS_SUCCESS = 'CHANGE_TRIP_STATUS_SUCCESS';
 export const CHANGE_TRIP_STATUS_FAILURE = 'CHANGE_TRIP_STATUS_FAILURE';
-
-export const RATE_USER_LOADING = 'RATE_USER_RATING';
-export const RATE_USER = 'RATE_USER';
-export const RATE_USER_SUCCESS = 'RATE_USER_SUCCESS';
-export const RATE_USER_FAILURE = 'RATE_USER_FAILURE';
 
 export const getTripsTrackingLoading = () => {
     return {
@@ -93,29 +84,6 @@ export const changeTripStatusSuccess = (updated_trip) => {
 export const changeTripStatusFailure = (error) => {
     return {
         type: CHANGE_TRIP_STATUS_FAILURE,
-        error
-    };
-};
-export const rateUserLoading = () => {
-    return {
-        type: RATE_USER_LOADING
-    };
-};
-export const rateUser = (ratings) => {
-    return {
-        type: RATE_USER,
-        payload: Axios.post(userRatingApi, {ratings})
-    };
-};
-export const rateUserSuccess = (rate) => {
-    return {
-        type: RATE_USER_SUCCESS,
-        rate
-    };
-};
-export const rateUserFailure = (error) => {
-    return {
-        type: RATE_USER_FAILURE,
         error
     };
 };
