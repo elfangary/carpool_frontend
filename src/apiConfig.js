@@ -39,9 +39,6 @@ export const tripStatusApi = (trip_id, status) => `${rootApi}/trips/${trip_id}?s
 //hitch-hiker trips
 export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips.json?time=${time}`;
 
-//update hh stop point
-export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-update?id=${id}&confirm=${confirm}`;
-
 //payment-charge
 export const chargeApi = `${rootApi}/charges`;
 export const addChargedPointsApi = `${rootApi}/add_charged_points`;
@@ -51,10 +48,8 @@ export const notificationsApi = `${rootApi}/notifications.json`;
 export const getNotificationApi = (id) => `${rootApi}//notifications/${id}.json`;
 export const updateNotificationsApi = (id) => `${rootApi}/notifications/${id}.json`;
 
-//Rating user
-export const userRatingApi = (user_id, rate) => `${rootApi}/add_rate?user_id=${user_id}&rate=${rate}`;
-
-
+//rating user
+export const userRatingApi = `${rootApi}/rate_user`;
 
 //add balance to driver
 // export const addBalanceToDriverApi = (trip_id) => `${rootApi}/add_to_driver?trip_id=${trip_id}`
