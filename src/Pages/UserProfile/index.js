@@ -23,15 +23,14 @@ export default class UserProfile extends Component {
 					<Notifications />
 					<UserContainer />
 					<Switch>
-						<Route path="/edit" component={EditUserForm} />
-	              		<Route path="/driving" exact component={DriverContainer} />
-	              		<Route path="/driving/cars" component={CarDetails} />
-	              		<Route exact path="/hitch-hiking" component={HhForm} />
-	              		<Route path="/checkout" component={Checkout} />
-						<Route path="/driving/trips" component={DriverTrips} />
-						<Route path="/hitch-hiking/trips" component={HhTrips} />
-	              	</Switch>
-
+						<Route path="/profile/edit" exact component={EditUserForm} />
+                  		<Route path="/profile/driving" exact component={DriverContainer} />
+                  		<Route path="/profile/driving/cars" component={CarDetails} />
+                  		<Route exact path="/profile/hitch-hiking" component={HhForm} />
+                 		<Route path="/profile/checkout" component={Checkout} />
+                  		<Route path="/profile/driving/trips" component={DriverTrips} />
+                  		<Route path="/profile/hitch-hiking/trips" component={HhTrips} />
+		            </Switch>
 				</div>
 			)
 		}else{
@@ -39,6 +38,5 @@ export default class UserProfile extends Component {
 				<HomePage />
 			)
 		}
-		
 	};
 };

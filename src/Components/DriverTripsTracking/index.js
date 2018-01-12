@@ -11,6 +11,10 @@ export default class DriverTripsTracking extends Component {
         };
     };
 
+    componentWillMount() {
+        this.props.getTripsTracking("upcoming")
+    }
+
     handleClick = (trip_id, value) => {
         this.props.changeTripStatus(trip_id, value);
     }

@@ -9,7 +9,6 @@ export default class Cars extends Component {
 	}
 	render() {
 		const {cars, car_id, onChange, name, deleted} = this.props;
-		console.log(this.props.deleted);
 		return (
 	        <select onChange={onChange} name={name}>
 	        	<option value="" disabled selected>Select your car</option>

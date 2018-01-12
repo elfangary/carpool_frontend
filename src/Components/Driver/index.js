@@ -52,7 +52,6 @@ export default class Driver extends Component {
 	}
 
 	handleChangeToI = (event) => {
-		console.log(event.target.value);
 		this.setState({
 			[event.target.name]: parseInt(event.target.value)
 		});

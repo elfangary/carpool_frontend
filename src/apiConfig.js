@@ -39,9 +39,6 @@ export const tripStatusApi = (trip_id, status) => `${rootApi}/trips/${trip_id}?s
 //hitch-hiker trips
 export const hitchHikerTripsApi = (time) => `${rootApi}/hitch-hiker/trips.json?time=${time}`;
 
-//update hh stop point
-export const updateHhStopApi = (id, confirm) => `${rootApi}/hitch-hicker-point-update?id=${id}&confirm=${confirm}`;
-
 //payment-charge
 export const chargeApi = `${rootApi}/charges`;
 export const addChargedPointsApi = `${rootApi}/add_charged_points`;

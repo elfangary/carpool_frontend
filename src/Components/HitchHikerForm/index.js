@@ -24,14 +24,12 @@ export default class HHForm extends Component {
         console.log(event.target.value);
         const newState = {...this.state};
         newState[event.target.name] = event.target.value;
-        console.log(newState);
         this.setState(newState);
     };
 
     handleNewHhStopPoint = (e) => {
         const {new_hh_stop} = this.state;
         new_hh_stop[e.target.name] = e.target.value;
-        console.log(new_hh_stop);
         this.setState({
             ...this.state,
             new_hh_stop

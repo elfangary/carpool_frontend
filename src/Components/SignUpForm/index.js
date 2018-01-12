@@ -18,9 +18,9 @@ export default class SignUpForm extends Component{
 				profile_pic: '',
 				gender: ''
 			}
-		};		
+		};
 	};
-	
+
 	handelChange(event){
 		const {user} = this.state;
 		([event.target.name] == "profile_pic")?
@@ -31,7 +31,7 @@ export default class SignUpForm extends Component{
 		this.setState({ user });
 	}
 
-	render(){	
+	render(){
 
 		let user = new FormData();
 		user.append('first_name', this.state.user.first_name);
@@ -45,7 +45,7 @@ export default class SignUpForm extends Component{
 		console.log(user.first_name);
 
 		const {first_name, last_name, email, phone, password, password_confirmation, profile_pic, gender} = this.state.user;
-		
+
 		return(
 			<form className="signUpForm">
 				<input type="text" name="first_name" placeholder="firstName" onChange={this.handelChange.bind(this)} />
@@ -60,7 +60,6 @@ export default class SignUpForm extends Component{
 				<button type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>next</button>
 				{
 					(this.props.error !== null)? <p>{this.props.error}</p> : null
-					
 				}
 			</form>
 		)
