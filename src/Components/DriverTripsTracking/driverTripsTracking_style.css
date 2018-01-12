@@ -1,6 +1,23 @@
+.clearfix::before,
+.clearfix::after{
+	@include clearfix();
+}
 .eachTrip{
 	border: 1px solid red;
 	margin-top: 10px;
+}
+.eachTrip ul li{
+	display: flex;
+	flex-direction: column;
+}
+.eachTrip ul ul{
+	list-style: none;
+	margin: 0;
+}
+.eachTrip ul ul li{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .eachTrip .hh_stop_point{
 	border: 1px solid black;
@@ -13,5 +30,8 @@
 }
 .eachTrip .hh_stop_point p{
 	margin: 0;
+}
+.eachTrip button{
+
 }
 

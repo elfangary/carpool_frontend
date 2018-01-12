@@ -1,9 +1,13 @@
-.clearfix::before,
-.clearfix::after{
+@minin clearfix{
 	content: "";
 	display: table;
 	clear: both;
 }
+.clearfix::before,
+.clearfix::after{
+	@include clearfix();
+}
+
 .userLogin{
 	display: table;
 	width: 100%;

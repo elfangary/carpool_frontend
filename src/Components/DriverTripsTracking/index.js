@@ -32,7 +32,7 @@ export default class DriverTripsTracking extends Component {
             {
                 trackedTrips.map((trip) => {
                     return (
-                        <div className="eachTrip">
+                        <div className="eachTrip clearfix">
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
                             <p>{trip.day}</p>
                             {trip.stop_points.map((stop_point) => {
