@@ -8,9 +8,9 @@ export default class Timeframe extends Component {
 		return (
 	        <label>
 				Time Frame
-				<input type="time" name="start_time" value={stop_point.start_time} onChange={onChange}/>
+				<input className="time" type="time" name="start_time" value={stop_point.start_time} onChange={onChange}/>
 				<p>To</p>
-				<input type="time" name="end_time" value={stop_point.end_time} onChange={onChange}/>
+				<input className="time" type="time" name="end_time" value={stop_point.end_time} onChange={onChange}/>
 			</label>
 		)
 	};

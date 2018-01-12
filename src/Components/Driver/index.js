@@ -76,11 +76,13 @@ export default class Driver extends Component {
 						{
 							stop_points_attributes.map((stopPoint, index) => {
 								return (
-									<label>
-										stop point {index + 1}
-										<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
-										<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
-									</label>
+									<div className="container">
+										<label>
+											stop point {index + 1}
+											<Locations className="location" location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+											<Time className="time" stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+										</label>
+									</div>
 								)
 							})
 						}

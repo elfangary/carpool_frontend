@@ -43,7 +43,7 @@ export default class HHForm extends Component {
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div>
-                <form>
+                <form id="create-course-form">
                     <fieldset className="Location">
                         <legend>Location Details</legend>
                         <label>Moving from</label>
