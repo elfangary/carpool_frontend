@@ -1,8 +1,7 @@
-
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rating from '../../Containers/RatingContainer';
-import './style.css';
+import './driverTripsTracking_style.css';
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -87,6 +86,7 @@ export default class DriverTripsTracking extends Component {
                                               })
                                           }
                                        </div>
+
                                 )
                             })}
                               </div>

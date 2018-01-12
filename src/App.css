@@ -1,6 +1,7 @@
 .App {
   font-style: Helvetica, sans-serif;
   height: 100%;
+  /*overflow: auto;*/
 }
 .header {
   float: right;
@@ -22,7 +23,7 @@
   font-weight: bold;
 }
 .footer {
-  background-color: #303030;
+  background-color: #434343;
   height: 30px;
   margin-top: -30px;
   padding: 0 30px;
@@ -31,12 +32,10 @@
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
-  /*text-align: center;*/
-  /*flex-direction: row;*/
+  z-index: 1000;
 }
 .footer-link {
   color: #fff;
-  /*flex-grow: 1;*/
 }
 .footer-link ~ .footer-link {
   margin-left: 30px;
@@ -44,13 +43,10 @@
 .copyrights {
   color: #fff;
   margin-left: -180px;
-  /*flex-grow: 2;*/
-  /*flex-basis: 70%;*/
 }
 .social-media {
   text-decoration: none;
   color: #fff;
-  /*flex-grow: 1;*/
 }
 .social-media ~ .social-media {
   margin-left: 30px;

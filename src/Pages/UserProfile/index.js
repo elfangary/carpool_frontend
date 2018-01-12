@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import DriverContainer from '../../Containers/DriverContainer';
 import UserContainer from '../../Containers/UserContainer';
 import CarsContainer from '../../Containers/CarsContainer';
@@ -8,19 +7,20 @@ import HhForm from '../../Containers/HhFormContainer';
 import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
 import HhTrips from '../../Containers/HhTripsTrackingContainer';
 import Notifications from '../../Containers/NotificationsContainer';
-
 import CarDetails from '../../Containers/CarsDetailsContainer';
 import Checkout from '../../Components/Checkout';
 import EditUserForm from '../../Containers/editUserFormContainer';
 import HomePage from '../HomePage';
-// import './index.css';
+import './index.css';
+
+// there is notification component in the first of this div <Notifications />
 
 export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
 				<div className="profile">
-					<Notifications />
+					
 					<UserContainer />
 					<Switch>
 						<Route path="/profile/edit" exact component={EditUserForm} />
