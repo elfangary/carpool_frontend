@@ -19,7 +19,7 @@ export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
-				<div className="profile">
+				<div className="profile sclearfix">
 					
 					<UserContainer />
 					<Switch>

@@ -34,7 +34,7 @@ export default class DriverTripsTracking extends Component {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange} = this.props;
         const { status } = this.state;
         return (
-            <div>
+            <div className="driverTripsTracking">
                 <h2>Your Trips</h2>
                 <form>
                     <label htmlFor="upcoming">Upcoming</label>

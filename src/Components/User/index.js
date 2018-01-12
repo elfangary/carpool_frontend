@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-// import "./user_style.css";
+import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
@@ -46,7 +46,8 @@ export default class User extends Component{
             )
 		}else{
 		    return (
-		    	<div className="clearfix">
+		    	// It was a clearfix div
+
 	    			<div className="profile-container">
 						<div className="clearfix">
 							<header className="header">
@@ -89,7 +90,6 @@ export default class User extends Component{
 							<Link to={'/profile/driving'}>Driving</Link>
 						</footer>
 				    </div>
-		        </div>
 			)
 		}
 	}

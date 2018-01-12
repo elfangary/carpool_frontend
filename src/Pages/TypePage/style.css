@@ -3,8 +3,10 @@
 	clear: both;
 	content: '';
 }
+.user-nav-link{
+	float: right;
+}
 .type-container{
-
 	height: 100%;
 }
 .type-page{

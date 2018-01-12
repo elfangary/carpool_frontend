@@ -18,7 +18,7 @@ export default class HomePage extends Component {
 	                  {history.push('/type')}
 	                </div>
 	                :
-	                  <Login />
+	                <Login />
                 }
 			</div>
 		)

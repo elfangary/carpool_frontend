@@ -1,11 +1,11 @@
 .App {
   font-style: Helvetica, sans-serif;
   height: 100%;
-  /*overflow: auto;*/
+/*  overflow: auto;*/
 }
-.header {
+.App > .header{
   float: right;
-  margin-top: 70px;
+  margin-top: 20px;
 }
 .nav-link {
   color: #fff;
