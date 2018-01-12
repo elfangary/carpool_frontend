@@ -111,6 +111,7 @@
 	line-height: 60px;
 	background-color: #4188B0;
 	margin-top: 42px;
+	cursor: pointer;
 }
 .userLoginForm form button:focus{
 	outline: 0;

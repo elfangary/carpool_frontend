@@ -48,7 +48,7 @@ export default class DriverTripsTracking extends Component {
                 trackedTrips.map((trip) => {
                     return (
                         <div className="trip clearfix">
-                            <img src={trip.driver.profile_pic} className="driver-profile-picture"/>
+                            <img src={`http://localhost:3001${trip.driver.profile_pic.profile_pic.url}`} className="driver-profile-picture"/>
                             <div className="trip-container clearfix">
                               <div className="flex">
                                 <p className="driver-name">{trip.driver.first_name} {trip.driver.last_name}</p>
