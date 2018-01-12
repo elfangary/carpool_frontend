@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import UserProfile from './Pages/UserProfile';
 import {Link, Route, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
@@ -32,10 +32,7 @@ class App extends Component {
         <div className="App clearfix">
           <header className="header">
               {(localStorage.jwtToken)?
-                  <ul className="login-nav">
-                    <li><Link to="/aboutus" className="nav-link">Who Are We?</Link></li>
-                    <li><Link to="/" onClick={() => {this.logout()}} className="nav-link">logout</Link></li>
-                  </ul>
+                  <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
                 : <Link to="/aboutus" className="nav-link">Who Are We?</Link>}
           </header>
           <Switch>

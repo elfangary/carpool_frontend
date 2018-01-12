@@ -3,7 +3,6 @@ import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';
-import FlipMove from 'react-flip-move';
 import './index.css';
 
 
