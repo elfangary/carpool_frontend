@@ -15,3 +15,25 @@ h1, h2, h3, h4, h5, h6, p{
 button{
 	cursor: pointer;
 }
+input{
+	border: none;
+    border-bottom: 2px solid rgba(255,255,255,.3);
+	line-height: 40px;
+	margin-bottom: 25px;
+}
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: '';
+  clear: both;
+}
+input:focus{
+    outline: 0;
+}
+input:-webkit-autofill {
+	border: $border-style !important;
+	-webkit-text-fill-color: white !important;
+	background-color: blue !important;
+	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+	transition: background-color 5000s ease-in-out 0s;
+}

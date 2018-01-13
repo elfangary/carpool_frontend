@@ -1,6 +1,6 @@
 .profile{
 	height: 100%;
-	/*overflow: auto*/
+	overflow: auto
 }
 .sclearfix::after{
 	content: "";

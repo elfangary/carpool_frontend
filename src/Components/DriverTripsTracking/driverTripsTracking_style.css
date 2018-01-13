@@ -18,11 +18,6 @@
 	width: 60%;
 	margin-left: 5%;
 }
-.clearfix::before, .clearfix::after{
-	clear: both;
-	display: table;
-	content: '';
-}
 .driver-profile-picture {
 	border: 1px solid #d7d7d7;
 	border-radius: 50%;
