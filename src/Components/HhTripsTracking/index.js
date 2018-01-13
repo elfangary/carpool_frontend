@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
+import '../DriverTripsTracking/driverTripsTracking_style.css';
 
 export default class HhTripsTracking extends Component {
 

@@ -1,7 +1,7 @@
 .App {
   font-style: Helvetica, sans-serif;
-  height: 100%;
-  /*overflow: auto;*/
+  /*height: 100%;*/
+  overflow: auto;
 }
 .header {
   float: right;
@@ -24,15 +24,19 @@
 }
 .footer {
   background-color: #434343;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 30px;
-  margin-top: -30px;
+  /*margin-top: 30px;*/
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
-  z-index: 1000;
+  /*z-index: 1000;*/
 }
 .footer-link {
   color: #fff;
