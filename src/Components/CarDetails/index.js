@@ -19,18 +19,14 @@ export default class CarDetails extends Component {
 	};
 
 	handleChange = (event) => {
-		console.log("in option");
-		console.log(event.target.name);
 		this.setState({
 			car_id: parseInt(event.target.value)
 		});
 	};
 
-	handelChangeForm( event ){
+	handelChangeForm(event){
 		const {car} = this.state;
 		car[event.target.name] = event.target.value
-		console.log("in carDetails ")
-		console.log(car);
 		this.setState({
 			car
 		})
@@ -38,7 +34,7 @@ export default class CarDetails extends Component {
 	render() {
 		const {car_id} = this.state;
 		const { cars, loading, error} = this.props;
-		var displayed_car = cars[0];
+		var displayed_car = null;
 
 		if(car_id){
 			for (var i = 0; i < cars.length; i++) {
@@ -46,18 +42,22 @@ export default class CarDetails extends Component {
 			}
 		}
 
-		console.log('hamaaadaaaaaaaaaaaaaaaaaaaaa', this.state )
 		return (
 			<div>
 				<Cars car_id={car_id} deleted={this.state.deleted} onChange={this.handleChange.bind(this)}/>
 				{
-					displayed_car? 
+					displayed_car?
 				<div>
 					<p>model: {displayed_car.model}</p>
 					<p>color: {displayed_car.color}</p>
 					<p>number: {displayed_car.number}</p>
 					<button type="button" onClick={ ()=> { this.setState({deleted: true}); this.props.deleteCar(displayed_car.id) } } >Delete Car</button>
-				</div> : null
+				</div> :
+					<div>
+						<p>model</p>
+						<p>color</p>
+						<p>number</p>
+					</div>
 				}
 				<div>
 					<form>

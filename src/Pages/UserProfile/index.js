@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import DriverContainer from '../../Containers/DriverContainer';
 import UserContainer from '../../Containers/UserContainer';
 import CarsContainer from '../../Containers/CarsContainer';
@@ -8,30 +7,30 @@ import HhForm from '../../Containers/HhFormContainer';
 import DriverTrips from '../../Containers/DriverTripsTrackingContainer';
 import HhTrips from '../../Containers/HhTripsTrackingContainer';
 import Notifications from '../../Containers/NotificationsContainer';
-
 import CarDetails from '../../Containers/CarsDetailsContainer';
 import Checkout from '../../Components/Checkout';
 import EditUserForm from '../../Containers/editUserFormContainer';
 import HomePage from '../HomePage';
-// import './index.css';
+import './index.css';
+
+// there is notification component in the first of this div <Notifications />
 
 export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
-				<div className="profile">
-					<Notifications />
+				<div className="profile sclearfix">
+					
 					<UserContainer />
 					<Switch>
-						<Route path="/edit" component={EditUserForm} />
-	              		<Route path="/driving" exact component={DriverContainer} />
-	              		<Route path="/driving/cars" component={CarDetails} />
-	              		<Route exact path="/hitch-hiking" component={HhForm} />
-	              		<Route path="/checkout" component={Checkout} />
-						<Route path="/driving/trips" component={DriverTrips} />
-						<Route path="/hitch-hiking/trips" component={HhTrips} />
-	              	</Switch>
-
+						<Route path="/profile/edit" exact component={EditUserForm} />
+                  		<Route path="/profile/driving" exact component={DriverContainer} />
+                  		<Route path="/profile/driving/cars" component={CarDetails} />
+                  		<Route exact path="/profile/hitch-hiking" component={HhForm} />
+                 		<Route path="/profile/checkout" component={Checkout} />
+                  		<Route path="/profile/driving/trips" component={DriverTrips} />
+                  		<Route path="/profile/hitch-hiking/trips" component={HhTrips} />
+		            </Switch>
 				</div>
 			)
 		}else{
@@ -39,6 +38,5 @@ export default class UserProfile extends Component {
 				<HomePage />
 			)
 		}
-		
 	};
 };

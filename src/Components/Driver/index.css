@@ -10,15 +10,145 @@
 	display: table;
 }
 
-/*#from {
-	float: left;
+.driver-container {
+	position: relative;
+	display: flex;
+  	flex-direction: column;
 }
 
-#to {
-	float: right;
+.container {
+	display: inline-block;
+}
+
+.container + .container {
+	margin-left: 10px;
+}
+
+.stop-location {
+	padding-top: 15px;
+	margin-right: 10px;
+}
+
+.box {
+	height: 100px;
+	margin: 10px 20px;
+	/* border-bottom: 1px solid grey; */
 }
 
 .location {
+	padding-top: 5px;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.stop_point {
+	width: 50%;
+}
+
+.new-stop {
+	background-color: white;
+	padding: 0;
+	border: 0;
+	border-bottom: 1px solid rgb(180, 175, 175);
+	margin-left: 10px;
+}
+
+.new-stop:hover {
+	color: #4182A7;
+}
+
+.new-stop:visited {
+	border: 0;
+	background-color: white;
+	color: #4182A7;
+}
+
+.title {
+	font-size: 12px;
+	margin-right: 70px;
+	
+}
+
+.right {
+	float: right;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.left {
 	float: left;
+	display: inline-block;
+}
+
+.calender {
 	width: 100%;
-}*/
+	padding-left: 180px;
+}
+
+.calender-input {
+	border: 0;
+	border-bottom: 1px solid rgb(163, 150, 150);
+}
+
+.day {
+	width: 70%;
+}
+
+.car-details {
+	margin: 0 auto;
+	vertical-align: center;
+}
+
+.car-booking {
+	width: 100%;
+	text-align: center;
+	padding-right: 170px;
+}
+
+.button-box {
+	text-align: center;
+	vertical-align: center;
+	margin: 0 auto;
+}
+
+.button {
+	padding: 10px 70px;
+	background-color: white;
+	color: #4182A7;
+	font-size: 20px;
+	font-weight: bold;
+	border: 1px solid #4182A7;
+	border-radius: 20px;
+}
+
+.small {
+	font-size: 7px;
+}
+
+.seats {
+	border: 0;
+	border-bottom: 1px solid rgb(161, 150, 150);
+	height: 20px;
+	margin-left: 10px;
+}
+
+.label { 
+	margin-right: 10px;
+}
+
+.inline {
+	display: inline-table;
+}
+
+.flex-boxing {
+	position: relative;
+}
+
+.flex-child {
+	margin: 0 auto;
+	vertical-align: middle;
+}
+

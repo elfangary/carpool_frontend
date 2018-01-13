@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';

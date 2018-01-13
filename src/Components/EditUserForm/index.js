@@ -30,13 +30,11 @@ export default class EditUserForm extends Component{
 		;
 		this.setState({ user });
 	}
-	
+
 	componentWillMount(){
 		if(!this.props.user.first_name){
 			Axios.get("http://localhost:3001/user.json").then((response)=>{
 				this.setState({...this.state, user: response.data})
-				console.log("hani test");
-				console.log(this.state);
 			})
 		}
 	}
@@ -59,10 +57,7 @@ export default class EditUserForm extends Component{
 				<input type="text" name="last_name" placeholder="lastName" value={last_name} onChange={this.handelChange.bind(this)} />
 				<input type="text" name="email" placeholder="email" value={email} onChange={this.handelChange.bind(this)} />
 				<input type="text" name="phone" placeholder="phone number" value={phone} onChange={this.handelChange.bind(this)} />
-				
-
 				<input type="file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />
-				
 				<input type="password" name="password" placeholder="password" value={password} onChange={this.handelChange.bind(this)} />
 				<input type="password" name="password_confirmation" value={password_confirmation}placeholder="confirm password" onChange={this.handelChange.bind(this)}/>
 				<button type="button" onClick={() => {this.props.updateUser(user); console.log("we"); console.log(this.state.user) } }>next</button>

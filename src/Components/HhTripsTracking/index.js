@@ -18,6 +18,10 @@ export default class HhTripsTracking extends Component {
         }
     }
 
+    componentWillMount () {
+        this.props.getHhTripsTracking("upcoming");
+    }
+
     handleClick = (trip_id, value) => {
         this.props.changeHhStopPointStatus(trip_id, value);
     }
