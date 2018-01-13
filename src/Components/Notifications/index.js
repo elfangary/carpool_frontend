@@ -24,7 +24,6 @@ export default class Notifications extends Component {
         connected: () => {},
         received: (data) => {
             this.setState({newNotificationsNumber: this.state.newNotificationsNumber + 1})
-          alert(`${data.body}`);
             }
       });
     }
