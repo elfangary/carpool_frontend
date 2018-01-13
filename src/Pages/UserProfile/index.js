@@ -13,7 +13,6 @@ import EditUserForm from '../../Containers/editUserFormContainer';
 import HomePage from '../HomePage';
 import './index.css';
 
-// there is notification component in the first of this div <Notifications />
 
 export default class UserProfile extends Component {
 	render() {

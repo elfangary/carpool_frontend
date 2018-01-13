@@ -1,16 +1,16 @@
-.profile-container{
+.profile-container {
   background-color: #303030;
   width: 32%;
   float: left;
   color: #4182A7;
   height: 100%;
 }
-.profile-container .profile-content{
+.profile-container .profile-content {
 	padding: 25px;
 	position: absolute;
   /*height: 624px;*/
 }
-.profile-container a{
+.profile-container a {
 	color: #4182A7;
 	text-decoration: none;
 	border: 1px solid #4182A7;
@@ -18,7 +18,7 @@
 	padding: 3px 20px;
 	font-size: 15px;
 }
-.profile-container .edit-link{
+.profile-container .edit-link {
 	color: grey;
 	border: 0;
 	margin-left: 10px;
@@ -37,34 +37,34 @@
 	display: inline-block;
 	margin-top: 40px;
 }
-.profile-container .header div{
+.profile-container .header div {
 	float: left;
 	width: 50%;
 }
-.header .profile-pic-edit-link p:first-child{
+.header .profile-pic-edit-link p:first-child {
 	position: fixed;
 	left: 330px;
 }
-.header .profile-pic-edit-link p:first-child a{
+.header .profile-pic-edit-link p:first-child a {
 	border: 0;
 	color: grey;
 	font-size: 13px;
 }
-.profile-container .notification-link{
+.profile-container .notification-link {
 	position: fixed;
 	right: 20px;
 	background-color: #4182A7;
 	color: white;
 	padding: 5px;
 }
-.profile-container .profile-content footer{
+.profile-container .profile-content footer {
 	position: fixed;
 	bottom: 70px;
 	margin: auto;
 	left: 30px;
 	right: 10px;
 }
-.profile-container .profile-content footer a{
+.profile-container .profile-content footer a {
 	width: 50%;
 	border-radius: 0;
 	padding: 10px 30px;
@@ -72,64 +72,62 @@
 	color: white;
 	font-size: 20px;
 }
-.profile-container .profile-content footer a:first-child{
-	border-right: 1px solid white; 
+.profile-container .profile-content footer a:first-child {
+	border-right: 1px solid white;
 }
 .profile-container .profile-content footer a:focus {
 	background-color: white;
 	color: #4182A7;
 	text-decoration: none;
 }
-.profile-container .profile-links{
+.profile-container .profile-links {
 	line-height: 70px;
 }
-.profile-container .profile-links a + a{
+.profile-container .profile-links a + a {
 	margin-left: 8px;
 }
-.profile-container .profile-links a:focus{
+.profile-container .profile-links a:focus {
 	text-decoration: none;
-	/*background-color: #909090;*/
 	background-color: grey;
-	/*color: #2070A7;*/
 	color: #1C567E;
 	border-color: #1C567E;
 }
-.profile-container .contact-details{
+.profile-container .contact-details {
 	margin-top: 15px;
 	height: 90px;
 }
-.profile-container .contact-details > p{
+.profile-container .contact-details > p {
 	width: 30%;
 	float: left;
 	font-size: 20px;
 	text-align: center;
 }
-.profile-container .contact-details > p span{
+.profile-container .contact-details > p span {
 	display: block;
 	text-align: center;
 	margin-bottom: -5px;
 }
-.profile-container .contact-details div{
+.profile-container .contact-details div {
 	display: inline-block;
 	float: left;
 	border-left: 1px groove #989898;
 	width: 60%;
 }
-.profile-container .contact-details .email-phone p{
+.profile-container .contact-details .email-phone p {
 	margin-left: 15px;
 }
-.profile-container .contact-details .email-phone p:first-child{
+.profile-container .contact-details .email-phone p:first-child {
 	margin-top: 8px;
 	margin-bottom: -1px;
 }
-.profile-content form{
+.profile-content form {
 	margin-top: 10px;
 }
-.profile-content form legend{
+.profile-content form legend {
 	font-size: 15px;
 	margin-bottom: 15px;
 }
-.profile-content form input{
+.profile-content form input {
 	display: block;
 	border: none;
     border-bottom: 2px solid rgba(255,255,255,.3);
@@ -140,15 +138,13 @@
 	margin-top: 25px;
 	width: 60%;
 }
-.profile-content .StripeCheckout{
+.profile-content .StripeCheckout {
 	float: right;
-/*	margin-right: 20px;*/
 	margin-top: 30px;
 	font-size: 12px;
 	width: 30%;
 }
-.profile-content .StripeCheckout > span{
+.profile-content .StripeCheckout > span {
 	padding: 0px 7px !important;
 	font-size: 11px !important;
 }
-	

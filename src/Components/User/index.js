@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Toggle from 'react-toggle'
-import "react-toggle/style.css";
+// import "react-toggle/style.css";
 import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';

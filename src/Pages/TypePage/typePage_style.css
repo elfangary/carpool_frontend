@@ -1,10 +1,10 @@
-.user-nav-link{
+.user-nav-link {
 	float: right;
 }
-.type-container{
+.type-container {
 	height: 100%;
 }
-.type-page{
+.type-page {
 	color: #434343;
 	position: absolute;
 	top: 0;
@@ -17,6 +17,7 @@
 	float: right;
 	text-align: center;
 }
+
 .type-link{
 	color: #fff;
 	background-color: #418cb6;
