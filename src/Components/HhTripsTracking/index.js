@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import '../DriverTripsTracking/driverTripsTracking_style.css';
+import Rater from 'react-rater';
+import 'react-rater/lib/react-rater.css';
+
 
 export default class HhTripsTracking extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            ratings: []
+        };
+    };
+
+    handleRate = (trip_id, user_id, event) => {
+        if (event.type === 'click') {
+            console.log(user_id)
+            this.props.rateUser([{trip_id, user_id, rate: event.rating}])
+        }
+    }
 
     componentWillMount () {
         this.props.getHhTripsTracking("upcoming");
@@ -13,7 +29,8 @@ export default class HhTripsTracking extends Component {
     }
 
     render () {
-        const {hhTrackedTrips, getHhTripsTracking} = this.props;
+        const {hhTrackedTrips, getHhTripsTracking } = this.props;
+        const { ratings } = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -49,7 +66,9 @@ export default class HhTripsTracking extends Component {
 
                                 )
                             })}
-                        </div>
+                    {(trip.status === "ended")? (<Rater total={5} rating={this.state.rate} onRate={(event) => this.handleRate(trip.id, trip.driver.id, event)} />): null
+                    }
+                        </div> 
                     )
                 })
             }

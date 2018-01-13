@@ -2,7 +2,7 @@ import { GET_TRIPS_TRACKING_LOADING,
     GET_TRIPS_TRACKING_SUCCESS, GET_TRIPS_TRACKING_FAILURE, CHANGE_HH_STOP_STATUS_LOADING,
      CHANGE_HH_STOP_STATUS_SUCCESS, CHANGE_HH_STOP_STATUS_FAILURE,
     CHANGE_TRIP_STATUS_LOADING, CHANGE_TRIP_STATUS_SUCCESS,
-     CHANGE_TRIP_STATUS_FAILURE } from '../Actions/DriverTripsTracking';
+     CHANGE_TRIP_STATUS_FAILURE} from '../Actions/DriverTripsTracking';
 
 const INITIAL_STATE = {
     trackedTrips: [],
@@ -76,7 +76,7 @@ export default function(current_state = INITIAL_STATE, action){
                 loading: false
             };
             break;
-        default:
-            return current_state;
+            default:
+                return current_state;
     }
 };

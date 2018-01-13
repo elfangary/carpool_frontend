@@ -1,10 +1,6 @@
 import Axios from 'axios';
-import {driverTripsApi} from '../apiConfig';
-import {updateHhStopApi} from '../apiConfig';
-import {tripStatusApi} from '../apiConfig';
-import {addBalanceToDriverApi} from '../apiConfig';
-import {addBalanceToHhApi} from '../apiConfig';
-
+import {driverTripsApi,updateHhStopApi, tripStatusApi,
+     addBalanceToDriverApi, addBalanceToHhApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
@@ -44,7 +40,6 @@ export const getTripsTrackingFailure = (error) => {
         error
     };
 };
-
 export const changeHhStopStatusLoading = () => {
     return {
         type: CHANGE_HH_STOP_STATUS_LOADING

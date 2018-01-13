@@ -41,7 +41,7 @@ export default class HHForm extends Component {
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div>
-                <form>
+                <form id="create-course-form">
                     <fieldset className="Location">
                         <legend>Location Details</legend>
                         <label>Moving from</label>
@@ -86,8 +86,10 @@ export default class HHForm extends Component {
                                 return (
                                     <div>
                                         <label htmlFor="stop_point-id">{stop_point.location.name}</label>
+                                        {(stop_point === trip.stop_points.last)? <input type="radio" name="stop_point_id" id="disabled" 
+                                             value= {stop_point.id} disabled /> :
                                         <input type="radio" name="stop_point_id" id="stop_point_id"
-                                            value= {stop_point.id} onChange={this.handleNewHhStopPoint} />
+                                            value= {stop_point.id} onChange={this.handleNewHhStopPoint} />}
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
                                     </div>

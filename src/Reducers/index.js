@@ -11,7 +11,6 @@ import hitchHikerTrackedTripsReducer from './hitchHikerTripsTracking';
 import notificationsReducer from './notifications';
 import adminSignUpFormReducer from './admins/signUpForm';
 import adminLoginReducer from './admins/loginForm';
-import ratingReducer from './rating';
 import { LOG_OUT } from '../Actions/loginForm';
 
 const appReducer = combineReducers({
@@ -26,8 +25,7 @@ const appReducer = combineReducers({
 	hhTrackedTrips: hitchHikerTrackedTripsReducer,
 	notifications: notificationsReducer,
 	admin_signUp: adminSignUpFormReducer,
-	admin_login: adminLoginReducer,
-	rating: ratingReducer
+	admin_login: adminLoginReducer
 });
 
 const rootReducer = (state, action) => {
