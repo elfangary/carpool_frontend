@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Login from '../Components/Login';
 import { loginLoading, login, loginSuccess, loginFailure, setCurrentUser } from '../Actions/loginForm';
 import set_authentication_token from '../utils/authentication_token';
+import history from '../history';
 
 const mapStateToProps = (state) => {
     return {
@@ -17,13 +18,12 @@ const mapDispatchToProps = (dispatch) => {
         login: (user) => {
             dispatch(loginLoading());
             dispatch(login(user)).then(response => {
-                
                 if(response.payload.status < 400){
-                    
                     const token = response.payload.data.auth_token;
                     localStorage.setItem('jwtToken', token);
                     set_authentication_token(token)
                     dispatch(loginSuccess(response.payload.data.user));
+                    history.push('/');
                 }else{
                     dispatch(loginFailure(response.payload.response.data.message));
                 }

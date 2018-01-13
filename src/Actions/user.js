@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { userApi, updateUserApi } from '../apiConfig';
+import { userApi, updateUserApi, userRatingApi } from '../apiConfig';
 
 // Action Types
 // Get user details
@@ -18,6 +18,11 @@ export const UPDATE_USER_FAILURE = 'UPDATE_USER_FAILURE';
 //Update User points
 export const DECREMENT_USER_POINTS = 'DECREMENT_USER_POINTS';
 export const INCREMENT_USER_POINTS = 'INCREMENT_USER_POINTS';
+
+export const RATE_USER_LOADING = 'RATE_USER_LOADING';
+export const RATE_USER = 'RATE_USER';
+export const RATE_USER_SUCCESS = 'RATE_USER_SUCCESS';
+export const RATE_USER_FAILURE = 'RATE_USER_FAILURE';
 
 
 // Action Creators
@@ -93,3 +98,31 @@ export const incrementUserPoints = (amount) => {
         amount
     }
 }
+
+// Rating Users
+export const rateUserLoading = () => {
+    return {
+        type: RATE_USER_LOADING
+    };
+};
+
+export const rateUser = (ratings) => {
+    return {
+        type: RATE_USER,
+        payload: Axios.patch(userRatingApi, {ratings})
+    };
+};
+
+export const rateUserSuccess = (rate) => {
+    return {
+        type: RATE_USER_SUCCESS,
+        rate
+    };
+};
+
+export const rateUserFailure = (error) => {
+    return {
+        type: RATE_USER_FAILURE,
+        error
+    };
+};

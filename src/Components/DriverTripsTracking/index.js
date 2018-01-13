@@ -1,23 +1,39 @@
-
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
-import Rating from '../../Containers/RatingContainer';
+import Rater from 'react-rater';
+import 'react-rater/lib/react-rater.css';
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            status: ''
+            ratings: []
         };
     };
 
-    handleClick = (trip_id, value) => {
+    handleClick = (trip_id, value) => { 
         this.props.changeTripStatus(trip_id, value);
     }
 
+    handleSubmit = () => {
+        this.props.rateUser(this.state.ratings);
+        this.state.ratings = [];
+    }
+
+    handleUserRating = (trip_id, user_id, event) => {
+        if (event.type === 'click') {
+            const element = this.state.ratings.find(rating => rating.trip_id === trip_id && rating.user === user_id);
+            if (element) {
+                element.rating = event.rating;
+            } else {
+                this.state.ratings.push({trip_id, user_id, rating: event.rating});
+            }
+        }
+    }
+
     render () {
-        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange} = this.props;
-        const { status } = this.state;
+        const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser } = this.props;
+        const { ratings } = this.state;
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -41,15 +57,16 @@ export default class DriverTripsTracking extends Component {
                                         <p>{stop_point.location}</p>
                                         <p>{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
                                         <p>{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
-                                        {
-                                            stop_point.hh.map((hh) => {
+                                        { 
+                                            stop_point.hh.map((hh) => { 
                                                 return (
+                                                    (hh.confirm != "rejected") ? 
                                                     <div>
                                                         <p>{hh.name}</p>
                                                         <p>Booked Seats: {hh.booked_seats}</p>
 
                                                         {
-                                                        (hh.confirm == "pending")?
+                                                        (trip.status === "pending" && hh.confirm === "pending")?
                                                             <div>
                                                                 <label htmlFor="accept">Accept</label>
                                                                 <input type="radio" id= "accept" name={hh.hh_id} value="accepted" onChange={() => changeHhStopStatus(hh.id, "accepted")}/>
@@ -58,16 +75,30 @@ export default class DriverTripsTracking extends Component {
                                                             </div>
                                                         : <p>{hh.confirm}</p>
                                                         }
+                                                        {
+                                                            (trip.status === "ended" && hh.confirm === "accepted")?  (<div>
+                                                                <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                                                </div>) : null
+                                                        }
                                                     </div>
+                                                    : null
                                                 )
                                             })
                                         }
                                     </div>
                                 )
                             })}
+                            <p>
                                 {trip.start && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
                                 {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
                                 {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
+                            </p>
+                            {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
+                                stop_point.hh.map((hh) => {
+                                    hh.confirm != "accepted"
+                                })
+                            }))? (
+                            <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>) : null}
                         </div>
                     )
                 })

@@ -1,0 +1,38 @@
+.clearfix::before, .clearfix::after{
+	display: table;
+	clear: both;
+	content: '';
+}
+.user-nav-link{
+	float: right;
+}
+.type-container{
+	height: 100%;
+}
+.type-page{
+	color: #434343;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 50%;
+	height: 30%;
+	margin: auto;
+	float: right;
+	text-align: center;
+}
+.type-link{
+	color: #fff;
+	background-color: #418cb6;
+	width: 260px;
+	display: block;
+	text-align: center;
+	border-radius: 30px;
+	height: 60px;
+	line-height: 60px;
+	font-weight: normal;
+	font-size: 15px;
+	margin: auto;
+	margin-top: 40px;
+}

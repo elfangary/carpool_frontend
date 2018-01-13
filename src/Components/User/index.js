@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Toggle from 'react-toggle'
 import "react-toggle/style.css";
-// import "./user_style.css";
+import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
 // import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
-import StarRatingComponent from 'react-star-rating-component';
+import Rater from 'react-rater';
+import 'react-rater/lib/react-rater.css';
 
 export default class User extends Component{
 	constructor(props){
@@ -16,7 +17,7 @@ export default class User extends Component{
 	};
 
 	componentWillMount(){
-        this.props.getUser();
+		this.props.getUser();
     }
 
 	handleChange = (event) => {
@@ -27,9 +28,6 @@ export default class User extends Component{
 
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
-		console.log("hayyyyyy");
-		
-		console.log(user.profile_pic);
 		const { amount, link } = this.state;
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
@@ -49,27 +47,28 @@ export default class User extends Component{
             )
 		}else{
 		    return (
-		    	<div className="clearfix">
+		    	// It was a clearfix div
+
 	    			<div className="profile-container">
 						<div className="clearfix">
 							<header className="header">
 								<Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i> </Link>
 								<div className="profile-pic-edit-link">
 								 	<img src={user.profile_pic} className="profile-picture"/>
-								 	<p><Link to={'/edit'} className="edit-link">Edit my profile</Link></p>
+								 	<p><Link to={'/profile/edit'} className="edit-link">Edit my profile</Link></p>
 							 	</div>
 							 	<div className="user-name-rate">
 									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-									<StarRatingComponent  name="rate1" starCount={5} value={user.rate / user.raters_no} editing={false}/>
+									<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
 								</div>
 							</header>
 						</div>
 
 						<section>
 							<div className="clearfix">
-								<Link to={'/driving/cars'}>My Cars</Link>
-								<Link to={'/driving/trips'}>My Trips</Link>
-								<Link to={'/hitch-hiking/trips'}>HH-trips</Link>
+								<Link to={'/profile/driving/cars'}>My Cars</Link>
+								<Link to={'/profile/driving/trips'}>My Trips</Link>
+								<Link to={'/profile/hitch-hiking/trips'}>HH-trips</Link>
 							</div>
 							<p>{points} points</p>
 							<p>{user.email}</p>
@@ -88,11 +87,10 @@ export default class User extends Component{
 							<p><Link to="/" onClick={() => {logout()} }>logout</Link></p>
 						</section>
 						<footer>
-							<Link to={'/hitch-hiking'}>Hitch-Hiking</Link>
-							<Link to={'/driving'}>Driving</Link>
+							<Link to={'/profile/hitch-hiking'}>Hitch-Hiking</Link>
+							<Link to={'/profile/driving'}>Driving</Link>
 						</footer>
 				    </div>
-		        </div>
 			)
 		}
 	}
