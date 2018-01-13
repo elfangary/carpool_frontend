@@ -20,7 +20,9 @@ export default class UserProfile extends Component {
 		if(localStorage.jwtToken){
 			return (
 				<div className="profile sclearfix">
-					
+					<div className="notifications-displayed">
+                        <Notifications />
+                    </div>
 					<UserContainer />
 					<Switch>
 						<Route path="/profile/edit" exact component={EditUserForm} />

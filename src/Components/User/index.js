@@ -28,8 +28,6 @@ export default class User extends Component{
 	render(){
 		const { user, loading, error, handleChangeLink, logout, points } = this.props;
 		const { amount, link } = this.state;
-		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
-		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){
             return (
             	<div className="clearfix">
@@ -51,7 +49,6 @@ export default class User extends Component{
     				<div className="profile-content clearfix">
 						<div className="clearfix">
 							<header className="header">
-								<Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i> </Link>
 								<div className="profile-pic-edit-link">
 									<p><Link to="/" onClick={() => {logout()} }>logout</Link></p>
 								 	<img src={user.profile_pic} className="profile-picture"/>
