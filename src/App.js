@@ -23,12 +23,19 @@ import EditUserForm from './Containers/editUserFormContainer';
 
 class App extends Component {
 
+    logout(){
+      localStorage.removeItem('jwtToken');
+    }
   render() {
     return (
         <div className="App clearfix">
           <header className="header">
               {!(localStorage.jwtToken)?
-                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> : null}
+                <Link to="/aboutus" className="nav-link">Who Are We?</Link> :
+                <div className="header">
+                  <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
+                  <Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i></Link>
+                </div>}
           </header>
           <Switch>
             <Route path="/" exact component={HomePage} />

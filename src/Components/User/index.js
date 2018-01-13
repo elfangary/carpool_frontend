@@ -31,28 +31,32 @@ export default class User extends Component{
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){
             return (
-            	<div className="clearfix">
-	                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-					<span class="sr-only">Loading...</span>
+            	<div className="fixed-container">
+            		<div className="page-content">
+	                	<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+						<span class="sr-only">Loading...</span>
+					</div>
 				</div>
             )
         }else if(error){
             return (
-                <div className="clearfix">
-					<p>Sorry, something went Wrong</p>
-					<p>{error}</p>
+                <div className="fixed-container">
+                	<div className="page-content">
+						<p>Sorry, something went Wrong</p>
+						<p>{error}</p>
+					</div>
 				</div>
             )
 		}else{
 		    return (
-		    	// there was a clearfix div
+    			<div className="fixed-container">
     			<div className="profile-container">
     				<div className="profile-content clearfix">
 						<div className="clearfix">
 							<header className="header">
-								<Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i> </Link>
+								
 								<div className="profile-pic-edit-link">
-									<p><Link to="/" onClick={() => {logout()} }>logout</Link></p>
+									<p></p>
 								 	<img src={user.profile_pic} className="profile-picture"/>
 								 	<p><Link to={'/profile/edit'} className="edit-link">Edit my profile</Link></p>
 							 	</div>
@@ -91,6 +95,7 @@ export default class User extends Component{
 							<Link to={'/profile/hitch-hiking'}>Hitch-Hiking</Link>
 							<Link to={'/profile/driving'}>Driving</Link>
 						</footer>
+					</div>
 					</div>
 			    </div>
 			)

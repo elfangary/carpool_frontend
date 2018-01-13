@@ -1,11 +1,14 @@
 .App {
   font-style: Helvetica, sans-serif;
-  overflow: auto;
-  height: 100%;
+  /*overflow: auto;*/
+  /*height: 100%;*/
 }
 .App > .header {
   float: right;
-  margin-top: 60px;
+  margin-top: 40px;
+  /*position: fixed;*/
+  /*top: 50px;*/
+  /*right: 30px;*/
 }
 .nav-link {
   color: #fff;
@@ -25,10 +28,10 @@
 .footer {
   width: 100%;
   background-color: #303030;
-  position: absolute;
-  bottom: 0;
+  /*position: absolute;*/
+/*  bottom: 0;
   left: 0;
-  right: 0;
+  right: 0;*/
   height: 30px;
   padding: 0 30px;
   display: flex;
@@ -36,6 +39,8 @@
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
+  float: left;  
+  clear: both;
 /*  z-index: 1000;*/
 }
 /*.footer div{

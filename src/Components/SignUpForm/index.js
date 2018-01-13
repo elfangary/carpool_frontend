@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './signUp_style.css';
-import "../User/user_style.css";
 import {Redirect} from 'react-router-dom';
 import Login from '../../Containers/loginFormContainer';
 import UserProfile from '../../Pages/UserProfile';
@@ -49,13 +48,11 @@ export default class SignUpForm extends Component{
 
 		return(
 			<div className="signup-component">
-				<div className="profile-container">
+				<div className="clearfix">
 					<div className="signup-content">
 						<h1>Hi!</h1>
 						<p><span>Since it is the first time we meet, </span>we would like to know more about<span> you.</span></p>
 					</div>
-				</div>
-					<div className="clearfix">
 						<form className="signup-form">
 							<input type="text" name="first_name" placeholder="First Name" onChange={this.handelChange.bind(this)} />
 			 				<input type="text" name="last_name" placeholder="Last Name" onChange={this.handelChange.bind(this)} />
@@ -71,12 +68,12 @@ export default class SignUpForm extends Component{
 							<input type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
 							<input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={this.handelChange.bind(this)}/>
 							<label htmlFor="submit" className="submit-label">Ready to move on?</label>
-							<button id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>next</button>
+							<button id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
 							{
-								(this.props.error !== null)? <p>{this.props.error}</p> : null
+								(this.props.error !== null)? <p className="error">{this.props.error}</p> : null
 							}
 						</form>
-					</div>
+				</div>
 			</div>
 		)
 	}
