@@ -1,11 +1,11 @@
 .App {
   font-style: Helvetica, sans-serif;
-  /*height: 100%;*/
   overflow: auto;
+  height: 100%;
 }
-.header {
+.App > .header {
   float: right;
-  margin-top: 70px;
+  margin-top: 60px;
 }
 .nav-link {
   color: #fff;
@@ -18,26 +18,31 @@
 }
 .user-nav-link {
   margin-right: 200px;
-  color: #434343;
+  color: #303030;
   text-transform: uppercase;
   font-weight: bold;
 }
 .footer {
-  background-color: #434343;
+  width: 100%;
+  background-color: #303030;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 30px;
-  /*margin-top: 30px;*/
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
-  /*z-index: 1000;*/
+/*  z-index: 1000;*/
 }
+/*.footer div{
+  width: 33.33%;
+  display: inline-block;
+  float: left;
+}*/
 .footer-link {
   color: #fff;
 }
@@ -54,10 +59,4 @@
 }
 .social-media ~ .social-media {
   margin-left: 30px;
-}
-
-.clearfix::before, .clearfix::after {
-  display: table;
-  content: '';
-  clear: both;
 }

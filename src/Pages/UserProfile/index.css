@@ -1,4 +1,9 @@
 .profile{
-	/*height: 100%;*/
-	/*overflow: auto*/
+	height: 100%;
+	overflow: auto;
+}
+.sclearfix::after{
+	content: "";
+	display: table;
+	clear: both;
 }

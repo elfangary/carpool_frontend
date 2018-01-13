@@ -58,8 +58,8 @@ export default class EditUserForm extends Component{
 				<input type="text" name="email" placeholder="email" value={email} onChange={this.handelChange.bind(this)} />
 				<input type="text" name="phone" placeholder="phone number" value={phone} onChange={this.handelChange.bind(this)} />
 				<input type="file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />
-				<input type="password" name="password" placeholder="password" value={password} onChange={this.handelChange.bind(this)} />
-				<input type="password" name="password_confirmation" value={password_confirmation}placeholder="confirm password" onChange={this.handelChange.bind(this)}/>
+				<input type="password" name="password" placeholder="ReEnter your old password or new one" value={password} onChange={this.handelChange.bind(this)} required />
+				<input type="password" name="password_confirmation" value={password_confirmation}placeholder="confirm password" onChange={this.handelChange.bind(this)} required/>
 				<button type="button" onClick={() => {this.props.updateUser(user); console.log("we"); console.log(this.state.user) } }>next</button>
 			</form>
 		)

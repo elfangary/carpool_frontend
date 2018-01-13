@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
 import UserProfile from './Pages/UserProfile';
 import {Link, Route, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
@@ -7,7 +7,7 @@ import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
 // import Notifications from './Containers/NotificationsContainer';
 import TypePage from './Pages/TypePage';
-import 'antd/lib/style/index.css';
+// import 'antd/lib/style/index.css';
 
 import DriverContainer from './Containers/DriverContainer';
 import UserContainer from './Containers/UserContainer';
@@ -23,18 +23,12 @@ import EditUserForm from './Containers/editUserFormContainer';
 
 class App extends Component {
 
-    logout(){
-      localStorage.removeItem('jwtToken');
-    }
-
-
   render() {
     return (
         <div className="App clearfix">
           <header className="header">
-              {(localStorage.jwtToken)?
-                  <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
-                : <Link to="/aboutus" className="nav-link">Who Are We?</Link>}
+              {!(localStorage.jwtToken)?
+                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> : null}
           </header>
           <Switch>
             <Route path="/" exact component={HomePage} />

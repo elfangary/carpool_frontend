@@ -13,14 +13,12 @@ import EditUserForm from '../../Containers/editUserFormContainer';
 import HomePage from '../HomePage';
 import './index.css';
 
-// there is notification component in the first of this div <Notifications />
 
 export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
-				<div className="profile">
-					
+				<div className="profile sclearfix">
 					<UserContainer />
 					<Switch>
 						<Route path="/profile/edit" exact component={EditUserForm} />

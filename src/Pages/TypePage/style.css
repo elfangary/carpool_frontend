@@ -1,13 +1,12 @@
-.clearfix::before, .clearfix::after{
-	display: table;
-	clear: both;
-	content: '';
+.user-nav-link {
+	float: right;
 }
-.type-container{
 
-	/*height: 100%;*/
+.type-container {
+	height: 100%;
 }
-.type-page{
+
+.type-page {
 	color: #434343;
 	position: absolute;
 	top: 0;
@@ -20,6 +19,7 @@
 	float: right;
 	text-align: center;
 }
+
 .type-link{
 	color: #fff;
 	background-color: #418cb6;

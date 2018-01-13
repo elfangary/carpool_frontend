@@ -3,14 +3,10 @@ import dateFormat from 'dateformat';
 import Rating from '../../Containers/RatingContainer';
 import { Slider, Modal, Tabs, Radio, Menu } from 'antd';
 import 'antd/dist/antd.css';
-import './driverTripsTracking_style.css';
+// import './driverTripsTracking_style.css';
 const TabPane = Tabs.TabPane;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
-
-
-
-// const {Stop }= Slider;
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
@@ -72,7 +68,7 @@ export default class DriverTripsTracking extends Component {
         backgroundColor: '#fafafa'
       }
       return (
-        <div className="clearfix">
+        <div className="driverTripsTracking">
           <h2>Your Trips</h2>
           <div className="tabs">
             <Tabs
@@ -89,7 +85,7 @@ export default class DriverTripsTracking extends Component {
         {
           trackedTrips.map((trip) => {
               return (
-                  <div className="trip">
+                  <div className="trip clearfix">
                       <img src={trip.driver.profile_pic} className="driver-profile-picture"/>
                       <div className="trip-container clearfix">
                         <div className="flex">
@@ -126,6 +122,7 @@ export default class DriverTripsTracking extends Component {
                                           <p className="hh-details hh-phone">{request.phone}</p>
                                           <p className="hh-details hh-email">{request.email}</p>
                                           <p className="hh-details">Booked Seats: {request.seats}</p>
+
                                           {
                                             (request.confirm == "pending")?
 
