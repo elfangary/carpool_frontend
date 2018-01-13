@@ -3,6 +3,8 @@ import Driver from '../Components/Driver';
 import {
     addTripLoading, addTrip, addTripSuccess, addTripFailure
 } from '../Actions/driver';
+import history from '../history';
+
 
 const mapStateToProps = function (store){
 	return {
@@ -31,6 +33,7 @@ const mapDispatchToProps = function (dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));
+                    history.push('/profile/driving/trips');
                 }else{
                     dispatch(addTripFailure(response.payload.message));
                 }

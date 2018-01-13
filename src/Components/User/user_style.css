@@ -8,7 +8,7 @@
 .profile-container .profile-content{
 	padding: 25px;
 	position: absolute;
-
+  /*height: 624px;*/
 }
 .profile-container a{
 	color: #4182A7;

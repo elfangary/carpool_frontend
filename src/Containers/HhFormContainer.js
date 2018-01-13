@@ -5,6 +5,7 @@ import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, get
 import { createNotificationLoading, createNotification, createNotificationSuccess, createNotificationFailure }
     from '../Actions/notifications';
 import { decrementUserPoints } from '../Actions/user';
+import history from '../history';
 
 const mapStateToProps = function(state){
     return {
@@ -35,7 +36,8 @@ const mapDispatchToProps = function(dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
-                    dispatch(decrementUserPoints(response.payload.data.points_on_hold))
+                    dispatch(decrementUserPoints(response.payload.data.points_on_hold));
+                    history.push('/profile/hitch-hiking/trips')
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
                 }

@@ -113,6 +113,3 @@
 	color: #ae3130;
 	font-weight: bold;
 }
-.userLoginForm form button:focus{
-	outline: 0;
-}
