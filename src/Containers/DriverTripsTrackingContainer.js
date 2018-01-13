@@ -3,8 +3,7 @@ import { getTripsTrackingLoading, getTripsTracking,
      getTripsTrackingSuccess, getTripsTrackingFailure, changeHhStopStatusLoading, changeHhStopStatus,
       changeHhStopStatusSuccess, changeHhStopStatusFailure,
     changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess,
-     changeTripStatusFailure, addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure,
-     addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure} from '../Actions/DriverTripsTracking';
+     changeTripStatusFailure} from '../Actions/DriverTripsTracking';
 import {incrementUserPoints, rateUserLoading, rateUser, rateUserSuccess, rateUserFailure} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
 

@@ -2,8 +2,6 @@ import { connect } from 'react-redux';
 import HhForm from '../Components/HitchHikerForm';
 import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, getFilteredTripsFailure,
     addHhStopPointLoading, addHhStopPoint, addHhStopPointSuccess, addHhStopPointFailure } from '../Actions/HhForm';
-import { createNotificationLoading, createNotification, createNotificationSuccess, createNotificationFailure }
-    from '../Actions/notifications';
 import { decrementUserPoints } from '../Actions/user';
 
 const mapStateToProps = function(state){

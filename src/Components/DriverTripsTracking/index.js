@@ -2,14 +2,41 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
+import { Modal, Button } from 'antd';
+import 'antd/dist/antd.css';
+import './driverTripsTracking_style.css';
 
 export default class DriverTripsTracking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            ratings: []
+            ratings: [],
+            request: {
+                trip_id: null
+            }
         };
     };
+
+    showModal = (trip_id) => {
+        this.setState({
+          visible: true,
+          request: {
+            trip_id
+          }
+        });
+      }
+      handleOk = (e) => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+      }
+      handleCancel = (e) => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+      }
 
     handleClick = (trip_id, value) => { 
         this.props.changeTripStatus(trip_id, value);
@@ -33,7 +60,12 @@ export default class DriverTripsTracking extends Component {
 
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, rateUser } = this.props;
-        const { ratings } = this.state;
+        const { ratings, request } = this.state;
+        const style = {
+            textTransform:'capitalize',
+            textAlign: 'center',
+            backgroundColor: '#fafafa'
+        }
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -47,6 +79,18 @@ export default class DriverTripsTracking extends Component {
                 </form>
             {
                 trackedTrips.map((trip) => {
+                    const hhs_rate = trip.stop_points.map((stop_point) => {
+                            return stop_point.hh.map((hh) => {
+                                return (
+                                    <div>
+                                        <p className="hh-profile-picture">{hh.profile_pic}</p>
+                                        <p>{hh.name}</p>
+                                        <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                    </div>
+                                )
+                            })
+                            
+                    })
                     return (
                         <div>
                             <p>{trip.driver.first_name} {trip.driver.last_name}</p>
@@ -75,11 +119,6 @@ export default class DriverTripsTracking extends Component {
                                                             </div>
                                                         : <p>{hh.confirm}</p>
                                                         }
-                                                        {
-                                                            (trip.status === "ended" && hh.confirm === "accepted")?  (<div>
-                                                                <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
-                                                                </div>) : null
-                                                        }
                                                     </div>
                                                     : null
                                                 )
@@ -97,8 +136,25 @@ export default class DriverTripsTracking extends Component {
                                 stop_point.hh.map((hh) => {
                                     hh.confirm != "accepted"
                                 })
-                            }))? (
-                            <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>) : null}
+                            }))? (<div>
+                                <Button type="primary" className="open-modal" onClick={() => this.showModal(trip.id)}>Rate Your Hitch Hikers</Button>
+                                <Modal
+                                    title={request.name}
+                                    className="modal"
+                                    visible={this.state.visible}
+                                    onOk={this.handleOk}
+                                    onCancel={this.handleCancel}
+                                    mask={false}
+                                    maskClosable={false}
+                                    width= {300}
+                                    bodyStyle={style}
+                                    style={style}
+                                    >
+                                    <div>{hhs_rate}</div>
+                                    <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>
+                                    </Modal>
+                                    </div>
+                            ) : null}
                         </div>
                     )
                 })

@@ -2,14 +2,46 @@ import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
+import { Modal, Button } from 'antd';
+import 'antd/dist/antd.css';
+import './index.css';
 
 export default class HhTripsTracking extends Component {
     constructor(props){
         super(props);
         this.state = {
-            ratings: []
+            ratings: [],
+            visible: false,
+            request: {
+                first_name: '',
+                last_name: '',
+                profile_pic: null,
+            }
         };
     };
+
+    showModal = (first_name, last_name, profile_pic) => {
+        this.setState({
+          visible: true,
+          request: {
+            first_name,
+            last_name,
+            profile_pic
+          }
+        });
+      }
+      handleOk = (e) => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+      }
+      handleCancel = (e) => {
+        console.log(e);
+        this.setState({
+          visible: false,
+        });
+      }
 
     handleRate = (trip_id, user_id, event) => {
         if (event.type === 'click') {
@@ -27,8 +59,18 @@ export default class HhTripsTracking extends Component {
     }
 
     render () {
+        let closeModal = () => this.setState({ open: false })
+ 
+        let saveAndClose = () => {
+         this.setState({ open: false })
+        }
         const {hhTrackedTrips, getHhTripsTracking } = this.props;
-        const { ratings } = this.state;
+        const { ratings, request } = this.state;
+        const style = {
+            textTransform:'capitalize',
+            textAlign: 'center',
+            backgroundColor: '#fafafa'
+        }
         return (
             <div>
                 <h2>Your Trips</h2>
@@ -63,11 +105,33 @@ export default class HhTripsTracking extends Component {
                                     </div>
 
                                 )
-                            })}
-                    {(trip.status === "ended")? (<Rater total={5} rating={this.state.rate} onRate={(event) => this.handleRate(trip.id, trip.driver.id, event)} />): null
-                    }
-                        </div> 
-                    )
+                            })}     
+                            {(trip.status === "ended")? (
+                            <div>
+                                <Button type="primary" className="open-modal" onClick={() => this.showModal(trip.driver.first_name, trip.driver.last_name, trip.driver.profile_pic)}>Rate The Driver</Button>
+                                <div className="container">
+                                    <Modal
+                                    title={request.name}
+                                    className="modal"
+                                    visible={this.state.visible}
+                                    onOk={this.handleOk}
+                                    onCancel={this.handleCancel}
+                                    mask={false}
+                                    maskClosable={false}
+                                    width= {300}
+                                    bodyStyle={style}
+                                    style={style}
+                                    >
+                                    <p className="driver-name">How Was Your Trip With {trip.driver.first_name} {trip.driver.last_name} ?</p>
+                                    <p className="driver-profile-picture">{request.profile_pic}</p>
+                                    <p><Rater total={5} rating={this.state.rate} onRate={(event) => this.handleRate(trip.id, trip.driver.id, event)} /></p>
+                                    </Modal>
+                                </div>
+                            </div>)
+                            : null
+                            }
+                                </div> 
+                            )
                 })
             }
             </div>
