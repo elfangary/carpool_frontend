@@ -21,14 +21,29 @@ export default class Login extends Component{
 			jwtToken: localStorage.jwtToken
 			}
 		}
+		this.inputs = {};
 	}
+
 	handelChange(event){
 		this.setState({ [event.target.name]: event.target.value });
 	}
 
-	componentWillReciveProps(nextProps){
-		nextProps = this.props.error;
+	handleErrors(error) {
+		const err = error.split(' ')[0];
+		switch(err) {
+			case 'Invalid': {
+				this.inputs.password.style.borderColor = 'red';
+				this.inputs.email.style.borderColor = 'rgba(255,255,255,.3)';
+				break;
+			}
+			case 'You': {
+				this.inputs.email.style.borderColor = 'red';
+				this.inputs.password.style.borderColor = 'rgba(255,255,255,.3)';
+				break;
+			}
+		}
 	}
+
 	render(){
 		const {email, password} = this.state;
 		const {loggedIn} = this.props;
@@ -47,11 +62,11 @@ export default class Login extends Component{
 				</div>
 				<div className="userLoginForm">
 					<form>
-						<input type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handelChange.bind(this)} />
-						<input type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
+						<input ref={(ref) => this.inputs.email = ref} type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handelChange.bind(this)} />
+						<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="password" onChange={this.handelChange.bind(this)} />
 						<button type="button" onClick={ () =>{this.props.login(this.state); this.setState({error: this.props.error})} }>Next</button>
 						{
-							(this.props.error)? <p className="error">{this.props.error} </p> : null
+							(this.props.error)? (<div><p className="error">{this.props.error}</p> {this.handleErrors(this.props.error)}</div>) : null
 						}
 					</form>
 				</div>

@@ -78,12 +78,14 @@ export default class User extends Component{
 							<legend>Recharge your balance?</legend>
 							<input placeholder="Please enter amount" type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
 						</form>
-						<Checkout
-        					name={'Recharge your balance?'}
-        					description={'Enter your details below..'}
-       						email={user.email}
-       						amount={amount}
-      					/>
+						<div className="stripe start">
+							<Checkout
+	        					name={'Recharge your balance?'}
+	        					description={'Enter your details below..'}
+	       						email={user.email}
+	       						amount={amount}
+	      					/>
+	      				</div>
 					</section>
 					<footer className="type-links">
 						<Link className ='type-selected' to={'/profile/hitch-hiking'}>Hitch-Hiking</Link>

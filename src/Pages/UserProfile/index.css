@@ -1,8 +1,8 @@
 .app-container{
-	/*height: 100%;*/
+	height: 100%;
 	/*overflow: auto;*/
-	display: flex;
-	justify-content: space-between;
+/*	display: flex;
+	justify-content: space-between;*/
 }
 .sclearfix::after{
 	content: "";

@@ -1,5 +1,6 @@
-/*.App {
+.App {
   font-style: Helvetica, sans-serif;
+  height: 100%;
 }
 .App > .header {
   float: right;
@@ -21,6 +22,11 @@
   font-weight: bold;
 }
 .footer {
+  position: relative;
+/*  bottom: 0;
+  left: 0;
+  right: 0;*/
+
   width: 100%;
   background-color: #303030;
   height: 30px;
@@ -30,8 +36,10 @@
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
-  float: left;  
-  clear: both;
+  margin-top: -30px;
+  /*float: left;*/
+  /*clear: both;*/
+  /*z-index: 5;*/
 }
 .footer-link {
   color: #fff;
@@ -49,4 +57,4 @@
 }
 .social-media ~ .social-media {
   margin-left: 30px;
-}*/
+}
