@@ -1,0 +1,39 @@
+.car-details-component{
+	float: right;
+	width: 60%;
+}
+.car-details-component .car-details-content{
+	margin: 50px;
+}
+.car-details{
+	margin-top: 20px;
+}
+/*.car-details-component > div{
+	display: flex;
+}*/
+.car-details-component > div h1:first-child{
+/*	color: #505050;*/
+	color: #585858;
+	font-size: 30px;
+}
+.car-details-component input{
+	border-color: grey;
+	line-height: 60px;
+	display: block;
+	width: 315px;
+}
+.car-details-component button{
+	margin-top: 20px;
+	background-color: white;
+	color: #4182A7;
+	border: 1px solid #4182A7;
+	border-radius: 15px;
+	padding: 3px 20px;
+	font-size: 15px;
+	float: left;
+	margin-left: 200px;
+}
+.car-details-component p{
+	line-height: 20px;
+	font-size: 18px;
+}

@@ -3,14 +3,12 @@ import { Link } from 'react-router-dom';
 import './style.css'
 
 export default class WelcomePage extends Component {
-    logout(){
-      localStorage.removeItem('jwtToken');
-    }
+
 
     render(){
         return (
         	<div className="type-container clearfix">
-                <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
+                
                 <div className="type-page">
                     
                     <h1>HOW DO YOU FEEL LIKE TODAY?</h1>

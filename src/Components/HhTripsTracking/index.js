@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
+import '../DriverTripsTracking/driverTripsTracking_style.css';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
 import { Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './index.css';
+
 
 export default class HhTripsTracking extends Component {
     constructor(props){

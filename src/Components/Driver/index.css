@@ -1,4 +1,7 @@
-/* * {
+/*#from {
+	float: left;
+
+* {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -155,4 +158,11 @@
 	margin: 0 auto;
 	vertical-align: middle;
 } */
-
+.driver-container {
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: flex;
+	width: 77%;
+	flex-direction: row;
+}

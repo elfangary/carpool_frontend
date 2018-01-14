@@ -4,7 +4,6 @@ import Locations from '../../Containers/LocationsContainer';
 import CarsDetails from '../../Containers/CarsDetailsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';
-import FlipMove from 'react-flip-move';
 import './index.css';
 
 

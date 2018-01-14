@@ -1,10 +1,17 @@
-.profile{
+/* .profile{
 	height: 100%;
-	/*overflow: auto*/
+	overflow: auto;
+	float: left;
 }
-
 .sclearfix::after{
 	content: "";
 	display: table;
 	clear: both;
+} */
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
