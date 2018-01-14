@@ -1,10 +1,20 @@
-.profile{
-	height: 100%;
-	overflow: auto;
-	float: left;
+.app-container{
+	/*height: 100%;*/
+	/*overflow: auto;*/
+	display: flex;
+	justify-content: space-between;
 }
 .sclearfix::after{
 	content: "";
 	display: table;
 	clear: both;
 }
+
+/*.left-container {
+	width: 33.33%;
+}
+
+.right-container {
+	width: 66.6%;
+}
+*/

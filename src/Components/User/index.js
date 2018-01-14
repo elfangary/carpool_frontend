@@ -33,16 +33,15 @@ export default class User extends Component{
 		if(loading){
             return (
             	<div className="fixed-container">
-            		<div className="page-content">
-	                	<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-						<span class="sr-only">Loading...</span>
+            		<div className="profile-content">
+						<p>Loading...</p>
 					</div>
 				</div>
             )
         }else if(error){
             return (
-                <div className="fixed-container">
-                	<div className="page-content">
+            	<div className="fixed-container">
+                	<div className="profile-content">
 						<p>Sorry, something went Wrong</p>
 						<p>{error}</p>
 					</div>
@@ -51,54 +50,45 @@ export default class User extends Component{
 		}else{
 		    return (
     			<div className="fixed-container">
-    			<div className="profile-container">
-    				<div className="profile-content clearfix">
-						<div className="clearfix">
-							<header className="header">
-								
-								<div className="profile-pic-edit-link">
-									<p></p>
-								 	<img src={user.profile_pic} className="profile-picture"/>
-								 	<p><Link to={'/profile/edit'} className="edit-link">Edit my profile</Link></p>
-							 	</div>
-							 	<div className="user-name-rate">
-									<h1 className="user-name">{user.first_name} {user.last_name}</h1>
-									<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
-
-								</div>
-							</header>
+					<header className="header clearfix">
+						<div className="profile-pic-edit-link start">
+						 	<img src={user.profile_pic} className="profile-picture"/>
+						 	<Link to={'/profile/edit'} className="edit-link">Edit my profile</Link>
 						</div>
+						<div className="start personal-details">
+							<h1 className="user-name">{user.first_name} {user.last_name}</h1>
+						 	<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
+						</div>
+					</header>
 
-						<section>
-							<div className="profile-links">
-								<Link to={'/profile/driving/cars'}>My Cars</Link>
-								<Link to={'/profile/driving/trips'}>My Trips</Link>
-								<Link to={'/profile/hitch-hiking/trips'}>HH-trips</Link>
+					<section>
+						<div>
+							<Link to={'/profile/driving/cars'} className="profile-links">My Cars</Link>
+							<Link to={'/profile/driving/trips'} className="profile-links">My Trips</Link>
+							<Link to={'/profile/hitch-hiking/trips'} className="profile-links">HH-trips</Link>
+						</div>
+						<div className="contact-details clearfix">
+							<p className ='start points'><span>{points}</span> points</p>
+							<div className="start email-phone">
+								<p>{user.email}</p>
+								<p>{user.phone}</p>
 							</div>
-							<div className="contact-details clearfix">
-								<p><span>{points}</span> points</p>
-								<div className="email-phone">
-									<p>{user.email}</p>
-									<p>{user.phone}</p>
-								</div>
-							</div>
-							<form>
-								<legend>Recharge your balance?</legend>
-								<input placeholder="Please enter amount" type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
-							</form>
-							<Checkout
-	        					name={'Recharge your balance?'}
-	        					description={'Enter your details below..'}
-	       						email={user.email}
-	       						amount={amount}
-	      					/>
-						</section>
-						<footer>
-							<Link to={'/profile/hitch-hiking'}>Hitch-Hiking</Link>
-							<Link to={'/profile/driving'}>Driving</Link>
-						</footer>
-					</div>
-					</div>
+						</div>
+						<form className="user-profile-form">
+							<legend>Recharge your balance?</legend>
+							<input placeholder="Please enter amount" type="amount" id="amount-input" name="amount" value={amount} onChange={this.handleChange.bind(this)}/>
+						</form>
+						<Checkout
+        					name={'Recharge your balance?'}
+        					description={'Enter your details below..'}
+       						email={user.email}
+       						amount={amount}
+      					/>
+					</section>
+					<footer className="type-links">
+						<Link className ='type-selected' to={'/profile/hitch-hiking'}>Hitch-Hiking</Link>
+						<Link className ='type-selected' to={'/profile/driving'}>Driving</Link>
+					</footer>
 			    </div>
 			)
 		}

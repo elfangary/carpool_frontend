@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
-import { Slider, Modal, Tabs, Radio, Menu } from 'antd';
+import { Slider, Modal, Tabs, Radio, Menu, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './driverTripsTracking_style.css';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
+
 const TabPane = Tabs.TabPane;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
@@ -23,7 +24,10 @@ export default class DriverTripsTracking extends Component {
           id: null,
           phone: null,
           rate: 0,
-          email: ''
+          email: '',
+        },
+        ratingRequest: {
+            trip_id: null
         },
         ratings: []
       };
@@ -61,6 +65,20 @@ export default class DriverTripsTracking extends Component {
       this.setState({visible: false});
     }
 
+
+    showModalRate = (trip_id) => {
+        this.setState({
+          visible: true,
+          request: {
+            trip_id
+          }
+        });
+      }
+
+    handleClick = (trip_id, value) => {
+        this.props.changeTripStatus(trip_id, value);
+    }
+
     handleSubmit = () => {
         this.props.rateUser(this.state.ratings);
         this.state.ratings = [];
@@ -81,7 +99,7 @@ export default class DriverTripsTracking extends Component {
 
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
-        const {status, request, ratings} = this.state;
+        const {status, request, ratings, ratingRequest} = this.state;
         const style = {
             textTransform:'capitalize',
             textAlign: 'center',
@@ -103,7 +121,18 @@ export default class DriverTripsTracking extends Component {
                     </Tabs>
                 </div>
                 {trackedTrips.map((trip) => {
-                  // var tripRequests = [];
+                    // var tripRequests = [];
+                    const hhs_rate = trip.stop_points.map((stop_point) => {
+                        return stop_point.hh.map((hh) => {
+                            return (
+                                <div>
+                                    <p className="hh-profile-picture">{hh.profile_pic}</p>
+                                    <p>{hh.name}</p>
+                                    <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                </div>
+                            )
+                        })
+                    })
                     return (
                         <div className="trip clearfix">
                             <img src={trip.driver.profile_pic} className="driver-profile-picture"/>
@@ -117,65 +146,58 @@ export default class DriverTripsTracking extends Component {
                                 <div className="flex">
                                     {trip.stop_points.map((stop_point, index) => {
                                     // requests = requests.concat(stop_point.hh)
-                                    return (
-                                        <div className="stop-points">
-                                            <p className="location">{stop_point.location}</p>
-                                            <p className="time">{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
-                                            <p className="time">{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
-                                            {stop_point.hh.map((hh, index) => {
-                                                return (
-                                                    <div className="request clearfix">
-                                                        <button className="circle-button" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}></button>
-                                                        <Modal
-                                                            title={request.name}
-                                                            visible={this.state.visible}
-                                                            onOk={this.handleOk}
-                                                            onCancel={this.handleCancel}
-                                                            mask={false}
-                                                            maskClosable={false}
-                                                            width= {300}
-                                                            bodyStyle={style}
-                                                            style={style}
-                                                        >
-                                                            {(request.confirm != "rejected") ?
-                                                                <div>
-                                                                    <p className="hh-profile-picture"></p>
-                                                                    <p className="hh-details">{request.rate}</p>
-                                                                    <p className="hh-details hh-phone">{request.phone}</p>
-                                                                    <p className="hh-details hh-email">{request.email}</p>
-                                                                    <p className="hh-details">Booked Seats: {request.seats}</p>
-                                                                </div>
-                                                            : null}
-                                                            {(trip.status === "pending" && request.confirm === "pending")?
-                                                                <RadioGroup
-                                                                    onChange={(e) => changeHhStopStatus(request.id, e.target.value)}
-                                                                    size={"large"} >
-                                                                    <RadioButton value="accepted" className="">Accept</RadioButton>
-                                                                    <RadioButton value="rejected">Reject</RadioButton>
-                                                                </RadioGroup>
-                                                            : (request.confirm === "accepted")? <p className="accepted">{request.confirm}</p> : <p className="rejected">{request.confirm}</p>}
-                                                            {(trip.status === "ended" && request.confirm === "accepted")? 
-                                                                (<div>
-                                                                    <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
-                                                                </div>) : null
-                                                            }
-                                                        </Modal>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    )
+                                        return (
+                                            <div className="stop-points">
+                                                <p className="location">{stop_point.location}</p>
+                                                <p className="time">{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                                <p className="time">{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
+                                                {stop_point.hh.map((hh, index) => {
+                                                    return (
+                                                        <div className="request clearfix">
+                                                            <button className="circle-button" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}></button>
+                                                            <Modal
+                                                                title={request.name}
+                                                                visible={this.state.visible}
+                                                                onOk={this.handleOk}
+                                                                onCancel={this.handleCancel}
+                                                                mask={false}
+                                                                maskClosable={false}
+                                                                width= {300}
+                                                                bodyStyle={style}
+                                                                style={style}
+                                                            >
+                                                                {(request.confirm != "rejected") ?
+                                                                    <div>
+                                                                        <p className="hh-profile-picture"></p>
+                                                                        <p className="hh-details">{request.rate}</p>
+                                                                        <p className="hh-details hh-phone">{request.phone}</p>
+                                                                        <p className="hh-details hh-email">{request.email}</p>
+                                                                        <p className="hh-details">Booked Seats: {request.seats}</p>
+                                                                    </div>
+                                                                : null}
+                                                                {(trip.status === "pending" && request.confirm === "pending")?
+                                                                    <RadioGroup
+                                                                        onChange={(e) => changeHhStopStatus(request.id, e.target.value)}
+                                                                        size={"large"} >
+                                                                        <RadioButton value="accepted" className="">Accept</RadioButton>
+                                                                        <RadioButton value="rejected">Reject</RadioButton>
+                                                                    </RadioGroup>
+                                                                : (request.confirm === "accepted")? <p className="accepted">{request.confirm}</p> : <p className="rejected">{request.confirm}</p>}
+                                                                {(trip.status === "ended" && request.confirm === "accepted")? 
+                                                                    (<div>
+                                                                        <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                                                    </div>) : null
+                                                                }
+                                                            </Modal>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+                                        )
                                     })}
                                     {trip.start && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
                                     {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
                                     {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
-                                    {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
-                                        stop_point.hh.map((hh) => {
-                                            hh.confirm != "accepted"
-                                        })
-                                        }))?
-                                            (<button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>)
-                                            : null}
                                     <div className="route">
                                         <Slider range min={1} max={trip.stop_points.length} defaultValue={[1,2,3,4]} disabled={true} />
                                     </div>
@@ -183,13 +205,32 @@ export default class DriverTripsTracking extends Component {
                                         <p className="seats">{trip.all_seats} seats left</p>
                                         {(trip.pending)?
                                             <p className="pending">{trip.pending} pending requests</p>
-                                            : <p className="no-pending">0 pending requests</p>}
+                                            : <p className="no-pending">0 pending requests</p>
+                                        }
                                     </div>
-                                    <div>
-                                        {(trip.start) && (trip.status === "pending") ? (<button type="button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")} className="status-button">Start Trip</button>) : null}
-                                        {(trip.status === "pending")? (<button type="button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}} className="status-button">Cancel Trip</button>) : null}
-                                        {(trip.status === "started")? (<button type="button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}} className="status-button">End Trip</button>) : null}
-                                    </div>
+                                    {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
+                                        stop_point.hh.map((hh) => {
+                                        hh.confirm != "accepted"
+                                    })
+                                    }))? (<div>
+                                            <Button type="primary" className="open-modal" onClick={() => this.showModalRate(trip.id)}>Rate Your Hitch Hikers</Button>
+                                            <Modal
+                                                title={request.name}
+                                                className="modal"
+                                                visible={this.state.visible}
+                                                onOk={this.handleOk}
+                                                onCancel={this.handleCancel}
+                                                mask={false}
+                                                maskClosable={false}
+                                                width= {300}
+                                                bodyStyle={style}
+                                                style={style}
+                                            >
+                                            <div>{hhs_rate}</div>
+                                            <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>
+                                            </Modal>
+                                        </div>
+                                        ) : null}
                                 </div>
                             </div>
                         </div>

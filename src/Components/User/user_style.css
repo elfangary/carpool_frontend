@@ -3,21 +3,104 @@
 	top: 0;
 	bottom: 0;
 	left: 0;
-	width: 32%;
+	width: 33%;
+	background-color: #303030;
+	color: #4182a7;
+	padding: 40px;
+}
+.header .profile-pic-edit-link {
+	width: 33.33%;
+}
+.header .profile-picture {
+	border-radius: 50%;
+	background-color: #fff;
+	/*border: 1px solid #fff;*/
+	height: 100px;
+	width: 100px;
+}
+.header .personal-details{
+	width: 66.66%;
+}
+.personal-details h1 {
+	margin: 15px 0 0 0;
+}
+.header .edit-link{
+	display: block;
+}
+.profile-links{
+	border: 1px solid #4182A7;
+	/*margin: auto;*/
+	text-align: center;
+	border-radius: 30px;
+	height: 60px;
+	line-height: 60px;
+	font-weight: lighter;
+	font-size: 12px;
+	margin-top: 40px;
+	padding: 5px 30px;
+	color: #4182a7;
+}
+.profile-links + .profile-links {
+	margin-left: 15px;
+}
+.profile-links:focus {
+	text-decoration: none;
+	background-color: #5d5d5d;
+	color: #1C567E;
+	border-color: #1C567E;
+}
+.points{
+		text-align: center;
+		width: 25%
+}
+.points span{
+	font-size:  20px;
+	display: block;
+}
+.email-phone{
+	border-left: 1px solid #4182a7;
+	padding-left: 20px;
+	width:75%;
+}
+.user-profile-form legend{
+	color:#d6a256;
+	font-size: 12px;
+}
+.user-profile-form input {
+	display: block;
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,.3);
+	line-height: 40px;
+	margin-bottom: 20px;
+	width: 250px;
 	background-color: #303030;
 }
+::-webkit-input-placeholder{
+	color: rgba(255,255,255,.3);
+	font-weight: lighter;
 
-.profile-container {
-  float: left;
-  color: #4182A7;
-  /*margin-top: 50px;*/
 }
-.profile-container .profile-content {
-	margin-top: 50px;
-	padding: 25px;
-	position: absolute;
+.type-links {
+	padding: 12px;
+	margin:20px 0 0 0;
+	width: 50%;
+	background: #4182a7;
+	border-radius: 5px;
+
 }
-.profile-container a {
+.type-links .type-selected {
+	padding: 10px;
+	border-radius: 5px;
+	color:#fff;
+
+}
+.type-links .type-selected:focus{
+	background: #fff;
+	color:#4182a7;
+	text-decoration: none;
+}
+
+/*.profile-container a {
 	color: #4182A7;
 	text-decoration: none;
 	border: 1px solid #4182A7;
@@ -153,4 +236,4 @@
 .profile-content .StripeCheckout > span {
 	padding: 0px 7px !important;
 	font-size: 11px !important;
-}
+}*/

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { getHhTripsTrackingLoading, getHhTripsTracking,
-     getHhTripsTrackingSuccess, getHhTripsTrackingFailure, rateDriverLoading, rateDriver,
-      rateDriverSuccess, rateDriverFailure } from '../Actions/Hitch-HickerTripsTracking';
+     getHhTripsTrackingSuccess, getHhTripsTrackingFailure } from '../Actions/Hitch-HickerTripsTracking';
 import {rateUserLoading, rateUser, rateUserSuccess, rateUserFailure} from '../Actions/user';  
 import HhTripsTracking from '../Components/HhTripsTracking';
 

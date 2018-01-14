@@ -9,18 +9,6 @@ import HomePage from './Pages/HomePage';
 import TypePage from './Pages/TypePage';
 // import 'antd/lib/style/index.css';
 
-import DriverContainer from './Containers/DriverContainer';
-import UserContainer from './Containers/UserContainer';
-import CarsContainer from './Containers/CarsContainer';
-import HhForm from './Containers/HhFormContainer';
-import DriverTrips from './Containers/DriverTripsTrackingContainer';
-import HhTrips from './Containers/HhTripsTrackingContainer';
-import Notifications from './Containers/NotificationsContainer';
-
-import CarDetails from './Containers/CarsDetailsContainer';
-import Checkout from './Components/Checkout';
-import EditUserForm from './Containers/editUserFormContainer';
-
 class App extends Component {
 
     logout(){

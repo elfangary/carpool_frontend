@@ -1,8 +1,12 @@
 
+
 /*#from {
 	float: left;
 
 * {
+=======
+/* * {
+>>>>>>> fa298dac967d8ea5a21df73bab7dfc5dd93fb345
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
@@ -37,8 +41,13 @@
 .box {
 	height: 100px;
 	margin: 10px 20px;
+
 	/* border-bottom: 1px solid grey; */
 /*}*/
+
+/*	border-bottom: 1px solid grey;
+}*/
+
 
 .location {
 	padding-top: 5px;
@@ -149,11 +158,15 @@
 }
 
 .flex-boxing {
-	position: relative;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
 }
 
 .flex-child {
+	display: flex;
+	flex-direction: column;
 	margin: 0 auto;
 	vertical-align: middle;
-}
+} 
 
