@@ -39,7 +39,6 @@ const mapDispatchToProps = function (dispatch){
                 }else{
                     dispatch(addTripFailure(response.payload.response.data));
                     swal("Oops!", "Try Again", "error");
-                    debugger;
                 }
             })
         }

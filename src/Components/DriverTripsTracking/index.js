@@ -107,7 +107,6 @@ export default class DriverTripsTracking extends Component {
             backgroundColor: '#fafafa'
         }
 
-
         return (
             <div className = 'new-container end'>
                 <div className="margin clearfix">
@@ -251,7 +250,7 @@ export default class DriverTripsTracking extends Component {
                                                     : null}
                                                     {(trip.status === "pending" && request.confirm === "pending")?
                                                         <RadioGroup
-                                                            onChange={(e) => changeHhStopStatus(request.id, e.target.value)}
+                                                            onChange={(e) => changeHhStopStatus(request.id, e.target.value, trip.id)}
                                                             size={"large"} >
                                                             <RadioButton value="accepted">Accept</RadioButton>
                                                             <RadioButton value="rejected">Reject</RadioButton>
