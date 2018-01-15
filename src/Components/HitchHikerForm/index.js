@@ -38,7 +38,7 @@ export default class HHForm extends Component {
     };
 
     render(){
-        const { locations, trips, onChange , getFilteredTrips, addHhStopPoint} = this.props;
+        const { locations, trips, onChange , getFilteredTrips, addHhStopPoint, message } = this.props;
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div className="new-container end">
@@ -66,7 +66,7 @@ export default class HHForm extends Component {
                         </form>
                         <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
                     </div>
-                    {(trips.length > 0)? 
+                    {(trips.length > 0)?
                         <div className="trips-container trip-form start">
                             {trips.map((trip) => {
                                 var seats = [];
@@ -107,13 +107,13 @@ export default class HHForm extends Component {
                                             <label htmlFor="seats" className="trip-driver-name">{seats.length} Availble Seats</label>
                                             {seats}
                                         </form>
-                                       
+
                                     </div>
                                 )
                             })}
                             <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Submit</button>
                         </div>
-                        : null}
+                        : <p className="empty-message">{message}</p>}
                 </div>
             </div>
         )

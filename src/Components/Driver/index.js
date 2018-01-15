@@ -60,6 +60,7 @@ export default class Driver extends Component {
 		});
 	};
 
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: (event.target.value)
@@ -70,8 +71,7 @@ export default class Driver extends Component {
 		const {locations, addTrip} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
 		return (
-			<div className="new-container margin end">
-
+			<div className="new-container end">
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
 					<div className="box">

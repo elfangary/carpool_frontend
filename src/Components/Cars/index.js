@@ -11,7 +11,7 @@ export default class Cars extends Component {
 	render() {
 		const {cars, onChange, name, deleted} = this.props;
 		return (
-	        <select className="cars" onChange={onChange} name={name}>
+	        <select className="cars select-options capital" onChange={onChange} name={name}>
 	        	<option value="" disabled selected>Select your car</option>
 	          	{cars.map((car) => {return(<option value={car.id} car_id={car.id} deleted={deleted}>{car.model} </option>)})}
 	        </select>

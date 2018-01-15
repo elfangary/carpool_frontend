@@ -10,7 +10,8 @@ const mapStateToProps = function(state){
         trips: state.filteredTrips.trips,
         new_hh_stop: state.filteredTrips.new_hh_stop,
         loading: state.filteredTrips.loading,
-        error: state.filteredTrips.error
+        error: state.filteredTrips.error,
+        message: state.filteredTrips.message
     }
 }
 
@@ -38,6 +39,7 @@ const mapDispatchToProps = function(dispatch){
                     history.push('/profile/hitch-hiking/trips')
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
+
                 }
             })
         }

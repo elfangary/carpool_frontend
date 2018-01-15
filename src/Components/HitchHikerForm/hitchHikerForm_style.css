@@ -1,5 +1,4 @@
 .trip-form {
-
     margin: 50px 200px;
     padding: 0 40px;
     border-left: 2px solid #d7d7d7;
@@ -14,4 +13,10 @@
     color: #4182A7;
     width: 100px;
     margin-top: 40px;
+}
+.empty-message{
+    /*display: block;*/
+    margin: 50px 200px;
+    padding: 0 40px;
+    border-left: 2px solid #d7d7d7;
 }

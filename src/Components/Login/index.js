@@ -34,12 +34,12 @@ export default class Login extends Component{
 		const err = error.split(' ')[0];
 		switch(err) {
 			case 'Invalid': {
-				this.inputs.password.style.borderColor = 'red';
-				this.inputs.email.style.borderColor = 'rgba(255,255,255,.3)';
+				this.inputs.password.style.borderColor = '#ae3130';
+				this.inputs.email.style.borderColor = 'rgba#ae3130(255,255,255,.3)';
 				break;
 			}
 			case 'You': {
-				this.inputs.email.style.borderColor = 'red';
+				this.inputs.email.style.borderColor = '#ae3130';
 				this.inputs.password.style.borderColor = 'rgba(255,255,255,.3)';
 				break;
 			}
