@@ -38,23 +38,22 @@ export default class HhTripsTracking extends Component {
         });
       }
       handleOk = (e) => {
-        console.log(e);
-        this.setState({
-          visible: false,
-        });
+        this.setState({visible: false});
+        this.handleSubmit()
       }
+
       handleCancel = (e) => {
-        console.log(e);
-        this.setState({
-          visible: false,
-        });
+        this.setState({visible: false});
       }
 
     handleRate = (trip_id, user_id, event) => {
         if (event.type === 'click') {
-            console.log(user_id)
-            this.props.rateUser([{trip_id, user_id, rate: event.rating}])
+            this.state.ratings.push({trip_id, user_id, rating: event.rating});
         }
+    }
+     handleSubmit = () => {
+        this.props.rateUser(this.state.ratings);
+        this.state.ratings = [];
     }
 
     componentWillMount () {
@@ -144,7 +143,7 @@ export default class HhTripsTracking extends Component {
                                     </div>
                                     {(trip.status === "ended")? (
                                     <div>
-                                        <button type="primary" className="rate-button" onClick={() => this.showModal(trip.driver.first_name, trip.driver.last_name, trip.driver.profile_pic)}>Rate The Driver</button>
+                                        <button type="primary" className="rate-button" onClick={() => this.showModal(trip.driver.first_name, trip.driver.last_name, trip.driver.profile_pic.profile_pic.url)}>Rate The Driver</button>
                                         <div>
                                             <Modal
                                             title={request.name}

@@ -90,21 +90,32 @@ export default class Driver extends Component {
 			<div className="new-container margin end">
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
-					<div>
-						<p>Moving From</p>
-						{
-							stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
-								return (
-									<div>
-										<label>
-											<Locations inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
-											<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
-										</label>
-									</div>
-								)
-							})
-						}		
-						<button type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
+					<div className="box">
+						<div className="flex">
+							<fieldset className="location clearfix">
+								<legend className="left title">Location Details</legend>
+								<div className="right">
+								<p className="small">Moving From</p>
+									{
+										stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
+											return (
+												<div className="container clearfix">
+													<label className="stop_point">
+													<div className="left stop-location">
+														<Locations  inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+													</div>
+													<div className="right">
+														<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+													</div>
+													</label>
+												</div>
+											)
+										})
+									}
+									<button className="new-stop" type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
+								</div>
+							</fieldset>
+						</div>
 					</div>
 				
 					<div>

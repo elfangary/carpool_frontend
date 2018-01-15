@@ -7,13 +7,10 @@ import './hitchHikerForm_style.css';
 export default class HHForm extends Component {
     constructor(props){
         super(props);
-        console.log(this.props);
         this.state = {
             day: "",
             location_id_start: null,
             location_id_end: null,
-            // start_time: '',
-            // end_time: '',
             new_hh_stop: {
                 stop_point_id: null,
                 booked_seats: 0
@@ -67,52 +64,54 @@ export default class HHForm extends Component {
                         </form>
                         <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end)}>Search</button>
                     </div>
-                    <div className="trips-container trip-form start">
-                        {trips.map((trip) => {
-                            var seats = [];
-                            for (var i = 0; i < trip.all_seats; i ++) {
-                                seats.push(<input id="seats" type="checkbox" className="circle-button" name="booked_seats"
-                                    value={i + 1} onClick={this.handleNewHhStopPoint} />);
-                            }
-                            return (
+                    {(trips.length > 0)? 
+                        <div className="trips-container trip-form start">
+                            {trips.map((trip) => {
+                                var seats = [];
+                                for (var i = 0; i < trip.all_seats; i ++) {
+                                    seats.push(<input id="seats" type="checkbox" className="circle-button" name="booked_seats"
+                                        value={i + 1} onClick={this.handleNewHhStopPoint} />);
+                                }
+                                return (
 
-                                <div className="trip clearfix">
-                                    <div className="driver-container start">
-                                        <div className="driver-profile-picture"></div>
-                                    </div>
-                                    <div className="details-container start">
-                                        <div className="flex">
-                                            <p className="trip-driver-name">{trip.driver.first_name} {trip.driver.last_name}</p>
-                                            <p className="date">{dateFormat(trip.day, "dd/mm/yyyy")}</p>
+                                    <div className="trip clearfix">
+                                        <div className="driver-container start">
+                                            <div className="driver-profile-picture"></div>
                                         </div>
-                                        <div className="stop-points-details">
-                                            {trip.stop_points.map((stop_point, index) => {
-                                                return(
-                                                    <div className="stop-point">
-                                                            <p className="location">{stop_point.location.name}</p>
+                                        <div className="details-container start">
+                                            <div className="flex">
+                                                <p className="trip-driver-name">{trip.driver.first_name} {trip.driver.last_name}</p>
+                                                <p className="date">{dateFormat(trip.day, "dd/mm/yyyy")}</p>
+                                            </div>
+                                            <div className="stop-points-details">
+                                                {trip.stop_points.map((stop_point, index) => {
+                                                    return(
+                                                        <div className="stop-point">
+                                                                <p className="location">{stop_point.location.name}</p>
 
-                                                                {(trip.stop_points.indexOf(stop_point) == trip.stop_points.length - 1)?
-                                                                    <input type="radio" name="stop_point_id" id="disabled" value= {stop_point.id} disabled />
-                                                                    :
-                                                                        <input type="radio" name="stop_point_id" value= {stop_point.id} onChange={this.handleNewHhStopPoint} />}
-                                                            <p className="trip-time">{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
-                                                            <p className="trip-time">{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
-                                                    </div>
-                                                )
-                                            })}
+                                                                    {(trip.stop_points.indexOf(stop_point) == trip.stop_points.length - 1)?
+                                                                        <input type="radio" name="stop_point_id" id="disabled" value= {stop_point.id} disabled />
+                                                                        :
+                                                                            <input type="radio" name="stop_point_id" value= {stop_point.id} onChange={this.handleNewHhStopPoint} />}
+                                                                <p className="trip-time">{dateFormat(stop_point.start_time, "UTC:HH:MM TT")}</p>
+                                                                <p className="trip-time">{dateFormat(stop_point.end_time, "UTC:HH:MM TT")}</p>
+                                                        </div>
+                                                    )
+                                                })}
+                                            </div>
+
                                         </div>
-
+                                        <form>
+                                            <label htmlFor="seats" className="trip-driver-name">{seats.length} Availble Seats</label>
+                                            {seats}
+                                        </form>
+                                       
                                     </div>
-                                    <form>
-                                        <label htmlFor="seats" className="trip-driver-name">{seats.length} Availble Seats</label>
-                                        {seats}
-                                    </form>
-                                   
-                                </div>
-                            )
-                        })}
-                        <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Submit</button>
-                    </div>
+                                )
+                            })}
+                            <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Submit</button>
+                        </div>
+                        : null}
                 </div>
             </div>
         )
