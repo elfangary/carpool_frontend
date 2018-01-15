@@ -37,8 +37,9 @@ const mapDispatchToProps = function (dispatch){
                     swal("Successfully Created" ,"Thank You for Using Our App", "success");
                     history.push('/profile/driving/trips');
                 }else{
-                    dispatch(addTripFailure(response.payload.message));
+                    dispatch(addTripFailure(response.payload.response.data));
                     swal("Oops!", "Try Again", "error");
+                    debugger;
                 }
             })
         }
