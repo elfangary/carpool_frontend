@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import './locations_style.css';
 
 export default class Locations extends Component {
 

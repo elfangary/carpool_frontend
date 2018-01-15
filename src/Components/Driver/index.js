@@ -70,7 +70,8 @@ export default class Driver extends Component {
 		const {locations, addTrip} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
 		return (
-			<div className="driver-container">
+			<div className="new-container margin end">
+
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
 					<div className="box">
