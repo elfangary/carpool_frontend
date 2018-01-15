@@ -37,9 +37,16 @@ input:-webkit-autofill {
 .end{
 	float: right;
 }
+.hide{
+	display: none;
+}
 .clearfix::before,
 .clearfix::after {
   display: table;
   content: '';
   clear: both;
+}
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
 }

@@ -1,4 +1,4 @@
-.signup-component {
+/*.signup-component {
   height: 100%;
 }
 .signup-content {
@@ -7,7 +7,7 @@
   	width: 32%;
   	float: left;
   	color: #4182A7;
-}
+}*/
 .signup-content h1 {
 	color: #fff;
 	font-size: 100px;
@@ -88,9 +88,13 @@
 	margin-top: 5px;
 	box-shadow: 0 3px 3px rgba(48,48,48,.2);
 }
-.error{
-	text-align: center;
-	margin-top: 8px;
+.signup-form button:focus {
+	outline: none;
+}
+.signup-error{
+	margin-top: 15px;
+	margin-left: 55px;
+	width: 300px;
 	font-size: 12px;
 	color: #ae3130;
 	font-weight: bold;

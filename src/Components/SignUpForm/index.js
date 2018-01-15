@@ -39,7 +39,7 @@ export default class SignUpForm extends Component{
         })
         errors.forEach(error => {
             const errorField = error.split(' ')[0].toLowerCase();
-            this.inputs[errorField].style.borderColor = 'red';
+            this.inputs[errorField].style.borderColor = '#ae3130';
         })
     }
 
@@ -60,33 +60,43 @@ export default class SignUpForm extends Component{
 		const errors = this.props.error;
 
 		return(
-			<div className="signup-component">
-				<div className="clearfix">
-					<div className="signup-content">
-						<h1>Hi!</h1>
-						<p><span>Since it is the first time we meet, </span>we would like to know more about<span> you.</span></p>
+			<div className="app-container">
+				<div className="left-container">
+					<div className="fixed-container">
+						<div className="signup-content">
+							<h1>Hi!</h1>
+							<p><span>Since it is the first time we meet, </span>we would like to know more about<span> you.</span></p>
+						</div>
 					</div>
-						<form className="signup-form">
-							<input ref={(ref) => this.inputs.first = ref} type="text" name="first_name" placeholder="First Name" onChange={this.handelChange.bind(this)} />
-			 				<input ref={(ref) => this.inputs.last = ref} type="text" name="last_name" placeholder="Last Name" onChange={this.handelChange.bind(this)} />
-							<input ref={(ref) => this.inputs.email = ref} type="text" name="email" placeholder="Email" onChange={this.handelChange.bind(this)} />
-							<input ref={(ref) => this.inputs.phone = ref} type="text" name="phone" placeholder="Phone Number" onChange={this.handelChange.bind(this)} />
-							<label htmlFor="gender">Gender</label>
-							<select ref={(ref) => this.inputs.gender = ref} name="gender" onChange={this.handelChange.bind(this)} id="gender">
-							  	<option value="" disabled selected></option>
-							  	<option value="male">Male</option>
-							  	<option value="female">Female</option>
-							</select>
-							<input className="upload-file" type="file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />				
-							<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
-							<input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={this.handelChange.bind(this)}/>
-							<label htmlFor="submit" className="submit-label">Ready to move on?</label>
-							<button id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
-							{
-								// (this.props.error !== null)? <p className="error">{this.props.error}</p> : null
-								(errors) ? this.handleErrors(errors) : null
-							}
-						</form>
+					<div className="left-container">
+						<div className="new-container end">
+							<form className="signup-form">
+								<input ref={(ref) => this.inputs.first = ref} type="text" name="first_name" placeholder="First Name" onChange={this.handelChange.bind(this)} />
+				 				<input ref={(ref) => this.inputs.last = ref} type="text" name="last_name" placeholder="Last Name" onChange={this.handelChange.bind(this)} />
+								<input ref={(ref) => this.inputs.email = ref} type="text" name="email" placeholder="Email" onChange={this.handelChange.bind(this)} />
+								<input ref={(ref) => this.inputs.phone = ref} type="text" name="phone" placeholder="Phone Number" onChange={this.handelChange.bind(this)} />
+								<label htmlFor="gender">Gender</label>
+								<select ref={(ref) => this.inputs.gender = ref} name="gender" onChange={this.handelChange.bind(this)} id="gender">
+								  	<option value="" disabled selected></option>
+								  	<option value="male">Male</option>
+								  	<option value="female">Female</option>
+								</select>
+								<input className="upload-file" type="file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />				
+								<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
+								<input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={this.handelChange.bind(this)}/>
+								<label htmlFor="submit" className="submit-label">Ready to move on?</label>
+								<button id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
+								{
+									
+									(errors) ? (
+										<div>
+											<p className="signup-error">Please re-enter the marked fields and try again!</p> 
+											{this.handleErrors(errors)}
+										</div>) : null
+								}
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		)

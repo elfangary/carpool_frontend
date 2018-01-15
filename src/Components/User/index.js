@@ -56,6 +56,7 @@ export default class User extends Component{
 						<div className="start personal-details">
 							<h1 className="user-name">{user.first_name} {user.last_name}</h1>
 						 	<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
+						 	<p className="profile-rate">({user.raters_no})</p>
 						</div>
 					</header>
 

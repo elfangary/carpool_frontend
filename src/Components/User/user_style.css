@@ -25,11 +25,25 @@
 	color: #fff;
 	font-size: 22px;
 }
-
 .personal-details .react-rater-star{
-	color: #4182A7;
 	font-size: 20px;
 	margin-top: -5px;
+}
+.personal-details .react-rater-star.is-disabled{
+	color: #262626;
+}
+.personal-details .react-rater-star.is-active{
+	color: #4182A7;
+}
+.personal-details .react-rater-star.is-active-half:before{
+	color: #4182A7;
+}
+.personal-details .profile-rate{
+	color: #000;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: lighter;
+	margin-left: 10px;
 }
 
 .header .edit-link{

@@ -41,14 +41,8 @@ export default class HHForm extends Component {
         const { locations, trips, onChange , getFilteredTrips, addHhStopPoint} = this.props;
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
-            <div>
-            <div>
-                <div>
-                    <p>Location Details</p>
-                    <p>Trip Schedule</p>
-                </div>
-            </div>
-                <div>
+            <div className="new-container end">
+                <div className="margin clearfix">
                     <form id="create-course-form">
 
                         <fieldset>
