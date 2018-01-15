@@ -5,8 +5,7 @@
 }
 .location-details {
     display: flex;
-    flex-direction: space-between;
-    /*flex-flow: row wrap;*/
+    flex-direction: row;
 }
 .submit-form {
     background-color: #fafafa;

@@ -3,9 +3,12 @@
 }
 .flex {
 	display: flex;
-	justify-content: space-between;
+	justify-content: column;
 }
-
+.flex-row{
+	display: flex;
+	justify-content: row;
+}
 .stop_point {
 	width: 50%;
 }
