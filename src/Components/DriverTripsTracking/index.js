@@ -102,25 +102,6 @@ export default class DriverTripsTracking extends Component {
             }
         }
     }
-    componentWillReceiveProps(nextProps){
-        const {getFires, match: {params}, match: {path}} = nextProps;
-        if(params.category !== this.props.match.params.category){
-            if(params.category){
-                getFires(params.category);
-            } else if(path === "/") {
-                getFires();
-            };
-        };
-    };
-    componentWillReceiveProps(nextState){
-        const confirm = nextState.updated_hh_stop.hh_stop_point.confirm
-        console.log(confirm)
-        // const currentConfirm = this.state.request.confirm
-        // if(currentConfirm != confirm){
-        //     this.setState({currentConfirm: confirm
-        //     })
-        // }
-    }
 
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
