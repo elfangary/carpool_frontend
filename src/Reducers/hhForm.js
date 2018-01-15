@@ -15,41 +15,41 @@ export default function(currentState = INITIAL_STATE, action){
                 ...currentState,
                 loading: true
             };
-            break;
+        break;
         case GET_FILTERED_TRIPS_SUCCESS:
             return {
                 ...currentState,
                 trips: action.trips,
                 loading: false,
             };
-            break;
+        break;
         case GET_FILTERED_TRIPS_FAILURE:
             return {
                 ...currentState,
                 error:action.error,
                 loading: false
             };
-            break;
+        break;
         case ADD_HH_STOP_POINT_LOADING:
             return {
                 ...currentState,
                 loading: true
             }
-            break;
+        break;
         case ADD_HH_STOP_POINT_SUCCESS:
             return {
                 ...currentState,
                 new_hh_stop: action.new_hh_stop,
                 loading: false
             }
-            break;
+        break;
         case ADD_HH_STOP_POINT_FAILURE:
             return {
                 ...currentState,
                 error: action.error,
                 loading: false
             }
-            break;
+        break;
         default:
             return currentState;
     }

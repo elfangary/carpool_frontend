@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
 import '../DriverTripsTracking/driverTripsTracking_style.css';
-import { Slider, Modal, Tabs, Radio, Menu, Button } from 'antd';
+import { Slider, Modal, Tabs, Radio, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './hhTripsTracking_style.css';
 import '../DriverTripsTracking/driverTripsTracking_style.css'
@@ -11,7 +11,6 @@ import 'react-rater/lib/react-rater.css';
 const TabPane = Tabs.TabPane;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
-
 
 export default class HhTripsTracking extends Component {
     constructor(props){
@@ -53,7 +52,7 @@ export default class HhTripsTracking extends Component {
     }
      handleSubmit = () => {
         this.props.rateUser(this.state.ratings);
-        this.state.ratings = [];
+        this.setState({ ratings: [] });
     }
 
     componentWillMount () {

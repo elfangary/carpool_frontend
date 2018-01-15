@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Locations from '../../Containers/LocationsContainer';
-import Days from '../Days';
 import dateFormat from 'dateformat';
 import './hitchHikerForm_style.css';
 
@@ -38,7 +37,7 @@ export default class HHForm extends Component {
     };
 
     render(){
-        const { locations, trips, onChange , getFilteredTrips, addHhStopPoint} = this.props;
+        const { trips , getFilteredTrips, addHhStopPoint} = this.props;
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div className="new-container end">
