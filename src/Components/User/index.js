@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import "react-toggle/style.css";
 import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
-// import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
@@ -58,6 +56,7 @@ export default class User extends Component{
 						<div className="start personal-details">
 							<h1 className="user-name">{user.first_name} {user.last_name}</h1>
 						 	<Rater total={5} rating={user.rate / user.raters_no }  interactive={false}/>
+						 	<p className="profile-rate">({user.raters_no})</p>
 						</div>
 					</header>
 

@@ -20,9 +20,9 @@ class App extends Component {
           <header className="header">
               {!(localStorage.jwtToken)?
                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> :
-                <div className="header">
+                <div className="user-nav">
                   <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
-                  <Link to={"/notifications"} className="notification-link"> <i class="fa fa-bell" aria-hidden="true"></i></Link>
+                  <Link to={"/notifications"} className="notification-link end"><i class="fa fa-bell" aria-hidden="true"></i></Link>
                 </div>}
           </header>
           <Switch>

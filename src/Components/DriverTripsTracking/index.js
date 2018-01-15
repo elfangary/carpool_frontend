@@ -106,17 +106,17 @@ export default class DriverTripsTracking extends Component {
             backgroundColor: '#fafafa'
         }
 
+
         return (
-            <div className = 'container end'>
-                <div className="driverTripsTracking clearfix">
-                    <div className = ' tabs-container start'>
-                        <h2>Your Trips</h2>
+            <div className = 'new-container end'>
+                <div className="margin clearfix">
+                <h2>Your Driving Trips</h2>
+                    <div className="tabs-container start">
                         <div className="tabs">
                             <Tabs
                                 defaultActiveKey="1"
                                 tabPosition="left"
                                 onTabClick={(e) => getTripsTracking(e)}
-                                style={{ height: 600 }}
                             >
                                 <TabPane tab="Upcoming" key="upcoming"></TabPane>
                                 <TabPane tab="Ongoing" key="ongoing" ></TabPane>
@@ -127,10 +127,28 @@ export default class DriverTripsTracking extends Component {
                     <div className="trips-container  start">
                         {trackedTrips.map((trip) => {
                             var seats = [];
-                            for (var i = 0; i < trip.all_seats; i ++) {
-                                seats.push(<button className="circle-empty start " type="button"><i class="fa fa-car" aria-hidden="true"></i></button>)
+                            var availableSeats = trip.available - trip.pending;
+                            var allSeats = trip.all_seats;
+                            var pendingSeats = trip.pending
+                            console.log(availableSeats)
+                            // for (var i = 0; i < pendingSeats; i ++) {
+                            //     availableSeats -=1
+                            // }
+                            for (var i = 0; i < availableSeats; i ++) {
+                                seats.push(<button className="circle-button empty start " type="button"><i class="fa fa-car" aria-hidden="true"></i></button>)
                             }
                             var tripRequests = [];
+                            const hhs_rate = trip.stop_points.map((stop_point) => {
+                        return stop_point.hh.map((hh) => {
+                            return (
+                                <div>
+                                    <p className="hh-profile-picture">{hh.profile_pic}</p>
+                                    <p>{hh.name}</p>
+                                    <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                </div>
+                            )
+                        })
+                    })
                             return(
                                 <div className="trip clearfix">
                                     <div className="driver-container start">
@@ -158,23 +176,96 @@ export default class DriverTripsTracking extends Component {
                                             })}
                                         </div>
                                     </div>
-                                        <div className="car-container">
-                                        {seats}
-                                        <div className="seats-details">
-                                            <p className="trip-seats">{trip.all_seats} seats left</p>
-                                                {(trip.pending)?
-                                                    <p className="pending">{trip.pending} pending requests</p>
-                                                : <p className="no-pending">0 pending requests</p>
-                                            }
-                                        </div>
-                                    </div>
-                                    {console.log(tripRequests)}
                                     <div className="route">
                                         <Slider range min={1} max={trip.stop_points.length} defaultValue={[1,2,3,4]} disabled={true} />
                                     </div>
-                                </div>
-                                
+                                    {tripRequests.map((hh, index) => {
+                                        return (
+                                            <div className="hide">
+                                                {(hh.confirm === "accepted")?
+                                                    (<div>
+                                                        {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}></button>)}
+                                                    </div>
+                                                    ) : (hh.confirm === "pending")?
+                                                            (<div>
+                                                                {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
+                                                            </div>)
+                                                        :   null
+                                                }
+                                                <Modal
+                                                    title={request.name}
+                                                    visible={this.state.visible}
+                                                    onOk={this.handleOk}
+                                                    onCancel={this.handleCancel}
+                                                    mask={false}
+                                                    maskClosable={false}
+                                                    width= {300}
+                                                    bodyStyle={style}
+                                                    style={style}
+                                                    >
+                                                    {(request.confirm != "rejected") ?
+                                                        <div>
+                                                            <p className="hh-profile-picture"></p>
+                                                            <p className="hh-details">{request.rate}</p>
+                                                            <p className="hh-details hh-phone">{request.phone}</p>
+                                                            <p className="hh-details hh-email">{request.email}</p>
+                                                            <p className="hh-details">Booked Seats: {request.seats}</p>
+                                                        </div>
+                                                    : null}
+                                                    {(trip.status === "pending" && request.confirm === "pending")?
+                                                        <RadioGroup
+                                                            onChange={(e) => changeHhStopStatus(request.id, e.target.value)}
+                                                            size={"large"} >
+                                                            <RadioButton value="accepted">Accept</RadioButton>
+                                                            <RadioButton value="rejected">Reject</RadioButton>
+                                                        </RadioGroup>
+                                                    : (<p className="accepted">{request.confirm}</p>)}
+                                                    {(trip.status === "ended" && request.confirm === "accepted")?
+                                                        (<div>
+                                                            <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                                        </div>) : null
+                                                    }
+                                                </Modal>
+                                            </div>
+                                        )
+                                    })}
 
+                                    <div className="car-container">
+                                            {seats}
+                                        <div className="seats-details">
+                                            <p className="trip-seats">{trip.available} seats left</p>
+                                            {(trip.pending)?
+                                                (<p className="pending">Check requests</p>)
+                                            : (<p className="no-pending">No requests</p>)}
+                                        </div>
+                                    </div>
+                                    {(trip.status === "pending")? (<button type="button" className="status-button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
+                                    {trip.start && (trip.status === "pending") ? (<button type="button" className="status-button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
+                                    {(trip.status === "started")? (<button type="button" className="status-button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
+                                     {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
+                                        stop_point.hh.map((hh) => {
+                                        hh.confirm != "accepted"
+                                    })
+                                    }))? (<div>
+                                            <button type="primary" className="rate-button" onClick={() => this.showModalRate(trip.id)}>Rate Your Hitch Hikers</button>
+                                            <Modal
+                                                title={request.name}
+                                                className="modal"
+                                                visible={this.state.visible}
+                                                onOk={this.handleOk}
+                                                onCancel={this.handleCancel}
+                                                mask={false}
+                                                maskClosable={false}
+                                                width= {300}
+                                                bodyStyle={style}
+                                                style={style}
+                                            >
+                                            <div>{hhs_rate}</div>
+                                            <button type="button" onClick={() =>  this.handleSubmit()}>Rate</button>
+                                            </Modal>
+                                        </div>
+                                        ) : null}
+                                </div>
                             )
 
                         })}

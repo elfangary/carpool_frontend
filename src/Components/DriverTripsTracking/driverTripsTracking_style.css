@@ -1,8 +1,8 @@
-.driverTripsTracking{
-	/*padding: 10px;*/
-	width: 100%
+.margin{
+	width: 100%;
+	margin-top: 80px;
 }
-.container{
+.new-container{
 	width:66.66%;
 }
 .trip {
@@ -13,11 +13,26 @@
 	position: relative;
 	color: #434343;
 	background-color: #fafafa;
-	margin-bottom: 40px;
+	margin-bottom: 80px;
 	padding: 40px;
+	margin-top: 10px;
+}
+.driver-profile-picture {
+	background-color: #d7d7d7;
+	border-radius: 50%;
+	height: 120px;
+	width: 120px;
+	margin: 0 auto;
+	/*float: left;*/
+}
+.driver-name {
+    margin: 10px 0;
+}
+.trip + .trip {
+	margin-top: 0;
 }
 .tabs-container{
-	width: 20%;
+	width: 15%;
 }
 .driver-container{
     margin-left: -5px;
@@ -37,7 +52,6 @@
 	border-right: 1px solid #d7d7d7;
 	height: 120px;
 	padding: 0 10px;
-	/*margin-top: -10px;*/
 }
 .flex {
 	display: flex;
@@ -88,8 +102,7 @@
 	margin-top: -10px;
 }
 .trip-seats {
-	margin: 0;
-	margin-top: 5px;
+	margin: 2px 0 0 0;
 	font-weight: bold;
 	color: rgba(48,48,48,.6);
 	font-size: 11px;
@@ -104,7 +117,7 @@
 	font-size: 11px;
 	color: #4182A7;
 }
-.circle-empty {
+.circle-button {
 	background-color: #fff;
 	border: 1px solid #434343;
 	height: 45px;
@@ -113,11 +126,20 @@
 	display: inline-block;
 	text-align: center;
 	line-height: 30px;
-	cursor: not-allowed;
 	margin: 0 0 5px 5px;
 }
-.circle-empty:focus{
+.circle-button:focus{
 	outline: none
+}
+.empty {
+	cursor: not-allowed;
+}
+.request {
+	font-size: 20px;
+	color: #e95d4f;
+}
+.request i {
+	animation: blinker 1s linear infinite;
 }
 .seats-details{
 	padding: 10px;
@@ -135,6 +157,45 @@
 	left: 195px;
 	top: 114px;
 }
+.status-button {
+	background-color: #fafafa;
+	color: #e95d4f;
+	position: absolute;
+	top: 215px;
+	left: 70px;
+	width: 100px;
+}
+.status-button ~ .status-button {
+	/*margin-left: 15px;*/
+	color: #4182A7;
+	position: absolute;
+	left: 185px;
+}
+.rate-button {
+	position: absolute;
+	top: 215px;
+	left: 70px;
+	/*width: 100px;*/
+	background-color: #fafafa;
+	color: #e95d4f;
+}
+.hh-profile-picture {
+	background-color: #d7d7d7;
+	border-radius: 50%;
+	height: 120px;
+	width: 120px;
+	margin: 0 auto;
+	/*float: left;*/
+}
+.accepted {
+	font-size: 11px;
+	color: #4182A7;
+	position: absolute;
+	bottom: 50px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
 .ant-slider-step {
 	background-color: #4182A7;
 }
