@@ -96,7 +96,6 @@ export default class Driver extends Component {
 											)
 										})
 									}
-								
 									<button className="new-stop" type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
 								</div>
 							</fieldset>

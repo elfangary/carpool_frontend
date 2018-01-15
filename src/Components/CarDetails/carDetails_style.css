@@ -11,6 +11,12 @@
 /*.car-details-component > div{
 	display: flex;
 }*/
+.car-details-content {
+	width: 40%;
+	margin: 50px 200px;
+	padding: 0 40px;
+	border-left: 2px solid #d7d7d7;
+}
 .car-details-component > div h1:first-child{
 /*	color: #505050;*/
 	color: #585858;
@@ -36,4 +42,8 @@
 .car-details-component p{
 	line-height: 20px;
 	font-size: 18px;
+}
+.car-error {
+	border-bottom: 2px solid red;
+	display: block;
 }
