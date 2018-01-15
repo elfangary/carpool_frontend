@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Badge } from 'antd';
 import './notifications_style.css';
 import 'antd/lib/style/index.css';
+import {actioncableUrl } from '../../apiConfig'
 
 
 export default class Notifications extends Component {
@@ -17,7 +18,7 @@ export default class Notifications extends Component {
     }
 
     createSocket() {
-      let cable = Cable.createConsumer(`ws://localhost:3001/cable?token=${localStorage.jwtToken}`);
+      let cable = Cable.createConsumer(`${actioncableUrl}/cable?token=${localStorage.jwtToken}`);
       this.Notifications = cable.subscriptions.create({
         channel: 'NotificationChannel'
       }, {
