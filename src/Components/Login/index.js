@@ -12,13 +12,15 @@ export default class Login extends Component{
 			this.state={
 				email: history.location.state.email,
 				password: '',
-				jwtToken: localStorage.jwtToken
+				jwtToken: localStorage.jwtToken,
+				error: ''
 			}
 		}else{
 			this.state={
 			email: '',
 			password: '',
-			jwtToken: localStorage.jwtToken
+			jwtToken: localStorage.jwtToken,
+			error: ''
 			}
 		}
 		this.inputs = {};

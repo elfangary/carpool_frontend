@@ -278,8 +278,6 @@ export default class DriverTripsTracking extends Component {
             </div>
 
         )
-                                        // <img src={trip.driver.profile_pic} className="driver-profile-picture"/>
+        // <img src={trip.driver.profile_pic} className="driver-profile-picture"/>
     }
 }
-
-
