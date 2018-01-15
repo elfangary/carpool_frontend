@@ -34,8 +34,30 @@ export default class Notifications extends Component {
         this.createSocket();
     }
 
+    // link_name(){
+    //     this.props.notifications.map((notification) =>{
+    //         console.log("notify");
+    //         console.log(notification.body);
+    //         const notify = notification.body.split(' ')[0];
+    //         switch(notify){
+    //             case 'Your': 
+                    
+
+    //             break;
+    //             case 'You':
+    //                 return "/driving/trips"
+    //             break;
+    //         }
+    //     })
+    // }
+       
+
     render(){
         const { notifications, loading, error } = this.props;
+
+        
+        
+        
         if(loading){
             return (
                 <p>Loading Notifications..</p>
@@ -61,15 +83,15 @@ export default class Notifications extends Component {
                             }
                         </h2>
                         <div class="dropdown-content">
-                            {
+                            {  
                                 notifications.map((notification) =>{
                                     return(
-                                        <div className="notification-content">
-                                            <Link to="#">
+                                        <div className="notification-content">                                                
+                                           <Link to={`/profile/${notification.type}/trips`}>
                                                 <p>{dateformat(notification.created_at, "d.mmm.yyyy,HH:MM")}</p>
                                                 <p>{notification.stop_point_name}</p>
                                                 <p>{notification.body}<Link to="#"> <span>See Details</span></Link></p>
-                                            </Link>
+                                            </Link> 
                                         </div>
                                     )
                                 })
