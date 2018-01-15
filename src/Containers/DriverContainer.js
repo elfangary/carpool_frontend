@@ -16,7 +16,7 @@ const mapStateToProps = function (store){
 
 const mapDispatchToProps = function (dispatch){
 	return {
-		addTrip: (car_id, day, all_seats, stop_points_attributes) => {
+		addTrip: (car_id, day, all_seats, specific_gender, smoking, stop_points_attributes) => {
             let end_time = stop_points_attributes[0].end_time;
             const stopPoints = stop_points_attributes.map(stopPoint => {
                 if (stopPoint.end_time > end_time) end_time = (day + ' ' + stopPoint.end_time);
@@ -29,7 +29,7 @@ const mapDispatchToProps = function (dispatch){
             const timeInSeconds = new Date(end_time).getTime();
 
             dispatch(addTripLoading());
-            dispatch(addTrip(car_id, day, all_seats, stopPoints, timeInSeconds))
+            dispatch(addTrip(car_id, day, all_seats, specific_gender, smoking, stopPoints, timeInSeconds))
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));

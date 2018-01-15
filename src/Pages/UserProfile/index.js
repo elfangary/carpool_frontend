@@ -18,20 +18,23 @@ export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
-				<div className="profile sclearfix">
-					<div className="notifications-displayed">
-                        <Notifications />
-                    </div>
-					<UserContainer />
-					<Switch>
-						<Route path="/profile/edit" exact component={EditUserForm} />
-                  		<Route path="/profile/driving" exact component={DriverContainer} />
-                  		<Route path="/profile/driving/cars" component={CarDetails} />
-                  		<Route exact path="/profile/hitch-hiking" component={HhForm} />
-                 		<Route path="/profile/checkout" component={Checkout} />
-                  		<Route path="/profile/driving/trips" component={DriverTrips} />
-                  		<Route path="/profile/hitch-hiking/trips" component={HhTrips} />
-		            </Switch>
+				<div className="app-container ">
+
+					<div className="left-container">
+						<UserContainer />
+					</div>
+
+					<div className="right-container clearfix">
+						<Switch>
+							<Route path="/profile/edit" exact component={EditUserForm} />
+	                  		<Route path="/profile/driving" exact component={DriverContainer} />
+	                  		<Route path="/profile/driving/cars" component={CarDetails} />
+	                  		<Route exact path="/profile/hitch-hiking" component={HhForm} />
+	                 		<Route path="/profile/checkout" component={Checkout} />
+	                  		<Route path="/profile/driving/trips" component={DriverTrips} />
+	                  		<Route path="/profile/hitch-hiking/trips" component={HhTrips} />
+			            </Switch>
+		            </div>
 				</div>
 			)
 		}else{

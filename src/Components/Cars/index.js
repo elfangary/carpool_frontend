@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css';
 
 export default class Cars extends Component {
 	componentWillMount(){
@@ -8,9 +9,9 @@ export default class Cars extends Component {
 		nextProps = this.props.deleted;
 	}
 	render() {
-		const {cars, car_id, onChange, name, deleted} = this.props;
+		const {cars, onChange, name, deleted} = this.props;
 		return (
-	        <select onChange={onChange} name={name}>
+	        <select className="cars" onChange={onChange} name={name}>
 	        	<option value="" disabled selected>Select your car</option>
 	          	{cars.map((car) => {return(<option value={car.id} car_id={car.id} deleted={deleted}>{car.model} </option>)})}
 	        </select>

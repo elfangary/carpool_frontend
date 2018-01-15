@@ -21,12 +21,6 @@ input{
 	line-height: 40px;
 	margin-bottom: 25px;
 }
-.clearfix::before,
-.clearfix::after {
-  display: table;
-  content: '';
-  clear: both;
-}
 input:focus{
     outline: 0;
 }
@@ -35,4 +29,23 @@ input:-webkit-autofill {
 	background-color: blue !important;
 	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
 	transition: background-color 5000s ease-in-out 0s;
+}
+.start{
+	float: left;
+}
+.end{
+	float: right;
+}
+.hide{
+	display: none;
+}
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: '';
+  clear: both;
+}
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
 }

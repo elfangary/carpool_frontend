@@ -1,0 +1,10 @@
+.modal {
+    background-color: rgb(247, 238, 238);
+    text-align: center;
+    color: black;
+    z-index: 1;
+    border: 2px solid rgb(82, 72, 72);
+    height: 300px;
+    width: 300px;
+    float:right;
+}

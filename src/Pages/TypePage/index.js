@@ -4,14 +4,12 @@ import './typePage_style.css';
 import Notifications from '../../Containers/NotificationsContainer';
 
 export default class WelcomePage extends Component {
-    logout(){
-      localStorage.removeItem('jwtToken');
-    }
+
 
     render(){
         return (
         	<div className="type-container clearfix">
-                <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
+                
                 <div className="type-page">
                     <div className="notifications-displayed">
                         <Notifications />

@@ -1,150 +1,158 @@
-.profile-container {
-  background-color: #303030;
-  width: 32%;
-  float: left;
-  color: #4182A7;
-  height: 100%;
+.fixed-container {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 30%;
+	background-color: #303030;
+	color: #4182a7;
+	padding: 80px 40px;
 }
-.profile-container .profile-content {
-	padding: 25px;
-	position: absolute;
-  /*height: 624px;*/
+.header .profile-pic-edit-link {
+	width: 33.33%;
 }
-.profile-container a {
+.header .profile-picture {
+	border-radius: 50%;
+	background-color: #fff;
+	height: 100px;
+	width: 100px;
+}
+.header .personal-details{
+	width: 66.66%;
+}
+.personal-details .user-name {
+	margin: 28px 0 0 5px;
+	color: #fff;
+	font-size: 22px;
+}
+.personal-details .react-rater-star{
+	font-size: 20px;
+	margin-top: -5px;
+}
+.personal-details .react-rater-star.is-disabled{
+	color: #262626;
+}
+.personal-details .react-rater-star.is-active{
 	color: #4182A7;
-	text-decoration: none;
-	border: 1px solid #4182A7;
-	border-radius: 15px;
-	padding: 3px 20px;
-	font-size: 15px;
 }
-.profile-container .edit-link {
-	color: grey;
+.personal-details .react-rater-star.is-active-half:before{
+	color: #4182A7;
+}
+.personal-details .profile-rate{
+	color: #000;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: lighter;
+	margin-left: 10px;
+}
+
+.header .edit-link{
+	display: block;
+	color: #5d5d5d;
 	border: 0;
 	margin-left: 10px;
+	margin-top: 8px;
 	font-size: 11px;
 }
-.profile-picture {
-	border-radius: 50%;
-	width: 100px;
-	height: 100px;
-	margin-left: 10px;
-	display: inline-block;
-}
-.user-name {
-	color: #fff;
-	font-size: 20px;
-	display: inline-block;
+.profile-links{
+	border: 1px solid #4182A7;
+	text-align: center;
+	border-radius: 30px;
+	height: 60px;
+	line-height: 60px;
+	font-weight: lighter;
+	font-size: 12px;
 	margin-top: 40px;
+	padding: 5px 30px;
+	color: #4182a7;
 }
-.profile-container .header div {
-	float: left;
-	width: 50%;
-}
-.header .profile-pic-edit-link p:first-child {
-	position: fixed;
-	left: 330px;
-}
-.header .profile-pic-edit-link p:first-child a {
-	border: 0;
-	color: grey;
-	font-size: 13px;
-}
-.profile-container .notification-link {
-	position: fixed;
-	right: 20px;
-	background-color: #4182A7;
-	color: white;
-	padding: 5px;
-}
-.profile-container .profile-content footer {
-	position: fixed;
-	bottom: 70px;
-	margin: auto;
-	left: 30px;
-	right: 10px;
-}
-.profile-container .profile-content footer a {
-	width: 50%;
-	border-radius: 0;
-	padding: 10px 30px;
-	background-color: #4182A7;
-	color: white;
-	font-size: 20px;
-}
-.profile-container .profile-content footer a:first-child {
-	border-right: 1px solid white;
-}
-.profile-container .profile-content footer a:focus {
-	background-color: white;
-	color: #4182A7;
-	text-decoration: none;
-}
-.profile-container .profile-links {
-	line-height: 70px;
-}
-.profile-container .profile-links a + a {
-	margin-left: 8px;
-}
-.profile-container .profile-links a:focus {
-	text-decoration: none;
-	background-color: grey;
-	color: #1C567E;
-	border-color: #1C567E;
-}
-.profile-container .contact-details {
-	margin-top: 15px;
-	height: 90px;
-}
-.profile-container .contact-details > p {
-	width: 30%;
-	float: left;
-	font-size: 20px;
-	text-align: center;
-}
-.profile-container .contact-details > p span {
-	display: block;
-	text-align: center;
-	margin-bottom: -5px;
-}
-.profile-container .contact-details div {
-	display: inline-block;
-	float: left;
-	border-left: 1px groove #989898;
-	width: 60%;
-}
-.profile-container .contact-details .email-phone p {
+.profile-links + .profile-links {
 	margin-left: 15px;
 }
-.profile-container .contact-details .email-phone p:first-child {
-	margin-top: 8px;
-	margin-bottom: -1px;
+.profile-links:focus {
+	text-decoration: none;
+	background-color: #5d5d5d;
+	color: #4182a7;
+	border-color: #1C567E;
 }
-.profile-content form {
+.contact-details {
+	margin-top: 15px;
+}
+.points{
+	text-align: center;
+	width: 30%
+}
+.points span{
+	font-size: 20px;
+	display: block;
+	line-height: 20px;
 	margin-top: 10px;
 }
-.profile-content form legend {
-	font-size: 15px;
-	margin-bottom: 15px;
+.email-phone{
+	border-left: 1px solid #5d5d5d;
+	padding: 15px 0 0 30px;
+	height: 60px;
+	width:70%;
+	line-height: 8px;
 }
-.profile-content form input {
+.user-profile-form {
+	margin-top: 50px;
+}
+.user-profile-form legend{
+	color: #d6a256;
+	font-size: 12px;
+}
+
+.user-profile-form input {
 	display: block;
 	border: none;
-    border-bottom: 2px solid rgba(255,255,255,.3);
-	background-color: #303030;
+	border-bottom: 1px solid #5d5d5d;
 	line-height: 30px;
 	margin-bottom: 20px;
-	float: left;
-	margin-top: 25px;
-	width: 60%;
+	width: 240px;
+	background-color: #303030;
 }
-.profile-content .StripeCheckout {
-	float: right;
-	margin-top: 30px;
+::-webkit-input-placeholder{
+	color: rgba(255,255,255,.1);
+	font-weight: lighter;
 	font-size: 12px;
-	width: 30%;
 }
-.profile-content .StripeCheckout > span {
-	padding: 0px 7px !important;
-	font-size: 11px !important;
+.stripe button{
+	border: 1px solid #d6a256;
+	text-align: center;
+	border-radius: 30px;
+	background-color: #303030;
+	height: 30px;
+	font-weight: lighter;
+	font-size: 12px;
+	margin-top: 0;
+	padding: 5px 20px;
+	color: #d6a256;
+}
+.stripe button:focus{
+	text-decoration: none;
+	background-color: #5d5d5d;
+	outline: 0;
+}
+.type-links {
+	padding: 15px;
+	position: absolute;
+	text-align: center;
+	bottom: 80px;
+	left: 15%;
+	width: 70%;
+	background: #4182a7;
+	border-radius: 8px;
+}
+
+.type-links .type-selected {
+	padding: 10px 30px;
+	border-radius: 3px;
+	color: #5d5d5d;
+
+}
+.type-links .type-selected:focus{
+	background: #fff;
+	color:#4182a7;
+	text-decoration: none;
 }

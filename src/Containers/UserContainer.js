@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
     return {
         user: state.user.user,
         points: state.user.points,
+        ratings: state.user.ratings,
         loading: state.user.loading,
         error: state.user.error
     };

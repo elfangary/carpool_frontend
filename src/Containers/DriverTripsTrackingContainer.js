@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
-import {
-    getTripsTrackingLoading, getTripsTracking, getTripsTrackingSuccess, getTripsTrackingFailure,
-    changeHhStopStatusLoading, changeHhStopStatus, changeHhStopStatusSuccess, changeHhStopStatusFailure,
-    changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess, changeTripStatusFailure,
-    addBalanceToDriverLoading, addBalanceToDriver, addBalanceToDriverSuccess, addBalanceToDriverFailure,
-    addBalanceToHhLoading, addBalanceToHh, addBalanceToHhSuccess, addBalanceToHhFailure
-} from '../Actions/DriverTripsTracking';
-import {incrementUserPoints} from '../Actions/user';
+import { getTripsTrackingLoading, getTripsTracking,
+     getTripsTrackingSuccess, getTripsTrackingFailure, changeHhStopStatusLoading, changeHhStopStatus,
+      changeHhStopStatusSuccess, changeHhStopStatusFailure,
+    changeTripStatusLoading, changeTripStatus, changeTripStatusSuccess,
+     changeTripStatusFailure} from '../Actions/DriverTripsTracking';
+import {incrementUserPoints, rateUserLoading, rateUser, rateUserSuccess, rateUserFailure} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
 
 
@@ -15,6 +13,7 @@ const mapStateToProps = function(state){
         trackedTrips: state.driverTrackedTrips.trackedTrips,
         updated_hh_stop: state.driverTrackedTrips.updated_hh_stop,
         updated_trip: state.driverTrackedTrips.updated_trip,
+        ratings: state.user.ratings,
         points: state.user.points,
         loading: state.driverTrackedTrips.loading,
         error: state.driverTrackedTrips.error
@@ -56,6 +55,17 @@ const mapDispatchToProps = function(dispatch){
                     dispatch(changeTripStatusSuccess(response.payload.data));
                 }else{
                     dispatch(changeTripStatusFailure(response.payload.message));
+                }
+            })
+        },
+        rateUser: (ratings) => {
+            dispatch(rateUserLoading());
+            dispatch(rateUser(ratings))
+            .then(response => {
+                if(response.payload.status < 400){
+                    dispatch(rateUserSuccess(response.payload.data));
+                }else{
+                    dispatch(rateUserFailure(response.payload.message));
                 }
             })
         }

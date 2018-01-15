@@ -1,7 +1,7 @@
 import {
     GET_USER_LOADING, GET_USER_SUCCESS, GET_USER_FAILURE,
     UPDATE_USER_LOADING, UPDATE_USER_SUCCESS, UPDATE_USER_FAILURE,
-    DECREMENT_USER_POINTS, INCREMENT_USER_POINTS
+    DECREMENT_USER_POINTS, INCREMENT_USER_POINTS, RATE_USER_LOADING, RATE_USER_SUCCESS, RATE_USER_FAILURE
 } from '../Actions/user';
 
 import {
@@ -11,6 +11,7 @@ import {
 const INITIAL_STATE = {
     user: {},
     points: 0,
+    ratings: [],
     loading: false,
     error: null
 }
@@ -43,6 +44,13 @@ export default function(currentState = INITIAL_STATE, action){
 
         case INCREMENT_USER_POINTS:
             return {...currentState, points: action.amount.points};
+
+        case RATE_USER_LOADING:
+            return {...currentState, loading: true};
+        case RATE_USER_SUCCESS:
+            return {...currentState, ratings: action.ratings, loading: false}
+        case RATE_USER_FAILURE:
+            return {...currentState, loading: false, error: action.error}
 
         default:
             return currentState;

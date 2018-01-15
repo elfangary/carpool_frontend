@@ -9,26 +9,21 @@ import HomePage from './Pages/HomePage';
 import TypePage from './Pages/TypePage';
 // import 'antd/lib/style/index.css';
 
-import DriverContainer from './Containers/DriverContainer';
-import UserContainer from './Containers/UserContainer';
-import CarsContainer from './Containers/CarsContainer';
-import HhForm from './Containers/HhFormContainer';
-import DriverTrips from './Containers/DriverTripsTrackingContainer';
-import HhTrips from './Containers/HhTripsTrackingContainer';
-import Notifications from './Containers/NotificationsContainer';
-
-import CarDetails from './Containers/CarsDetailsContainer';
-import Checkout from './Components/Checkout';
-import EditUserForm from './Containers/editUserFormContainer';
-
 class App extends Component {
 
+    logout(){
+      localStorage.removeItem('jwtToken');
+    }
   render() {
     return (
         <div className="App clearfix">
           <header className="header">
               {!(localStorage.jwtToken)?
-                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> : null}
+                <Link to="/aboutus" className="nav-link">Who Are We?</Link> :
+                <div className="user-nav">
+                  <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
+                  <Link to={"/notifications"} className="notification-link end"><i class="fa fa-bell" aria-hidden="true"></i></Link>
+                </div>}
           </header>
           <Switch>
             <Route path="/" exact component={HomePage} />
