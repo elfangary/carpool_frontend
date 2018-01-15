@@ -1,38 +1,65 @@
 .App {
   font-style: Helvetica, sans-serif;
   height: 100%;
-/*  overflow: auto;*/
 }
-.App > .header{
-  float: right;
-  margin-top: 20px;
+.App > .header {
+  position: fixed;
+  top: 0px;
+  bottom: 90%;
+  right: 0px;
+  left: 30%;
+  z-index: 5;
+}
+.user-nav{
+  background-color: rgba(255,255,255,.8);
+  position: fixed;
+  top: 0px;
+  bottom: 90%;
+  right: 0px;
+  left: 30%;
+  z-index: 5;
 }
 .nav-link {
   color: #fff;
   text-transform: uppercase;
   font-weight: bold;
-  margin-right: 200px;
+  position: absolute;
+  top: 55%;
+  right: 10%;
+  /*margin-right: 200px;*/
 }
 .nav-link:hover {
   color: #418cb6;
 }
+.notification-link i {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+}
 .user-nav-link {
-  margin-right: 200px;
-  color: #434343;
+  position: absolute;
+  top: 55%;
+  right: 10%;
+  color: #303030;
   text-transform: uppercase;
   font-weight: bold;
 }
+
 .footer {
-  background-color: #434343;
+  position: relative;
+  width: 100%;
+  background-color: #303030;
   height: 30px;
-  margin-top: -30px;
   padding: 0 30px;
   display: flex;
   justify-content: space-between;
   line-height: 30px;
   font-weight: lighter;
   font-size: 12px;
-  z-index: 1000;
+  margin-top: -30px;
+  /*float: left;*/
+  /*clear: both;*/
+  /*z-index: 5;*/
 }
 .footer-link {
   color: #fff;
@@ -50,10 +77,4 @@
 }
 .social-media ~ .social-media {
   margin-left: 30px;
-}
-
-.clearfix::before, .clearfix::after {
-  display: table;
-  content: '';
-  clear: both;
 }

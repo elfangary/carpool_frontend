@@ -4,7 +4,6 @@ import Locations from '../../Containers/LocationsContainer';
 import CarsDetails from '../../Containers/CarsDetailsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';
-import FlipMove from 'react-flip-move';
 import './index.css';
 
 
@@ -71,7 +70,8 @@ export default class Driver extends Component {
 		const {locations, addTrip} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
 		return (
-			<div className="driver-container">
+			<div className="new-container margin end">
+
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
 					<div className="box">
@@ -81,7 +81,7 @@ export default class Driver extends Component {
 								<div className="right">
 								<p className="small">Moving From</p>
 									{
-										stop_points_attributes.map((stopPoint, index) => {
+										stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
 											return (
 												<div className="container clearfix">
 													<label className="stop_point">
@@ -121,41 +121,41 @@ export default class Driver extends Component {
 								<Cars className="left" car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
 								<label className="left">
 									<p className="small">Available seats</p>
-									<input type="number" className="seats" name="all_seats" placeholder="Available seats" value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+									<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 								</label>
 							</div>
 						</fieldset>
 					</div>
 
-					<div className="box">
+					{/* <div className="box">
 						<fieldset>
 							<legend className="left title">Additional Information</legend>
 							<div className="">
 								<div className="flex-boxing">
 									<div className="flex-child">
 										<label className="label">Males only
-											<input type="radio" name="gender" value={"males"} onChange={this.handleChangeToI} />
+											<input type="radio" name="specific_gender" value="males" onChange={this.handleChange} />
 										</label>
 										<label className="label">Females only
-											<input type="radio" name="gender" value={"females"} onChange={this.handleChangeToI} />
+											<input type="radio" name="specific_gender" value="females" onChange={this.handleChange} />
 										</label>
 										<label className="label">Both
-											<input type="radio" name="gender" value={"both"} onChange={this.handleChangeToI} />
+											<input type="radio" name="specific_gender" value="both" onChange={this.handleChange} />
 										</label>
 									</div>
 									<div className="flex-child">
 										<label className="label">Smoking
-										<input type="radio" name="smoking" value={true} onChange={this.handleChangeToI} />
+											<input type="radio" name="smoking" value={true} onChange={this.handleChange} />
 										</label>
 										<label className="label">Non-smoking
-										<input type="radio" name="smoking" value={false} onChange={this.handleChangeToI} />
+											<input type="radio" name="smoking" value={false} onChange={this.handleChange} />
 										</label>
 									</div>
 								</div>
 							</div>
 						</fieldset>
 
-					</div>
+					</div> */}
 				</form>
 				<div className="button-box">
 					<button className="button" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>

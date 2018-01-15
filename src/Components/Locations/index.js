@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import './locations_style.css';
 
 export default class Locations extends Component {
 
@@ -8,7 +8,7 @@ export default class Locations extends Component {
     }
 
     render(){
-        const { locations, location_id, onChange, name} = this.props;
+        const { locations, onChange, name} = this.props;
         var options = locations.map((location) => {
             return <option className="location" key={location.id} value={location.id}>{location.name}</option>;
         })

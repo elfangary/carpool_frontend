@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
                     dispatch(signUpSuccess(response.payload.data));
                     history.push('/', {email: response.payload.data.email})
                 }else{
-                    dispatch(signUpFailure(response.payload.response.data.message));
+                    dispatch(signUpFailure(response.payload.response.data));
                 }
             })
         }

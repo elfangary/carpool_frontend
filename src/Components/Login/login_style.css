@@ -1,17 +1,7 @@
-@minin clearfix{
-	content: "";
-	display: table;
-	clear: both;
-}
-.clearfix::before,
-.clearfix::after{
-	@include clearfix();
-}
-
 .userLogin{
 	display: flex;
 	width: 100%;
-	padding-top: 80px;
+	padding-top: 170px;
 	vertical-align: middle;
 	justify-content: space-around;
 }
@@ -111,6 +101,7 @@
 	line-height: 60px;
 	background-color: #4188B0;
 	margin-top: 42px;
+	cursor: pointer;
 }
 .userLoginForm form button:focus{
 	outline: 0;
@@ -121,7 +112,4 @@
 	font-size: 12px;
 	color: #ae3130;
 	font-weight: bold;
-}
-.userLoginForm form button:focus{
-	outline: 0;
 }
