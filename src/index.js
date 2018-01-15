@@ -8,7 +8,6 @@ import history from './history';
 import createStore from './create-store';
 import {Provider} from 'react-redux';
 import setAuthenticationToken from './utils/authentication_token';
-import { setCurrentUser } from './Actions/loginForm';
 
 const store = createStore();
 

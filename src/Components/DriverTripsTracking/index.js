@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
-import { Slider, Modal, Tabs, Radio, Menu, Button } from 'antd';
+import { Slider, Modal, Tabs, Radio } from 'antd';
 import 'antd/dist/antd.css';
 import './driverTripsTracking_style.css';
 import Rater from 'react-rater';
@@ -82,7 +82,7 @@ export default class DriverTripsTracking extends Component {
 
     handleSubmit = () => {
         this.props.rateUser(this.state.ratings);
-        this.state.ratings = [];
+        this.setState({ratings: []});
     }
 
 

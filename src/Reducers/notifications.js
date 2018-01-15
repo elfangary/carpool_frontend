@@ -1,6 +1,5 @@
 import {
     GET_ALL_NOTIFICATIONS_LOADING, GET_ALL_NOTIFICATIONS_SUCCESS, GET_ALL_NOTIFICATIONS_FAILURE,
-    GET_NOTIFICATION_LOADING, GET_NOTIFICATION_SUCCESS, GET_NOTIFICATION_FAILURE,
     UPDATE_NOTIFICATION_LOADING, UPDATE_NOTIFICATION_SUCCESS, UPDATE_NOTIFICATION_FAILURE
 } from '../Actions/notifications';
 
@@ -23,8 +22,8 @@ export default function(currentState = INITIAL_STATE, action){
             var newNotifications = currentState.notifications.map((notification) => {
                 if(notification.id == action.id){
                     notification.loading = true;
-                    return notification;
                 }
+                return notification;
             })
             return {...currentState, notifications: newNotifications};
         case UPDATE_NOTIFICATION_SUCCESS:
