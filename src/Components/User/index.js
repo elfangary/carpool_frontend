@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-// import "react-toggle/style.css";
 import "./user_style.css";
 import {Link, Route} from 'react-router-dom';
-// import Driver from '../../Containers/DriverContainer';
 import Checkout from '../../Containers/Checkout';
 import Rater from 'react-rater';
 import 'react-rater/lib/react-rater.css';
@@ -26,8 +24,8 @@ export default class User extends Component{
 	};
 
 	render(){
-		const { user, loading, error, handleChangeLink, logout, points } = this.props;
-		const { amount, link } = this.state;
+		const { user, loading, error, points } = this.props;
+		const { amount } = this.state;
 		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
 		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
 		if(loading){

@@ -2,6 +2,10 @@
     margin-left: 1px;
 }
 
+.time-frame {
+    display: flex;
+}
+
 .time {
     width: 50px;
     border: 0;

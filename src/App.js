@@ -3,7 +3,6 @@ import './App.css';
 import UserProfile from './Pages/UserProfile';
 import {Link, Route, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
-import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
 // import Notifications from './Containers/NotificationsContainer';
 import TypePage from './Pages/TypePage';

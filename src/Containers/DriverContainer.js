@@ -4,6 +4,7 @@ import {
     addTripLoading, addTrip, addTripSuccess, addTripFailure
 } from '../Actions/driver';
 import history from '../history';
+import swal from 'sweetalert';
 
 
 const mapStateToProps = function (store){
@@ -33,9 +34,11 @@ const mapDispatchToProps = function (dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));
+                    swal("Successfully Created ,Thank You for Using Our App", "success");
                     history.push('/profile/driving/trips');
                 }else{
                     dispatch(addTripFailure(response.payload.message));
+                    swal("Oops!", "Try Again", "error");
                 }
             })
         }

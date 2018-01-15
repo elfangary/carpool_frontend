@@ -71,7 +71,7 @@ export default class CarDetails extends Component {
 							<form>
 							<input type="text" name="model" placeholder="model" onChange={this.handelChangeForm.bind(this)} />
 							<input type="text" name="number" placeholder="number" onChange={this.handelChangeForm.bind(this)} />
-							<input type="text" name="color" placeholder="colr" onChange={this.handelChangeForm.bind(this)} />
+							<input type="text" name="color" placeholder="color" onChange={this.handelChangeForm.bind(this)} />
 							<button type="button" onClick={ ()=>{this.props.createCar(this.state.car)} }>Create Car</button>
 							</form>
 						</div>

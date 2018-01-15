@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import {newTripApi} from '../apiConfig';
 
-
+// Action Types
 //Add Trip
 export const ADD_TRIP_LOADING = 'ADD_TRIP_LOADING';
 export const ADD_TRIP = 'ADD_TRIP';
@@ -9,7 +9,7 @@ export const ADD_TRIP_SUCCESS = 'ADD_TRIP_SUCCESS';
 export const ADD_TRIP_FAILURE = 'ADD_TRIP_FAILURE';
 
 
-
+// Action Creators
 //Add Trip
 export const addTripLoading = () => {
     return {
