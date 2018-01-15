@@ -42,7 +42,9 @@ export default class Checkout extends Component {
     			currency={'EGP'}
     			stripeKey={'pk_test_Gb9ajdE1zHAzQBLlK4w0tjJU'}
     			allowRememberMe={false}
-  			/>
+  			>
+  			<button>Pay With Card</button>
+  			</StripeCheckout>
 	 	)
 	 }
 };

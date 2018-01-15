@@ -34,7 +34,7 @@ const mapDispatchToProps = function (dispatch){
             .then(response => {
                 if(response.payload.status < 400){
                     dispatch(addTripSuccess(response.payload.data));
-                    swal("Successfully Created ,Thank You for Using Our App", "success");
+                    swal("Successfully Created" ,"Thank You for Using Our App", "success");
                     history.push('/profile/driving/trips');
                 }else{
                     dispatch(addTripFailure(response.payload.message));

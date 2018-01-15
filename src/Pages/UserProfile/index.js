@@ -16,13 +16,13 @@ export default class UserProfile extends Component {
 	render() {
 		if(localStorage.jwtToken){
 			return (
-				<div className="app-container">
+				<div className="app-container ">
 
 					<div className="left-container">
 						<UserContainer />
 					</div>
 
-					<div className="right-container">
+					<div className="right-container clearfix">
 						<Switch>
 							<Route path="/profile/edit" exact component={EditUserForm} />
 	                  		<Route path="/profile/driving" exact component={DriverContainer} />

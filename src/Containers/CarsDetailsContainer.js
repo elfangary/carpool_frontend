@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import CarDetails from '../Components/CarDetails';
+import swal from 'sweetalert';
+import history from '../history';
 
 import {
     getCarLoading, getCar, getCarSuccess, getCarFailure,
@@ -32,8 +34,10 @@ const mapDispatchToProps = function (dispatch){
             dispatch(createCar(car)).then(response =>{
                 if(response.payload.status < 400){
                     dispatch(createCarSuccess(response.payload.data));
+                    swal("Successfully Created" ,"Looking Forward For Your Next Trip", "success");
                 }else{
                     dispatch(createCarFailure(response.payload.response.data.message));
+                    swal("Oops!", "Try Again!", "error");
                 }
             });
         },
@@ -42,6 +46,7 @@ const mapDispatchToProps = function (dispatch){
             dispatch(deleteCar(id)).then(response => {
                 if(response.payload.status < 400){
                     dispatch(deleteCarSuccess(id));
+                    swal("Successfully Deleted", "", "success");
                 }else{
                     dispatch(deleteCarFailure(id));
                 }

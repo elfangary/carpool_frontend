@@ -33,7 +33,7 @@ export default class CarDetails extends Component {
 		})
 	}
 	render() {
-		const {car_id} = this.state;
+		const {car_id, errors} = this.state;
 		const { cars, loading, error} = this.props;
 		var displayed_car = null;
 
@@ -69,9 +69,9 @@ export default class CarDetails extends Component {
 						<h1>Add Car</h1>
 						<div className="clearfix">
 							<form>
-							<input type="text" name="model" placeholder="model" onChange={this.handelChangeForm.bind(this)} />
-							<input type="text" name="number" placeholder="number" onChange={this.handelChangeForm.bind(this)} />
-							<input type="text" name="color" placeholder="color" onChange={this.handelChangeForm.bind(this)} />
+							<input type="text" className={(this.state.car.model.length === 0)? "error": ""}  name="model" placeholder="model" onChange={this.handelChangeForm.bind(this)} />
+							<input type="text" className={(this.state.car.number.length === 0)? "error": ""} name="number" placeholder="number" onChange={this.handelChangeForm.bind(this)} />
+							<input type="text" className={(this.state.car.color.length === 0)? "error": ""} name="color" placeholder="color" onChange={this.handelChangeForm.bind(this)} />
 							<button type="button" onClick={ ()=>{this.props.createCar(this.state.car)} }>Create Car</button>
 							</form>
 						</div>

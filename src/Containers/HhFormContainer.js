@@ -36,7 +36,7 @@ const mapDispatchToProps = function(dispatch){
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
                     dispatch(decrementUserPoints(response.payload.data.points_on_hold));
-                    swal("Successfully Created ,Wait For You Booking Confirmation!", "success");
+                    swal("Successfully Created" ,"Wait For You Booking Confirmation!", "success");
                     history.push('/profile/hitch-hiking/trips')
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
