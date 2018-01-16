@@ -26,14 +26,14 @@ export default function(currentState = INITIAL_STATE, action){
 			var newCars = currentState.cars.map((car) =>{
 				if(car.id == action.id){
 					car.loading = true;
-					return car;
 				}
+				return car;
 			})
 			return {...currentState, cars: newCars};
 		case GET_CAR_SUCCESS:
 			return {...currentState, cars: [...currentState.cars, action.car], loading: false};
 		case GET_CAR_FAILURE:
-			var newCars = currentState.cars.map((car) =>{
+			newCars = currentState.cars.map((car) =>{
 				if(car.id == action.id){
 					car.loading = false;
 					car.errors = action.errors;
@@ -60,12 +60,12 @@ export default function(currentState = INITIAL_STATE, action){
 			})
 			return {...currentState, cars: newCars};
 		case DELETE_CAR_SUCCESS:
-			var newCars = currentState.cars.filter((car) =>{
+			newCars = currentState.cars.filter((car) =>{
 				return car.id !== action.id;
 			})
 			return {...currentState, cars: newCars};
 		case DELETE_CAR_FAILURE:
-			var newCars = currentState.cars.map((car) =>{
+			newCars = currentState.cars.map((car) =>{
 				if(car.id == action.id){
 					car.loading = false;
 					car.errors = action.errors;

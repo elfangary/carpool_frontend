@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import './signUp_style.css';
-import {Redirect} from 'react-router-dom';
-import Login from '../../Containers/loginFormContainer';
-import UserProfile from '../../Pages/UserProfile';
 
 export default class SignUpForm extends Component{
 	constructor(props){

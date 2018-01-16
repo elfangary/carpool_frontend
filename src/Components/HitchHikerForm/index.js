@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Locations from '../../Containers/LocationsContainer';
-import Days from '../Days';
 import dateFormat from 'dateformat';
 import './hitchHikerForm_style.css';
 
@@ -13,7 +12,7 @@ export default class HHForm extends Component {
             location_id_end: null,
             new_hh_stop: {
                 stop_point_id: null,
-                booked_seats: 0
+                booked_seats: null
             }
         };
         this.inputs = {};

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import UserProfile from '../../Pages/UserProfile';
 import { Link } from 'react-router-dom';
 import './login_style.css';
-import { Row, Col } from 'antd';
 import history from '../../history';
 
 export default class Login extends Component{
@@ -12,13 +10,15 @@ export default class Login extends Component{
 			this.state={
 				email: history.location.state.email,
 				password: '',
-				jwtToken: localStorage.jwtToken
+				jwtToken: localStorage.jwtToken,
+				error: ''
 			}
 		}else{
 			this.state={
 			email: '',
 			password: '',
-			jwtToken: localStorage.jwtToken
+			jwtToken: localStorage.jwtToken,
+			error: ''
 			}
 		}
 		this.inputs = {};
@@ -41,6 +41,9 @@ export default class Login extends Component{
 				this.inputs.password.style.borderColor = 'rgba(255,255,255,.3)';
 				break;
 			}
+			default:
+				this.inputs.password.style.borderColor = 'rgba(255,255,255,.3)';
+				this.inputs.email.style.borderColor = 'rgba(255,255,255,.3)';
 		}
 	}
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 *{
 	box-sizing: border-box;
@@ -26,7 +26,6 @@ input:focus{
 }
 input:-webkit-autofill {
 	border: $border-style !important;
-	-webkit-text-fill-color: white !important;
 	background-color: blue !important;
 	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
 	transition: background-color 5000s ease-in-out 0s;

@@ -1,11 +1,9 @@
 .user-nav-link {
 	float: right;
 }
-
 .type-container {
 	height: 100%;
 }
-
 .type-page {
 	color: #434343;
 	position: absolute;
@@ -33,4 +31,9 @@
 	font-size: 15px;
 	margin: auto;
 	margin-top: 40px;
+}
+.notifications-displayed{
+	position: fixed;
+	top: 18px;
+	right: 48px;
 }

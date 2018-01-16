@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Driver from '../Components/Driver';
 import {
     addTripLoading, addTrip, addTripSuccess, addTripFailure
+    , addCarLoading, addCar, addCarSuccess, addCarFailure
 } from '../Actions/driver';
 import history from '../history';
 import swal from 'sweetalert';
@@ -39,6 +40,17 @@ const mapDispatchToProps = function (dispatch){
                 }else{
                     dispatch(addTripFailure(response.payload.response.data));
                     swal("Oops!", "Try Again", "error");
+                }
+            })
+        },
+        addCar: (newCar) => {
+            dispatch(addCarLoading());
+            dispatch(addCar(newCar))
+            .then(response => {
+                if(response.payload.status < 400){
+                    dispatch(addCarSuccess(response.payload.data));
+                }else{
+                    dispatch(addCarFailure(response.payload.response.data));
                 }
             })
         }

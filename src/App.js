@@ -4,7 +4,7 @@ import UserProfile from './Pages/UserProfile';
 import {Link, Route, Switch} from 'react-router-dom';
 import SignUpForm from './Containers/SignUpFormContainer';
 import HomePage from './Pages/HomePage';
-// import Notifications from './Containers/NotificationsContainer';
+import Notifications from './Containers/NotificationsContainer';
 import TypePage from './Pages/TypePage';
 // import 'antd/lib/style/index.css';
 
@@ -21,7 +21,9 @@ class App extends Component {
                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> :
                 <div className="user-nav">
                   <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
-                  <Link to={"/notifications"} className="notification-link end"><i class="fa fa-bell" aria-hidden="true"></i></Link>
+                 <div className="notifications-displayed">
+                    <Notifications />
+                  </div>
                 </div>}
           </header>
           <Switch>

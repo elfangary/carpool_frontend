@@ -1,6 +1,5 @@
 import Axios from 'axios';
-import {driverTripsApi,updateHhStopApi, tripStatusApi,
-     addBalanceToDriverApi, addBalanceToHhApi} from '../apiConfig';
+import {driverTripsApi,updateHhStopApi, tripStatusApi} from '../apiConfig';
 
  // Action Types
 //Driver Trips   
