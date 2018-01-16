@@ -60,11 +60,7 @@ export default class HHForm extends Component {
                                 </label>
                             </fieldset>
                         </form>
-<<<<<<< HEAD
-                        <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end)}>Search</button>
-=======
                         <button class="submit-form start" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
->>>>>>> Development
                     </div>
                     <div className="trips-container trip-form">
                     {(trips.length > 0)?

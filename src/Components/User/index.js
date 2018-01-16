@@ -62,7 +62,7 @@ export default class User extends Component{
 					<section>
 						<div>
 							<Link to={'/profile/driving/cars'} className="profile-links">My Cars</Link>
-							<Link to={'/profile/driving/trips'} className="profile-links">My Trips</Link>
+							<Link to={'/profile/driving/trips'} className="profile-links">Driver Trips</Link>
 							<Link to={'/profile/hitch-hiking/trips'} className="profile-links">HH-trips</Link>
 						</div>
 						<div className="contact-details clearfix">
