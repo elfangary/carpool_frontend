@@ -1,24 +1,30 @@
 .location {
 	padding-top: 5px;
 }
-
 .flex {
 	display: flex;
-	justify-content: space-between;
+	justify-content: column;
 }
-
+.flex-row{
+	display: flex;
+	justify-content: row;
+}
 .stop_point {
 	width: 50%;
 }
 
 .new-stop {
-	background-color: white;
-	padding: 0;
-	border: 0;
-	border-bottom: 1px solid rgb(180, 175, 175);
-	margin-left: 10px;
+	background-color: #fafafa;
+    color: #4182A7;
+    width: 130px;
+    margin-top: 20px;
+    display: block;
 }
-
+#day {
+	width: 150px;
+	margin-top: 20px;
+	display: block;
+}
 .new-stop:hover {
 	color: #4182A7;
 }
@@ -32,17 +38,6 @@
 .title {
 	font-size: 12px;
 	margin-right: 70px;
-}
-
-.right {
-	float: right;
-	display: flex;
-	justify-content: flex-end;
-}
-
-.left {
-	float: left;
-	display: inline-block;
 }
 
 .calender {
@@ -87,14 +82,22 @@
 }
 
 .small {
-	font-size: 7px;
+	font-size: 9px;
 }
 
 .seats {
+	background-color: white;
 	border: 0;
-	border-bottom: 1px solid rgb(161, 150, 150);
-	height: 20px;
-	margin-left: 10px;
+	border-bottom: 1px solid #e1e1e1;
+	/*-webkit-appearance: none;*/
+    /*-webkit-border-radius: 0px;*/
+    /*background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='15' height='15' viewBox='0 0 24 24'><path fill='#444' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>");*/
+    /*background-position: 100% 50%;*/
+    /*background-repeat: no-repeat;*/
+    line-height: 40px;
+    width: 150px;
+    margin-bottom: 20px;
+    margin-left: 30px;
 }
 
 .label { 

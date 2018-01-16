@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5, h6, p{
 button{
 	cursor: pointer;
 }
+button:focus {
+	outline: 0;
+	box-shadow: 0 0 3px rgba(48,48,48,.3);
+}
 input{
 	border: none;
     border-bottom: 2px solid rgba(255,255,255,.3);
@@ -28,6 +32,7 @@ input:-webkit-autofill {
 	border: $border-style !important;
 	background-color: blue !important;
 	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
+	-webkit-text-fill-color: #303030 !important;
 	transition: background-color 5000s ease-in-out 0s;
 }
 .start{
@@ -38,6 +43,9 @@ input:-webkit-autofill {
 }
 .hide{
 	display: none;
+}
+.capital {
+	text-transform: capitalize;
 }
 .clearfix::before,
 .clearfix::after {

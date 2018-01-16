@@ -66,6 +66,12 @@ export default class DriverTripsTracking extends Component {
       this.setState({visible: false});
     }
 
+    handleOkRequest = (id, value) => {
+        this.setState({
+            visible: false
+        });
+        this.props.changeHhStopStatus(id, value)
+    }
 
     showModalRate = (trip_id) => {
         this.setState({
@@ -97,7 +103,6 @@ export default class DriverTripsTracking extends Component {
         }
     }
 
-
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
         const {status, request, ratings, ratingRequest} = this.state;
@@ -109,14 +114,14 @@ export default class DriverTripsTracking extends Component {
         return (
             <div className = 'new-container end'>
                 <div className="margin clearfix">
-                <h2>Your Driving Trips</h2>
+                    <h2>Your Driving Trips</h2>
                     <div className="tabs-container start">
                         <div className="tabs">
                             <Tabs
                                 defaultActiveKey="1"
                                 tabPosition="left"
                                 onTabClick={(e) => getTripsTracking(e)}
-                            >
+                                >
                                 <TabPane tab="Upcoming" key="upcoming"></TabPane>
                                 <TabPane tab="Ongoing" key="ongoing" ></TabPane>
                                 <TabPane tab="History" key="history" ></TabPane>
@@ -179,22 +184,23 @@ export default class DriverTripsTracking extends Component {
                                         <Slider range min={1} max={trip.stop_points.length} defaultValue={[1,2,3,4]} disabled={true} />
                                     </div>
                                     <div className="car-container">
-                                            {seats}
+                                        {seats}
                                         <div className="seats-details">
                                             <p className="trip-seats">{trip.available} seats left</p>
-                                            {(trip.pending)?
+                                            {
+                                                (trip.pending)?
                                                 (<p className="pending">Check requests</p>)
-                                            : (<p className="no-pending">No requests</p>)}
+                                                : 
+                                                (<p className="no-pending">No requests</p>)
+                                            }
                                         </div>
                                     </div>
                                     {(trip.status === "pending")? (<button type="button" className="status-button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
                                     {trip.start && (trip.status === "pending") ? (<button type="button" className="status-button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
                                     {(trip.status === "started")? (<button type="button" className="status-button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
-                                    {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
-                                        stop_point.hh.map((hh) => {
-                                        hh.confirm === "accepted"
-                                    })
-                                    }))? (<div>
+                                    {
+                                        (trip.status === "ended" && trip.stop_points.map((stop_point) => { stop_point.hh.map((hh) => { hh.confirm === "accepted" }) }))? 
+                                        (<div>
                                             <button type="primary" className="rate-button" onClick={() => this.showModalRate(trip.id)}>Rate Your Hitch Hikers</button>
                                             <Modal
                                                 title={request.name}
@@ -207,21 +213,21 @@ export default class DriverTripsTracking extends Component {
                                                 width= {300}
                                                 bodyStyle={style}
                                                 style={style}
-                                            >
-                                            <div>{hhs_rate}</div>
+                                                >
+                                                <div>{hhs_rate}</div>
                                             </Modal>
-                                        </div>
-                                        ) :
+                                        </div>) 
+                                        : 
                                         (<div>
-
-                                        {tripRequests.map((hh, index) => {
-                                        return (
-                                            <div className="hide">
-                                                {(hh.confirm === "accepted")?
-                                                    (<div>
-                                                        {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}></button>)}
-                                                    </div>
-                                                    ) : (hh.confirm === "pending")?
+                                            {tripRequests.map((hh, index) => {
+                                                return (
+                                                    <div className="hide">
+                                                        {(hh.confirm === "accepted")?
+                                                            (<div>
+                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><img src={hh.profile_pic} /></button>)}
+                                                            </div>
+                                                            ) 
+                                                        : (hh.confirm === "pending")?
                                                             (<div>
                                                                 {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
                                                             </div>)
@@ -265,16 +271,13 @@ export default class DriverTripsTracking extends Component {
                                         )
                                     })}
                                 </div>)
-
                                 }
                                 </div>
                             )
-
                         })}
                     </div>
                 </div>
             </div>
-
         )
     }
 }

@@ -1,5 +1,4 @@
 .car-details-component{
-	float: right;
 	width: 60%;
 }
 .car-details-component .car-details-content{
@@ -8,40 +7,50 @@
 .car-details{
 	margin-top: 20px;
 }
-/*.car-details-component > div{
-	display: flex;
-}*/
 .car-details-content {
 	width: 40%;
-	margin: 50px 200px;
+	margin: 50px 150px;
 	padding: 0 40px;
 	border-left: 2px solid #d7d7d7;
 }
-.car-details-component > div h1:first-child{
-/*	color: #505050;*/
-	color: #585858;
-	font-size: 30px;
+.car-tags p {
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 30px;
+	margin-bottom: 5px;
+	color: #e1e1e1;
+	font-weight: lighter;
 }
-.car-details-component input{
-	border-color: grey;
-	line-height: 60px;
-	display: block;
-	width: 315px;
+.active p {
+	color: #303030;
 }
-.car-details-component button{
-	margin-top: 20px;
-	background-color: white;
+.car-button {
+	/*background-color: #fff;*/
+	border-color: #e95d4f;
+    color: #e95d4f;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 30px;
+}
+.create {
 	color: #4182A7;
-	border: 1px solid #4182A7;
-	border-radius: 15px;
-	padding: 3px 20px;
-	font-size: 15px;
-	float: left;
-	margin-left: 200px;
+	border-color: #4182A7;
 }
-.car-details-component p{
-	line-height: 20px;
-	font-size: 18px;
+
+.add-car {
+	margin-top: 30px;
+}
+.car-form input {
+	border: none;
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 30px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+::-webkit-input-placeholder{
+	color: #e1e1e1;
+}
+.car-form select:focus {
+	outline: 0;
 }
 .car-error {
 	border-bottom: 2px solid red;

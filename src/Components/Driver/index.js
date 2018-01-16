@@ -67,6 +67,7 @@ export default class Driver extends Component {
 		});
 	};
 
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: (event.target.value)
@@ -118,50 +119,32 @@ export default class Driver extends Component {
 		const {locations, addTrip, addCar, error} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes, newCar} = this.state;
 		const style = {
-            textTransform:'capitalize',
-            textAlign: 'center',
-            backgroundColor: '#fafafa'
-        }
-		return(
-			<div className="new-container margin end">
-				<h1 className="driver-title">Book Your Trip</h1>
-				<form>
-					<div className="box">
-						<div className="flex">
-							<fieldset className="location clearfix">
-								<legend className="left title">Location Details</legend>
-								<div className="right">
-								<p className="small">Moving From</p>
-									{
-										stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
-											return (
-												<div className="container clearfix">
-													<label className="stop_point">
-													<div className="left stop-location">
-														<Locations  inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
-													</div>
-													<div className="right">
-														<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
-													</div>
-													</label>
-												</div>
-											)
-										})
-									}
-									<button className="new-stop" type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				
-					<div>
-						<label htmlFor="day">
-							<input ref={(ref) => this.inputs.day = ref} type="date" id="day" name="day" onChange={this.handleChange}/>
-						</label>
-					</div>
-
-				
-					<div>
+			textTransform:'capitalize',
+			textAlign: 'center',
+			backgroundColor: '#fafafa'
+		}
+		return (
+			<div className="new-container end margin">
+				<div className="trip-form start">
+					<h2>Create Your Trip</h2>
+					<form className="location">
+						<legend>Location Details</legend>
+						{
+							stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
+								return (
+									<div className="flex-row">
+										<div>
+											<Locations inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+										</div>
+										<div>
+											<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+										</div>
+									</div>
+								)
+							})
+						}
+						<button className="new-stop create" type="button" onClick={() => this.addStopPoint()}>Add Stop Point</button>
+						<input ref={(ref) => this.inputs.day = ref} className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
 						<Cars inputs={this.inputs} car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
 						<div>
 							<Button className="new-stop create" onClick={this.showModal}>Create A Car</Button>
@@ -178,21 +161,14 @@ export default class Driver extends Component {
 							</form>
 							</Modal>
 						</div>
-					</div>
-
-					<div>
-						<label>
-							<p>Available seats</p>
-							<input ref={(ref) => this.inputs.all = ref} type="number" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
-						</label>
-					</div>
-					
-					<button type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
-				</form>
+						<input type="number" ref={(ref) => this.inputs.all = ref} className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+					</form>
+					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
+				</div>
 				{
 					(error)? this.handleErrors(error) : null
 				}
-			</div>
+			</div>	
 		)
 	
 	}		

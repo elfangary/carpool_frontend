@@ -1,6 +1,6 @@
-input{
-	border-color: grey;
-	line-height: 40px;
-	width: 300px;
-	color: black;
+.edit-button {
+	background-color: #fafafa;
+    color: #4182A7;
+    width: 100px;
+    margin-top: 40px;
 }
