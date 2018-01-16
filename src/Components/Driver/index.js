@@ -96,7 +96,7 @@ export default class Driver extends Component {
 						<Cars car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
 						<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 					</form>
-					<button className="submit-form" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
+					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
 				</div>
 			</div>
 		)

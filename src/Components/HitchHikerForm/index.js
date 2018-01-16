@@ -58,13 +58,13 @@ export default class HHForm extends Component {
                                 </div>
                             </fieldset>
                             <fieldset>
-                                <legend>Schedule</legend>
+    
                                 <label htmlFor="day">
                                     <input type="date" id="day" name="day" onChange={this.handleChange}/>
                                 </label>
                             </fieldset>
                         </form>
-                        <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
+                        <button class="submit-form start" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
                     </div>
                     <div className="trips-container trip-form">
                     {(trips.length > 0)?
@@ -108,11 +108,11 @@ export default class HHForm extends Component {
                                             <label htmlFor="seats" className="trip-driver-name">{seats.length} Availble Seats</label>
                                             {seats}
                                         </form>
-
+                                        <button type="submit" className="status-button" id="join" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Join Trip</button>
                                     </div>
                                 )
                             })}
-                            <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Join</button>
+                            
                         </div>
                         : <p className="empty-message start">{message}</p>}
                     </div>

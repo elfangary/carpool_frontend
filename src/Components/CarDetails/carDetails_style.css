@@ -24,13 +24,16 @@
 	color: #303030;
 }
 .car-button {
-	background-color: #fafafa;
+	/*background-color: #fff;*/
+	border-color: #e95d4f;
     color: #e95d4f;
     width: 100px;
     margin-top: 20px;
+    border-radius: 30px;
 }
 .create {
-	color: #4182A7 ;
+	color: #4182A7;
+	border-color: #4182A7;
 }
 
 .add-car {

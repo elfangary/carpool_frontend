@@ -15,6 +15,7 @@ export default class User extends Component{
 
 	componentWillMount(){
 		this.props.getUser();
+		{console.log(this.props)}
     }
 
 	handleChange = (event) => {
