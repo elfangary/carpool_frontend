@@ -124,35 +124,6 @@ export default class Driver extends Component {
 						</fieldset>
 					</div>
 
-					{/* <div className="box">
-						<fieldset>
-							<legend className="left title">Additional Information</legend>
-							<div className="">
-								<div className="flex-boxing">
-									<div className="flex-child">
-										<label className="label">Males only
-											<input type="radio" name="specific_gender" value="males" onChange={this.handleChange} />
-										</label>
-										<label className="label">Females only
-											<input type="radio" name="specific_gender" value="females" onChange={this.handleChange} />
-										</label>
-										<label className="label">Both
-											<input type="radio" name="specific_gender" value="both" onChange={this.handleChange} />
-										</label>
-									</div>
-									<div className="flex-child">
-										<label className="label">Smoking
-											<input type="radio" name="smoking" value={true} onChange={this.handleChange} />
-										</label>
-										<label className="label">Non-smoking
-											<input type="radio" name="smoking" value={false} onChange={this.handleChange} />
-										</label>
-									</div>
-								</div>
-							</div>
-						</fieldset>
-
-					</div> */}
 				</form>
 				<div className="button-box">
 					<button className="button" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
