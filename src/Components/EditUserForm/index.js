@@ -54,15 +54,16 @@ export default class EditUserForm extends Component{
 
 		const {first_name, last_name, email, phone} = this.state.user;
 		return(
-			<form className="editUserForm" id="user">
-				<input type="text" name="first_name" placeholder="firstName"  value={first_name} onChange={this.handelChange.bind(this)} />
-				<input type="text" name="last_name" placeholder="lastName" value={last_name} onChange={this.handelChange.bind(this)} />
-				<input type="text" name="email" placeholder="email" value={email} onChange={this.handelChange.bind(this)} />
-				<input type="text" name="phone" placeholder="phone number" value={phone} onChange={this.handelChange.bind(this)} />
-				<input type="file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />
-				
-				<button type="button" onClick={() => {this.props.updateUser(user); console.log("we"); console.log(this.state.user) } }>next</button>
-			</form>
+			<div className="new-container margin end">
+				<form className="signup-form" >
+					<input type="text" name="first_name" placeholder="firstName"  value={first_name} onChange={this.handelChange.bind(this)} />
+					<input type="text" name="last_name" placeholder="lastName" value={last_name} onChange={this.handelChange.bind(this)} />
+					<input type="text" name="email" placeholder="email" value={email} onChange={this.handelChange.bind(this)} />
+					<input type="text" name="phone" placeholder="phone number" value={phone} onChange={this.handelChange.bind(this)} />
+					<input type="file" className="upload-file" name="profile_pic" accept="image/*" onChange={this.handelChange.bind(this)} />
+					<button type="button" className="edit-button" onClick={() => {this.props.updateUser(user); console.log("we"); console.log(this.state.user) } }>Edit</button>
+				</form>
+			</div>
 		)
 	};
 }

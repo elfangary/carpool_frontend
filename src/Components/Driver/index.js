@@ -60,6 +60,7 @@ export default class Driver extends Component {
 		});
 	};
 
+
 	handleChange = (event) => {
 		this.setState({
 			[event.target.name]: (event.target.value)
@@ -83,67 +84,39 @@ export default class Driver extends Component {
     };
 
 	render() {
-<<<<<<< HEAD
-		const {addTrip} = this.props;
-=======
 		const {locations, addTrip, error} = this.props;
->>>>>>> feature_final_update
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
-		return(
-			<div className="new-container margin end">
-				<h1 className="driver-title">Book Your Trip</h1>
-				<form>
-					<div className="box">
-						<div className="flex">
-							<fieldset className="location clearfix">
-								<legend className="left title">Location Details</legend>
-								<div className="right">
-								<p className="small">Moving From</p>
-									{
-										stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
-											return (
-												<div className="container clearfix">
-													<label className="stop_point">
-													<div className="left stop-location">
-														<Locations  inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
-													</div>
-													<div className="right">
-														<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
-													</div>
-													</label>
-												</div>
-											)
-										})
-									}
-									<button className="new-stop" type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				
-					<div>
-						<label htmlFor="day">
-							<input ref={(ref) => this.inputs.day = ref} type="date" id="day" name="day" onChange={this.handleChange}/>
-						</label>
-					</div>
-
-				
-					<div>
-						<Cars inputs={this.inputs} car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
-					</div>
-					<div>
-						<label>
-							<p>Available seats</p>
-							<input ref={(ref) => this.inputs.all = ref} type="number" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
-						</label>
-					</div>
-					
-					<button type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
-				</form>
+		return (
+			<div className="new-container end margin">
+				<div className="trip-form start">
+					<h2>Create Your Trip</h2>
+					<form className="location">
+						<legend>Location Details</legend>
+						{
+							stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
+								return (
+									<div className="flex-row">
+										<div>
+											<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+										</div>
+										<div>
+											<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+										</div>
+									</div>
+								)
+							})
+						}
+						<button className="new-stop create" type="button" onClick={() => this.addStopPoint()}>Add Stop Point</button>
+						<input className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
+						<Cars car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
+						<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+					</form>
+					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
+				</div>
 				{
 					(error)? this.handleErrors(error) : null
 				}
-			</div>
+			</div>	
 		)
 	
 	}		

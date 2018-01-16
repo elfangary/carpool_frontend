@@ -66,7 +66,8 @@ export default class SignUpForm extends Component{
 						</div>
 					</div>
 					<div className="left-container">
-						<div className="new-container end">
+						<div className="new-container margin end">
+
 							<form className="signup-form">
 								<input ref={(ref) => this.inputs.first = ref} type="text" name="first_name" placeholder="First Name" onChange={this.handelChange.bind(this)} />
 				 				<input ref={(ref) => this.inputs.last = ref} type="text" name="last_name" placeholder="Last Name" onChange={this.handelChange.bind(this)} />
@@ -82,9 +83,8 @@ export default class SignUpForm extends Component{
 								<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
 								<input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={this.handelChange.bind(this)}/>
 								<label htmlFor="submit" className="submit-label">Ready to move on?</label>
-								<button id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
+								<button className="signup-button" id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
 								{
-									
 									(errors) ? (
 										<div>
 											<p className="signup-error">Please re-enter the marked fields and try again!</p> 

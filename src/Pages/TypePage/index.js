@@ -9,7 +9,6 @@ export default class WelcomePage extends Component {
     render(){
         return (
         	<div className="type-container clearfix">
-                
                 <div className="type-page">
                     <div className="notifications-displayed">
                         <Notifications />

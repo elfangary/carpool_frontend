@@ -66,6 +66,12 @@ export default class DriverTripsTracking extends Component {
       this.setState({visible: false});
     }
 
+    handleOkRequest = (id, value) => {
+        this.setState({
+            visible: false
+        });
+        this.props.changeHhStopStatus(id, value)
+    }
 
     showModalRate = (trip_id) => {
         this.setState({
@@ -96,7 +102,6 @@ export default class DriverTripsTracking extends Component {
             }
         }
     }
-
 
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
@@ -261,11 +266,44 @@ export default class DriverTripsTracking extends Component {
                                                         <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
                                                     </div>) : null
                                                 }
-                                            </Modal>
-                                        </div>
-                                    )
-                                })}
-                            </div>)
+                                                <Modal
+                                                    title={request.name}
+                                                    visible={this.state.visible}
+                                                    onOk={this.handleOkRequest}
+                                                    onCancel={this.handleCancel}
+                                                    mask={false}
+                                                    maskClosable={false}
+                                                    width= {300}
+                                                    bodyStyle={style}
+                                                    style={style}
+                                                    >
+                                                  {(request.confirm != "rejected") ?
+                                                        <div>
+                                                            <p className="hh-profile-picture"></p>
+                                                            <p className="hh-details">{request.rate}</p>
+                                                            <p className="hh-details hh-phone">{request.phone}</p>
+                                                            <p className="hh-details hh-email">{request.email}</p>
+                                                            <p className="hh-details">Booked Seats: {request.seats}</p>
+                                                        </div>
+                                                    : null}
+                                                    {(trip.status === "pending" && request.confirm === "pending")?
+                                                        <RadioGroup
+                                                            onChange={(e) => this.handleOkRequest(request.id, e.target.value)}
+                                                            size={"large"} >
+                                                            <RadioButton value="accepted">Accept</RadioButton>
+                                                            <RadioButton value="rejected">Reject</RadioButton>
+                                                        </RadioGroup>
+                                                    : (<p className="accepted">{request.confirm}</p>)}
+                                                    {(trip.status === "ended" && request.confirm === "accepted")?
+                                                        (<div>
+                                                            <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                                        </div>) : null
+                                                    }
+                                                </Modal>
+                                            </div>
+                                        )
+                                    })}
+                                </div>)
 
                             }
                             </div>

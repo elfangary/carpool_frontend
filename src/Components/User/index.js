@@ -15,6 +15,7 @@ export default class User extends Component{
 
 	componentWillMount(){
 		this.props.getUser();
+		{console.log(this.props)}
     }
 
 	handleChange = (event) => {
@@ -26,11 +27,6 @@ export default class User extends Component{
 	render(){
 		const { user, loading, error, points } = this.props;
 		const { amount } = this.state;
-<<<<<<< HEAD
-=======
-		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
-		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
->>>>>>> feature_final_update
 		if(loading){
             return (
             	<div className="fixed-container">

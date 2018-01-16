@@ -16,7 +16,7 @@ export default class Locations extends Component {
             <form>
                 <div className="location-label">
                     <label htmlFor="location"></label>
-                    <select ref={(ref) => inputs.location = ref} id="location" name={name} onChange={onChange}>
+                    <select className="select-options" ref={(ref) => inputs.location = ref} id="location" name={name} onChange={onChange}>
                         <option value="" disabled selected>Select Point</option>
                         {options}
                     </select>
