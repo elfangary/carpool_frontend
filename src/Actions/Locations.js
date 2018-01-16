@@ -1,13 +1,14 @@
 import Axios from 'axios';
 import {locationsApi} from '../apiConfig';
 
+// Action Types
 //Get Locations
 export const GET_LOCATIONS_LOADING = 'GET_LOCATIONS_LOADING';
 export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const GET_LOCATIONS_SUCCESS = 'GET_LOCATIONS_SUCCESS';
 export const GET_LOCATIONS_FAILURE = 'GET_LOCATIONS_FAILURE';
 
-
+// Action Creators
 //Get Locations
 export const getLocationsLoading = () => {
     return {

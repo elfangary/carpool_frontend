@@ -3,6 +3,7 @@ import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
 import './index.css';
+import '../User/user_style.css';
 
 
 export default class Driver extends Component {
@@ -12,7 +13,7 @@ export default class Driver extends Component {
 		this.state = {
 			car_id: null,
 			day: null,
-			all_seats: 0,
+			all_seats: null,
 			specific_gender: '',
 			smoking: null,
 			stop_points_attributes: [{
@@ -27,6 +28,7 @@ export default class Driver extends Component {
 				end_time: ''
 			}]
 		};
+		this.inputs = {};
 	};
 
 	handleStopPointChange = (event, index) => {
@@ -49,7 +51,7 @@ export default class Driver extends Component {
 		};
 		stop_points_attributes.push(stopPoint);
 		this.setState({stop_points_attributes});
-	}
+	};
 
 	handleChangeToI = (event) => {
 		console.log(event.target.value);
@@ -64,12 +66,31 @@ export default class Driver extends Component {
 		});
 	};
 
-	render() {
-		const {addTrip} = this.props;
-		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
-		return (
-			<div className="new-container margin end">
+	handleErrors(errors) {
+        Object.entries(this.inputs).forEach(([key, value]) => {
+            value.style.borderColor = "#e1e1e1";
+        });
+        errors.forEach(error => {
+			let errorField;
+			if (error.split(' ')[0] === 'Stop') {
+				const errorArr = error.split(' ');
+				errorField = errorArr[2] === 'location' ?  errorArr[2] : errorArr.slice(2,4).join('_');
+			} else {
+				errorField = error.split(' ')[0].toLowerCase();
+			}
+			if (this.inputs[errorField]) {this.inputs[errorField].style.borderColor = '#ae3130';}
+		});
+    };
 
+	render() {
+<<<<<<< HEAD
+		const {addTrip} = this.props;
+=======
+		const {locations, addTrip, error} = this.props;
+>>>>>>> feature_final_update
+		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
+		return(
+			<div className="new-container margin end">
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
 					<div className="box">
@@ -84,10 +105,10 @@ export default class Driver extends Component {
 												<div className="container clearfix">
 													<label className="stop_point">
 													<div className="left stop-location">
-														<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+														<Locations  inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
 													</div>
 													<div className="right">
-														<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+														<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
 													</div>
 													</label>
 												</div>
@@ -99,37 +120,31 @@ export default class Driver extends Component {
 							</fieldset>
 						</div>
 					</div>
-
-					<div className="box">
-						<fieldset>
-							<legend className="left title">Schedule</legend>
-							<div className="right calender">
-								<label htmlFor="day" className="day">
-									<input className="calender-input" type="date" id="day" name="day" onChange={this.handleChange}/>
-								</label>
-							</div>
-						</fieldset>
+				
+					<div>
+						<label htmlFor="day">
+							<input ref={(ref) => this.inputs.day = ref} type="date" id="day" name="day" onChange={this.handleChange}/>
+						</label>
 					</div>
 
-					<div className="box">
-						<fieldset className="car-details">
-							<legend className="left title">Car Details</legend>
-							<div className="right car-booking clearfix">
-								<Cars className="left" car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
-								<label className="left">
-									<p className="small">Available seats</p>
-									<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
-								</label>
-							</div>
-						</fieldset>
+				
+					<div>
+						<Cars inputs={this.inputs} car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
 					</div>
-
+					<div>
+						<label>
+							<p>Available seats</p>
+							<input ref={(ref) => this.inputs.all = ref} type="number" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+						</label>
+					</div>
+					
+					<button type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
 				</form>
-				<div className="button-box">
-					<button className="button" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
-				</div>
+				{
+					(error)? this.handleErrors(error) : null
+				}
 			</div>
 		)
-	};
-
-};
+	
+	}		
+}

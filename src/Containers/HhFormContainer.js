@@ -4,6 +4,7 @@ import { getFilteredTripsLoading, getFilteredTrips, getFilteredTripsSuccess, get
     addHhStopPointLoading, addHhStopPoint, addHhStopPointSuccess, addHhStopPointFailure } from '../Actions/HhForm';
 import { decrementUserPoints } from '../Actions/user';
 import history from '../history';
+import swal from 'sweetalert';
 
 const mapStateToProps = function(state){
     return {
@@ -35,9 +36,11 @@ const mapDispatchToProps = function(dispatch){
                 if(response.payload.status < 400){
                     dispatch(addHhStopPointSuccess(response.payload.data));
                     dispatch(decrementUserPoints(response.payload.data.points_on_hold));
+                    swal("Successfully Created" ,"Wait For You Booking Confirmation!", "success");
                     history.push('/profile/hitch-hiking/trips')
                 }else{
                     dispatch(addHhStopPointFailure(response.payload.message));
+                    swal("Oops!", "Try Again!", "error");
                 }
             })
         }

@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import {carsApi, oneCarApi} from '../apiConfig';
 
-
+// Action Types
 //Get all Cars
 export const GET_ALL_CARS_LOADING = 'GET_ALL_CARS_LOADING';
 export const GET_ALL_CARS = 'GET_ALL_CARS';
@@ -26,7 +26,7 @@ export const DELETE_CAR = 'DELETE_CAR';
 export const DELETE_CAR_SUCCESS = 'DELETE_CAR_SUCCESS';
 export const DELETE_CAR_FAILURE = 'DELETE_CAR_FAILURE';
 
-
+// Action Creators
 //Get cars
 export const getCarsLoading = () => {
     return {

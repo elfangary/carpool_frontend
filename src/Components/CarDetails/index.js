@@ -30,8 +30,8 @@ export default class CarDetails extends Component {
 		})
 	}
 	render() {
-		const {car_id} = this.state;
-		const { cars,loading, error} = this.props;
+		const {car_id, errors} = this.state;
+		const { cars, loading, error} = this.props;
 		var displayed_car = null;
 
 		if(loading){

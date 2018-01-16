@@ -26,6 +26,11 @@ export default class User extends Component{
 	render(){
 		const { user, loading, error, points } = this.props;
 		const { amount } = this.state;
+<<<<<<< HEAD
+=======
+		const star = (<i class="fa fa-star" aria-hidden="true"></i>);
+		const empty_star = (<i class="fa fa-star-o" aria-hidden="true"></i>);
+>>>>>>> feature_final_update
 		if(loading){
             return (
             	<div className="fixed-container">
@@ -48,7 +53,7 @@ export default class User extends Component{
     			<div className="fixed-container">
 					<header className="header clearfix">
 						<div className="profile-pic-edit-link start">
-						 	<img src={user.profile_pic.profile_pic.url} alt="user profile" className="profile-picture"/>
+						 	<img alt="user profile" className="profile-picture" src={(user.profile_pic === null)? "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" :  user.profile_pic}/>
 						 	<Link to={'/profile/edit'} className="edit-link">Edit my profile</Link>
 						</div>
 						<div className="start personal-details">

@@ -11,45 +11,17 @@ const INITIAL_STATE = {
 export default function(currentState = INITIAL_STATE, action){
     switch(action.type) {
         case GET_FILTERED_TRIPS_LOADING:
-            return {
-                ...currentState,
-                loading: true
-            };
-        break;
+            return {...currentState, loading: true};
         case GET_FILTERED_TRIPS_SUCCESS:
-            return {
-                ...currentState,
-                trips: action.trips,
-                loading: false,
-            };
-        break;
+            return {...currentState, trips: action.trips, loading: false};
         case GET_FILTERED_TRIPS_FAILURE:
-            return {
-                ...currentState,
-                error:action.error,
-                loading: false
-            };
-        break;
+            return {...currentState, error:action.error, loading: false};
         case ADD_HH_STOP_POINT_LOADING:
-            return {
-                ...currentState,
-                loading: true
-            }
-        break;
+            return {...currentState, loading: true};
         case ADD_HH_STOP_POINT_SUCCESS:
-            return {
-                ...currentState,
-                new_hh_stop: action.new_hh_stop,
-                loading: false
-            }
-        break;
+            return {...currentState, new_hh_stop: action.new_hh_stop, loading: false};
         case ADD_HH_STOP_POINT_FAILURE:
-            return {
-                ...currentState,
-                error: action.error,
-                loading: false
-            }
-        break;
+            return {...currentState, error: action.error, loading: false};
         default:
             return currentState;
     }

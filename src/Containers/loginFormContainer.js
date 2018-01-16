@@ -3,6 +3,7 @@ import Login from '../Components/Login';
 import { loginLoading, login, loginSuccess, loginFailure } from '../Actions/loginForm';
 import set_authentication_token from '../utils/authentication_token';
 import history from '../history';
+import swal from 'sweetalert';
 
 const mapStateToProps = (state) => {
     return {

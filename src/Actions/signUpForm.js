@@ -1,14 +1,14 @@
 import Axios from 'axios';
 import {signUpApi} from '../apiConfig';
 
-
+// Action Types
 //user signUp
 export const SIGNUP_LOADING = 'SIGNUP_LOADING';
 export const SIGNUP = 'SIGNUP';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
-
+// Action Creators
 //user signUp
 export const signUpLoading = () => {
     return {
