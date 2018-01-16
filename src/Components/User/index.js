@@ -15,6 +15,7 @@ export default class User extends Component{
 
 	componentWillMount(){
 		this.props.getUser();
+		{console.log(this.props)}
     }
 
 	handleChange = (event) => {
@@ -48,7 +49,7 @@ export default class User extends Component{
     			<div className="fixed-container">
 					<header className="header clearfix">
 						<div className="profile-pic-edit-link start">
-						 	<img src={user.profile_pic.profile_pic.url} alt="user profile" className="profile-picture"/>
+						 	<img src={user.profile_pic} alt="user profile" className="profile-picture"/>
 						 	<Link to={'/profile/edit'} className="edit-link">Edit my profile</Link>
 						</div>
 						<div className="start personal-details">

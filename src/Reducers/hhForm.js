@@ -5,7 +5,8 @@ const INITIAL_STATE = {
     trips: [],
     new_hh_stop: {},
     loading: false,
-    error: null
+    error: null,
+    message: null
 };
 
 export default function(currentState = INITIAL_STATE, action){
@@ -17,10 +18,12 @@ export default function(currentState = INITIAL_STATE, action){
             };
         break;
         case GET_FILTERED_TRIPS_SUCCESS:
+            const message = action.trips.length === 0 ? 'Sorry, we have no available trips.' : null
             return {
                 ...currentState,
                 trips: action.trips,
                 loading: false,
+                message
             };
         break;
         case GET_FILTERED_TRIPS_FAILURE:

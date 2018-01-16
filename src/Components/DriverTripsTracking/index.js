@@ -66,6 +66,12 @@ export default class DriverTripsTracking extends Component {
       this.setState({visible: false});
     }
 
+    handleOkRequest = (id, value) => {
+        this.setState({
+            visible: false
+        });
+        this.props.changeHhStopStatus(id, value)
+    }
 
     showModalRate = (trip_id) => {
         this.setState({
@@ -96,7 +102,6 @@ export default class DriverTripsTracking extends Component {
             }
         }
     }
-
 
     render () {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
@@ -232,7 +237,7 @@ export default class DriverTripsTracking extends Component {
                                                 <Modal
                                                     title={request.name}
                                                     visible={this.state.visible}
-                                                    onOk={this.handleOk}
+                                                    onOk={this.handleOkRequest}
                                                     onCancel={this.handleCancel}
                                                     mask={false}
                                                     maskClosable={false}
@@ -251,7 +256,7 @@ export default class DriverTripsTracking extends Component {
                                                     : null}
                                                     {(trip.status === "pending" && request.confirm === "pending")?
                                                         <RadioGroup
-                                                            onChange={(e) => changeHhStopStatus(request.id, e.target.value)}
+                                                            onChange={(e) => this.handleOkRequest(request.id, e.target.value)}
                                                             size={"large"} >
                                                             <RadioButton value="accepted">Accept</RadioButton>
                                                             <RadioButton value="rejected">Reject</RadioButton>
