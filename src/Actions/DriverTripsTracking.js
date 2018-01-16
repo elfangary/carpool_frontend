@@ -1,6 +1,5 @@
 import Axios from 'axios';
-import {driverTripsApi,updateHhStopApi, tripStatusApi,
-     addBalanceToDriverApi, addBalanceToHhApi} from '../apiConfig';
+import {driverTripsApi,updateHhStopApi, tripStatusApi} from '../apiConfig';
 
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';

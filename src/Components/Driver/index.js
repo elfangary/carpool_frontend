@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
-import CarsDetails from '../../Containers/CarsDetailsContainer';
 import Time from '../Timeframe';
-import Days from '../Days';
 import './index.css';
 
 
@@ -68,7 +66,7 @@ export default class Driver extends Component {
 	};
 
 	render() {
-		const {locations, addTrip} = this.props;
+		const {addTrip} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
 		return (
 			<div className="new-container end margin">
@@ -83,7 +81,6 @@ export default class Driver extends Component {
 										<div>
 											<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
 										</div>
-
 										<div>
 											<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
 										</div>

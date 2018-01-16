@@ -14,21 +14,21 @@ export default function(current_state = INITIAL_STATE, action){
                 ...current_state,
                 loading: true
             };
-            break;
+        break;
         case GET_HH_TRIPS_TRACKING_SUCCESS:
             return {
                 ...current_state,
                 hhTrackedTrips: action.hhTrackedTrips,
                 loading: false
             };
-            break;
+        break;
         case GET_HH_TRIPS_TRACKING_FAILURE:
             return {
                 ...current_state,
                 error: action.error,
                 loading: false
             };
-            break;
+        break;
         default:
             return current_state;
     }

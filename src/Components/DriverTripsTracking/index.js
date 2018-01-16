@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import dateFormat from 'dateformat';
-import { Slider, Modal, Tabs, Radio, Menu, Button } from 'antd';
+import { Slider, Modal, Tabs, Radio } from 'antd';
 import 'antd/dist/antd.css';
 import './driverTripsTracking_style.css';
 import Rater from 'react-rater';
@@ -88,7 +88,7 @@ export default class DriverTripsTracking extends Component {
 
     handleSubmit = () => {
         this.props.rateUser(this.state.ratings);
-        this.state.ratings = [];
+        this.setState({ratings: []});
     }
 
 
@@ -148,7 +148,7 @@ export default class DriverTripsTracking extends Component {
                         return stop_point.hh.map((hh) => {
                             return (
                                 <div>
-                                    <p className="hh-profile-picture">{hh.profile_pic}</p>
+                                    <img href={hh.profile_pic.profile_pic.url} alt="driver" className="hh-profile-picture"/>
                                     <p>{hh.name}</p>
                                     <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
                                 </div>

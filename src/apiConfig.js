@@ -1,4 +1,7 @@
-export const rootApi = 'http://localhost:3001';
+export const rootApi = process.env.NODE_ENV === 'production' ? 'https://carpool-backend.herokuapp.com' : 'http://localhost:3001';
+export const actioncableUrl = process.env.NODE_ENV === 'production'
+? 'wss://carpool-backend.herokuapp.com'
+: 'ws://localhost:3001'
 
 //Admin
 export const adminSignupApi = `${rootApi}/admin/signup`;

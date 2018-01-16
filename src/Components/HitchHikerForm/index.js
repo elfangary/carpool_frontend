@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Locations from '../../Containers/LocationsContainer';
-import Days from '../Days';
 import dateFormat from 'dateformat';
 import './hitchHikerForm_style.css';
 
@@ -38,7 +37,7 @@ export default class HHForm extends Component {
     };
 
     render(){
-        const { locations, trips, onChange , getFilteredTrips, addHhStopPoint, message } = this.props;
+        const { trips , getFilteredTrips, addHhStopPoint, message} = this.props;
         const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
         return(
             <div className="new-container end">
@@ -58,7 +57,6 @@ export default class HHForm extends Component {
                                 </div>
                             </fieldset>
                             <fieldset>
-    
                                 <label htmlFor="day">
                                     <input type="date" id="day" name="day" onChange={this.handleChange}/>
                                 </label>
@@ -76,7 +74,6 @@ export default class HHForm extends Component {
                                         value={i + 1} onClick={this.handleNewHhStopPoint} />);
                                 }
                                 return (
-
                                     <div className="trip clearfix">
                                         <div className="driver-container start">
                                             <div className="driver-profile-picture"></div>
@@ -112,7 +109,6 @@ export default class HHForm extends Component {
                                     </div>
                                 )
                             })}
-                            
                         </div>
                         : <p className="empty-message start">{message}</p>}
                     </div>
