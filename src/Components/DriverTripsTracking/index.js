@@ -23,7 +23,7 @@ export default class DriverTripsTracking extends Component {
           confirm: '',
           id: null,
           phone: null,
-          rate: 0,
+          requested_location: '',
           email: '',
         },
         ratingRequest: {
@@ -41,7 +41,7 @@ export default class DriverTripsTracking extends Component {
       this.props.changeTripStatus(trip_id, value);
     };
 
-    showModal = (name, profile_pic,seats, confirm, id, phone, rate, email) => {
+    showModal = (name, profile_pic,seats, confirm, id, phone, requested_location, email) => {
       this.setState({
         visible: true,
         request: {
@@ -51,7 +51,7 @@ export default class DriverTripsTracking extends Component {
           confirm,
           id,
           phone,
-          rate,
+          requested_location,
           email
         }
       })
@@ -224,12 +224,12 @@ export default class DriverTripsTracking extends Component {
                                                     <div className="hide">
                                                         {(hh.confirm === "accepted")?
                                                             (<div>
-                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><img src={hh.profile_pic} /></button>)}
+                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><img src={hh.profile_pic} /></button>)}
                                                             </div>
                                                             ) 
                                                         : (hh.confirm === "pending")?
                                                             (<div>
-                                                                {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
+                                                                {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
                                                             </div>)
                                                         :   null
                                                 }
@@ -247,7 +247,7 @@ export default class DriverTripsTracking extends Component {
                                                 {(request.confirm != "rejected") ?
                                                         <div>
                                                             <img className="hh-profile-picture" src={request.profile_pic} />
-                                                            <p className="hh-details">{request.rate}</p>
+                                                            <p className="hh-details">{request.requested_location}</p>
                                                             <p className="hh-details hh-phone">{request.phone}</p>
                                                             <p className="hh-details hh-email">{request.email}</p>
                                                             <p className="hh-details">Booked Seats: {request.seats}</p>
