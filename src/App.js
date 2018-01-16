@@ -7,6 +7,8 @@ import Login from './Containers/loginFormContainer';
 import HomePage from './Pages/HomePage';
 import Notifications from './Containers/NotificationsContainer';
 import TypePage from './Pages/TypePage';
+import UserHomePage from './Pages/UserHomePage';
+
 // import 'antd/lib/style/index.css';
 
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
                 <Link to="/aboutus" className="nav-link">Who Are We?</Link> :
                 <div className="user-nav">
                   <Link to="/" className="user-nav-link" onClick={() => {this.logout()}}>logout</Link>
+                  
+
                  <div className="notifications-displayed">
                     <Notifications />
                   </div>
@@ -32,6 +36,7 @@ class App extends Component {
             <Route path="/type" component={TypePage} />
             <Route path="/profile" component={UserProfile} />
             <Route path="/signup" component={SignUpForm} />
+            <Route path="/home" component={UserHomePage} />
           </Switch>
           <div className="footer">
             <div className="footer-links">

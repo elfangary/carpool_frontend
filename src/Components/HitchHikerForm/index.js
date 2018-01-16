@@ -66,8 +66,9 @@ export default class HHForm extends Component {
                         </form>
                         <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
                     </div>
+                    <div className="trips-container trip-form">
                     {(trips.length > 0)?
-                        <div className="trips-container trip-form start">
+                        <div className="start">
                             {trips.map((trip) => {
                                 var seats = [];
                                 for (var i = 0; i < trip.all_seats; i ++) {
@@ -111,9 +112,10 @@ export default class HHForm extends Component {
                                     </div>
                                 )
                             })}
-                            <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Submit</button>
+                            <button type="submit" className="submit-form" onClick={() => addHhStopPoint(new_hh_stop.booked_seats, new_hh_stop.stop_point_id) }>Join</button>
                         </div>
-                        : <p className="empty-message">{message}</p>}
+                        : <p className="empty-message start">{message}</p>}
+                    </div>
                 </div>
             </div>
         )

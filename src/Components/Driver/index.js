@@ -74,86 +74,29 @@ export default class Driver extends Component {
 			<div className="new-container end margin">
 				<div className="trip-form start">
 					<h2>Create Your Trip</h2>
-					<form>
-						<fieldset className="location">
-							<legend>Location Details</legend>
-							<label className="small">Moving From</label>
-								{
-									stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
-										return (
-											<div className="clearfix flex-row">
-												<div className="start">
-													<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
-												</div>
-												<div className="end">
-													<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
-												</div>
-											</div>
-										)
-									})
-								}
-								<button className="new-stop" type="button" onClick={() => this.addStopPoint()}>Add stop point</button>
-						</fieldset>
+					<form className="location">
+						<legend>Location Details</legend>
+						{
+							stop_points_attributes.slice(0, 4).map((stopPoint, index) => {
+								return (
+									<div className="flex-row">
+										<div>
+											<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+										</div>
 
-
-
-						<div className="box">
-							<fieldset>
-								<legend className="left title">Schedule</legend>
-								<div className="right calender">
-									<label htmlFor="day" className="day">
-										<input className="calender-input" type="date" id="day" name="day" onChange={this.handleChange}/>
-									</label>
-								</div>
-							</fieldset>
-						</div>
-
-						<div className="box">
-							<fieldset className="car-details">
-								<legend className="left title">Car Details</legend>
-								<div className="right car-booking clearfix">
-									<Cars className="left" car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
-									<label className="left">
-										<p className="small">Available seats</p>
-										<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
-									</label>
-								</div>
-							</fieldset>
-						</div>
-
-					{/* <div className="box">
-						<fieldset>
-							<legend className="left title">Additional Information</legend>
-							<div className="">
-								<div className="flex-boxing">
-									<div className="flex-child">
-										<label className="label">Males only
-											<input type="radio" name="specific_gender" value="males" onChange={this.handleChange} />
-										</label>
-										<label className="label">Females only
-											<input type="radio" name="specific_gender" value="females" onChange={this.handleChange} />
-										</label>
-										<label className="label">Both
-											<input type="radio" name="specific_gender" value="both" onChange={this.handleChange} />
-										</label>
+										<div>
+											<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+										</div>
 									</div>
-									<div className="flex-child">
-										<label className="label">Smoking
-											<input type="radio" name="smoking" value={true} onChange={this.handleChange} />
-										</label>
-										<label className="label">Non-smoking
-											<input type="radio" name="smoking" value={false} onChange={this.handleChange} />
-										</label>
-									</div>
-								</div>
-							</div>
-						</fieldset>
-
-					</div> */}
+								)
+							})
+						}
+						<button className="new-stop create" type="button" onClick={() => this.addStopPoint()}>Add Stop Point</button>
+						<input className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
+						<Cars car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
+						<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 					</form>
-					<div className="button-box">
-						<button className="button" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
-					</div>
+					<button className="submit-form" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
 				</div>
 			</div>
 		)
