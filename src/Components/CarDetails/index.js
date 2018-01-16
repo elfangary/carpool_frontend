@@ -33,25 +33,24 @@ export default class CarDetails extends Component {
 		const {car_id, errors} = this.state;
 		const { cars, loading, error} = this.props;
 		var displayed_car = null;
-
-		if(loading){
-            return (
-            	<div className="fixed-container">
-            		<div className="profile-content">
-						<p>Loading...</p>
-					</div>
-				</div>
-            )
-        }else if(error){
-            return (
-            	<div className="fixed-container">
-                	<div className="profile-content">
-						<p>Sorry, something went Wrong</p>
-						<p>{error}</p>
-					</div>
-				</div>
-            )
-		}else{
+		// if(loading){
+        //     return (
+        //     	<div className="fixed-container">
+        //     		<div className="profile-content">
+		// 				<p>Loading...</p>
+		// 			</div>
+		// 		</div>
+        //     )
+        // }else if(error){
+        //     return (
+        //     	<div className="fixed-container">
+        //         	<div className="profile-content">
+		// 				<p>Sorry, something went Wrong</p>
+		// 				<p>{error}</p>
+		// 			</div>
+		// 		</div>
+        //     )
+		// }else{
 			if(car_id){
 				for (var i = 0; i < cars.length; i++) {
 					displayed_car =  (cars[i].id === car_id )? cars[i] : displayed_car
@@ -93,6 +92,6 @@ export default class CarDetails extends Component {
 					</div>
 				</div>
 			)
-		}
+		// }
 	};
 };

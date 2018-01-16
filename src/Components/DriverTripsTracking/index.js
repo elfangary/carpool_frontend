@@ -23,7 +23,7 @@ export default class DriverTripsTracking extends Component {
           confirm: '',
           id: null,
           phone: null,
-          rate: 0,
+          requested_location: '',
           email: '',
         },
         ratingRequest: {
@@ -41,7 +41,7 @@ export default class DriverTripsTracking extends Component {
       this.props.changeTripStatus(trip_id, value);
     };
 
-    showModal = (name, profile_pic,seats, confirm, id, phone, rate, email) => {
+    showModal = (name, profile_pic,seats, confirm, id, phone, requested_location, email) => {
       this.setState({
         visible: true,
         request: {
@@ -51,7 +51,7 @@ export default class DriverTripsTracking extends Component {
           confirm,
           id,
           phone,
-          rate,
+          requested_location,
           email
         }
       })
@@ -146,14 +146,13 @@ export default class DriverTripsTracking extends Component {
                                 return stop_point.hh.map((hh) => {
                                     return (
                                         <div>
-                                            <img href={hh.profile_pic.profile_pic.url} alt="driver" className="hh-profile-picture"/>
+                                            <img href={hh.profile_pic} alt="driver" className="hh-profile-picture"/>
                                             <p>{hh.name}</p>
                                             <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
                                         </div>
                                     )
                                 })
                             })
-
                             return(
                                 <div className="trip clearfix">
                                     <div className="driver-container start">
@@ -225,54 +224,54 @@ export default class DriverTripsTracking extends Component {
                                                     <div className="hide">
                                                         {(hh.confirm === "accepted")?
                                                             (<div>
-                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}></button>)}
+                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><img src={hh.profile_pic} /></button>)}
                                                             </div>
                                                             ) 
                                                         : (hh.confirm === "pending")?
                                                             (<div>
-                                                                {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.rate, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
+                                                                {seats.push(<button className="circle-button request start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><i class="fa fa-question" aria-hidden="true"></i></button>)}
                                                             </div>)
-                                                        :   null}
-                                                        <Modal
-                                                            title={request.name}
-                                                            visible={this.state.visible}
-                                                            onOk={this.handleOkRequest}
-                                                            onCancel={this.handleCancel}
-                                                            mask={false}
-                                                            maskClosable={false}
-                                                            width= {300}
-                                                            bodyStyle={style}
-                                                            style={style}
-                                                            >
-                                                            {(request.confirm != "rejected") ?
-                                                                <div>
-                                                                    <p className="hh-profile-picture"></p>
-                                                                    <p className="hh-details">{request.rate}</p>
-                                                                    <p className="hh-details hh-phone">{request.phone}</p>
-                                                                    <p className="hh-details hh-email">{request.email}</p>
-                                                                    <p className="hh-details">Booked Seats: {request.seats}</p>
-                                                                </div>
-                                                            : null}
-                                                            {(trip.status === "pending" && request.confirm === "pending")?
-                                                                <RadioGroup
-                                                                    onChange={(e) => this.handleOkRequest(request.id, e.target.value)}
-                                                                    size={"large"} >
-                                                                    <RadioButton value="accepted">Accept</RadioButton>
-                                                                    <RadioButton value="rejected">Reject</RadioButton>
-                                                                </RadioGroup>
-                                                            : (<p className="accepted">{request.confirm}</p>)}
-                                                            {(trip.status === "ended" && request.confirm === "accepted")?
-                                                                (<div>
-                                                                    <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
-                                                                </div>) 
-                                                            : null
-                                                            }
-                                                        </Modal>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>)
-                                    }
+                                                        :   null
+                                                }
+                                                <Modal
+                                                    title={request.name}
+                                                    visible={this.state.visible}
+                                                    onOk={this.handleOk}
+                                                    onCancel={this.handleCancel}
+                                                    mask={false}
+                                                    maskClosable={false}
+                                                    width= {300}
+                                                    bodyStyle={style}
+                                                    style={style}
+                                                    >
+                                                {(request.confirm != "rejected") ?
+                                                        <div>
+                                                            <img className="hh-profile-picture" src={request.profile_pic} />
+                                                            <p className="hh-details">{request.requested_location}</p>
+                                                            <p className="hh-details hh-phone">{request.phone}</p>
+                                                            <p className="hh-details hh-email">{request.email}</p>
+                                                            <p className="hh-details">Booked Seats: {request.seats}</p>
+                                                        </div>
+                                                    : null}
+                                                    {(trip.status === "pending" && request.confirm === "pending")?
+                                                        <RadioGroup
+                                                            onChange={(e) => changeHhStopStatus(request.id, e.target.value, trip.id)}
+                                                            size={"large"} >
+                                                            <RadioButton value="accepted">Accept</RadioButton>
+                                                            <RadioButton value="rejected">Reject</RadioButton>
+                                                        </RadioGroup>
+                                                    : (<p className="accepted">{request.confirm}</p>)}
+                                                    {(trip.status === "ended" && request.confirm === "accepted")?
+                                                        (<div>
+                                                            <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
+                                                        </div>) : null
+                                                    }
+                                                </Modal>
+                                            </div>
+                                        )
+                                    })}
+                                </div>)
+                                }
                                 </div>
                             )
                         })}

@@ -21,7 +21,6 @@ export default function(currentState = INITIAL_STATE, action){
                 loading: false,
                 message
             };
-        break;
         case GET_FILTERED_TRIPS_FAILURE:
             return {...currentState, error:action.error, loading: false};
         case ADD_HH_STOP_POINT_LOADING:

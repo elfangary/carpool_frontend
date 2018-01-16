@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
+import CarDetails from '../CarDetails';
+import { Modal, Button } from 'antd';
 import './index.css';
 import '../User/user_style.css';
 
@@ -26,7 +28,12 @@ export default class Driver extends Component {
 				trip_id: null,
 				start_time: '',
 				end_time: ''
-			}]
+			}],
+			newCar: {
+				model: '',
+				number: '',
+				color: ''
+			}
 		};
 		this.inputs = {};
 	};
@@ -81,11 +88,41 @@ export default class Driver extends Component {
 			}
 			if (this.inputs[errorField]) {this.inputs[errorField].style.borderColor = '#ae3130';}
 		});
-    };
+	};
+
+	showModal = () => {
+		this.setState({
+		  visible: true,
+		});
+	}
+	handleOk = (e) => {
+		this.setState({
+			visible: false,
+		});
+		this.props.addCar(this.state.newCar);
+	}
+	handleCancel = (e) => {
+		this.setState({
+			visible: false,
+		});
+	}
+
+	handleNewCar = (event) => {
+		const {newCar} = this.state;
+		newCar[event.target.name] = event.target.value
+		this.setState({
+			newCar
+		});
+	}
 
 	render() {
-		const {locations, addTrip, error} = this.props;
-		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
+		const {locations, addTrip, addCar, error} = this.props;
+		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes, newCar} = this.state;
+		const style = {
+			textTransform:'capitalize',
+			textAlign: 'center',
+			backgroundColor: '#fafafa'
+		}
 		return (
 			<div className="new-container end margin">
 				<div className="trip-form start">
@@ -97,19 +134,34 @@ export default class Driver extends Component {
 								return (
 									<div className="flex-row">
 										<div>
-											<Locations location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
+											<Locations inputs={this.inputs} location_id={stopPoint.location_id} name="location_id" onChange={(e) => this.handleStopPointChange(e, index)} />
 										</div>
 										<div>
-											<Time stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
+											<Time inputs={this.inputs} stop_point={stopPoint} onChange={(e) => this.handleStopPointChange(e, index)}/>
 										</div>
 									</div>
 								)
 							})
 						}
 						<button className="new-stop create" type="button" onClick={() => this.addStopPoint()}>Add Stop Point</button>
-						<input className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
-						<Cars car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
-						<input type="number" className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+						<input ref={(ref) => this.inputs.day = ref} className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
+						<Cars inputs={this.inputs} car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
+						<div>
+							<Button className="new-stop create" onClick={this.showModal}>Create A Car</Button>
+							<Modal
+							title="Create Car"
+							visible={this.state.visible}
+							onOk={this.handleOk}
+							onCancel={this.handleCancel}
+							>
+							<form>
+								<input type="text" name="model" placeholder="model" value={newCar.model} onChange={this.handleNewCar} />
+								<input type="text" name="number" placeholder="number" value={newCar.number} onChange={this.handleNewCar} />
+								<input type="text" name="color" placeholder="color" value={newCar.color} onChange={this.handleNewCar} />
+							</form>
+							</Modal>
+						</div>
+						<input type="number" ref={(ref) => this.inputs.all = ref} className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 					</form>
 					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
 				</div>

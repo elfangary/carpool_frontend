@@ -12,7 +12,7 @@ export default class HHForm extends Component {
             location_id_end: null,
             new_hh_stop: {
                 stop_point_id: null,
-                booked_seats: 0
+                booked_seats: null
             }
         };
         this.inputs = {};
@@ -35,8 +35,8 @@ export default class HHForm extends Component {
     };
 
     render(){
-        const { trips , getFilteredTrips, addHhStopPoint, message} = this.props;
-        const { day, location_id_start, location_id_end, start_time, end_time, new_hh_stop } = this.state;
+        const { locations, trips, onChange , getFilteredTrips, addHhStopPoint, message} = this.props;
+        const { day, location_id_start, location_id_end, new_hh_stop } = this.state;
         return(
             <div className="new-container end">
                 <div className="margin">
@@ -60,7 +60,7 @@ export default class HHForm extends Component {
                                 </label>
                             </fieldset>
                         </form>
-                        <button class="submit-form start" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
+                        <button class="submit-form start" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end)}>Search</button>
                     </div>
                     <div className="trips-container trip-form">
                     {(trips.length > 0)?
