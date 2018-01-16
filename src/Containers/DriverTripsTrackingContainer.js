@@ -6,7 +6,7 @@ import { getTripsTrackingLoading, getTripsTracking,
      changeTripStatusFailure} from '../Actions/DriverTripsTracking';
 import {incrementUserPoints, rateUserLoading, rateUser, rateUserSuccess, rateUserFailure} from '../Actions/user';
 import DriverTripsTracking from '../Components/DriverTripsTracking';
-
+import history from '../history';
 
 const mapStateToProps = function(state){
     return {

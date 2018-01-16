@@ -50,7 +50,7 @@ export default class User extends Component{
     			<div className="fixed-container">
 					<header className="header clearfix">
 						<div className="profile-pic-edit-link start">
-						 	<img src={user.profile_pic} className="profile-picture"/>
+						 	<img src={(user.profile_pic === null)? "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Default_profile_picture_%28male%29_on_Facebook.jpg/600px-Default_profile_picture_%28male%29_on_Facebook.jpg" :  user.profile_pic}/>
 						 	<Link to={'/profile/edit'} className="edit-link">Edit my profile</Link>
 						</div>
 						<div className="start personal-details">
