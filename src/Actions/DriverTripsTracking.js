@@ -1,21 +1,27 @@
 import Axios from 'axios';
 import {driverTripsApi,updateHhStopApi, tripStatusApi} from '../apiConfig';
 
+ // Action Types
+//Driver Trips   
 export const GET_TRIPS_TRACKING_LOADING = 'GET_TRIPS_TRACKING_LOADING';
 export const GET_TRIPS_TRACKING = 'GET_TRIPS_TRACKING';
 export const GET_TRIPS_TRACKING_SUCCESS = 'GET_TRIPS_TRACKING_SUCCESS';
 export const GET_TRIPS_TRACKING_FAILURE = 'GET_TRIPS_TRACKING_FAILURE';
 
+//Change Hitch Hiker Stop Point Status
 export const CHANGE_HH_STOP_STATUS_LOADING = 'CHANGE_HH_STOP_LOADING';
 export const CHANGE_HH_STOP_STATUS = 'CHANGE_HH_STOP_STATUS';
 export const CHANGE_HH_STOP_STATUS_SUCCESS = 'CHANGE_HH_STOP_STATUS_SUCCESS';
 export const CHANGE_HH_STOP_STATUS_FAILURE = 'CHANGE_HH_STOP_STATUS_FAILURE';
 
+//Change Trip Status
 export const CHANGE_TRIP_STATUS_LOADING = 'CHANGE_TRIP_STATUS_LOADING';
 export const CHANGE_TRIP_STATUS = 'CHANGE_TRIP_STATUS';
 export const CHANGE_TRIP_STATUS_SUCCESS = 'CHANGE_TRIP_STATUS_SUCCESS';
 export const CHANGE_TRIP_STATUS_FAILURE = 'CHANGE_TRIP_STATUS_FAILURE';
 
+// Action Creators
+//Driver Trips 
 export const getTripsTrackingLoading = () => {
     return {
         type: GET_TRIPS_TRACKING_LOADING
@@ -39,6 +45,8 @@ export const getTripsTrackingFailure = (error) => {
         error
     };
 };
+
+////Change Hitch Hiker Stop Point Status
 export const changeHhStopStatusLoading = () => {
     return {
         type: CHANGE_HH_STOP_STATUS_LOADING
@@ -63,6 +71,7 @@ export const changeHhStopStatusFailure = (error) => {
     };
 };
 
+//Change Trip Status
 export const changeTripStatusLoading = () => {
     return {
         type: CHANGE_TRIP_STATUS_LOADING

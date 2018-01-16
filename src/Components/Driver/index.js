@@ -3,6 +3,7 @@ import Cars from '../../Containers/CarsContainer';
 import Locations from '../../Containers/LocationsContainer';
 import Time from '../Timeframe';
 import './index.css';
+import '../User/user_style.css';
 
 
 export default class Driver extends Component {
@@ -27,6 +28,7 @@ export default class Driver extends Component {
 				end_time: ''
 			}]
 		};
+		this.inputs = {};
 	};
 
 	handleStopPointChange = (event, index) => {
@@ -49,7 +51,7 @@ export default class Driver extends Component {
 		};
 		stop_points_attributes.push(stopPoint);
 		this.setState({stop_points_attributes});
-	}
+	};
 
 	handleChangeToI = (event) => {
 		console.log(event.target.value);
@@ -65,8 +67,24 @@ export default class Driver extends Component {
 		});
 	};
 
+	handleErrors(errors) {
+        Object.entries(this.inputs).forEach(([key, value]) => {
+            value.style.borderColor = "#e1e1e1";
+        });
+        errors.forEach(error => {
+			let errorField;
+			if (error.split(' ')[0] === 'Stop') {
+				const errorArr = error.split(' ');
+				errorField = errorArr[2] === 'location' ?  errorArr[2] : errorArr.slice(2,4).join('_');
+			} else {
+				errorField = error.split(' ')[0].toLowerCase();
+			}
+			if (this.inputs[errorField]) {this.inputs[errorField].style.borderColor = '#ae3130';}
+		});
+    };
+
 	render() {
-		const {addTrip} = this.props;
+		const {locations, addTrip, error} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
 		return (
 			<div className="new-container end margin">
@@ -95,8 +113,11 @@ export default class Driver extends Component {
 					</form>
 					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
 				</div>
-			</div>
+				{
+					(error)? this.handleErrors(error) : null
+				}
+			</div>	
 		)
-	};
-
-};
+	
+	}		
+}

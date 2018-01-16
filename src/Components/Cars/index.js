@@ -9,7 +9,7 @@ export default class Cars extends Component {
 		nextProps = this.props.deleted;
 	}
 	render() {
-		const {cars, onChange, name, deleted} = this.props;
+		const {cars, onChange, name, deleted, inputs} = this.props;
 		return (
 	        <select className="cars select-options capital" onChange={onChange} name={name}>
 	        	<option value="" disabled selected>Select your car</option>

@@ -6,18 +6,16 @@ import './hitchHikerForm_style.css';
 export default class HHForm extends Component {
     constructor(props){
         super(props);
-        console.log(this.props);
         this.state = {
-            day: null,
+            day: "",
             location_id_start: null,
             location_id_end: null,
-            start_time: '',
-            end_time: '',
             new_hh_stop: {
                 stop_point_id: null,
                 booked_seats: 0
             }
         };
+        this.inputs = {};
     };
 
     handleChange = (event) => {
@@ -48,21 +46,25 @@ export default class HHForm extends Component {
                             <fieldset className="location">
                                 <legend>Location Details</legend>
                                 <div className="location-details">
-                                    <label htmlFor="location-label">Moving from
-                                        <Locations id="location-label" name="location_id_start" onChange={this.handleChange.bind(this)}/>
-                                        </label>
-                                    <label>Moving To
-                                        <Locations name="location_id_end" onChange={this.handleChange.bind(this)}/>
+                                <label htmlFor="location-label">Moving from
+                                    <Locations inputs={this.inputs} id="location-label" name="location_id_start" onChange={this.handleChange.bind(this)}/>
+                                    </label>
+                                <label>Moving To
+                                    <Locations inputs={this.inputs} name="location_id_end" onChange={this.handleChange.bind(this)}/>
                                     </label>
                                 </div>
                             </fieldset>
                             <fieldset>
                                 <label htmlFor="day">
-                                    <input type="date" id="day" name="day" onChange={this.handleChange}/>
+                                    <input ref={(ref) => this.inputs.day = ref} type="date" id="day" name="day" onChange={this.handleChange}/>
                                 </label>
                             </fieldset>
                         </form>
+<<<<<<< HEAD
+                        <button class="submit-form" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end)}>Search</button>
+=======
                         <button class="submit-form start" type="submit"  onClick={() => getFilteredTrips(day, location_id_start, location_id_end, start_time, end_time)}>Search</button>
+>>>>>>> Development
                     </div>
                     <div className="trips-container trip-form">
                     {(trips.length > 0)?

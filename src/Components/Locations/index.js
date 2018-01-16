@@ -8,7 +8,7 @@ export default class Locations extends Component {
     }
 
     render(){
-        const { locations, onChange, name} = this.props;
+        const { locations, onChange, name, inputs} = this.props;
         var options = locations.map((location) => {
             return <option className="location" key={location.id} value={location.id}>{location.name}</option>;
         })
@@ -16,7 +16,7 @@ export default class Locations extends Component {
             <form>
                 <div className="location-label">
                     <label htmlFor="location"></label>
-                    <select className="select-options" name={name} onChange={onChange}>
+                    <select className="select-options" ref={(ref) => inputs.location = ref} id="location" name={name} onChange={onChange}>
                         <option value="" disabled selected>Select Point</option>
                         {options}
                     </select>

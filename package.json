@@ -23,7 +23,8 @@
     "react-toggle": "^4.0.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
-    "redux-promise": "^0.5.3"
+    "redux-promise": "^0.5.3",
+    "sweetalert": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

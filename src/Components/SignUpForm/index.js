@@ -36,7 +36,7 @@ export default class SignUpForm extends Component{
         })
         errors.forEach(error => {
             const errorField = error.split(' ')[0].toLowerCase();
-            this.inputs[errorField].style.borderColor = '#ae3130';
+            if (this.inputs[errorField]) {this.inputs[errorField].style.borderColor = '#ae3130';}
         })
     }
 
