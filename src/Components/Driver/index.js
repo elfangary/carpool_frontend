@@ -5,6 +5,7 @@ import CarsDetails from '../../Containers/CarsDetailsContainer';
 import Time from '../Timeframe';
 import Days from '../Days';
 import './index.css';
+import '../User/user_style.css';
 
 
 export default class Driver extends Component {
@@ -52,7 +53,7 @@ export default class Driver extends Component {
 		};
 		stop_points_attributes.push(stopPoint);
 		this.setState({stop_points_attributes});
-	}
+	};
 
 	handleChangeToI = (event) => {
 		console.log(event.target.value);
@@ -81,12 +82,12 @@ export default class Driver extends Component {
 			}
 			if (this.inputs[errorField]) {this.inputs[errorField].style.borderColor = '#ae3130';}
 		});
-    }
+    };
 
 	render() {
 		const {locations, addTrip, error} = this.props;
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes} = this.state;
-		return (
+		return(
 			<div className="new-container margin end">
 				<h1 className="driver-title">Book Your Trip</h1>
 				<form>
@@ -138,10 +139,10 @@ export default class Driver extends Component {
 					<button type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Submit</button>
 				</form>
 				{
-					error ? this.handleErrors(error) : null
+					(error)? this.handleErrors(error) : null
 				}
 			</div>
 		)
-	};
-
-};
+	
+	}		
+}

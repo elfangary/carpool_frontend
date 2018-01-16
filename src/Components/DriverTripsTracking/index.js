@@ -106,7 +106,6 @@ export default class DriverTripsTracking extends Component {
             textAlign: 'center',
             backgroundColor: '#fafafa'
         }
-
         return (
             <div className = 'new-container end'>
                 <div className="margin clearfix">
@@ -191,7 +190,7 @@ export default class DriverTripsTracking extends Component {
                                     {(trip.status === "pending")? (<button type="button" className="status-button" name="status" value="cancelled" onClick={() => {this.handleClick(trip.id, "cancelled")}}>Cancel Trip</button>) : null}
                                     {trip.start && (trip.status === "pending") ? (<button type="button" className="status-button" name="status" value="started" onClick={() => this.handleClick(trip.id, "started")}>Start Trip</button>) : null}
                                     {(trip.status === "started")? (<button type="button" className="status-button" name="status" value="ended" onClick={() => {this.handleClick(trip.id, "ended")}}>End Trip</button>) : null}
-                                     {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
+                                    {(trip.status === "ended" && trip.stop_points.map((stop_point) => {
                                         stop_point.hh.map((hh) => {
                                         hh.confirm === "accepted"
                                     })
@@ -239,7 +238,7 @@ export default class DriverTripsTracking extends Component {
                                                     bodyStyle={style}
                                                     style={style}
                                                     >
-                                                  {(request.confirm != "rejected") ?
+                                                {(request.confirm != "rejected") ?
                                                         <div>
                                                             <p className="hh-profile-picture"></p>
                                                             <p className="hh-details">{request.rate}</p>
