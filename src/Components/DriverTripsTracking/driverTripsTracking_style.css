@@ -118,15 +118,24 @@
 	color: #4182A7;
 }
 .circle-button {
-	background-color: #fff;
+	/*background-color: #fff;*/
 	border: 1px solid #434343;
 	height: 45px;
-	width:40%;
+	width:45px;
 	border-radius: 50%;
 	display: inline-block;
 	text-align: center;
 	line-height: 30px;
 	margin: 0 0 5px 5px;
+}
+.circle-button {
+	height: 45px;
+	width:45px;
+	border-radius: 50%;
+	display: inline-block;
+	text-align: center;
+	line-height: 30px;
+	/*margin: 0 0 5px 5px;*/
 }
 .circle-button:focus{
 	outline: none

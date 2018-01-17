@@ -224,7 +224,7 @@ export default class DriverTripsTracking extends Component {
                                                     <div className="hide">
                                                         {(hh.confirm === "accepted")?
                                                             (<div>
-                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><img src={hh.profile_pic} /></button>)}
+                                                                {seats.push(<button className="circle-button start" type="primary" onClick={() => this.showModal(hh.name, hh.profile_pic, hh.booked_seats, hh.confirm, hh.id, hh.phone, hh.requested_location, hh.email)}><img className="circle-picture start" src={hh.profile_pic} /></button>)}
                                                             </div>
                                                             ) 
                                                         : (hh.confirm === "pending")?
