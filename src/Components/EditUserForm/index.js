@@ -35,7 +35,7 @@ export default class EditUserForm extends Component{
 
 	componentWillMount(){
 		if(!this.props.user.first_name){
-			Axios.get("http://localhost:3001/user.json").then((response)=>{
+			Axios.get("https://khodny-maak.herokuapp.com/user.json").then((response)=>{
 				this.setState({...this.state, user: response.data})
 			})
 		}
