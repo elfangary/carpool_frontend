@@ -14,7 +14,8 @@ export default class EditUserForm extends Component{
 				first_name: user.first_name,
 				last_name: user.last_name,
 				email: user.email,
-				phone: user.phone
+				phone: user.phone,
+				profile_pic: user.profile_pic
 			}
 		};
 		console.log("password in state");
