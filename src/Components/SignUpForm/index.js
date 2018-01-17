@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './signUp_style.css';
+import {Button} from 'antd';
 
 export default class SignUpForm extends Component{
 	constructor(props){
@@ -83,7 +84,7 @@ export default class SignUpForm extends Component{
 								<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
 								<input type="password" name="password_confirmation" placeholder="Confirm Password" onChange={this.handelChange.bind(this)}/>
 								<label htmlFor="submit" className="submit-label">Ready to move on?</label>
-								<button className="signup-button" id="submit" type="button" onClick={() => {this.props.signUp(user); console.log("in signUp form"); console.log(this.state.user)} }>Sign up</button>
+								<Button type="primary"  className="signup-button" id="submit" loading={this.props.loading} onClick={() => this.props.signUp(user)}>Sign up</Button>
 								{
 									(errors) ? (
 										<div>

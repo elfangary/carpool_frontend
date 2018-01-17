@@ -91,6 +91,17 @@
 .signup-form .signup-button:focus {
 	outline: none;
 }
+.signup-form .ant-btn-primary{
+	background-color: #fff;
+	border: 0;
+}
+.signup-form .ant-btn-primary:hover, .signup-form .ant-btn-primary:focus, .signup-form .ant-btn-primary:active{
+	background-color: #fff;
+	outline: none;
+}
+.signup-form .ant-btn, .signup-form .ant-btn:active, .signup-form .ant-btn:focus{
+	outline: none;
+}
 .signup-error{
 	margin-top: 15px;
 	margin-left: 55px;
