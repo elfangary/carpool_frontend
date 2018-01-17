@@ -145,11 +145,12 @@ export default class DriverTripsTracking extends Component {
                             const hhs_rate = trip.stop_points.map((stop_point) => {
                                 return stop_point.hh.map((hh) => {
                                     return (
+                                        (hh.confirm === "accepted")?
                                         <div>
                                             <img href={hh.profile_pic} alt="driver" className="hh-profile-picture"/>
                                             <p>{hh.name}</p>
                                             <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
-                                        </div>
+                                        </div> : null
                                     )
                                 })
                             })

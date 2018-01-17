@@ -11,7 +11,8 @@ import {
 
 const mapStateToProps = function (store){
 	return {
-		cars: store.userCars.cars,
+        cars: store.userCars.cars,
+        car: store.userCars.car,
         loading: store.userCars.loading,
         error: store.userCars.error
 	};
