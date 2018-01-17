@@ -11,7 +11,7 @@ export default class Notifications extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentNotification: '',
+        // currentNotification: [],
         newNotificationsNumber: 0
       };
     }
@@ -23,12 +23,16 @@ export default class Notifications extends Component {
       }, {
         connected: () => {},
         received: (data) => {
+                this.props.getAllNotifications();
                 this.setState({
-                    newNotificationsNumber: this.state.newNotificationsNumber + 1,
-                    currentNotification: data
+                    newNotificationsNumber: this.state.newNotificationsNumber + 1
+                    // currentNotification: data
                 })
             }
       });
+    }
+    componentWillReceiveProps(nextProps){
+        nextProps = this.props.notifications;
     }
 
     componentWillMount(){

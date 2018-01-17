@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import '../SignUpForm/signUp_style.css';
 import './editForm_style.css';
+import { userApi } from '../../apiConfig';
 
 export default class EditUserForm extends Component{
 
@@ -35,7 +36,7 @@ export default class EditUserForm extends Component{
 
 	componentWillMount(){
 		if(!this.props.user.first_name){
-			Axios.get("https://khodny-maak.herokuapp.com/user.json").then((response)=>{
+			Axios.get(userApi).then((response)=>{
 				this.setState({...this.state, user: response.data})
 			})
 		}
