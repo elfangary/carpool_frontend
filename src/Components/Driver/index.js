@@ -9,7 +9,6 @@ import '../User/user_style.css';
 
 
 export default class Driver extends Component {
-
 	constructor(props){
 		super(props);
 		this.state = {
@@ -29,7 +28,7 @@ export default class Driver extends Component {
 				start_time: '',
 				end_time: ''
 			}],
-			newCar: {
+			car: {
 				model: '',
 				number: '',
 				color: ''
@@ -99,7 +98,7 @@ export default class Driver extends Component {
 		this.setState({
 			visible: false,
 		});
-		this.props.addCar(this.state.newCar);
+		this.props.addCar(this.state.car);
 	}
 	handleCancel = (e) => {
 		this.setState({
@@ -108,16 +107,16 @@ export default class Driver extends Component {
 	}
 
 	handleNewCar = (event) => {
-		const {newCar} = this.state;
-		newCar[event.target.name] = event.target.value
+		const {car} = this.state;
+		car[event.target.name] = event.target.value
 		this.setState({
-			newCar
+			car
 		});
 	}
 
 	render() {
 		const {locations, addTrip, addCar, error} = this.props;
-		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes, newCar} = this.state;
+		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes, car} = this.state;
 		const style = {
 			textTransform:'capitalize',
 			textAlign: 'center',
@@ -155,9 +154,9 @@ export default class Driver extends Component {
 							onCancel={this.handleCancel}
 							>
 							<form>
-								<input type="text" name="model" placeholder="model" value={newCar.model} onChange={this.handleNewCar} />
-								<input type="text" name="number" placeholder="number" value={newCar.number} onChange={this.handleNewCar} />
-								<input type="text" name="color" placeholder="color" value={newCar.color} onChange={this.handleNewCar} />
+								<input type="text" name="model" placeholder="model" value={car.model} onChange={this.handleNewCar} />
+								<input type="text" name="number" placeholder="number" value={car.number} onChange={this.handleNewCar} />
+								<input type="text" name="color" placeholder="color" value={car.color} onChange={this.handleNewCar} />
 							</form>
 							</Modal>
 						</div>

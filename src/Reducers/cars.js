@@ -7,7 +7,8 @@ import {
 
 const INITIAL_STATE = {
    	cars: [],
-    loading: false,
+	car: {},
+	loading: false,
     error: null
 };
 

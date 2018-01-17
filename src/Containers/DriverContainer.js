@@ -2,15 +2,16 @@ import { connect } from 'react-redux';
 import Driver from '../Components/Driver';
 import {
     addTripLoading, addTrip, addTripSuccess, addTripFailure
-    , addCarLoading, addCar, addCarSuccess, addCarFailure
 } from '../Actions/driver';
+import {createCarLoading, createCar, createCarSuccess, createCarFailure} from '../Actions/cars';
 import history from '../history';
 import swal from 'sweetalert';
 
 
 const mapStateToProps = function (store){
 	return {
-		trip: store.newTrip.trip,
+        trip: store.newTrip.trip,
+        car: store.userCars.car,
         loading: store.newTrip.loading,
         error: store.newTrip.error
 	};
@@ -43,14 +44,14 @@ const mapDispatchToProps = function (dispatch){
                 }
             })
         },
-        addCar: (newCar) => {
-            dispatch(addCarLoading());
-            dispatch(addCar(newCar))
+        addCar: (car) => {
+            dispatch(createCarLoading());
+            dispatch(createCar(car))
             .then(response => {
                 if(response.payload.status < 400){
-                    dispatch(addCarSuccess(response.payload.data));
+                    dispatch(createCarSuccess(response.payload.data));
                 }else{
-                    dispatch(addCarFailure(response.payload.response.data));
+                    dispatch(createCarFailure(response.payload.response.data));
                 }
             })
         }
