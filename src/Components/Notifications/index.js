@@ -10,10 +10,7 @@ import {actioncableUrl } from '../../apiConfig'
 export default class Notifications extends Component {
     constructor(props) {
       super(props);
-      this.state = {
-        // currentNotification: [],
-        newNotificationsNumber: 0
-      };
+      this.state = { newNotificationsNumber: 0};
     }
 
     createSocket() {
@@ -26,13 +23,14 @@ export default class Notifications extends Component {
                 this.props.getAllNotifications();
                 this.setState({
                     newNotificationsNumber: this.state.newNotificationsNumber + 1
-                    // currentNotification: data
                 })
             }
       });
     }
-    componentWillReceiveProps(nextProps){
-        nextProps = this.props.notifications;
+
+    handleClick(){
+        console.log("notification number");
+        this.setState({newNotificationsNumber: 0});
     }
 
     componentWillMount(){
@@ -73,7 +71,7 @@ export default class Notifications extends Component {
                                 notifications.map((notification) =>{
                                     return(
                                         <div className="notification-content">                                                
-                                           <Link to={`/profile/${notification.type}/trips`}>
+                                           <Link onClick={this.handleClick.bind(this)} to={`/profile/${notification.type}/trips`}>
                                                 <p>{dateformat(notification.created_at, "d.mmm.yyyy,HH:MM")}</p>
                                                 <p>{notification.stop_point_name}</p>
                                                 <p>{notification.body}<Link to="#"> <span>See Details</span></Link></p>
