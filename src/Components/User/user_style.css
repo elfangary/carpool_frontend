@@ -166,7 +166,7 @@
 	flex: 1;
 }
 .type-links {
-	padding: 10px 15px;
+	padding: 8px 15px;
 	/*position: absolute;*/
 	/*text-align: center;*/
 	/*bottom: 80px;*/
@@ -180,7 +180,7 @@
 }
 
 .type-links .type-selected {
-	padding: 10px 30px;
+	padding: 8px 35px;
 	border-radius: 3px;
 	color: #5d5d5d;
 

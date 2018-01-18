@@ -107,7 +107,6 @@ export default class DriverTripsTracking extends Component {
         const {trackedTrips, getTripsTracking, changeHhStopStatus, changeTripStatus, handleChange, rateUser } = this.props;
         const {status, request, ratings, ratingRequest} = this.state;
         const style = {
-            textTransform:'capitalize',
             textAlign: 'center',
             backgroundColor: '#fafafa'
         }
@@ -147,7 +146,9 @@ export default class DriverTripsTracking extends Component {
                                     return (
                                         (hh.confirm === "accepted")?
                                         <div>
-                                            <img href={hh.profile_pic} alt="driver" className="hh-profile-picture"/>
+                                            <div className="hh-profile-picture-container">
+                                                <img src={hh.profile_pic} alt="hitch-hiker" className="hh-profile-picture"/>
+                                            </div>
                                             <p>{hh.name}</p>
                                             <Rater total={5} rating={0} onRate={(event) => this.handleUserRating(trip.id, hh.hh_id, event)} />
                                         </div> : null
@@ -157,7 +158,9 @@ export default class DriverTripsTracking extends Component {
                             return(
                                 <div className="trip clearfix">
                                     <div className="driver-container start">
-                                        <div className="driver-profile-picture"></div>
+                                        <div className="driver-profile-picture-container">
+                                            <img src={trip.driver.profile_pic.profile_pic.url} alt="driver" className="driver-profile-picture"/>
+                                        </div>
                                     </div>
                                     <div className="details-container start">
                                         <div className="flex">
@@ -247,17 +250,19 @@ export default class DriverTripsTracking extends Component {
                                                     >
                                                 {(request.confirm != "rejected") ?
                                                         <div>
-                                                            <img className="hh-profile-picture" src={request.profile_pic} />
-                                                            <p className="hh-details">{request.requested_location}</p>
-                                                            <p className="hh-details hh-phone">{request.phone}</p>
-                                                            <p className="hh-details hh-email">{request.email}</p>
-                                                            <p className="hh-details">Booked Seats: {request.seats}</p>
+                                                            <div className="hh-profile-picture-container">
+                                                                <img className="hh-profile-picture" src={request.profile_pic} />
+                                                            </div>
+                                                            <p className="hh-details trip-driver-name capitalize">{request.requested_location}</p>
+                                                            <p className="hh-details trip-seats hh-phone">{request.phone}</p>
+                                                            <p className="hh-details trip-seats hh-email">{request.email}</p>
+                                                            <p className="hh-details trip-seats capitalize">Booked Seats: {request.seats}</p>
                                                         </div>
                                                     : null}
                                                     {(trip.status === "pending" && request.confirm === "pending")?
                                                         <RadioGroup
                                                             onChange={(e) => changeHhStopStatus(request.id, e.target.value, trip.id)}
-                                                            size={"large"} >
+                                                            size={"large"} className="toggle">
                                                             <RadioButton value="accepted">Accept</RadioButton>
                                                             <RadioButton value="rejected">Reject</RadioButton>
                                                         </RadioGroup>
