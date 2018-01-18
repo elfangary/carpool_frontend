@@ -1,9 +1,10 @@
 .margin{
-	width: 100%;
-	margin-top: 80px;
+	/*width: 100%;*/
+	margin-top: 25px;
 }
 .new-container{
 	width:66.66%;
+	padding: 100px 20px 40px 20px;
 }
 .trip {
 	height: 200px;
@@ -16,14 +17,6 @@
 	margin-bottom: 80px;
 	padding: 40px;
 	margin-top: 10px;
-}
-.driver-profile-picture {
-	background-color: #d7d7d7;
-	border-radius: 50%;
-	height: 120px;
-	width: 120px;
-	margin: 0 auto;
-	/*float: left;*/
 }
 .driver-name {
     margin: 10px 0;
@@ -118,7 +111,7 @@
 	color: #4182A7;
 }
 .circle-button {
-	/*background-color: #fff;*/
+	background-color: #fff;
 	border: 1px solid #434343;
 	height: 45px;
 	width:45px;
@@ -127,15 +120,6 @@
 	text-align: center;
 	line-height: 30px;
 	margin: 0 0 5px 5px;
-}
-.circle-button {
-	height: 45px;
-	width:45px;
-	border-radius: 50%;
-	display: inline-block;
-	text-align: center;
-	line-height: 30px;
-	/*margin: 0 0 5px 5px;*/
 }
 .circle-button:focus{
 	outline: none
@@ -188,13 +172,26 @@
 	background-color: #fafafa;
 	color: #e95d4f;
 }
-.hh-profile-picture {
+.driver-profile-picture {
+	border-radius: 50%;
+	height: 120px;
+	width: 120px;
+}
+.hh-profile-picture-container {
+	/*background: url(../../default.jpeg);*/
 	background-color: #d7d7d7;
 	border-radius: 50%;
 	height: 120px;
 	width: 120px;
 	margin: 0 auto;
-	/*float: left;*/
+}
+.hh-profile-picture, .driver-profile-picture-container {
+	background: url(../../default.jpeg);
+	background-position: center;
+	background-size: cover;
+	border-radius: 50%;
+	height: 120px;
+	width: 120px;
 }
 .accepted {
 	font-size: 11px;
@@ -204,7 +201,13 @@
 	font-weight: bold;
 	margin-top: 30px;
 }
-
+.toggle {
+	margin-top: 20px;
+}
+.ant-modal-header, .ant-modal-footer {
+	background-color: #fafafa;
+	text-transform: capitalize;
+}
 .ant-slider-step {
 	background-color: #4182A7;
 }

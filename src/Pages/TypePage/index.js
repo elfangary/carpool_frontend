@@ -13,7 +13,7 @@ export default class WelcomePage extends Component {
                     <div className="notifications-displayed">
                         <Notifications />
                     </div>
-                    <h1>HOW DO YOU FEEL LIKE TODAY?</h1>
+                    <h1 className="title">HOW DO YOU FEEL LIKE TODAY?</h1>
                     <Link to={'/profile/hitch-hiking/trips'} className="type-link">HITCH-HIKING</Link>
                     <Link to={'/profile/driving/trips'} className="type-link">DRIVING</Link>
                 </div>

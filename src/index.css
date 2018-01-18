@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
-  font-weight: lighter;
+  font-weight: light;
 }
 *{
 	box-sizing: border-box;
@@ -13,7 +13,7 @@ body, html, #root, .App{
 h1, h2, h3, h4, h5, h6, p{
 	margin: 0;
 }
-button{
+/*button{
 	cursor: pointer;
 }
 button:focus {
@@ -35,6 +35,12 @@ input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
 	-webkit-text-fill-color: #303030 !important;
 	transition: background-color 5000s ease-in-out 0s;
+}*/
+.content {
+	font-weight: light;
+}
+.title {
+	font-weight: bold;
 }
 .start{
 	float: left;
@@ -47,6 +53,27 @@ input:-webkit-autofill {
 }
 .capital {
 	text-transform: capitalize;
+}
+.blue-color {
+	color: #418cb6;
+}
+.blue-background {
+	background-color: #418cb6;
+}
+.dark-grey-color {
+	color: #303030
+}
+.dark-grey-background {
+	background-color: #303030;
+}
+.grey-border {
+	border-color: #d7d7d7;
+}
+.light-grey {
+
+}
+.shadow {
+	box-shadow: 0 0 3px rgba(48,48,48,.3);
 }
 .clearfix::before,
 .clearfix::after {

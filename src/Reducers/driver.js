@@ -4,8 +4,7 @@ import {
 } from '../Actions/driver';
 
 const INITIAL_STATE = {
-	trip: {},
-	newCar: {},   
+	trip: {},  
     loading: false,
     error: null
 };
@@ -18,12 +17,6 @@ export default function(currentState = INITIAL_STATE, action){
 			return {...currentState, trip: action.trip, loading: false};
 		case ADD_TRIP_FAILURE:
 			return {...currentState, error: action.error, loading: false};
-		case ADD_CAR_LOADING:
-			return {...currentState, loading: true};
-		case ADD_CAR_SUCCESS:
-			return {...currentState, newCar: action.newCar, loading: false}
-		case ADD_CAR_FAILURE:
-			return {...currentState, error: action.error, loading: false}
 		default:
 			return currentState;
 	};
