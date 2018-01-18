@@ -11,9 +11,17 @@
 .header .profile-pic-edit-link {
 	width: 33.33%;
 }
-.header .profile-picture {
+.header .profile-picture-container {
+	background: url(../../default.jpeg);
+	background-position: center;
+	background-size: cover;
 	border-radius: 50%;
-	background-color: #fff;
+	height: 100px;
+	width: 100px;
+}
+.header .profile-picture {
+	border: 0;
+	border-radius: 50%;
 	height: 100px;
 	width: 100px;
 }
@@ -21,7 +29,7 @@
 	width: 66.66%;
 }
 .personal-details .user-name {
-	margin: 28px 0 0 5px;
+	margin: 25px 0 0 5px;
 	color: #fff;
 	font-size: 22px;
 	text-transform: capitalize;

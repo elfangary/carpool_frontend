@@ -1,9 +1,10 @@
 .margin{
-	width: 100%;
-	margin-top: 80px;
+	/*width: 100%;*/
+	/*margin-top: 80px;*/
 }
 .new-container{
 	width:66.66%;
+	padding: 80px 40px;
 }
 .trip {
 	height: 200px;

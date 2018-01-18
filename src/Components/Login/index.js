@@ -58,7 +58,7 @@ export default class Login extends Component{
 							<h1>Welcome to <span>Cairopool</span></h1>
 							<p>Where Trips are shared</p>
 						</header>
-						<p>Affordable car-sharing service to ease your way around the city, availble for riders and drivers.</p>
+						<p>Affordable car-sharing service to ease your way around the city, availble for riders(hitch-hikers) and drivers.</p>
 						<Link to="/signup" activeClassName="active" className="signup-link">Become A Member</Link>
 						<p className="signup">Want to start collaborating?<span> SignUp, It's Free</span></p>
 					</section>
