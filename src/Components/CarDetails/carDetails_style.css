@@ -1,17 +1,19 @@
-.car-details-component{
-	width: 60%;
-}
-.car-details-component .car-details-content{
-	margin: 50px;
-}
-.car-details{
-	margin-top: 20px;
-}
-.car-details-content {
+.car-details-form {
 	width: 40%;
-	margin: 50px 150px;
+	margin: 20px 40px;
 	padding: 0 40px;
 	border-left: 2px solid #d7d7d7;
+}
+.car-details-form input {
+	display: block;
+	border: none;
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 30px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+.car-details-form select:focus {
+	outline: 0;
 }
 .car-tags p {
 	border-bottom: 1px solid #e1e1e1;
@@ -23,34 +25,24 @@
 .active p {
 	color: #303030;
 }
-.car-button {
-	/*background-color: #fff;*/
-	border-color: #e95d4f;
+.delete-car-button {
+	background-color: #fff;
+	border: 1px solid #e95d4f;
     color: #e95d4f;
     width: 100px;
     margin-top: 20px;
     border-radius: 30px;
 }
-.create {
-	color: #4182A7;
-	border-color: #4182A7;
+.add-car-button {
+	background-color: #fff;
+	border: 1px solid #4182A7;
+    color: #4182A7;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 30px;
 }
-
 .add-car {
-	margin-top: 30px;
-}
-.car-form input {
-	border: none;
-	border-bottom: 1px solid #e1e1e1;
-	line-height: 30px;
-	margin-bottom: 5px;
-	width: 100%;
-}
-::-webkit-input-placeholder{
-	color: #e1e1e1;
-}
-.car-form select:focus {
-	outline: 0;
+	margin-top: 40px;
 }
 .car-error {
 	border-bottom: 2px solid red;

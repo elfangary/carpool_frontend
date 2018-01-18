@@ -15,8 +15,9 @@
 
 .new-stop {
 	background-color: #fafafa;
+	border: 1px solid #d7d7d7;
     color: #4182A7;
-    width: 130px;
+    width: 150px;
     margin-top: 20px;
     display: block;
 }
@@ -99,8 +100,19 @@
     margin-bottom: 20px;
     margin-left: 30px;
 }
-
-.label { 
+.ant-modal-body {
+	background-color: #fafafa;
+	padding-bottom: 30px;
+}
+.car-modal input{
+	background-color: #fafafa;
+	border: none;
+	border-bottom: 1px solid #e1e1e1;
+	line-height: 30px;
+	margin-bottom: 5px;
+	width: 100%;
+}
+.label {
 	margin-right: 10px;
 }
 

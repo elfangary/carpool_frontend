@@ -13,7 +13,7 @@ body, html, #root, .App{
 h1, h2, h3, h4, h5, h6, p{
 	margin: 0;
 }
-/*button{
+button{
 	cursor: pointer;
 }
 button:focus {
@@ -22,7 +22,7 @@ button:focus {
 }
 input{
 	border: none;
-    border-bottom: 2px solid rgba(255,255,255,.3);
+    border-bottom: 1px solid rgba(255,255,255,.3);
 	line-height: 40px;
 	margin-bottom: 25px;
 }
@@ -35,7 +35,7 @@ input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 10px $c-blue inset;
 	-webkit-text-fill-color: #303030 !important;
 	transition: background-color 5000s ease-in-out 0s;
-}*/
+}
 .content {
 	font-weight: light;
 }

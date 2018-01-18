@@ -57,6 +57,7 @@ export default class EditUserForm extends Component{
 		const {first_name, last_name, email, phone} = this.state.user;
 		return(
 			<div className="new-container margin end">
+			<h2 className="title">Edit Your Profile</h2>
 				<form className="signup-form" >
 					<input type="text" name="first_name" placeholder="firstName"  value={first_name} onChange={this.handelChange.bind(this)} />
 					<input type="text" name="last_name" placeholder="lastName" value={last_name} onChange={this.handelChange.bind(this)} />

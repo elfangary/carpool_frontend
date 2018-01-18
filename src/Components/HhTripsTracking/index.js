@@ -78,7 +78,7 @@ export default class HhTripsTracking extends Component {
         return (
             <div className="new-container end">
                 <div className="margin clearfix">
-                    <h2>Your Hitch-Hiking Trips</h2>
+                    <h2 className="title">Your Hitch-Hiking Trips</h2>
                     <div className="tabs-container start">
                         <div className="tabs">
                             <Tabs
@@ -134,9 +134,9 @@ export default class HhTripsTracking extends Component {
                                                 <div>
                                                     <p className="trip-driver-name">{hh.request}</p>
                                                     <p className="trip-seats">Booked seats: {hh.booked_seats}</p>
-                                                    {(hh.confirm === ("pending" || "accepted")) ?
+                                                    {(hh.confirm === "pending" || "accepted") ?
                                                         (<p className="trip-seats">Confirmation status: <span className="no-pending">{hh.confirm}</span></p>)
-                                                        : (<p>Confirmation status: <span className="pending">{hh.confirm}</span></p>)
+                                                        : (<p className="trip-seats">Confirmation status: <span className="pending">{hh.confirm}</span></p>)
                                                     }
                                                 </div>
                                             )
@@ -159,7 +159,9 @@ export default class HhTripsTracking extends Component {
                                             style={style}
                                             >
                                             <p className="driver-name">How Was Your Trip With {trip.driver.first_name} {trip.driver.last_name} ?</p>
-                                            <p className="driver-profile-picture">{request.profile_pic}</p>
+                                            <div className="driver-profile-picture-container">
+                                                <img className="driver-profile-picture" alt="driver" src={request.profile_pic}/>
+                                            </div>
                                             <p><Rater total={5} rating={this.state.rate} onRate={(event) => this.handleRate(trip.id, trip.driver.id, event)} /></p>
                                             </Modal>
                                         </div>

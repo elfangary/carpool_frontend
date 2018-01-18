@@ -11,6 +11,17 @@
   left: 30%;
   z-index: 5;
 }
+.App > .header:hover {
+  text-decoration: none;
+}
+.signup-nav-link {
+  color: #303030;
+  text-transform: uppercase;
+  font-weight: bold;
+  position: absolute;
+  top: 55%;
+  right: 10%;
+}
 .user-nav{
   background-color: rgba(255,255,255,.8);
   position: fixed;

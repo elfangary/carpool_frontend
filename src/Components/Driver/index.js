@@ -119,13 +119,13 @@ export default class Driver extends Component {
 		const {car_id, day, all_seats, specific_gender, smoking, stop_points_attributes, car} = this.state;
 		const style = {
 			textTransform:'capitalize',
-			textAlign: 'center',
 			backgroundColor: '#fafafa'
 		}
 		return (
 			<div className="new-container end margin">
+			<h2 className="title">Create Your Trip</h2>
 				<div className="trip-form start">
-					<h2>Create Your Trip</h2>
+					
 					<form className="location">
 						<legend>Location Details</legend>
 						{
@@ -146,21 +146,23 @@ export default class Driver extends Component {
 						<input ref={(ref) => this.inputs.day = ref} className="select-options" type="date" id="day" name="day" onChange={this.handleChange}/>
 						<Cars inputs={this.inputs} car_id={car_id} name="car_id" onChange={this.handleChangeToI.bind(this)}/>
 						<div>
-							<Button className="new-stop create" onClick={this.showModal}>Create A Car</Button>
+							<button className="new-stop create" type="button" onClick={this.showModal}>Create A Car</button>
 							<Modal
-							title="Create Car"
+							title="Create A New Car"
 							visible={this.state.visible}
 							onOk={this.handleOk}
 							onCancel={this.handleCancel}
+							width={300}
+							style={style}
 							>
-							<form>
-								<input type="text" name="model" placeholder="model" value={car.model} onChange={this.handleNewCar} />
-								<input type="text" name="number" placeholder="number" value={car.number} onChange={this.handleNewCar} />
-								<input type="text" name="color" placeholder="color" value={car.color} onChange={this.handleNewCar} />
+							<form className="car-modal">
+								<input type="text" name="model" placeholder="Model" value={car.model} onChange={this.handleNewCar} />
+								<input type="text" name="number" placeholder="Number" value={car.number} onChange={this.handleNewCar} />
+								<input type="text" name="color" placeholder="Color" value={car.color} onChange={this.handleNewCar} />
 							</form>
 							</Modal>
 						</div>
-						<input type="number" ref={(ref) => this.inputs.all = ref} className="seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
+						<input type="number" ref={(ref) => this.inputs.all = ref} className="available-car-seats" name="all_seats" max={4} value={all_seats} onChange={this.handleChangeToI} placeholder="Available Seats" />
 					</form>
 					<button className="submit-form end" type="button" onClick={() => {addTrip(car_id, day, all_seats, specific_gender, smoking, stop_points_attributes)}}>Create</button>
 				</div>

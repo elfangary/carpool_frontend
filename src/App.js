@@ -23,7 +23,7 @@ class App extends Component {
                   (window.location.pathname === "/home")?
                     <Link to="/" className="nav-link">Get Started</Link> :
                       (window.location.pathname === "/signup")?
-                        <Link to="/" className="user-nav-link">Get Started</Link>:
+                        <Link to="/" className="signup-nav-link">Get Started</Link>:
                           <Link to="/home" className="nav-link">Who Are We?</Link> :
                 (window.location.pathname === "/home")
                 ?

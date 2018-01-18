@@ -1,5 +1,5 @@
 .trip-form {
-    margin: 50px 150px;
+    margin: 20px 40px;
     padding: 0 40px;
     border-left: 2px solid #d7d7d7;
 }
@@ -10,10 +10,11 @@
 .submit-form {
     background-color: #fff;
     color: #4182A7;
-    border-color: #4182A7;
+    border: 1px solid #4182A7;
     border-radius: 30px;
     width: 100px;
     margin-top: 40px;
+    margin-right: 20px;
 }
 #day {
     border-bottom: 1px solid #e1e1e1;
@@ -22,17 +23,23 @@
 .join-button {
     background-color: #fff;
     color: #4182A7;
-    border-color: #4182A7;
+    border: 1px solid #4182A7;
     border-radius: 30px;
     width: 100px;
     margin: 0 30px 40px 40px;
 }
-#join {
-    color: #4182A7;
+.available-car-seats {
+    display: block;
+    border-bottom: 1px solid #e1e1e1;
+    line-height: 30px;
+    margin-bottom: 5px;margin-top: 30px;
 }
-.empty-message{
-    /*display: block;*/
-    /*margin: 50px 200px;*/
-    /*padding: 0 40px;*/
-    /*border-left: 2px solid #d7d7d7;*/
+.swal-icon--success__line {
+    background-color: #4182A7 ;
+}
+.swal-icon--success__ring{
+    background-color: #4182a74a;
+}
+.empty-message {
+    display: block;
 }

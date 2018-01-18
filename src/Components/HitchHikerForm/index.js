@@ -40,8 +40,9 @@ export default class HHForm extends Component {
         return(
             <div className="new-container end">
                 <div className="margin">
+                <h2 className="title">Book Your Trip</h2>
                     <div className="trip-form start">
-                        <h2>Book Your Trip</h2>
+                        
                         <form>
                             <fieldset className="location">
                                 <legend>Location Details</legend>
@@ -49,7 +50,7 @@ export default class HHForm extends Component {
                                 <label htmlFor="location-label">Moving from
                                     <Locations inputs={this.inputs} id="location-label" name="location_id_start" onChange={this.handleChange.bind(this)}/>
                                     </label>
-                                <label>Moving To
+                                <label>Heading To
                                     <Locations inputs={this.inputs} name="location_id_end" onChange={this.handleChange.bind(this)}/>
                                     </label>
                                 </div>
@@ -108,7 +109,7 @@ export default class HHForm extends Component {
                                 )
                             })}
                         </div>
-                        : <p className="empty-message start">{message}</p>}
+                        : <p className="empty-message">{message}</p>}
                     </div>
                 </div>
             </div>

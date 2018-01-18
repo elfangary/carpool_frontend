@@ -59,17 +59,17 @@ export default class CarDetails extends Component {
 			return (
 				<div className="new-container end">
 					<div className="margin clearfix">
-						<div className="car-details-content start">
-							<h2>Car Details</h2>
+					<h2 className="title">Car Details</h2>
+						<div className="car-details-form start">
 							<Cars car_id={car_id} deleted={this.state.deleted} onChange={this.handleChange.bind(this)}/>
 							<div className="car-details">
 								{
 									displayed_car?
 								<div className="car-tags active clearfix">
-									<p className="capital">Model: <span>{displayed_car.model}</span></p>
-									<p className="capital">Color: <span>{displayed_car.color}</span></p>
-									<p>Number: <span>{displayed_car.number}</span></p>
-									<button type="button" className="car-button end" onClick={ ()=> { this.setState({deleted: true}); this.props.deleteCar(displayed_car.id) } } >Delete Car</button>
+									<p className="capital">{displayed_car.model}</p>
+									<p className="capital">{displayed_car.color}</p>
+									<p>{displayed_car.number}</p>
+									<button type="button" className="delete-car-button end" onClick={ ()=> { this.setState({deleted: true}); this.props.deleteCar(displayed_car.id) } } >Delete Car</button>
 								</div>
 								:
 								<div className="car-tags">
@@ -85,7 +85,7 @@ export default class CarDetails extends Component {
 									<input type="text" className={(this.state.car.model.length === 0)? "car-error": null} name="model" placeholder="Model" onChange={this.handelChangeForm.bind(this)} />
 									<input type="text" className={(this.state.car.color.length === 0)? "car-error": null} name="color" placeholder="Color" onChange={this.handelChangeForm.bind(this)} />
 									<input type="text" className={(this.state.car.number.length === 0)? "car-error": null} name="number" placeholder="Number" onChange={this.handelChangeForm.bind(this)} />
-									<button type="button" className="car-button create end" onClick={ ()=>{this.props.createCar(this.state.car)} }>Create Car</button>
+									<button type="button" className="add-car-button end" onClick={ ()=>{this.props.createCar(this.state.car)} }>Create Car</button>
 								</form>
 							</div>
 						</div>
