@@ -19,12 +19,15 @@
 .userLogin header {
 	text-transform: uppercase;
 }
-.userLogin h1 span {
+.cairopool {
 	color: #418cb6;
 	font-size: 30px;
 	margin-top: -9px;
 	display: block;
 }
+/*.title-span {
+	color: #fff;
+}*/
 .userLogin section h1{
 	color: white;
 	font-size: 22px;

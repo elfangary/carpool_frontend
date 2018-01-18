@@ -56,7 +56,7 @@ export default class Login extends Component{
 				<div className="intro">
 					<section>
 						<header>
-							<h1 className="title">Welcome to <span className="title">Cairopool</span></h1>
+							<h1 className="title">Welcome to <span className="title cairopool">Ca<span className="title-span">i</span>r<span className="title-span">o</span>pool</span></h1>
 							<p>Where Trips are shared</p>
 						</header>
 						<p>Affordable car-sharing service to ease your way around the city, availble for riders(hitch-hikers) and drivers.</p>
