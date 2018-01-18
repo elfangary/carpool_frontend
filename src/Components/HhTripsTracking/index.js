@@ -108,7 +108,7 @@ export default class HhTripsTracking extends Component {
                                             <p className="trip-driver-name">{trip.driver.first_name} {trip.driver.last_name}</p>
                                             <p className="date">{dateFormat(trip.day, "dd/mm/yyyy")}</p>
                                         </div>
-                                        <div className="car-details">
+                                         <div className="car-details">
                                             <p className="car-model">{trip.car.model} - {trip.car.color}</p>
                                             <p className="car-number">{trip.car.number}</p>
                                         </div>
