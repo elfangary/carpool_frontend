@@ -28,7 +28,7 @@
 .signup-form {
 	float: left;
 	width: 40%;
-	margin: 20px 150px;
+	margin: 0px 40px;
 	padding: 0 40px;
 	border-left: 2px solid #d7d7d7;
 }
@@ -91,15 +91,15 @@
 .signup-form .signup-button:focus {
 	outline: none;
 }
-.signup-form .ant-btn-primary{
+.ant-btn-primary{
 	background-color: #fff;
 	border: 0;
 }
-.signup-form .ant-btn-primary:hover, .signup-form .ant-btn-primary:focus, .signup-form .ant-btn-primary:active{
+.ant-btn-primary:hover, .ant-btn-primary:focus, .ant-btn-primary:active{
 	background-color: #fff;
 	outline: none;
 }
-.signup-form .ant-btn, .signup-form .ant-btn:active, .signup-form .ant-btn:focus{
+.ant-btn, .ant-btn:active, .ant-btn:focus{
 	outline: none;
 }
 .signup-error{

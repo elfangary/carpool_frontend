@@ -18,12 +18,13 @@ class App extends Component {
   render() {
     return (
         <div className="App clearfix">
-          <header className="header">
-          {console.log(window.location)}
+          <header className="header title">
               {!(localStorage.jwtToken)?
                   (window.location.pathname === "/home")?
                     <Link to="/" className="nav-link">Get Started</Link> :
-                      <Link to="/home" className="nav-link">Who Are We?</Link> :
+                      (window.location.pathname === "/signup")?
+                        <Link to="/" className="user-nav-link">Get Started</Link>:
+                          <Link to="/home" className="nav-link">Who Are We?</Link> :
                 (window.location.pathname === "/home")
                 ?
                   <div className="home-nav">
@@ -49,17 +50,17 @@ class App extends Component {
           </Switch>
           <div className="footer">
             <div className="footer-links">
-              <Link to={'/contact'} className="footer-link">Contact Us</Link>
-              <Link to={'/termsofuse'} className="footer-link">Terms Of Use</Link>
-              <Link to={'/privacpolicy'} className="footer-link">Privacy Policy</Link>
+              <Link to={'/'} className="footer-link">Contact Us</Link>
+              <Link to={'/'} className="footer-link">Terms Of Use</Link>
+              <Link to={'/'} className="footer-link">Privacy Policy</Link>
             </div>
             <div className="copyrights">
               <small>&copy; 2017 Brandname, Inc. All Rights Reserved</small>
             </div>
             <div className="social-media-links">
-              <Link to={'/twitter'} className="social-media"><i class="fa fa-twitter" aria-hidden="true"></i></Link>
-              <Link to={'/facebook'} className="social-media"><i class="fa fa-facebook" aria-hidden="true"></i></Link>
-              <Link to={'/instagram'} className="social-media"><i class="fa fa-instagram" aria-hidden="true"></i></Link>
+              <Link to={'/'} className="social-media"><i class="fa fa-twitter" aria-hidden="true"></i></Link>
+              <Link to={'/'} className="social-media"><i class="fa fa-facebook" aria-hidden="true"></i></Link>
+              <Link to={'/'} className="social-media"><i class="fa fa-instagram" aria-hidden="true"></i></Link>
             </div>
           </div>
         </div>
