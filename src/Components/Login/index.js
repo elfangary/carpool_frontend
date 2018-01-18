@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import './login_style.css';
 import history from '../../history';
+import { Button } from 'antd';
 
 export default class Login extends Component{
 	constructor(props){
@@ -67,7 +68,7 @@ export default class Login extends Component{
 					<form>
 						<input ref={(ref) => this.inputs.email = ref} type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handelChange.bind(this)} />
 						<input ref={(ref) => this.inputs.password = ref} type="password" name="password" placeholder="Password" onChange={this.handelChange.bind(this)} />
-						<button type="button" onClick={ () =>{this.props.login(this.state); this.setState({error: this.props.error})} }>Next</button>
+						<button type="button" disabled={this.props.loading} onClick={ () =>{this.props.login(this.state); this.setState({error: this.props.error})} }>Next</button>
 						{
 							(this.props.error)? (<div><p className="error">{this.props.error}</p> {this.handleErrors(this.props.error)}</div>) : null
 						}

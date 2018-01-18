@@ -114,7 +114,7 @@ export default class DriverTripsTracking extends Component {
         return (
             <div className = 'new-container end'>
                 <div className="margin clearfix">
-                    <h2>Your Driving Trips</h2>
+                    <h2 className="title grey-color">Your Driving Trips</h2>
                     <div className="tabs-container start">
                         <div className="tabs">
                             <Tabs
