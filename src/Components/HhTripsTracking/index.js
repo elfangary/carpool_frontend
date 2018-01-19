@@ -99,8 +99,8 @@ export default class HhTripsTracking extends Component {
                             return (
                                 <div className="trip clearfix">
                                     <div className="driver-container start">
-                                        <div className="driver-profile-picture">
-                                        <img href={trip.driver.profile_pic.profile_pic.url} alt="Hitch-Hiker" />
+                                        <div className="driver-profile-picture-container">
+                                            <img src={trip.driver.profile_pic.profile_pic.url} alt="driver" className="driver-profile-picture"/>
                                         </div>
                                     </div>
                                     <div className="details-container start">
